@@ -8,16 +8,16 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     //Make this a singleton
-    private static PlayerMovement instance;
+    /*private static PlayerMovement instance;
     public static PlayerMovement Instance
     {
         get { return instance; }
-    }
+    }*/
 
     [Header("Player's Value")]
     [SerializeField]
     private GameObject player;
-    //[SerializeField]
+    [SerializeField]
     private Vector2 playerCurrentPos;
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Mouse and Cursor's Value")]
     [SerializeField]
     private MouseClickPosition mouseManager;
-    //[SerializeField]
+    [SerializeField]
     private Vector2 lastMouseClickPos;
 
     [Header("DOTween's Value")]
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField]
     private bool isTweenSnapOn;
 
-    private void Awake()
+    /*private void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -48,12 +48,15 @@ public class PlayerMovement : MonoBehaviour
         {
             instance = this;
         }
-    }
+    }*/
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        DontDestroyOnLoad(this.gameObject);
+
+        mouseManager = FindObjectOfType<MouseClickPosition>();
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     void Update()

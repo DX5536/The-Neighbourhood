@@ -35,6 +35,7 @@ public class MouseClickPosition : MonoBehaviour
     }
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         mousePositionValue = player.transform.position;
     }
 

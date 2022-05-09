@@ -1,0 +1,28 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 1
+__PrivCrochet_position: -1000,-240
+__PrivCrochet_tags: 
+title: Test
+---
+NPC: Why are you here?
+NPC: Are you stalking me?
+
+-> What? No! 
+    <<jump suspicious>>
+-> Listen, I just need some flour... 
+    <<jump flour>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -640,-440
+__PrivCrochet_tags: 
+title: suspicious
+---
+NPC: I'm watching you!
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -640,-80
+__PrivCrochet_tags: 
+title: flour
+---
+NPC: Dude, just buy some at the store...
+===
