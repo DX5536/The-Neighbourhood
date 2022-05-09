@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7840881714515252217}
   - component: {fileID: 7840881714515252218}
   - component: {fileID: 7840881714515252222}
+  - component: {fileID: 6217261544755679484}
   m_Layer: 0
   m_Name: NPC_1
   m_TagString: Untagged
@@ -145,5 +146,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 0}
-  nodeToStart: 
+  nodeToStart: Test
   playerTag: Player
+--- !u!114 &6217261544755679484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840881714515252219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8982afd4e89eee74f99a34a2bf59e6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionGO: {fileID: 0}
+  objectName: A grumpy neighbour
+  playerTag: Player
+  objectTMP: {fileID: 0}
+  objectRectTransform: {fileID: 0}
+  objectStartingPosition: {x: 0, y: 0}
+  objectCurrentPosition: {x: 0, y: 0}
+  anchoredTween_YValue: 70
+  tweenDuration: 0.5
+  tweenSnapping: 0

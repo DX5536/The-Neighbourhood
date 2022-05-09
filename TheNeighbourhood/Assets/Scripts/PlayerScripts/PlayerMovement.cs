@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
 
         mouseManager = FindObjectOfType<MouseClickPosition>();
+        DOTween.SetTweensCapacity(2000 , 100);
         //DontDestroyOnLoad(this.gameObject);
     }
 

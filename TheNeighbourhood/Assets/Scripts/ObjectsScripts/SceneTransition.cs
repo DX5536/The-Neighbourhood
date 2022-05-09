@@ -8,12 +8,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    [Header("")]
+    //[Header("")]
     [SerializeField]
     private string playerTag = "Player";
 
     [SerializeField]
     private int sceneToLoadIndex;
+
+    [SerializeField]
+    private string keyToPress_DEBUG = "e";
 
     //[SerializeField]
     private bool canSwitchScene = false;
@@ -25,7 +28,7 @@ public class SceneTransition : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && canSwitchScene == true)
+        if (Input.GetKeyDown(keyToPress_DEBUG) && canSwitchScene == true)
         {
             SceneManager.LoadScene (sceneToLoadIndex);
             Debug.Log("Switch Scene");

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5690969688254068775}
   - component: {fileID: 5690969688254068776}
   - component: {fileID: 5690969688254068777}
+  - component: {fileID: 7117147628196505634}
   m_Layer: 0
   m_Name: Door_ToHallway
   m_TagString: Untagged
@@ -140,3 +141,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   sceneToLoadIndex: 0
+  keyToPress_DEBUG: e
+--- !u!114 &7117147628196505634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690969688254068772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8982afd4e89eee74f99a34a2bf59e6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionGO: {fileID: 0}
+  objectName: A door to hallway
+  playerTag: Player
+  objectTMP: {fileID: 0}
+  objectRectTransform: {fileID: 0}
+  objectStartingPosition: {x: 0, y: 0}
+  objectCurrentPosition: {x: 0, y: 0}
+  anchoredTween_YValue: 70
+  tweenDuration: 0.5
+  tweenSnapping: 0
