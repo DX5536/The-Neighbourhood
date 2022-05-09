@@ -476,33 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdde6aded48a29a49930d28fc148c4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &790414302 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5690969688254068772, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
-  m_PrefabInstance: {fileID: 1855639166}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &790414308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790414302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8982afd4e89eee74f99a34a2bf59e6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descriptionGO: {fileID: 1019794347}
-  objectName: A door to hallway
-  playerTag: Player
-  objectTMP: {fileID: 0}
-  objectRectTransform: {fileID: 0}
-  objectStartingPosition: {x: 0, y: 0}
-  objectCurrentPosition: {x: 0, y: 0}
-  anchoredTween_YValue: 70
-  tweenDuration: 1
-  tweenSnapping: 0
 --- !u!1001 &805798908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,6 +483,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6217261544755679484, guid: e0ea6d4e6dc5718499daec196e4a6e53, type: 3}
+      propertyPath: descriptionGO
+      value: 
+      objectReference: {fileID: 1610480173}
     - target: {fileID: 7840881714515252216, guid: e0ea6d4e6dc5718499daec196e4a6e53, type: 3}
       propertyPath: m_Size.x
       value: 9
@@ -553,10 +530,6 @@ PrefabInstance:
     - target: {fileID: 7840881714515252219, guid: e0ea6d4e6dc5718499daec196e4a6e53, type: 3}
       propertyPath: m_TagString
       value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 7840881714515252222, guid: e0ea6d4e6dc5718499daec196e4a6e53, type: 3}
-      propertyPath: nodeToStart
-      value: Test
       objectReference: {fileID: 0}
     - target: {fileID: 7840881714515252222, guid: e0ea6d4e6dc5718499daec196e4a6e53, type: 3}
       propertyPath: dialogueRunner
@@ -858,9 +831,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 430316308856717427, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
+      propertyPath: descriptionGO
+      value: 
+      objectReference: {fileID: 1446690423}
     - target: {fileID: 2151836196888460311, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2151836196888460311, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1025,33 +1002,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &1312043189 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7840881714515252219, guid: e0ea6d4e6dc5718499daec196e4a6e53, type: 3}
-  m_PrefabInstance: {fileID: 805798908}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1312043190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312043189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8982afd4e89eee74f99a34a2bf59e6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descriptionGO: {fileID: 1610480173}
-  objectName: A grumpy neighbour
-  playerTag: Player
-  objectTMP: {fileID: 0}
-  objectRectTransform: {fileID: 0}
-  objectStartingPosition: {x: 0, y: 0}
-  objectCurrentPosition: {x: 0, y: 0}
-  anchoredTween_YValue: 70
-  tweenDuration: 1
-  tweenSnapping: 0
 --- !u!1001 &1352442915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1264,7 +1214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7813377641107017064, guid: 98e92404b7042bd4ab0549f837a31ccb, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7813377641107017064, guid: 98e92404b7042bd4ab0549f837a31ccb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,33 +1270,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98e92404b7042bd4ab0549f837a31ccb, type: 3}
---- !u!1 &1561081776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2151836196888460313, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
-  m_PrefabInstance: {fileID: 1125436146}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1561081781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561081776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8982afd4e89eee74f99a34a2bf59e6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descriptionGO: {fileID: 1446690423}
-  objectName: A lamp
-  playerTag: Player
-  objectTMP: {fileID: 0}
-  objectRectTransform: {fileID: 0}
-  objectStartingPosition: {x: 0, y: 0}
-  objectCurrentPosition: {x: 0, y: 0}
-  anchoredTween_YValue: 70
-  tweenDuration: 0.5
-  tweenSnapping: 0
 --- !u!1 &1610480173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9069053085138424303, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -6.7
       objectReference: {fileID: 0}
     - target: {fileID: 9069053085138424303, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1610,5 +1533,9 @@ PrefabInstance:
       propertyPath: sceneToLoadIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7117147628196505634, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
+      propertyPath: descriptionGO
+      value: 
+      objectReference: {fileID: 1019794347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
