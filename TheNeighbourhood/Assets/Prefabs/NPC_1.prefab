@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7840881714515252218}
   - component: {fileID: 7840881714515252222}
   - component: {fileID: 6217261544755679484}
+  - component: {fileID: 145925797957929530}
   m_Layer: 0
   m_Name: NPC_1
   m_TagString: Untagged
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 0}
   nodeToStart: Test
+  keyToPress_DEBUG: e
   playerTag: Player
 --- !u!114 &6217261544755679484
 MonoBehaviour:
@@ -170,3 +172,18 @@ MonoBehaviour:
   anchoredTween_YValue: 70
   tweenDuration: 0.5
   tweenSnapping: 0
+--- !u!114 &145925797957929530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840881714515252219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ab37943490abc4bb4542f722e993a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  spritesDefault_MAT: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}

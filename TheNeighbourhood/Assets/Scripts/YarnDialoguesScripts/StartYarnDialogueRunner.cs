@@ -15,6 +15,9 @@ public class StartYarnDialogueRunner : MonoBehaviour
     private string nodeToStart;
 
     [SerializeField]
+    private string keyToPress_DEBUG = "e";
+
+    [SerializeField]
     private string playerTag = "Player";
 
     void Start()
@@ -27,11 +30,24 @@ public class StartYarnDialogueRunner : MonoBehaviour
         
     }
 
+    //Auto talk upon reaching range
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //dialogueRunner.StartDialogue(nodeToStart);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == playerTag)
         {
-            dialogueRunner.StartDialogue(nodeToStart);
+            //Need to press Key to talk
+            if (Input.GetKeyDown(keyToPress_DEBUG))
+            {
+                dialogueRunner.StartDialogue(nodeToStart);
+            }
+
+            
+            //dialogueRunner.StartDialogue(nodeToStart);
         }
     }
 }

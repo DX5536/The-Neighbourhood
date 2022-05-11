@@ -39,7 +39,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (collision.tag == playerTag)
         {
-            Debug.Log("Player can go out!");
+            //Debug.Log("Player can go out!");
             canSwitchScene = true;
         }
         
@@ -49,7 +49,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (collision.tag == playerTag)
         {
-            Debug.Log("Player can go out!");
+            //Debug.Log("Player can go out!");
             canSwitchScene = false;
         }
     }

@@ -50,6 +50,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
+    //Subscribe to GameStateChange Event
+    private void Awake()
+    {
+        GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    //Unsubscribe from event
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -110,5 +122,11 @@ public class PlayerMovement : MonoBehaviour
     public void ChangePlayerMoveFalse()
     {
         canPlayerMove = false;
+    }
+
+    //Changing Game State through event -> PlayerMovement act as caller
+    private void OnGameStateChanged (GameState newGameState)
+    {
+        enabled = newGameState == GameState.Gameplay;
     }
 }
