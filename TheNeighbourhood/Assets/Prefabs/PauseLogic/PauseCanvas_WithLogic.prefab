@@ -668,10 +668,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3516179945491243380}
-        m_TargetAssemblyTypeName: SceneTransButton, Assembly-CSharp
-        m_MethodName: ChangeSceneButton
-        m_Mode: 3
+      - m_Target: {fileID: 6256736190561136569}
+        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
+        m_MethodName: CheckAndChangeState
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -680,10 +680,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6256736190561136569}
-        m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
-        m_MethodName: CheckAndChangeState
-        m_Mode: 1
+      - m_Target: {fileID: 3516179945491243380}
+        m_TargetAssemblyTypeName: SceneTransButton, Assembly-CSharp
+        m_MethodName: ChangeSceneButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

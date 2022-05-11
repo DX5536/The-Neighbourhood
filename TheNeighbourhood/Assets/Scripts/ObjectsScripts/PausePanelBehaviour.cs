@@ -24,4 +24,5 @@ public class PausePanelBehaviour : MonoBehaviour
     {
         gameObject.SetActive(newGameState == GameState.Pause);
     }
+
 }

@@ -14,6 +14,9 @@ public class StartYarnDialogueRunner : MonoBehaviour
     [SerializeField]
     private string nodeToStart;
 
+    //[SerializeField]
+    private bool canPlayerSpeakToNPC;
+
     [SerializeField]
     private string keyToPress_DEBUG = "e";
 
@@ -22,32 +25,44 @@ public class StartYarnDialogueRunner : MonoBehaviour
 
     void Start()
     {
-        
+        //Start with false to avoid bugs
+        canPlayerSpeakToNPC = false;
     }
 
     void Update()
     {
-        
-    }
-
-    //Auto talk upon reaching range
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //dialogueRunner.StartDialogue(nodeToStart);
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == playerTag)
+        if (canPlayerSpeakToNPC == true)
         {
             //Need to press Key to talk
             if (Input.GetKeyDown(keyToPress_DEBUG))
             {
+                Debug.Log("Player can E to talk");
                 dialogueRunner.StartDialogue(nodeToStart);
             }
+        }
+    }
 
-            
-            //dialogueRunner.StartDialogue(nodeToStart);
+    //Player can click Key to talk upon reaching Talk-Zone
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //dialogueRunner.StartDialogue(nodeToStart);
+        if (collision.tag == playerTag)
+        {
+            //Debug.Log("Player in Range");
+
+            canPlayerSpeakToNPC = true;
+        }
+    }
+
+    //Player can't talk once out of reach
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == playerTag)
+        {
+            //Debug.Log("Player out of Range");
+
+            canPlayerSpeakToNPC = false;
+
         }
     }
 }
