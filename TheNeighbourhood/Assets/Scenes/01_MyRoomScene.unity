@@ -1081,14 +1081,6 @@ PrefabInstance:
       propertyPath: descriptionGO
       value: 
       objectReference: {fileID: 368140846}
-    - target: {fileID: 2151836196888460308, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.1633333
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151836196888460308, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.2266667
-      objectReference: {fileID: 0}
     - target: {fileID: 2151836196888460310, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1103,7 +1095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2151836196888460311, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2151836196888460311, guid: 719a7cb24a88c4d4fb60d9314b465f25, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1978,7 +1970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5690969688254068774, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.337
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 5690969688254068774, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2011,6 +2003,14 @@ PrefabInstance:
     - target: {fileID: 5690969688254068774, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690969688254068775, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690969688254068775, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5690969688254068777, guid: 2eec964bafa275e42ac7c7a35d566a83, type: 3}
       propertyPath: sceneToLoadIndex
@@ -2307,6 +2307,14 @@ PrefabInstance:
     - target: {fileID: 1795678633628517370, guid: bfba4352c18b35b4fbd6bb2d1a746bbc, type: 3}
       propertyPath: m_Name
       value: DescriptionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795678633671675120, guid: bfba4352c18b35b4fbd6bb2d1a746bbc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795678634657572987, guid: bfba4352c18b35b4fbd6bb2d1a746bbc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 66.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfba4352c18b35b4fbd6bb2d1a746bbc, type: 3}
