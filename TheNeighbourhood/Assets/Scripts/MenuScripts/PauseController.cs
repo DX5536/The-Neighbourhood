@@ -16,6 +16,7 @@ public class PauseController : MonoBehaviour
     }
 
     // Update is called once per frame
+    //This is Pause Event Handler
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -46,8 +47,8 @@ public class PauseController : MonoBehaviour
     //Due to weird Unity but that:Return To Menu -> Start game == State still in Pause
     //Forcing player to click ESC twice
     //Solution: Force start at beginning of all scene load
-    private void ForceGamplayStateAtStart()
+    /*private void ForceGamplayStateAtStart()
     {
         GameStateManager.Instance.SetState (GameState.Gameplay);
-    }
+    }*/
 }

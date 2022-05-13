@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - MouseManager
+  - SpawnerMaster
+  - Door_MyRoom
+  - Door_NPC_0
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameState;
 
+//This is Pause Event Behavior
 public class GameStateManager
 {
     private static GameStateManager instance;
