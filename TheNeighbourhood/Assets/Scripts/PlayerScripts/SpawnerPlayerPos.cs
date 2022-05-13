@@ -18,7 +18,7 @@ public class SpawnerPlayerPos : MonoBehaviour
         //transform.position = spawnerMaster.LastSpawnPoint;
         savedDoorGO = GameObject.FindGameObjectWithTag(spawnerMaster.LastDoorTag).GetComponent<Transform>();
 
-        if (!savedDoorGO)
+        if (savedDoorGO == null)
         {
             //If there is no savedDoorGO -> Spawn
             Debug.Log("There is no savedDoor");
