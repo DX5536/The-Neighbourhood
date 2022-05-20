@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     private float tweenDuration;
     //[SerializeField]
     private bool isTweenSnapOn;
+    [SerializeField]
+    private Ease easeType;
+
 
     /*private void Awake()
     {
@@ -77,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         if(canPlayerMove == true)
         {
             //Quick DOTween movement -> very rigid but works
-            player.transform.DOMoveX(mouseManager.MousePositionValue.x , tweenDuration , isTweenSnapOn);
+            player.transform.DOMoveX(mouseManager.MousePositionValue.x , tweenDuration , isTweenSnapOn).SetEase(easeType);
 
             lastMouseClickPos = mouseManager.MousePositionValue;
             playerCurrentPos = player.transform.position;
@@ -112,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
 
     //public method for DialogueRunner -> Can't move when dialog playing
     public void ChangePlayerMoveTrue()
