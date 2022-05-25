@@ -22,6 +22,8 @@ public class StairManager : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerMovement;
 
+    private string playerTag = "Player";
+
     void Start()
     {
         chosenStepBoxCollider2D = chosenStair_Step.GetComponent<BoxCollider2D>();
@@ -35,7 +37,11 @@ public class StairManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        ActivateUpperStair();
+        if (collision.tag == playerTag)
+        {
+            ActivateUpperStair();
+        }
+        
     }
 
     //Similar to FlipSprite by PlayerMovement, we will check the lastMouseClickPos vs the playerCurrentPos
