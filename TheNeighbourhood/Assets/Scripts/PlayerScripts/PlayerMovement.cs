@@ -22,6 +22,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
 
+    /*[Header("Player's Char Controller")]
+    [SerializeField]
+    private CharacterController characterController;
+    [SerializeField]
+    private float playerSpeed = 2.0f;*/
+
+
     //[SerializeField]
     private bool canPlayerMove = true;
 
@@ -53,6 +60,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
+    //Property of lastMouseClickPos to access from StairManager
+    public Vector2 LastMouseClickPos
+    {
+        get { return lastMouseClickPos; }
+    }
+
+    public Vector2 PlayerCurrentPos
+    {
+        get { return playerCurrentPos; }
+    }
+
     //Subscribe to GameStateChange Event
     private void Awake()
     {
@@ -69,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        //characterController = player.GetComponent<CharacterController>();
 
         mouseManager = FindObjectOfType<MouseClickPosition>();
         DOTween.SetTweensCapacity(2000 , 100);
@@ -77,7 +96,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(canPlayerMove == true)
+        PlayerMoveDOTween();
+        //PlayerMoveCharacterController();
+    }
+
+    private void PlayerMoveDOTween()
+    {
+        if (canPlayerMove == true)
         {
             //Quick DOTween movement -> very rigid but works
             player.transform.DOMoveX(mouseManager.MousePositionValue.x , tweenDuration , isTweenSnapOn).SetEase(easeType);
@@ -85,19 +110,7 @@ public class PlayerMovement : MonoBehaviour
             lastMouseClickPos = mouseManager.MousePositionValue;
             playerCurrentPos = player.transform.position;
 
-            //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos
-            if (playerCurrentPos.x < lastMouseClickPos.x)
-            {
-                playerSpriteRenderer.flipX = false;
-                //Debug.Log("Player moving Right");
-            }
-
-            //Mouse click Left -> Mouse's x-Value smaller than playerCurrentPos
-            else
-            {
-                playerSpriteRenderer.flipX = true;
-                //Debug.Log("Player moving Left");
-            }
+            FlipingSprite();
 
             //In Space movement!!! (Like a real Ninja)
             /*if (mouseManager.IsPlayerMoving && (Vector2)transform.position != lastClickPos)
@@ -113,9 +126,37 @@ public class PlayerMovement : MonoBehaviour
                 mouseManager.IsPlayerMoving = false;
             }*/
         }
-
     }
 
+    /*private void PlayerMoveCharacterController()
+    {
+        if (canPlayerMove == true)
+        {
+            characterController.SimpleMove(mouseManager.MousePositionValue * Time.deltaTime * playerSpeed);
+
+            lastMouseClickPos = mouseManager.MousePositionValue;
+            playerCurrentPos = player.transform.position;
+
+            FlipingSprite();
+        }
+    }*/
+
+    private void FlipingSprite()
+    {
+        //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos
+        if (playerCurrentPos.x < lastMouseClickPos.x)
+        {
+            playerSpriteRenderer.flipX = false;
+            //Debug.Log("Player moving Right");
+        }
+
+        //Mouse click Left -> Mouse's x-Value smaller than playerCurrentPos
+        else
+        {
+            playerSpriteRenderer.flipX = true;
+            //Debug.Log("Player moving Left");
+        }
+    }
 
     //public method for DialogueRunner -> Can't move when dialog playing
     public void ChangePlayerMoveTrue()
