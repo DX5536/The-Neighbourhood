@@ -12,33 +12,9 @@ public class Door : MonoBehaviour, IDoorInteractable
     [SerializeField]
     private int sceneToLoadIndex;
 
-    private string keyToPress_DEBUG = "e";
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-    private void Method1()
-    {
-        
-    }
-
     public void OpenDoor()
     {
-        Debug.Log("Can switch :DDD");
+        //Debug.Log("Can switch :DDD");
         SceneManager.LoadScene(sceneToLoadIndex);
-
-        /*if (Input.GetKeyDown(keyToPress_DEBUG))
-        {
-            Debug.Log("Switch Scene");
-            SceneManager.LoadScene(sceneToLoadIndex);
-        }*/
-        
     }
 }

@@ -61,7 +61,7 @@ public class ObjectDescriptionBehaviour : MonoBehaviour
     {
         if (popUpItemID == this.popUpItemID)
         {
-            Debug.Log("PopUp event has been called");
+            //Debug.Log("PopUp event has been called");
             descriptionGO.SetActive(true);
 
             var objectTMP = descriptionGO.GetComponent<TextMeshProUGUI>();
