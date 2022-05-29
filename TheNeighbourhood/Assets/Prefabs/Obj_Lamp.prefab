@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2151836196888460311}
   - component: {fileID: 2151836196888460310}
-  - component: {fileID: 2151836196888460309}
   - component: {fileID: 2151836196888460308}
-  - component: {fileID: 430316308856717427}
   m_Layer: 0
   m_Name: Obj_Lamp
   m_TagString: Untagged
@@ -85,21 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2151836196888460309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151836196888460313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ab37943490abc4bb4542f722e993a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  spritesDefault_MAT: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
 --- !u!61 &2151836196888460308
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,25 +109,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
---- !u!114 &430316308856717427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151836196888460313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8982afd4e89eee74f99a34a2bf59e6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descriptionGO: {fileID: 0}
-  objectName: A lamp
-  playerTag: Player
-  objectTMP: {fileID: 0}
-  objectRectTransform: {fileID: 0}
-  objectStartingPosition: {x: 0, y: 0}
-  objectCurrentPosition: {x: 0, y: 0}
-  anchoredTween_YValue: 70
-  tweenDuration: 0.5
-  tweenSnapping: 0
