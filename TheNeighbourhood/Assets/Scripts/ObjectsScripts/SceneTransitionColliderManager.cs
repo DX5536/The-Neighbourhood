@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using UnityEngine.SceneManagement;
 
-
-public class SceneTransition : MonoBehaviour
+public class SceneTransitionColliderManager : MonoBehaviour
 {
     //[Header("")]
     [SerializeField]
     private string playerTag = "Player";
 
-    [SerializeField]
-    private int sceneToLoadIndex;
+    //[SerializeField]
+    //private int sceneToLoadIndex;
 
     [SerializeField]
     private string keyToPress_DEBUG = "e";
@@ -30,8 +28,8 @@ public class SceneTransition : MonoBehaviour
     {
         if (Input.GetKeyDown(keyToPress_DEBUG) && canSwitchScene == true)
         {
-            SceneManager.LoadScene (sceneToLoadIndex);
-            Debug.Log("Switch Scene");
+            //Debug.Log("Switch Scene");
+            ToOpenDoor();
         }
     }
 
@@ -45,6 +43,22 @@ public class SceneTransition : MonoBehaviour
         
     }
 
+    void ToOpenDoor()
+    {
+        var doorInteractable = this.gameObject.GetComponent<IDoorInteractable>();
+        if (doorInteractable == null)
+        {
+            Debug.Log("There is no IDoorInterface");
+            return;
+        }
+
+        else
+        {
+            doorInteractable.OpenDoor();
+
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == playerTag)
@@ -53,4 +67,5 @@ public class SceneTransition : MonoBehaviour
             canSwitchScene = false;
         }
     }
+
 }
