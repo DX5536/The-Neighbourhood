@@ -40,11 +40,13 @@ public class CameraTransition : MonoBehaviour
 
     void Update()
     {
-        currentActiveCam = cinemachineBrain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        currentActiveCam = cinemachineBrain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>();
+
         if (collision.tag == playerTag)
         {
             //If the current cam is Cam_00
