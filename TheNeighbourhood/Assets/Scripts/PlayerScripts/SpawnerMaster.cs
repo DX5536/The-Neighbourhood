@@ -26,15 +26,17 @@ public class SpawnerMaster : MonoBehaviour
     private static SpawnerMaster instance;
     private void Awake()
     {
-        if (instance == null)
+        //Create an instance
+        if (instance != null)
         {
-            instance = this;
-            DontDestroyOnLoad(instance);
+            Debug.Log("There are more than 1 SpawnerMaster");
+            Destroy(this);
         }
 
-        else
+        else if (instance == null)
         {
-            Destroy(gameObject);
+            instance = this;
+            DontDestroyOnLoad(this);
         }
     }
 

@@ -16,7 +16,7 @@ public class ObjectDescriptionManager : MonoBehaviour
         //Create an instance
         if (instance != null)
         {
-            Debug.Log("There are more than 1 OptionValue ");
+            Debug.Log("There are more than 1 ObjDescriptionManager ");
             Destroy(this);
         }
 
