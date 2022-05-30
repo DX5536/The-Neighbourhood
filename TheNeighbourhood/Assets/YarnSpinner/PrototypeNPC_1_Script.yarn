@@ -1,0 +1,17 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 1
+__PrivCrochet_position: -840,-280
+__PrivCrochet_tags: 
+title: PrototypeNPC_1_Script
+---
+Doremy: Oh? Who do we have here?
+Doremy: Do you need something?
+
+-> Oh hi, I need some flour.
+    Doremy: Flour? Ah sure, I think I have some around.
+    <<set $isPlayerNeedFlour to false>>
+-> It's nothing... May I ask what's that in your hand?
+    Doremy: This? It's the manifestation of dream. Cool, isn't it?
+
+Player: Thanks for your time.
+===

@@ -36,7 +36,7 @@ public class StartYarnDialogueRunner : MonoBehaviour
             //Need to press Key to talk
             if (Input.GetKeyDown(keyToPress_DEBUG))
             {
-                Debug.Log("Player can E to talk");
+                //Debug.Log("Player can E to talk");
                 dialogueRunner.StartDialogue(nodeToStart);
             }
         }

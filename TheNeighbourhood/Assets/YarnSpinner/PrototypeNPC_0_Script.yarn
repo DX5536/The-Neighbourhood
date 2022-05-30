@@ -4,13 +4,20 @@ __PrivCrochet_position: -1000,-240
 __PrivCrochet_tags: 
 title: Test
 ---
+<<set $hasTalkedToNPC0 to false>>
 NPC: Why are you here?
 NPC: Are you stalking me?
 
+
 -> What? No! 
     <<jump suspicious>>
--> Listen, I just need some flour... 
+
+-> Listen, I just need some flour... //<<if $isPlayerNeedFlour != false>>
+    <<set $isPlayerNeedFlour to true>>
     <<jump flour>>
+
+-> I just want to say hi again <<if $isPlayerNeedFlour == false>>
+    NPC: Uhm, sure...
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: -640,-440
@@ -25,4 +32,6 @@ __PrivCrochet_tags:
 title: flour
 ---
 NPC: Dude, just buy some at the store...
+
+<<set $hasTalkedToNPC0 to true>>
 ===
