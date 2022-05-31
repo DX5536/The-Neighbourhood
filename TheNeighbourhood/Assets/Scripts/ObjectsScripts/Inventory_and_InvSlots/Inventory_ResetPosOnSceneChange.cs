@@ -21,6 +21,6 @@ public class Inventory_ResetPosOnSceneChange : MonoBehaviour
     private void ResetPosition(Scene currentScene , Scene nextScene)
     {
         this.gameObject.transform.position = Vector3.zero;
-        Debug.Log("Inventory Pos has been reset due to scene change");
+        //Debug.Log("Inventory Pos has been reset due to scene change");
     }
 }

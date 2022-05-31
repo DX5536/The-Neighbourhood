@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3968066218742637080}
   - component: {fileID: 3968066218742637081}
   m_Layer: 0
-  m_Name: SpawnerMaster
+  m_Name: SpawnerMaster_HAVE_TO_BE_IN_ROOT
   m_TagString: SpawnerMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66fd6430f909334fa61ced54d08f157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint_NPC_1: Door_NPC_1
+  vCameraPosAtSpawn:
+    m_PersistentCalls:
+      m_Calls: []
   lastSpawnPoint: {x: 0, y: 0}
   lastDoorTag: Door_MyRoom

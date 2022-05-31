@@ -38,7 +38,7 @@ public class SpawnerPlayerPos : MonoBehaviour
     private IEnumerator WaitForSpawnMaster()
     {
         //Wait for at least 1 sec for all set up, then spawn Player
-        yield return new WaitForSeconds(1);
-        
+        yield return new WaitForSeconds(1.5f);
+
     }
 }
