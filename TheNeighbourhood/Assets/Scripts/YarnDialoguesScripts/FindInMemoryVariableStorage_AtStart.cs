@@ -1,16 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
 using Yarn.Unity;
-
 
 public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
 {
     [SerializeField]
     private DialogueRunner dialogueRunner;
-
 
     [Header("READ_ONLY")]
     [SerializeField]
@@ -21,7 +15,7 @@ public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
         get { return storage; }
     }*/
 
-    void Start()
+    private void Start()
     {
         //First find the storage by tag (cuz I need the storage in non-DialogRunner too)
         storage = FindObjectOfType<InMemoryVariableStorage>();
@@ -31,13 +25,9 @@ public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
             //Put the value inside DialogRunner
             dialogueRunner.VariableStorage = storage;
         }
-
         else
         {
             Debug.Log("There is no VariableStorage");
         }
-
-
     }
-
 }
