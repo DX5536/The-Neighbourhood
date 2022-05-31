@@ -24,7 +24,7 @@ public class Inventory_CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        inventory = FindObjectOfType<Singleton_Inventory>().gameObject;
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
         inventoryTransform = inventory.GetComponent<Transform>();
     }
 

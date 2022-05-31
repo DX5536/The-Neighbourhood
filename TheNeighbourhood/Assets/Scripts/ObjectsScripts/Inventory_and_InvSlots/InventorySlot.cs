@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -17,16 +17,24 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]
     private GameObject childItemIcon;
 
+    private void OnEnable()
+    {
+        SceneManager.activeSceneChanged += SearchInventoryManager;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.activeSceneChanged -= SearchInventoryManager;
+    }
+
     void Start()
     {
         //Auto get the icon Game object inside the slot
         childItemIcon = this.transform.GetChild(0).gameObject;
-
-        SearchInventoryManager();
-
     }
 
-    private void SearchInventoryManager()
+
+    private void SearchInventoryManager(Scene currentScene , Scene nextScene)
     {
         //Auto search for my inventory manager
         inventory_HasItem = FindObjectOfType<Inventory_HasItem>();

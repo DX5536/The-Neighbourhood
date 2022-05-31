@@ -24,6 +24,8 @@ public class Inventory_HasItem : MonoBehaviour
     {
         //First find the storage by tag (cuz I need the storage in non-DialogRunner too)
         storage = FindObjectOfType<InMemoryVariableStorage>();
+
+        //storage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InMemoryVariableStorage>();
     }
 
     void AutoFindItemIcon()
