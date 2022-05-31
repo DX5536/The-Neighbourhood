@@ -35,4 +35,13 @@ public class CameraEventManager : MonoBehaviour
             onVCameraTransitioned(cameraID);
         }
     }
+
+    public static event Action onNPC_1CameraPos;
+    public static void NPC_1CameraPos()
+    {
+        if (onNPC_1CameraPos != null)
+        {
+            onNPC_1CameraPos();
+        }
+    }
 }

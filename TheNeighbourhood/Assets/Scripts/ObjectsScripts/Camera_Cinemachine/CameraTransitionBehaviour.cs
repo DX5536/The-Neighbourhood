@@ -18,12 +18,16 @@ public class CameraTransitionBehaviour : MonoBehaviour
     [Header("Virtual Cameras GameObjects")]
     [SerializeField]
     private CinemachineVirtualCamera virtualCam_00;
+    [SerializeField]
     private int virtualCam_00_OG_Priority;
+    [SerializeField]
     private int virtualCam_00_NEW_Priority;
 
     [SerializeField]
     private CinemachineVirtualCamera virtualCam_01;
+    [SerializeField]
     private int virtualCam_01_OG_Priority;
+    [SerializeField]
     private int virtualCam_01_NEW_Priority;
 
     [SerializeField]
@@ -39,16 +43,19 @@ public class CameraTransitionBehaviour : MonoBehaviour
         virtualCam_01_OG_Priority = virtualCam_01.Priority;
 
         cinemachineBrain = CinemachineCore.Instance.GetActiveBrain(0);
+        //UpdateActivatedCamera();
     }
 
     private void OnEnable()
     {
         CameraEventManager.onVCameraTransitioned += ActivateCameraTransition;
+        CameraEventManager.onNPC_1CameraPos += StartWithCam_01;
     }
 
     private void OnDisable()
     {
         CameraEventManager.onVCameraTransitioned -= ActivateCameraTransition;
+        CameraEventManager.onNPC_1CameraPos -= StartWithCam_01;
     }
 
     private void ActivateCameraTransition(int cameraID)
@@ -56,6 +63,9 @@ public class CameraTransitionBehaviour : MonoBehaviour
         if (this.cameraID == cameraID)
         {
             currentActiveCam = cinemachineBrain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>();
+            //UpdateActivatedCamera();
+
+            Debug.Log("Call upon CamTrans");
             //If the current cam is Cam_00
             //Upon collide with Trigger -> Trans to Cam_01 
             if (currentActiveCam.name == virtualCam_00.name)
@@ -69,6 +79,11 @@ public class CameraTransitionBehaviour : MonoBehaviour
             }
         }
 
+    }
+
+    private void UpdateActivatedCamera()
+    {
+        currentActiveCam = cinemachineBrain.ActiveVirtualCamera.VirtualCameraGameObject.GetComponent<CinemachineVirtualCamera>();
     }
 
     private void TransCam_00ToCam_01()
@@ -86,7 +101,9 @@ public class CameraTransitionBehaviour : MonoBehaviour
     }
 
     //This Method is public so I can access from SpawnerMaster.VCamPosAtSpawn()
-    public void TransCam_01ToCam_00()
+    //But only with UnityEvent
+    //public void TransCam_01ToCam_00()
+    private void TransCam_01ToCam_00()
     {
         //The Maff
         virtualCam_00_NEW_Priority = virtualCam_00_OG_Priority + priorityValueAdditiveAmount;
@@ -98,5 +115,16 @@ public class CameraTransitionBehaviour : MonoBehaviour
 
         //Make sure Cam_00 has OG value
         virtualCam_01.GetComponent<CinemachineVirtualCamera>().Priority = virtualCam_01_OG_Priority;
+    }
+
+    //This is a special method to subscribe to the special case of SpawnerMaster (the special Handler)
+    //Basically instead of starting Scene from Cam_01 (the below), we start from Cam_00 (above)
+    private void StartWithCam_01()
+    {
+        //By have it start with Cam_01 -> Start off with higher Priority
+        //only half of the AdditiveValue to avoid conflicts later
+
+        virtualCam_01.Priority += priorityValueAdditiveAmount / 2;
+        Debug.Log("Starting with Cam_00");
     }
 }

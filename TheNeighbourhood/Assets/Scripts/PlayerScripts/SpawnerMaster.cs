@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SpawnerMaster : MonoBehaviour
 {
@@ -16,7 +14,6 @@ public class SpawnerMaster : MonoBehaviour
             Debug.Log("There are more than 1 " + this.gameObject.name + " value.");
             Destroy(this.gameObject);
         }
-
         else if (instance == null)
         {
             instance = this;
@@ -27,12 +24,17 @@ public class SpawnerMaster : MonoBehaviour
     [Header("For the special case of Player starting from above")]
     [SerializeField]
     private string spawnPoint_NPC_1 = "Door_NPC_1";
+
     [SerializeField]
-    private UnityEvent vCameraPosAtSpawn;
+    private int cameraID;
+
+    //[SerializeField]
+    //private UnityEvent vCameraPosAtSpawn;
 
     [Header("Values READ_ONLY")]
     [SerializeField]
     private Vector2 lastSpawnPoint;
+
     [SerializeField]
     private string lastDoorTag;
 
@@ -48,18 +50,28 @@ public class SpawnerMaster : MonoBehaviour
         set { lastDoorTag = value; }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.activeSceneChanged += UseCam_00;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.activeSceneChanged -= UseCam_00;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
+    {
+
+    }
+
+    private void UseCam_00(Scene currentScene , Scene nextScene)
     {
         if (lastDoorTag == spawnPoint_NPC_1)
         {
-            vCameraPosAtSpawn?.Invoke();
+            //vCameraPosAtSpawn?.Invoke(); //This is to use Unity event but sadly the Cinemachine is destroyed upon load scene
+            CameraEventManager.NPC_1CameraPos();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
