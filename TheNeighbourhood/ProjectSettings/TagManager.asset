@@ -9,6 +9,7 @@ TagManager:
   - Door_MyRoom
   - Door_NPC_0
   - Door_NPC_1
+  - CameraAnchor
   layers:
   - Default
   - TransparentFX

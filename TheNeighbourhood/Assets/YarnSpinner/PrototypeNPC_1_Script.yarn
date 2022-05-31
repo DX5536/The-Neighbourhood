@@ -5,9 +5,13 @@ __PrivCrochet_tags:
 title: PrototypeNPC_1_Script
 ---
 Doremy: Oh? Who do we have here?
+
+//This variable is ONLY for testing purposes!!! (within the scene itself, as this value is in the other NPC.Script)
+//<<set $isPlayerNeedFlour to true>>
+
 Doremy: Do you need something?
 
--> Oh hi, I need some flour.
+-> Oh hi, I need some flour.<<if $isPlayerNeedFlour == true>>
     Doremy: Flour? Ah sure, I think I have some around.
     <<set $isPlayerNeedFlour to false>>
     <<set $gainedItem_Name to "Flour">>

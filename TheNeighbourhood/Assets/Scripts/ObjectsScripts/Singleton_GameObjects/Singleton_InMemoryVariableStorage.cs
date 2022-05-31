@@ -5,17 +5,17 @@ using DG.Tweening;
 using TMPro;
 
 
-public class SingletonGameObject : MonoBehaviour
+public class Singleton_InMemoryVariableStorage : MonoBehaviour
 {
     //Make this a singleton
-    private static SingletonGameObject instance;
+    private static Singleton_InMemoryVariableStorage instance;
 
     private void Awake()
     {
         //Create an instance
         if (instance != null)
         {
-            Debug.Log("There are more than 1 OptionValue ");
+            Debug.Log("There are more than 1 " + this.gameObject.name + " value.");
             Destroy(this.gameObject);
         }
 
