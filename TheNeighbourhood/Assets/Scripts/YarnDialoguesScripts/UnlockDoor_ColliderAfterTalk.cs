@@ -20,7 +20,7 @@ public class UnlockDoor_ColliderAfterTalk : MonoBehaviour
         if (variableStorage != null)
         {
             //This is the send safety net if 1st search didn't work for some reason
-            Debug.Log("Have to do an 2nd in-depth search");
+            //Debug.Log("Have to do an 2nd in-depth search");
             variableStorage = GameObject.Find("InMemoryVariableStorage").GetComponent<InMemoryVariableStorage>();
         }
 
