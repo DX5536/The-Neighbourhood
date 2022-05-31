@@ -16,10 +16,10 @@ public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
     [SerializeField]
     private InMemoryVariableStorage storage;
 
-    public InMemoryVariableStorage Storage
+    /*public InMemoryVariableStorage Storage
     {
         get { return storage; }
-    }
+    }*/
 
     void Start()
     {
@@ -37,7 +37,7 @@ public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
             Debug.Log("There is no VariableStorage");
         }
 
-        
+
     }
 
 }

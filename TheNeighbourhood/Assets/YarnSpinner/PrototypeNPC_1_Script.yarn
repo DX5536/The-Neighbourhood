@@ -10,6 +10,12 @@ Doremy: Do you need something?
 -> Oh hi, I need some flour.
     Doremy: Flour? Ah sure, I think I have some around.
     <<set $isPlayerNeedFlour to false>>
+    <<set $gainedItem_Name to "Flour">>
+    <<wait 0,2>>
+    Doremy: Here you go. Some brand new flour.
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
+
 -> It's nothing... May I ask what's that in your hand?
     Doremy: This? It's the manifestation of dream. Cool, isn't it?
 
