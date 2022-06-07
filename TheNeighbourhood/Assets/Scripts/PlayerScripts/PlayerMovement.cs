@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
-using TMPro;
-using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement: MonoBehaviour
 {
     //Make this a singleton
     /*private static PlayerMovement instance;
@@ -24,9 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     /*[Header("Player's Char Controller")]
     [SerializeField]
-    private CharacterController characterController;
-    [SerializeField]
-    private float playerSpeed = 2.0f;*/
+    private CharacterController characterController;*/
+    //[SerializeField]
+    //private float playerSpeed = 2.0f;
 
 
     //[SerializeField]
@@ -38,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Vector2 lastMouseClickPos;
 
-    [Header("DOTween's Value")]
+    [Header("DOTween's Value -> Linear means constant speed")]
     [SerializeField]
     private float tweenDuration;
     //[SerializeField]
@@ -63,12 +59,18 @@ public class PlayerMovement : MonoBehaviour
     //Property of lastMouseClickPos to access from StairManager
     public Vector2 LastMouseClickPos
     {
-        get { return lastMouseClickPos; }
+        get
+        {
+            return lastMouseClickPos;
+        }
     }
 
     public Vector2 PlayerCurrentPos
     {
-        get { return playerCurrentPos; }
+        get
+        {
+            return playerCurrentPos;
+        }
     }
 
     //Subscribe to GameStateChange Event
@@ -77,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         GameStateManager.Instance.OnGameStateChanged += OnGameStateChanged;
     }
 
-    //Unsubscribe from event
+    //Unsubscripted from event
     private void OnDestroy()
     {
         GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         //characterController = player.GetComponent<CharacterController>();
 
         mouseManager = FindObjectOfType<MouseClickPosition>();
-        DOTween.SetTweensCapacity(2000 , 100);
+        DOTween.SetTweensCapacity(2000, 100);
         //DontDestroyOnLoad(this.gameObject);
     }
 
@@ -98,14 +100,23 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerMoveDOTween();
         //PlayerMoveCharacterController();
+
+    }
+
+    private void FixedUpdate()
+    {
+        //PlayerMoveDOTween();
+        //PlayerMoveAnimator();
     }
 
     private void PlayerMoveDOTween()
     {
         if (canPlayerMove == true)
         {
+            var playerTransformPos = player.transform.position;
+
             //Quick DOTween movement -> very rigid but works
-            player.transform.DOMoveX(mouseManager.MousePositionValue.x , tweenDuration , isTweenSnapOn).SetEase(easeType);
+            player.transform.DOMoveX(mouseManager.MousePositionValue.x, tweenDuration, isTweenSnapOn).SetEase(easeType);
 
             lastMouseClickPos = mouseManager.MousePositionValue;
             playerCurrentPos = player.transform.position;
@@ -141,6 +152,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
+    //2nd Attempt on Move Player in constant speed
+    /*private void PlayerMoveAnimator()
+    {
+        if (canPlayerMove == true)
+        {
+            var playerMovementTarget = new Vector2(lastMouseClickPos.x, 0f);
+
+            player.transform.position = Vector2.MoveTowards(player.transform.position, playerMovementTarget, playerSpeed * Time.deltaTime);
+
+
+            lastMouseClickPos = mouseManager.MousePositionValue;
+            playerCurrentPos = new Vector2(player.transform.position.x, 0f);
+
+            FlipingSprite();
+        }
+    }*/
     private void FlipingSprite()
     {
         //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos
@@ -170,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Changing Game State through event -> PlayerMovement act as caller
-    private void OnGameStateChanged (GameState newGameState)
+    private void OnGameStateChanged(GameState newGameState)
     {
         enabled = newGameState == GameState.Gameplay;
     }
