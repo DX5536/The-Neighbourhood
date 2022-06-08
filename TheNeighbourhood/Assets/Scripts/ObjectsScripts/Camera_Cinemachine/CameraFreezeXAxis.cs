@@ -16,7 +16,7 @@ public class CameraFreezeXAxis: CinemachineExtension
         if (enabled && stage == CinemachineCore.Stage.Body)
         {
             var pos = state.RawPosition;
-            pos.z = m_XPosition;
+            pos.x = m_XPosition;
             state.RawPosition = pos;
         }
     }
