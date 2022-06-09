@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   keyToPress_DEBUG: e
+  spamKeyDelay: 2
 --- !u!114 &6964692580478599031
 MonoBehaviour:
   m_ObjectHideFlags: 0

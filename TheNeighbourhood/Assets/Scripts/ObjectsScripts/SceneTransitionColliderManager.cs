@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
 
-public class SceneTransitionColliderManager : MonoBehaviour
+public class SceneTransitionColliderManager: MonoBehaviour
 {
     //[Header("")]
     [SerializeField]
@@ -16,20 +13,36 @@ public class SceneTransitionColliderManager : MonoBehaviour
     [SerializeField]
     private string keyToPress_DEBUG = "e";
 
+    [SerializeField]
+    private float spamKeyDelay = 2;
+
     //[SerializeField]
     private bool canSwitchScene = false;
 
+    private float timer;
+
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress_DEBUG) && canSwitchScene == true)
+        //Anti-Spam [E] Key when standing on Door
+        timer += Time.deltaTime;
+        if (timer >= spamKeyDelay)
         {
-            //Debug.Log("Switch Scene");
-            ToOpenDoor();
+            if (Input.GetKeyDown(keyToPress_DEBUG) && canSwitchScene == true)
+            {
+                //Debug.Log("Switch Scene");
+                ToOpenDoor();
+            }
+            timer = spamKeyDelay;
+        }
+
+        else
+        {
+            Debug.Log("Key on cooldown!");
         }
     }
 
@@ -40,7 +53,7 @@ public class SceneTransitionColliderManager : MonoBehaviour
             //Debug.Log("Player can go out!");
             canSwitchScene = true;
         }
-        
+
     }
 
     void ToOpenDoor()
@@ -54,6 +67,7 @@ public class SceneTransitionColliderManager : MonoBehaviour
 
         else
         {
+            StartCoroutine(SmallDelay());
             doorInteractable.OpenDoor();
 
         }
@@ -66,6 +80,13 @@ public class SceneTransitionColliderManager : MonoBehaviour
             //Debug.Log("Player can go out!");
             canSwitchScene = false;
         }
+    }
+
+    IEnumerator SmallDelay()
+    {
+        yield return new WaitForSeconds(2);
+        //Debug.Log("Finish Delay");
+
     }
 
 }
