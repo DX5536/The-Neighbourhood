@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Yarn.Unity;
 
 
@@ -13,6 +14,10 @@ public class StartYarnDialogueRunner: MonoBehaviour
 
     [SerializeField]
     private string keyToPress_DEBUG = "e";
+
+    [Header("DialougeSys > Canvas > Lineview.OnContinueClicked()")]
+    [SerializeField]
+    private UnityEvent continueTextEvent;
 
     void Start()
     {
@@ -35,8 +40,19 @@ public class StartYarnDialogueRunner: MonoBehaviour
             //Need to press Key to talk
             if (Input.GetKeyDown(keyToPress_DEBUG))
             {
-                //Debug.Log("Player can E to talk");
-                dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
+                //If dialog is running -> Click E to activate LineView.OnContinueClicked()
+                if (dialogueRunner.IsDialogueRunning)
+                {
+                    continueTextEvent?.Invoke();
+                }
+
+                //If dialogue is NOT running -> Start Node
+                else
+                {
+                    //Debug.Log("Player can E to talk");
+                    dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
+                }
+
             }
         }
     }
