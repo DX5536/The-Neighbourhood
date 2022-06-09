@@ -19,6 +19,6 @@ MonoBehaviour:
   popupItemID: Door_MyRoom
   popupDescription: To my room [E]
   tweenValue: 30
-  tweenDuration: 1
+  tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
