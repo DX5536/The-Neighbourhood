@@ -1,52 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 
-public class ObjectHighlight : MonoBehaviour
+public class ObjectHighlight: MonoBehaviour
 {
-    
-    [SerializeField]
-    private string playerTag = "Player";
-
     //[SerializeField]
     private SpriteRenderer objectSpriteRenderer;
+
+    /*[SerializeField]
+    private string playerTag = "Player";
 
     [Header("Sprite Materials")]
     [SerializeField]
     private Material spritesDefault_MAT;
 
     [SerializeField]
-    private Material outline_MAT;
+    private Material outline_MAT;*/
+
+    [SerializeField]
+    private ItemScribtableObject itemScribtableObject;
 
     void Start()
     {
         objectSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == playerTag)
+        if (collision.tag == itemScribtableObject.PlayerTag)
         {
-            //Debug.Log("Player Enter");
-            objectSpriteRenderer.material = outline_MAT;
+            if (itemScribtableObject.IsInteractable)
+            {
+                //Debug.Log("Player Enter");
+                objectSpriteRenderer.material = itemScribtableObject.Outline_MAT;
+            }
+            else
+            {
+                Debug.Log("Item is blocked");
+                objectSpriteRenderer.material = itemScribtableObject.Blocked_Outline_MAT;
+            }
+
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == playerTag)
+        if (collision.tag == itemScribtableObject.PlayerTag)
         {
             //Debug.Log("Player Exit");
-            objectSpriteRenderer.material = spritesDefault_MAT;
+            objectSpriteRenderer.material = itemScribtableObject.SpritesDefault_MAT;
         }
     }
 }

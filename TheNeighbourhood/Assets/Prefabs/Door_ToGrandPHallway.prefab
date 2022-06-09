@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3341087941205133137}
   - component: {fileID: 3341087941205133139}
   - component: {fileID: 3341087941205133148}
+  - component: {fileID: 3341087941205133140}
   - component: {fileID: 8757806783214673873}
   - component: {fileID: 6964692580478599031}
-  - component: {fileID: 3341087941205133140}
   - component: {fileID: 6746134072186280572}
   m_Layer: 0
   m_Name: Door_ToGrandPHallway
@@ -128,9 +128,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ab37943490abc4bb4542f722e993a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
-  spritesDefault_MAT: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
+  itemScribtableObject: {fileID: 11400000, guid: a7f65b110118b5d4e94e31637a049225, type: 2}
+--- !u!114 &3341087941205133140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341087941205133136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7084ab4c51d30404093a4171bb22c819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScribtableObject: {fileID: 11400000, guid: a7f65b110118b5d4e94e31637a049225, type: 2}
 --- !u!114 &8757806783214673873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,20 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoadIndex: 4
---- !u!114 &3341087941205133140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3341087941205133136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7084ab4c51d30404093a4171bb22c819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  popUpItemID: Door_NPC_1
 --- !u!114 &6746134072186280572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +194,7 @@ MonoBehaviour:
   - {x: -4.5, y: 8.5, z: 0}
   m_ShapePathHash: -659525417
   m_Mesh: {fileID: 0}
-  m_InstanceId: 97202
+  m_InstanceId: 23102
 --- !u!1 &5009013547351376926
 GameObject:
   m_ObjectHideFlags: 0

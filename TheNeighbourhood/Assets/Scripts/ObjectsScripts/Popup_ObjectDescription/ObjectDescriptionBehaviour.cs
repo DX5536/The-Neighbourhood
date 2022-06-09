@@ -1,22 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
 using TMPro;
-using UnityEditor;
+using UnityEngine;
 
 
-public class ObjectDescriptionBehaviour : MonoBehaviour
+public class ObjectDescriptionBehaviour: MonoBehaviour
 {
     [Header("Description GO; NOT CANVAS GAMEOBJECT!!!")]
     [SerializeField]
     private GameObject descriptionGO;
-    [SerializeField]
+    /*[SerializeField]
     private string objectName;
 
     [Header("Follow Scene Switcher's names")]
     [SerializeField]
-    private string popUpItemID;
+    private string popUpItemID;*/
 
     //[Header("READ_Only")]
     //[SerializeField]
@@ -24,13 +21,17 @@ public class ObjectDescriptionBehaviour : MonoBehaviour
     //[SerializeField]
     private RectTransform objectRectTransform;
 
-    [Header("DOTween")]
+    /*[Header("DOTween")]
     [SerializeField]
     private float anchoredTween_YValue;
     [SerializeField]
     private float tweenDuration = 0.5f;
     [SerializeField]
-    private bool tweenSnapping = false;
+    private bool tweenSnapping = false;*/
+
+    //We using Scriptable Object now!
+    [SerializeField]
+    private ItemScribtableObject itemScribtableObject;
 
     private void OnEnable()
     {
@@ -49,7 +50,7 @@ public class ObjectDescriptionBehaviour : MonoBehaviour
         descriptionGO.SetActive(false);
 
         objectRectTransform = descriptionGO.GetComponent<RectTransform>();
-        objectStartingPosition = new Vector2(objectRectTransform.anchoredPosition.x , objectRectTransform.anchoredPosition.y);
+        objectStartingPosition = new Vector2(objectRectTransform.anchoredPosition.x, objectRectTransform.anchoredPosition.y);
     }
 
     void Update()
@@ -59,27 +60,33 @@ public class ObjectDescriptionBehaviour : MonoBehaviour
 
     private void PopupDescriptionDOTween(string popUpItemID)
     {
-        if (popUpItemID == this.popUpItemID)
+        if (popUpItemID == itemScribtableObject.PopupItemID)
         {
             //Debug.Log("PopUp event has been called");
             descriptionGO.SetActive(true);
 
             var objectTMP = descriptionGO.GetComponent<TextMeshProUGUI>();
-            objectTMP.text = objectName;
+            objectTMP.text = itemScribtableObject.PopupDescription;
 
             var currentAnchorYValue = objectRectTransform.anchoredPosition.y;
             //Description move Up
-            objectRectTransform.DOAnchorPosY(currentAnchorYValue + anchoredTween_YValue , tweenDuration , tweenSnapping);
+            objectRectTransform.DOAnchorPosY(
+                currentAnchorYValue + itemScribtableObject.TweenValue,
+                itemScribtableObject.TweenDuration,
+                itemScribtableObject.TweenSnapping);
         }
-        
+
     }
 
     private void PopdownDescriptionDOTween(string popUpItemID)
     {
-        if (popUpItemID == this.popUpItemID)
+        if (popUpItemID == itemScribtableObject.PopupItemID)
         {
             //Move back to Starting Position 
-            objectRectTransform.DOAnchorPosY(objectStartingPosition.y , tweenDuration , tweenSnapping)
+            objectRectTransform.DOAnchorPosY(
+                objectStartingPosition.y,
+                itemScribtableObject.TweenDuration,
+                itemScribtableObject.TweenSnapping)
                 .OnComplete(() => descriptionGO.SetActive(false));
         }
     }

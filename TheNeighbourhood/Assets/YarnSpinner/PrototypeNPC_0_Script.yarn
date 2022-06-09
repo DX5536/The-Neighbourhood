@@ -19,14 +19,14 @@ NPC: Are you stalking me?
     NPC: Uhm, sure...
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: -1220,-580
+__PrivCrochet_position: -1240,-600
 __PrivCrochet_tags: 
 title: suspicious
 ---
 NPC: I'm watching you!
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: -1220,-340
+__PrivCrochet_position: -1240,-360
 __PrivCrochet_tags: 
 title: flour
 ---
