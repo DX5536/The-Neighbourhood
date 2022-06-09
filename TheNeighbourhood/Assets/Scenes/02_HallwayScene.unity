@@ -488,6 +488,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &17399444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8757806783214673873, guid: 5b3150d89c6c3ca4d8a10b70691c2e95, type: 3}
+  m_PrefabInstance: {fileID: 6964692580325773712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0da659d223b9442a149e9a632b4f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &19301279
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +626,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 624850071}
   m_Father: {fileID: 2147289935}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2008,7 +2020,7 @@ GameObject:
   - component: {fileID: 624850071}
   - component: {fileID: 624850070}
   m_Layer: 0
-  m_Name: Yarn_DoorUnlock
+  m_Name: Yarn_Door_NPC_BirdUnlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2021,14 +2033,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624850069}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: beb3671a543ec324694f006e29189699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasPlayerTalkToNPC_0: 0
+  lockedDoorSO: {fileID: 11400000, guid: a7f65b110118b5d4e94e31637a049225, type: 2}
+  sceneTransitionColliderManager: {fileID: 17399444}
+  objectCanvas: {fileID: 2085489321}
+  unlockedDoor_NPC_Bird: 0
   variableStorage: {fileID: 0}
-  lockedNPCDoor_Collider: {fileID: 5690969688369157831}
 --- !u!4 &624850071
 Transform:
   m_ObjectHideFlags: 0
@@ -2040,8 +2054,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_Father: {fileID: 57136863}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635189759
 GameObject:
@@ -4981,7 +4995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333855940924911738, guid: 9f92655f368004b41bc4659bafacbb3c, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 333855940924911738, guid: 9f92655f368004b41bc4659bafacbb3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6924,6 +6938,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9069053085138424303, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
   m_PrefabInstance: {fileID: 1291384719}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2085489321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6964692580872129614, guid: 5b3150d89c6c3ca4d8a10b70691c2e95, type: 3}
+  m_PrefabInstance: {fileID: 6964692580325773712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2107021551
 GameObject:
   m_ObjectHideFlags: 0
@@ -7212,7 +7231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1518908998271570667, guid: 449f5407404062840ba8909361f7e0ff, type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 1518908998271570667, guid: 449f5407404062840ba8909361f7e0ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7653,11 +7672,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoadIndex: 1
---- !u!61 &5690969688369157831 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3341087941205133139, guid: 5b3150d89c6c3ca4d8a10b70691c2e95, type: 3}
-  m_PrefabInstance: {fileID: 6964692580325773712}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5690969689213100962
 MonoBehaviour:
   m_ObjectHideFlags: 0

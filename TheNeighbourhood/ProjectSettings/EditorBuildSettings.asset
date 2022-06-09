@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/02_HallwayScene.unity
     guid: b998d2650df81a14789b1bbfe594eb19
   - enabled: 1
-    path: Assets/Scenes/03_NPC_0_Scene.unity
+    path: Assets/Scenes/03_NPC_Wolf_Scene.unity
     guid: 3fca5b9b059861049899dcbba05e4bf2
   - enabled: 1
-    path: Assets/Scenes/04_NPC_1_Scene.unity
+    path: Assets/Scenes/04_NPC_Bird_Scene.unity
     guid: 479bcb1b9d3b078439cf84631e8caa10
   m_configObjects: {}

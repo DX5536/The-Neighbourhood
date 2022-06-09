@@ -1,17 +1,26 @@
 using UnityEngine;
 using Yarn.Unity;
 
-public class UnlockDoor_ColliderAfterTalk : MonoBehaviour
+public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 {
+    [SerializeField]
+    private ItemScribtableObject lockedDoorSO;
+
+    [SerializeField]
+    private SceneTransitionColliderManager sceneTransitionColliderManager;
+
+    [SerializeField]
+    private GameObject objectCanvas;
+
     [Header("READ_ONLY")]
     [SerializeField]
-    private bool hasPlayerTalkToNPC_0 = false;
+    private bool unlockedDoor_NPC_Bird = false;
 
     [SerializeField]
     private InMemoryVariableStorage variableStorage;
 
-    [SerializeField]
-    private Collider2D lockedNPCDoor_Collider;
+    //[SerializeField]
+    //private Collider2D lockedNPCDoor_Collider;
 
     private void Start()
     {
@@ -35,13 +44,15 @@ public class UnlockDoor_ColliderAfterTalk : MonoBehaviour
 
     private void Un_LockDoorStatus()
     {
-        if (hasPlayerTalkToNPC_0 != true)
+        if (unlockedDoor_NPC_Bird != true)
         {
-            lockedNPCDoor_Collider.enabled = false;
+            sceneTransitionColliderManager.enabled = false;
+            objectCanvas.SetActive(false);
         }
         else
         {
-            lockedNPCDoor_Collider.enabled = true;
+            sceneTransitionColliderManager.enabled = true;
+            objectCanvas.SetActive(true);
         }
     }
 
@@ -49,8 +60,12 @@ public class UnlockDoor_ColliderAfterTalk : MonoBehaviour
     {
         if (variableStorage != null)
         {
-            variableStorage.TryGetValue("$hasTalkedToNPC0" , out hasPlayerTalkToNPC_0);
+            variableStorage.TryGetValue("$unlockedDoor_NPC_Bird", out unlockedDoor_NPC_Bird);
             //Debug.Log("There is InMemoryVariableStorage");
+
+            //Assign the SO's status to be interactable
+            //To change to the "outline_MAT" and pop-up active
+            lockedDoorSO.IsInteractable = unlockedDoor_NPC_Bird;
         }
         else
         {

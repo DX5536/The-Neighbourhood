@@ -40,6 +40,10 @@ public class ItemScribtableObject: ScriptableObject
     [SerializeField]
     private Ease easeType;
 
+    [Header("Yarn Start Node")]
+    [SerializeField]
+    private string nodeName;
+
     //Properties
     public string PlayerTag
     {
@@ -89,6 +93,8 @@ public class ItemScribtableObject: ScriptableObject
     {
         get => easeType;
     }
-
-
+    public string NodeName
+    {
+        get => nodeName;
+    }
 }
