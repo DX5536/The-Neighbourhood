@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
 using UnityEngine.SceneManagement;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot: MonoBehaviour
 {
     [SerializeField]
     private int managerSlotIndex;
@@ -19,6 +15,11 @@ public class InventorySlot : MonoBehaviour
 
     private void OnEnable()
     {
+        //Auto get the icon Game object inside the slot
+        //This has to be before calling the SceneChange Event
+        //If in Start() => inventory_HasItem.ItemIcons[managerSlotIndex] = null
+        childItemIcon = this.transform.GetChild(0).gameObject;
+
         SceneManager.activeSceneChanged += SearchInventoryManager;
     }
 
@@ -29,20 +30,21 @@ public class InventorySlot : MonoBehaviour
 
     void Start()
     {
-        //Auto get the icon Game object inside the slot
-        childItemIcon = this.transform.GetChild(0).gameObject;
+
     }
 
 
-    private void SearchInventoryManager(Scene currentScene , Scene nextScene)
+    private void SearchInventoryManager(Scene currentScene, Scene nextScene)
     {
         //Auto search for my inventory manager
         inventory_HasItem = FindObjectOfType<Inventory_HasItem>();
         //If there is something
-        if (inventory_HasItem != null)
+        if (inventory_HasItem)
         {
             //Assign my childItemIcon to the Array with the index written in this script
             inventory_HasItem.ItemIcons[managerSlotIndex] = childItemIcon;
+            Debug.Log("Assign childItemIcon to ItemIcons[]");
+
         }
 
         else

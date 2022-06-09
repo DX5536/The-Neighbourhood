@@ -1,0 +1,38 @@
+title: Start_NPC_Wolf
+position: 26,-10
+---
+//Declares variables
+/// Check if player still NEED flour or not
+<<declare $isPlayerNeedFlour = true>>
+/// Check if player ALREADY has flour
+<<declare $getFlour = false>>
+/// Check if door to NPC_Bird is unlocked
+<<declare $unlockedDoor_NPC_Bird = false>>
+
+Wolf: Why are you here?
+Wolf: Are you stalking me?
+
+-> What? No! 
+    <<jump suspicious>>
+
+-> Listen, I just need some flour... <<if $getFlour != true>>
+    <<set $isPlayerNeedFlour to true>>
+    <<jump flour>>
+
+-> I just want to say hi //<<if $isPlayerNeedFlour == false>>
+    Wolf: Uhm, sure...
+===
+
+title: suspicious
+position: 163,114
+---
+Wolf: I'm watching you!
+===
+
+title: flour
+position: -68,105
+---
+<<set $unlockedDoor_NPC_Bird to true>>
+Wolf: Dude, just buy some at the store...
+Wolf: Or in fact, have you try to ask the other first?
+===

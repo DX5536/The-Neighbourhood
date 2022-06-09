@@ -11,8 +11,41 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
   - {fileID: 6391573757903218779, guid: 0753e3dd30ffab040b25e44c3a6edccd, type: 3}
+  - {fileID: 6391573757903218779, guid: f1c6322389fad7a4eb8d3e06e2599e74, type: 3}
   compileErrors: []
-  serializedDeclarations: []
+  serializedDeclarations:
+  - name: $getFlour
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in NPC_Wolf_Script.yarn, node Start_NPC_Wolf
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
+  - name: $isPlayerNeedFlour
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in NPC_Wolf_Script.yarn, node Start_NPC_Wolf
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
+  - name: $unlockedDoor_NPC_Bird
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in NPC_Wolf_Script.yarn, node flour
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
+  - name: $gainedItem_Name
+    typeName: String
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in NPC_Bird_Script.yarn, node Start_NPC_Bird
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 0753e3dd30ffab040b25e44c3a6edccd, type: 3}
   defaultLanguage: en
   languagesToSourceAssets: []
   useAddressableAssets: 0

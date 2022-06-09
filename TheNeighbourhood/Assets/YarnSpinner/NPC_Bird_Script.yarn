@@ -1,0 +1,26 @@
+title: Start_NPC_Bird
+position: -160,-58
+---
+/// Name of gained item
+<<declare $gained = "">>
+
+Bird: Oh? Who do we have here?
+Bird: Do you need something?
+
+-> Oh hi, I need some flour. <<if $isPlayerNeedFlour == true>>
+    Bird: Flour? Ah sure, I think I have some around.
+    <<set $isPlayerNeedFlour to false>>
+    <<set $getFlour to true>>
+    <<set $gainedItem_Name to "Flour">>
+    <<wait 0,2>>
+    Bird: Here you go. Some brand new flour.
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
+
+-> It's nothing... May I how your day is?
+    Bird: Well, I do like this kind of weather, neither too hot nor too cold.
+-> Don't you want to know why I need flour? <<if $getFlour == true>>
+    Bird: You need flour to bake, duh...
+
+Player: Thanks for your time.
+===

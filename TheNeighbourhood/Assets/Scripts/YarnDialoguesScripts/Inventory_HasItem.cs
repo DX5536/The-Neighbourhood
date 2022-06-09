@@ -1,7 +1,7 @@
 using UnityEngine;
 using Yarn.Unity;
 
-public class Inventory_HasItem : MonoBehaviour
+public class Inventory_HasItem: MonoBehaviour
 {
     [Header("This will auto-assign by Inventory_Slot_00: READ_ONLY")]
     [SerializeField]
@@ -9,8 +9,14 @@ public class Inventory_HasItem : MonoBehaviour
 
     public GameObject[] ItemIcons
     {
-        get { return itemIcons; }
-        set { itemIcons = value; }
+        get
+        {
+            return itemIcons;
+        }
+        set
+        {
+            itemIcons = value;
+        }
     }
 
     [Header("READ_ONLY")]
@@ -28,15 +34,10 @@ public class Inventory_HasItem : MonoBehaviour
         //storage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InMemoryVariableStorage>();
     }
 
-    void AutoFindItemIcon()
-    {
-        //var inventorySlotable = 
-    }
-
     [YarnCommand("AccessYarnGainedItemValue")]
     public void AccessYarnGainedItemValue()
     {
-        storage.TryGetValue("$gainedItem_Name" , out currentGainedItem);
+        storage.TryGetValue("$gainedItem_Name", out currentGainedItem);
     }
 
     [YarnCommand("DisplayGainedItem")]

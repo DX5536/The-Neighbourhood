@@ -16,7 +16,7 @@ public class ObjectDescriptionHandler: MonoBehaviour
     {
         if (collision.tag == itemScribtableObject.PlayerTag)
         {
-            Debug.Log("Player Enter call Event " + this.name);
+            //Debug.Log("Player Enter call Event " + this.name);
             ObjectDescriptionManager.PopupObjectDescription(itemScribtableObject.PopupItemID);
         }
     }
