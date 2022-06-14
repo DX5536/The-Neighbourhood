@@ -4,13 +4,21 @@ __PrivCrochet_position: 787,326
 __PrivCrochet_tags: 
 title: Start_Intro
 ---
-Lilly: … Tell me those were the last ones. // Dieser Dialog wird ganz zu Beginn gespielt. Die Szene soll sein, wie die beiden die letzten Kisten nach oben gebracht haben
+<<declare $hasPizza to false>>
+
+//Disable DoorCollider at start
+<<En_DisableComponet NPC_Rabbit>>
+// Dieser Dialog wird ganz zu Beginn gespielt. Die Szene soll sein, wie die beiden die letzten Kisten nach oben gebracht haben
+Lilly: … Tell me those were the last ones. 
 Caroline: Yes, thankfully. Welcome home to us, at last!
 Lilly: Welcome home, indeed!
 Caroline: Phew. Well, I don't know about you, but I am starving. And falling asleep. Both, simultaneously.
 Lilly: I got you! Pretty sure I bought some frozen pizza yesterday, I can bring you yours when it's done, ok?
 Caroline: You're a blessing! Definitely one of my top 3 roommates. What? The other two are my bed and my PC, no front. 
-Lilly: I'm competing with hardware and furniture? Ouch. // An diesem Punkt soll der Dialog beendet werden und Caroline in ihr Zimmer verschwinden
+Lilly: I'm competing with hardware and furniture? Ouch. 
+// An diesem Punkt soll der Dialog beendet werden und Caroline in ihr Zimmer verschwinden
+<<TargetMove NPC_Rabbit false>>
+<<jump Movement_Tutorial>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1024,326
@@ -19,6 +27,8 @@ title: Movement_Tutorial
 ---
 Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachdem Caroline in ihr Zimmer gegangen ist
 (Use your mouse to click where you want to go) // Dies soll als Message nach der ersten Line separat auftauchen
+//Enable DoorCollider back
+<<En_DisableComponet NPC_Rabbit>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1259,327
@@ -33,29 +43,36 @@ __PrivCrochet_position: 1493,327
 __PrivCrochet_tags: 
 title: Picking_Up_Pizza_Monologue
 ---
-Lilly: There you are! Still looking good. To the oven with you! // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
+// Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
+Lilly: There you are! Still looking good. To the oven with you! 
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1734,329
 __PrivCrochet_tags: 
-title: Baking Pizza at the Oven
+title: Baking_Pizza_At_The_Oven
 ---
-Lilly: Yum. // Ob der Dialog sinnvoll ist, wird sich zeigen, aber er soll eintreten, wenn man die TK-Pizzen zum Ofen bringt und mit E backt
+<<set $hasPizza to true>>
+Lilly: Yum. 
+// Ob der Dialog sinnvoll ist, wird sich zeigen, aber er soll eintreten, wenn man die TK-Pizzen zum Ofen bringt und mit E backt
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1970,333
 __PrivCrochet_tags: 
 title: Bringing_Pizza_to_Roommate
 ---
-Caroline: Smells like victory! // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
-Lilly: We do deserve a medal after all those weeks of unpacking. So, where do we go from here?
-Caroline: I'd suggest a nap and afterwards ignoring the boxes we just brought up and instead finishing our series marathon. 
-Caroline: … you don't look convinced. Fine, we can also work on our dreadfully boring game art assignment. Just be warned - I'm taking coding classes for a reason. 
-Lilly: It's not that. I'll just be over at my grandparents' in the evening and I'm thinking, maybe I should go there sooner. 
-Caroline: Oh. Did I miss an upcoming birthday party? Please tell me I didn't, I saw your grandma in the hallway yesterday and would've said something if I knew. 
-Lilly: Don't worry, they barely know their own birthdays. But no, today is the International Holocaust Remembrance Day. I know, it's a mouthful. But it means a lot to my grandparents. And they mean a lot to me, so.
-Caroline: I see. That's what you were baking for, right?
-Lilly: Yeah, that's our tradition! Well, it has become our tradition. A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
-Caroline: I love that! And you do seem to have a great bond with your grandparents. Which is also generally good, given that they live here too. Well then, don't let me stop you from checking on them!
-Lilly: You're right, I think it's a good idea to see how they're doing.
+Caroline: Do you have the Pizza yet?
+-> Lilly: Ah, not yet <<if $hasPizza == false>>
+    Caroline: Come on, then. //Ich habe das hier zum test geadded.
+-> Lilly: Yup! <<if $hasPizza == true>>
+    Caroline: Smells like victory! // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
+    Lilly: We do deserve a medal after all those weeks of unpacking. So, where do we go from here?
+    Caroline: I'd suggest a nap and afterwards ignoring the boxes we just brought up and instead finishing our series marathon. 
+    Caroline: … you don't look convinced. Fine, we can also work on our dreadfully boring game art assignment. Just be warned - I'm taking coding classes for a reason. 
+    Lilly: It's not that. I'll just be over at my grandparents' in the evening and I'm thinking, maybe I should go there sooner. 
+    Caroline: Oh. Did I miss an upcoming birthday party? Please tell me I didn't, I saw your grandma in the hallway yesterday and would've said something if I knew. 
+    Lilly: Don't worry, they barely know their own birthdays. But no, today is the International Holocaust Remembrance Day. I know, it's a mouthful. But it means a lot to my grandparents. And they mean a lot to me, so.
+    Caroline: I see. That's what you were baking for, right?
+    Lilly: Yeah, that's our tradition! Well, it has become our tradition. A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
+    Caroline: I love that! And you do seem to have a great bond with your grandparents. Which is also generally good, given that they live here too. Well then, don't let me stop you from checking on them!
+    Lilly: You're right, I think it's a good idea to see how they're doing.
 ===

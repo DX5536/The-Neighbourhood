@@ -3,9 +3,6 @@ using UnityEngine;
 public class Inventory_CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    private string playerTag = "Player";
-
-    [SerializeField]
     private Transform cameraAnchor;
 
     //[Header("DOTween's Value")]
