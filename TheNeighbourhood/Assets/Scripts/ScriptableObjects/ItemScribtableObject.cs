@@ -4,9 +4,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/InteractableItem", order = 1)]
 public class ItemScribtableObject: ScriptableObject
 {
+    [Header("Reset the status of isInteractable at Awake()")]
+    [SerializeField]
+    private bool resetIsInteractableAtStart;
+
     [Header("Collider_playerTag")]
     private string playerTag = "Player";
-
     [SerializeField]
     private bool isInteractable;
 
@@ -96,5 +99,18 @@ public class ItemScribtableObject: ScriptableObject
     public string NodeName
     {
         get => nodeName;
+    }
+
+    private void Awake()
+    {
+        SetIsInteractable(resetIsInteractableAtStart);
+    }
+
+    void SetIsInteractable(bool setAtStart)
+    {
+        if (setAtStart)
+        {
+            IsInteractable = true;
+        }
     }
 }

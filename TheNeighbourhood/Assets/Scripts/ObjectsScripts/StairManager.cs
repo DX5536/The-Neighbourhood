@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 
 
@@ -17,9 +18,11 @@ public class StairManager: MonoBehaviour
     [SerializeField]
     private float altRotationalOffset = -15f;
 
-    [Header("PlayerMovement and it's value")]
+    //[Header("PlayerMovement and it's value")]
+    //[SerializeField]
+    //private PlayerMovement playerMovement;
     [SerializeField]
-    private PlayerMovement playerMovement;
+    private MouseScriptableObject mouseScriptableObject;
 
     private string playerTag = "Player";
 
@@ -64,7 +67,7 @@ public class StairManager: MonoBehaviour
         //Debug.Log("Player collides with StairManager");
         //NEW: Instead of checking PlayerCurrentPos vs MouseClick -> Check for Mouse's y-Value ABOVE or BELOW this Manager!!!
         var stairManagerPos = this.transform.position;
-        if (stairManagerPos.y < playerMovement.LastMouseClickPos.y)
+        if (stairManagerPos.y < mouseScriptableObject.MousePositionValue.y)
         {
             for (int i = 0;i < chosenStepBoxCollider2D.Length;i++)
             {

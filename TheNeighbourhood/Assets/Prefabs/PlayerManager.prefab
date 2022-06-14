@@ -46,6 +46,6 @@ MonoBehaviour:
   player: {fileID: 9069053085138424299, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
   playerCurrentPos: {x: 0, y: 0}
   playerSpriteRenderer: {fileID: 9069053085138424300, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
-  mouseManager: {fileID: 5816608440050140406, guid: 932a5774f24f1a146b5e76a30765de77, type: 3}
-  lastMouseClickPos: {x: 0, y: 0}
+  mouseScriptableObject: {fileID: 11400000, guid: 5206e1e89c10a564c8a97bd853b81b19, type: 2}
   tweenDuration: 3
+  easeType: 0

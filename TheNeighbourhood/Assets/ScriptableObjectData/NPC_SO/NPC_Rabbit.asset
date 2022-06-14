@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f779e5f3ff07b84bbab112aa6be712e, type: 3}
-  m_Name: NPC_Wolf
+  m_Name: NPC_Rabbit
   m_EditorClassIdentifier: 
-  isInteractable: 1
+  setIsInteractableAtStart: 1
+  isInteractable: 0
   spritesDefault_MAT: {fileID: 2100000, guid: 781d1bf65f5d14046b25d0cb339dbddf, type: 2}
   outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
   blocked_Outline_MAT: {fileID: 2100000, guid: 3613c35317b3787458c999cbc58ee6b5, type: 2}
-  popupItemID: NPC_Wolf
-  popupDescription: A grumpy neighbour [E]
+  popupItemID: NPC_Rabbit
+  popupDescription: My dear roommate [E]
   tweenValue: 30
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: Start_NPC_Wolf
+  nodeName: Bringing_Pizza_to_Roommate

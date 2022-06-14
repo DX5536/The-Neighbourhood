@@ -42,7 +42,7 @@ public class SceneTransitionColliderManager: MonoBehaviour
 
         else
         {
-            Debug.Log("Key on cooldown!");
+            //Debug.Log("Key on cooldown!");
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using Assets.Scripts.ScriptableObjects;
 
 public class PlayerMovement: MonoBehaviour
 {
@@ -31,9 +32,11 @@ public class PlayerMovement: MonoBehaviour
 
     [Header("Mouse and Cursor's Value")]
     [SerializeField]
-    private MouseClickPosition mouseManager;
-    [SerializeField]
-    private Vector2 lastMouseClickPos;
+    private MouseScriptableObject mouseScriptableObject;
+    //[SerializeField]
+    //private MouseClickPosition mouseScriptableObject;
+    //[SerializeField]
+    //private Vector2 lastMouseClickPos;
 
     [Header("DOTween's Value -> Linear means constant speed")]
     [SerializeField]
@@ -58,13 +61,13 @@ public class PlayerMovement: MonoBehaviour
     }*/
 
     //Property of lastMouseClickPos to access from StairManager
-    public Vector2 LastMouseClickPos
+    /*public Vector2 LastMouseClickPos
     {
         get
         {
             return lastMouseClickPos;
         }
-    }
+    }*/
 
     public Vector2 PlayerCurrentPos
     {
@@ -92,7 +95,7 @@ public class PlayerMovement: MonoBehaviour
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
         //characterController = player.GetComponent<CharacterController>();
 
-        mouseManager = FindObjectOfType<MouseClickPosition>();
+        //mouseScriptableObject = FindObjectOfType<MouseClickPosition>();
         DOTween.SetTweensCapacity(2000, 100);
         //DontDestroyOnLoad(this.gameObject);
     }
@@ -117,18 +120,19 @@ public class PlayerMovement: MonoBehaviour
             var playerTransformPos = player.transform.position;
 
             //Quick DOTween movement -> very rigid but works
-            player.transform.DOMoveX(mouseManager.MousePositionValue.x,
+            player.transform.DOMoveX(mouseScriptableObject.MousePositionValue.x,
                 tweenDuration,
                 isTweenSnapOn)
-                .SetEase(easeType).OnComplete(()=>mouseManager.ChangeCanPlayAnim(true));
+                .SetEase(easeType);
+                //.OnComplete(()=>mouseScriptableObject.ChangeCanPlayAnim(true));
 
-            lastMouseClickPos = mouseManager.MousePositionValue;
+            //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
             playerCurrentPos = player.transform.position;
 
             FlipingSprite();
 
             //In Space movement!!! (Like a real Ninja)
-            /*if (mouseManager.IsPlayerMoving && (Vector2)transform.position != lastClickPos)
+            /*if (mouseScriptableObject.IsPlayerMoving && (Vector2)transform.position != lastClickPos)
             {
                 //Check if we are in the lastClickPos. If FALSE, move to it.
                 float step = playerSpeed * Time.deltaTime;
@@ -138,7 +142,7 @@ public class PlayerMovement: MonoBehaviour
             else
             {
                 //If reach lastClickPos -> Can't move until mouseClick again
-                mouseManager.IsPlayerMoving = false;
+                mouseScriptableObject.IsPlayerMoving = false;
             }*/
         }
     }
@@ -147,9 +151,9 @@ public class PlayerMovement: MonoBehaviour
     {
         if (canPlayerMove == true)
         {
-            characterController.SimpleMove(mouseManager.MousePositionValue * Time.deltaTime * playerSpeed);
+            characterController.SimpleMove(mouseScriptableObject.MousePositionValue * Time.deltaTime * playerSpeed);
 
-            lastMouseClickPos = mouseManager.MousePositionValue;
+            lastMouseClickPos = mouseScriptableObject.MousePositionValue;
             playerCurrentPos = player.transform.position;
 
             FlipingSprite();
@@ -166,7 +170,7 @@ public class PlayerMovement: MonoBehaviour
             player.transform.position = Vector2.MoveTowards(player.transform.position, playerMovementTarget, playerSpeed * Time.deltaTime);
 
 
-            lastMouseClickPos = mouseManager.MousePositionValue;
+            lastMouseClickPos = mouseScriptableObject.MousePositionValue;
             playerCurrentPos = new Vector2(player.transform.position.x, 0f);
 
             FlipingSprite();
@@ -175,7 +179,7 @@ public class PlayerMovement: MonoBehaviour
     private void FlipingSprite()
     {
         //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos
-        if (playerCurrentPos.x < lastMouseClickPos.x)
+        if (playerCurrentPos.x < mouseScriptableObject.MousePositionValue.x)
         {
             playerSpriteRenderer.flipX = false;
             //Debug.Log("Player moving Right");
