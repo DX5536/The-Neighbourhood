@@ -4,7 +4,8 @@ __PrivCrochet_position: 787,326
 __PrivCrochet_tags: 
 title: Start_Intro
 ---
-<<declare $hasPizza to false>>
+<<declare $hasCookedPizza to false>>
+<<declare $hasFrozenPizza to false>>
 
 //Disable DoorCollider at start
 <<En_DisableComponet NPC_Rabbit>>
@@ -45,7 +46,12 @@ title: Picking_Up_Pizza_Monologue
 //Item_Table
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
-Lilly: There you are! Still looking good. To the oven microwave with you! <<if $hasPizza == false>>
+<<if $hasFrozenPizza == false>>
+    Lilly: There you are! Still looking good. To the oven microwave with you!
+    <<set $hasFrozenPizza to true>>
+<<else>>
+    Lilly: My beloved table!
+<<endif>>
 //Lilly: There you are! Still looking good. To the oven with you!
 ===
 __PrivCrochet_colorID: 0
@@ -54,8 +60,12 @@ __PrivCrochet_tags:
 title: Baking_Pizza_At_The_Oven
 //Item_Microwave
 ---
-<<set $hasPizza to true>>
-Lilly: Yum. 
+<<if $hasFrozenPizza == true>>
+    Lilly: Yum.
+<<else>>
+    Lilly: My good old microwave. 
+    <<set $hasCookedPizza to true>>
+<<endif>>
 // Ob der Dialog sinnvoll ist, wird sich zeigen, aber er soll eintreten, wenn man die TK-Pizzen zum Ofen bringt und mit E backt
 ===
 __PrivCrochet_colorID: 0
@@ -64,9 +74,9 @@ __PrivCrochet_tags:
 title: Bringing_Pizza_to_Roommate
 ---
 Caroline: Do you have the Pizza yet?
--> Lilly: Ah, not yet <<if $hasPizza == false>>
+-> Lilly: Ah, not yet <<if $hasCookedPizza == false>>
     Caroline: Come on, then. //Ich habe das hier zum test geadded.
--> Lilly: Yup! <<if $hasPizza == true>>
+-> Lilly: Yup! <<if $hasCookedPizza == true>>
     Caroline: Smells like victory! // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
     Lilly: We do deserve a medal after all those weeks of unpacking. So, where do we go from here?
     Caroline: I'd suggest a nap and afterwards ignoring the boxes we just brought up and instead finishing our series marathon. 
