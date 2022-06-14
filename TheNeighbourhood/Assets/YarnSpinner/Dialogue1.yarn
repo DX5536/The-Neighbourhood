@@ -60,10 +60,10 @@ title: Baking_Pizza_At_The_Oven
 //Item_Microwave
 ---
 <<if $hasFrozenPizza == true>>
-    Lilly: Yum.
+    Lilly: The smell... Yum!
+    <<set $hasCookedPizza to true>>
 <<else>>
     Lilly: My good old microwave. 
-    <<set $hasCookedPizza to true>>
 <<endif>>
 // Ob der Dialog sinnvoll ist, wird sich zeigen, aber er soll eintreten, wenn man die TK-Pizzen zum Ofen bringt und mit E backt
 ===
