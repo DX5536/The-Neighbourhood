@@ -42,14 +42,17 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1493,327
 __PrivCrochet_tags: 
 title: Picking_Up_Pizza_Monologue
+//Item_Table
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
-Lilly: There you are! Still looking good. To the oven with you! 
+Lilly: There you are! Still looking good. To the oven microwave with you! <<if $hasPizza == false>>
+//Lilly: There you are! Still looking good. To the oven with you!
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1734,329
 __PrivCrochet_tags: 
 title: Baking_Pizza_At_The_Oven
+//Item_Microwave
 ---
 <<set $hasPizza to true>>
 Lilly: Yum. 
