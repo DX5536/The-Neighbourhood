@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 9069053085138424299, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
   mousePositionValue: {x: 0, y: 0}
+  canPlayAnimation: 1
+  playerAnimator: {fileID: 0}

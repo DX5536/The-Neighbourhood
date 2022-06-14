@@ -18,6 +18,8 @@ public class MouseClickPosition : MonoBehaviour
 
     [Header("Player Animator")]
     [SerializeField]
+    private bool canPlayAnimation;
+    [SerializeField]
     private Animator playerAnimator;
 
     //Property to access saved mouse position_Read Only
@@ -52,8 +54,8 @@ public class MouseClickPosition : MonoBehaviour
             //mousePositionValue = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
             //mousePosition = Input.mousePosition;
 
-            playerAnimator.SetBool("isWalking", true);
-
+            PlayerWalkAnim();
+            
             //This will convert MousePos to WorldPoint of the game
             //mousePositionValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePositionValue = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x , Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -64,6 +66,32 @@ public class MouseClickPosition : MonoBehaviour
         }
     }
 
+    public void ChangeCanPlayAnim()
+    {
+        if (canPlayAnimation == true)
+        {
+            canPlayAnimation = false;
+        }
+        else
+        {
+            canPlayAnimation= true;
+        }
+    }
+    private void PlayerWalkAnim()
+    {
+        if (canPlayAnimation == true)
+        {
+            //playerAnimator.SetBool("isWalking", true);
+            playerAnimator.Play("Walk");
+        }
+
+        else
+        {
+            playerAnimator.Play("Idle");
+        }
+        
+    }
+
     private IEnumerator SwitchAnimation()
     {
         //3 is supposed to be tweenDuration
@@ -72,6 +100,7 @@ public class MouseClickPosition : MonoBehaviour
 
         yield return waiting;
 
-        playerAnimator.SetBool("isWalking", false);
+        //playerAnimator.SetBool("isWalking", false);
+        playerAnimator.Play("Idle");
     }
 }
