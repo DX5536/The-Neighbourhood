@@ -28,8 +28,7 @@ title: Movement_Tutorial
 ---
 Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachdem Caroline in ihr Zimmer gegangen ist
 (Use your mouse to click where you want to go) // Dies soll als Message nach der ersten Line separat auftauchen
-//Enable DoorCollider back
-<<En_DisableComponet NPC_Rabbit>>
+
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1259,327
@@ -88,4 +87,6 @@ Caroline: Do you have the Pizza yet?
     Lilly: Yeah, that's our tradition! Well, it has become our tradition. A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
     Caroline: I love that! And you do seem to have a great bond with your grandparents. Which is also generally good, given that they live here too. Well then, don't let me stop you from checking on them!
     Lilly: You're right, I think it's a good idea to see how they're doing.
+//Enable DoorCollider back
+<<En_DisableComponet NPC_Rabbit>>
 ===
