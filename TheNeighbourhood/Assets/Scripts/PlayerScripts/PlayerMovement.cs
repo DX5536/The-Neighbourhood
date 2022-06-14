@@ -117,7 +117,10 @@ public class PlayerMovement: MonoBehaviour
             var playerTransformPos = player.transform.position;
 
             //Quick DOTween movement -> very rigid but works
-            player.transform.DOMoveX(mouseManager.MousePositionValue.x, tweenDuration, isTweenSnapOn).SetEase(easeType);
+            player.transform.DOMoveX(mouseManager.MousePositionValue.x,
+                tweenDuration,
+                isTweenSnapOn)
+                .SetEase(easeType).OnComplete(()=>mouseManager.ChangeCanPlayAnim(true));
 
             lastMouseClickPos = mouseManager.MousePositionValue;
             playerCurrentPos = player.transform.position;

@@ -60,15 +60,15 @@ public class MouseClickPosition : MonoBehaviour
             //mousePositionValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePositionValue = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x , Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
-            StartCoroutine(SwitchAnimation());
+            //StartCoroutine(SwitchAnimation());
             //IsPlayerMoving = true;
             
         }
     }
 
-    public void ChangeCanPlayAnim()
+    public void ChangeCanPlayAnim(bool canWalk)
     {
-        if (canPlayAnimation == true)
+        if (canWalk == false)
         {
             canPlayAnimation = false;
         }
@@ -83,11 +83,14 @@ public class MouseClickPosition : MonoBehaviour
         {
             //playerAnimator.SetBool("isWalking", true);
             playerAnimator.Play("Walk");
+            StartCoroutine(SwitchAnimation());
         }
 
         else
         {
+            //playerAnimator.SetBool("isWalking", true);
             playerAnimator.Play("Idle");
+            
         }
         
     }
