@@ -11,4 +11,34 @@ ScriptedImporter:
   LastImportHadImplicitStringIDs: 1
   LastImportHadAnyStrings: 1
   isSuccessfullyParsed: 1
-  parseErrorMessages: []
+  parseErrorMessages:
+  - '18:0: Error: The node ''Movement Tutorial'' contains illegal characters in its
+    title.
+
+    title: Movement Tutorial
+
+'
+  - '26:0: Error: The node ''Fridge Interaction'' contains illegal characters in
+    its title.
+
+    title: Fridge Interaction
+
+'
+  - '34:0: Error: The node ''Picking Up Pizza Monologue'' contains illegal characters
+    in its title.
+
+    title: Picking Up Pizza Monologue
+
+'
+  - '41:0: Error: The node ''Baking Pizza at the Oven'' contains illegal characters
+    in its title.
+
+    title: Baking Pizza at the Oven
+
+'
+  - '48:0: Error: The node ''Bringing Pizza to Roommate'' contains illegal characters
+    in its title.
+
+    title: Bringing Pizza to Roommate
+
+'
