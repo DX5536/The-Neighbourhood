@@ -26,6 +26,11 @@ public class MouseClickPosition : MonoBehaviour
     [SerializeField]
     private Animator playerAnimator;
 
+    [SerializeField]
+    private float tweenParamValue;
+    [SerializeField]
+    private PlayerScriptableObject playerScriptableObject;
+
     //Property to access saved mouse position_Read Only
     /*public Vector2 MousePositionValue
     {
@@ -105,6 +110,9 @@ public class MouseClickPosition : MonoBehaviour
         if (canPlayAnimation == true)
         {
             playerAnimator.SetBool("isWalking", true);
+
+            //DOTween.To(() => tweenParamValue, x => tweenParamValue = x, 0, playerScriptableObject.MoveTweenDuration);
+            //playerAnimator.SetFloat("tweenMultiplier", tweenParamValue);
             //playerAnimator.Play("Walk");
             StartCoroutine(SwitchAnimation());
         }
@@ -112,8 +120,9 @@ public class MouseClickPosition : MonoBehaviour
         else
         {
             playerAnimator.SetBool("isWalking", false);
+            playerAnimator.SetFloat("tweenMultiplier", 1);
             //playerAnimator.Play("Idle");
-            
+
         }
         
     }
@@ -121,7 +130,7 @@ public class MouseClickPosition : MonoBehaviour
     private IEnumerator SwitchAnimation()
     {
         //3 is supposed to be tweenDuration
-        var waitAmount = 3 * 0.7f;
+        var waitAmount = 3;
         var waiting = new WaitForSeconds(waitAmount);
 
         yield return waiting;

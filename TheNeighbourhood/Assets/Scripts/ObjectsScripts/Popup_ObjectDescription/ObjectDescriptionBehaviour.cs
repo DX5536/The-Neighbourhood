@@ -31,7 +31,7 @@ public class ObjectDescriptionBehaviour: MonoBehaviour
 
     //We using Scriptable Object now!
     [SerializeField]
-    private ItemScribtableObject itemScribtableObject;
+    private ItemScriptableObject itemScribtableObject;
 
     private void OnEnable()
     {

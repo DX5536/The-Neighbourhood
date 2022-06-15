@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f145633381b6d84fa3e6aaf98017e3f, type: 3}
-  m_Name: Mouse_SO
+  m_Name: MouseValue_SO
   m_EditorClassIdentifier: 
   mousePositionValue: {x: 0, y: 0}

@@ -10,7 +10,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
     private DialogueRunner dialogueRunner;
 
     [SerializeField]
-    private ItemScribtableObject _NPC_ScriptableObject;
+    private ItemScriptableObject _NPC_ScriptableObject;
 
     [SerializeField]
     private string keyToPress_DEBUG = "e";

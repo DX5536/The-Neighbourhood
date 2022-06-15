@@ -10,7 +10,7 @@ public class ObjectDescriptionHandler: MonoBehaviour
     private string popUpItemID;*/
 
     [SerializeField]
-    private ItemScribtableObject itemScribtableObject;
+    private ItemScriptableObject itemScribtableObject;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

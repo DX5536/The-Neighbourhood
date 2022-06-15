@@ -4,7 +4,7 @@ using Yarn.Unity;
 public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 {
     [SerializeField]
-    private ItemScribtableObject lockedDoorSO;
+    private ItemScriptableObject lockedDoorSO;
 
     [SerializeField]
     private SceneTransitionColliderManager sceneTransitionColliderManager;

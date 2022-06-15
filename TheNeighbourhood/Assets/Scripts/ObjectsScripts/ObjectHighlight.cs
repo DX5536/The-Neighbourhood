@@ -17,11 +17,12 @@ public class ObjectHighlight: MonoBehaviour
     private Material outline_MAT;*/
 
     [SerializeField]
-    private ItemScribtableObject itemScribtableObject;
+    private ItemScriptableObject itemScribtableObject;
 
     void Start()
     {
         objectSpriteRenderer = GetComponent<SpriteRenderer>();
+        itemScribtableObject.SetIsInteractable();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

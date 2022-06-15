@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 9069053085138424299, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
-  playerCurrentPos: {x: 0, y: 0}
+  playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}
   playerSpriteRenderer: {fileID: 9069053085138424300, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
   mouseScriptableObject: {fileID: 11400000, guid: 5206e1e89c10a564c8a97bd853b81b19, type: 2}
   tweenDuration: 3

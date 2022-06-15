@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/InteractableItem", order = 1)]
-public class ItemScribtableObject: ScriptableObject
+public class ItemScriptableObject: ScriptableObject
 {
     [Header("Reset the status of isInteractable at Awake()")]
     [SerializeField]
@@ -10,6 +10,7 @@ public class ItemScribtableObject: ScriptableObject
 
     [Header("Collider_playerTag")]
     private string playerTag = "Player";
+
     [SerializeField]
     private bool isInteractable;
 
@@ -47,70 +48,86 @@ public class ItemScribtableObject: ScriptableObject
     [SerializeField]
     private string nodeName;
 
+    public bool ResetIsInteractableAtStart
+    {
+        get => resetIsInteractableAtStart;
+    }
+
     //Properties
     public string PlayerTag
     {
         get => playerTag;
     }
+
     public bool IsInteractable
     {
         get => isInteractable;
         set => isInteractable = value;
     }
+
     //Material
     public Material SpritesDefault_MAT
     {
         get => spritesDefault_MAT;
     }
+
     public Material Outline_MAT
     {
         get => outline_MAT;
     }
+
     public Material Blocked_Outline_MAT
     {
         get => blocked_Outline_MAT;
     }
+
     //Pop-up
     public string PopupItemID
     {
         get => popupItemID;
     }
+
     public string PopupDescription
     {
         get => popupDescription;
     }
+
     //Tween
     public float TweenValue
     {
         get => tweenValue;
     }
+
     public float TweenDuration
     {
         get => tweenDuration;
     }
+
     public bool TweenSnapping
     {
         get => tweenSnapping;
     }
+
     public Ease EaseType
     {
         get => easeType;
     }
+
     public string NodeName
     {
         get => nodeName;
     }
-
-    private void Awake()
+    
+    public void SetIsInteractable()
     {
-        SetIsInteractable(resetIsInteractableAtStart);
-    }
-
-    void SetIsInteractable(bool setAtStart)
-    {
-        if (setAtStart)
+        if (resetIsInteractableAtStart)
         {
             IsInteractable = true;
+            Debug.Log("Reset isInteractable");
+        }
+        else
+        {
+            isInteractable = false;
         }
     }
 }
