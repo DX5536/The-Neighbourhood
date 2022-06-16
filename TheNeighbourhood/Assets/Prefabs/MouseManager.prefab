@@ -47,3 +47,5 @@ MonoBehaviour:
   mouseScriptableObject: {fileID: 11400000, guid: 5206e1e89c10a564c8a97bd853b81b19, type: 2}
   canPlayAnimation: 1
   playerAnimator: {fileID: 0}
+  tweenParamValue: 0
+  playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}

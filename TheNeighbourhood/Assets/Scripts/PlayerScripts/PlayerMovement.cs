@@ -1,7 +1,6 @@
-using System.Collections;
+using Assets.Scripts.ScriptableObjects;
 using DG.Tweening;
 using UnityEngine;
-using Assets.Scripts.ScriptableObjects;
 
 public class PlayerMovement: MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
 
-    
+
 
     /*[Header("Player's Char Controller")]
     [SerializeField]
@@ -32,7 +31,7 @@ public class PlayerMovement: MonoBehaviour
     //private float playerSpeed = 2.0f;
 
 
-    //[SerializeField]
+    [SerializeField]
     private bool canPlayerMove = true;
 
     [Header("Mouse and Cursor's Value")]
@@ -51,8 +50,8 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField]
     private Ease easeType;*/
 
-    [SerializeField]
-    private int speed;
+    //[SerializeField]
+    //private int speed;
 
 
     /*private void Awake()
@@ -113,32 +112,30 @@ public class PlayerMovement: MonoBehaviour
     {
         //PlayerMoveDOTween();
         //PlayerMoveCharacterController();
-        //PlayerMoveDOTween();
-
-
     }
 
     private void FixedUpdate()
     {
         //PlayerMoveDOTween();
         //PlayerMoveAnimator();
-        PlayerMoveDOTween();
+        //PlayerMoveDOTween();
     }
 
-    private void PlayerMoveDOTween()
+    //public to access from Unity Event of MouseClickPosition
+    public void PlayerMoveDOTween()
     {
         if (canPlayerMove == true)
         {
-            var playerNewPos = new Vector2 (player.transform.position.x, player.transform.position.y);
+            var playerNewPos = new Vector2(player.transform.position.x, player.transform.position.y);
 
             //Quick DOTween movement -> very rigid but works
-            playerRb.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
+            player.transform.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
                 playerScriptableObject.MoveTweenDuration,
                 playerScriptableObject.MoveTweenSnapping)
                 .SetEase(playerScriptableObject.EaseType);
             //.OnComplete(()=>mouseScriptableObject.ChangeCanPlayAnim(true));
 
-            
+
 
 
             //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
@@ -214,5 +211,5 @@ public class PlayerMovement: MonoBehaviour
         enabled = newGameState == GameState.Gameplay;
     }
 
-    
+
 }

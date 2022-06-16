@@ -1,13 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DG.Tweening;
-using TMPro;
 using Assets.Scripts.ScriptableObjects;
+using UnityEngine;
+using UnityEngine.Events;
 
-
-
-public class MouseClickPosition : MonoBehaviour
+public class MouseClickPosition: MonoBehaviour
 {
     [Header("Player's Starting Position in Editor")]
     [SerializeField]
@@ -17,6 +13,8 @@ public class MouseClickPosition : MonoBehaviour
     [SerializeField]
     //private Vector2 mousePositionValue;
     private MouseScriptableObject mouseScriptableObject;
+    [SerializeField]
+    private PlayerScriptableObject playerScriptableObject;
     //[SerializeField]
     //private bool isPlayerMoving;
 
@@ -26,10 +24,13 @@ public class MouseClickPosition : MonoBehaviour
     [SerializeField]
     private Animator playerAnimator;
 
+    [Header("PlayerManager > PlayerMoveDOTween")]
     [SerializeField]
-    private float tweenParamValue;
-    [SerializeField]
-    private PlayerScriptableObject playerScriptableObject;
+    private UnityEvent playerMoveEvent;
+
+    //[SerializeField]
+    //private float tweenParamValue;
+
 
     //Property to access saved mouse position_Read Only
     /*public Vector2 MousePositionValue
@@ -57,41 +58,54 @@ public class MouseClickPosition : MonoBehaviour
 
     void Update()
     {
-        //Save MousePosition upon L.Click
-        if (Input.GetMouseButtonDown(0))
+        //if player allowed to click
+        if (mouseScriptableObject.CanClickMouse == true)
         {
-            //This alone means Mouse in all the screen position -> NOT WorldPos
-            //mousePositionValue = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-            //mousePosition = Input.mousePosition;
-
-            PlayerWalkAnim();
-
-            //This will convert MousePos to WorldPoint of the game
-            //mousePositionValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var clickedPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-
-            mouseScriptableObject.MousePositionValue = clickedPosition;
-            mouseScriptableObject.RoundMousePositionValue();
-
-            RaycastHit2D hit = Physics2D.Raycast(clickedPosition, Vector2.down);
-
-            mouseScriptableObject.RaycastHitValue = hit.point;
-            mouseScriptableObject.RoundRaycastHitValue();
-
-            //Debug Ray
-            if (hit.collider != null)
+            //Save MousePosition upon L.Click
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.DrawRay(clickedPosition, hit.point*100, Color.green, 5,false);
-                Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
+                PlayerWalk();
+                mouseScriptableObject.DisplayHUDImage();
             }
-
-            //StartCoroutine(SwitchAnimation());
-            //IsPlayerMoving = true;
-            
         }
+
     }
 
-    //This methos is to activate through DialogRunner's Event
+    private void PlayerWalk()
+    {
+        //This alone means Mouse in all the screen position -> NOT WorldPos
+        //mousePositionValue = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+        //mousePosition = Input.mousePosition;
+
+        PlayerWalkAnim();
+
+        //This will convert MousePos to WorldPoint of the game
+        //mousePositionValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var clickedPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+
+        mouseScriptableObject.MousePositionValue = clickedPosition;
+        mouseScriptableObject.RoundMousePositionValue();
+
+        RaycastHit2D hit = Physics2D.Raycast(clickedPosition, Vector2.down);
+
+        mouseScriptableObject.RaycastHitValue = hit.point;
+        mouseScriptableObject.RoundRaycastHitValue();
+
+        //Debug Ray
+        if (hit.collider != null)
+        {
+            Debug.DrawRay(clickedPosition, hit.point * 100, Color.green, 5, false);
+            Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
+        }
+
+        //Invoke DOTween Walking movement
+        playerMoveEvent?.Invoke();
+
+        //StartCoroutine(SwitchAnimation());
+        //IsPlayerMoving = true;
+    }
+
+    //This method is to activate through DialogRunner's Event
     public void ChangeCanPlayAnim(bool canWalk)
     {
         if (!canWalk)
@@ -100,7 +114,20 @@ public class MouseClickPosition : MonoBehaviour
         }
         else
         {
-            canPlayAnimation= true;
+            canPlayAnimation = true;
+        }
+    }
+
+    //public method is to activate through DialogRunner's Event
+    public void ChangeCanClickMouse(bool canClick)
+    {
+        if (!canClick)
+        {
+            mouseScriptableObject.CanClickMouse = false;
+        }
+        else
+        {
+            mouseScriptableObject.CanClickMouse = true;
         }
     }
 
@@ -110,30 +137,21 @@ public class MouseClickPosition : MonoBehaviour
         if (canPlayAnimation == true)
         {
             playerAnimator.SetBool("isWalking", true);
-
-            //DOTween.To(() => tweenParamValue, x => tweenParamValue = x, 0, playerScriptableObject.MoveTweenDuration);
-            //playerAnimator.SetFloat("tweenMultiplier", tweenParamValue);
-            //playerAnimator.Play("Walk");
             StartCoroutine(SwitchAnimation());
         }
 
         else
         {
             playerAnimator.SetBool("isWalking", false);
-            playerAnimator.SetFloat("tweenMultiplier", 1);
             //playerAnimator.Play("Idle");
 
         }
-        
+
     }
 
     private IEnumerator SwitchAnimation()
     {
-        //3 is supposed to be tweenDuration
-        var waitAmount = 3;
-        var waiting = new WaitForSeconds(waitAmount);
-
-        yield return waiting;
+        yield return new WaitForSeconds(playerScriptableObject.MoveTweenDuration);
 
         playerAnimator.SetBool("isWalking", false);
         //playerAnimator.Play("Idle");
