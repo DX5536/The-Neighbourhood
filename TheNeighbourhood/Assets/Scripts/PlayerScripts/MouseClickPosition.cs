@@ -8,7 +8,6 @@ public class MouseClickPosition: MonoBehaviour
     [Header("Player's Starting Position in Editor")]
     [SerializeField]
     private GameObject player;
-    private Rigidbody2D playerRb;
 
     [SerializeField]
     //private Vector2 mousePositionValue;
@@ -52,7 +51,6 @@ public class MouseClickPosition: MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerRb = player.GetComponent<Rigidbody2D>();
         mouseScriptableObject.MousePositionValue = player.transform.position;
     }
 

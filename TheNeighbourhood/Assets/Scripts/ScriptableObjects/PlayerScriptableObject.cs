@@ -48,6 +48,7 @@ namespace Assets.Scripts.ScriptableObjects
             //set => easeType = value;
         }
 
+        [Header("READ_ONLY")]
         [SerializeField]
         private float tweenDurationProportionValue;
 

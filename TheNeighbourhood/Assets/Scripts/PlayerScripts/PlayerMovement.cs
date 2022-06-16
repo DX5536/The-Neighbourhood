@@ -170,7 +170,6 @@ public class PlayerMovement: MonoBehaviour
         }
 
         proportionValue = Mathf.Abs(proportionValue); //No negative value
-        //proportionValue = proportionValue * playerScriptableObject.MoveTweenDuration;
 
         //clamp the value so it never go over MoveTweenDuration
         proportionValue = Mathf.Clamp(proportionValue, 0.5f, playerScriptableObject.MoveTweenDuration);
@@ -213,13 +212,15 @@ public class PlayerMovement: MonoBehaviour
     private void FlipingSprite()
     {
         //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos
-        if (playerScriptableObject.PlayerPositionValue.x <= mouseScriptableObject.MousePositionValue.x)
+        //Mouse > Player = no flip
+        if (mouseScriptableObject.MousePositionValue.x > player.transform.position.x)
         {
             playerSpriteRenderer.flipX = false;
             //Debug.Log("Player moving Right");
         }
 
         //Mouse click Left -> Mouse's x-Value smaller than playerCurrentPos
+        //Player > Mouse = Flip
         else
         {
             playerSpriteRenderer.flipX = true;
