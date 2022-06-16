@@ -11,18 +11,21 @@ public class PlayerMovement: MonoBehaviour
         get { return instance; }
     }*/
 
+    [Header("Mouse and Cursor's Value")]
+    [SerializeField]
+    private MouseScriptableObject mouseScriptableObject;
+
     [Header("Player's Value")]
     [SerializeField]
     private GameObject player;
-    private Rigidbody2D playerRb;
 
     [SerializeField]
-    //private Vector2 playerCurrentPos;
     private PlayerScriptableObject playerScriptableObject;
+
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
 
-
+    //private Vector2 playerCurrentPos;
 
     /*[Header("Player's Char Controller")]
     [SerializeField]
@@ -30,13 +33,13 @@ public class PlayerMovement: MonoBehaviour
     //[SerializeField]
     //private float playerSpeed = 2.0f;
 
+    [Header("READ_ONLY")]
+    [SerializeField]
+    private float proportionValue;
 
     [SerializeField]
     private bool canPlayerMove = true;
 
-    [Header("Mouse and Cursor's Value")]
-    [SerializeField]
-    private MouseScriptableObject mouseScriptableObject;
     //[SerializeField]
     //private MouseClickPosition mouseScriptableObject;
     //[SerializeField]
@@ -52,7 +55,6 @@ public class PlayerMovement: MonoBehaviour
 
     //[SerializeField]
     //private int speed;
-
 
     /*private void Awake()
     {
@@ -96,11 +98,11 @@ public class PlayerMovement: MonoBehaviour
         GameStateManager.Instance.OnGameStateChanged -= OnGameStateChanged;
     }
 
-    void Start()
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        playerRb = player.GetComponent<Rigidbody2D>();
+        //playerRb = player.GetComponent<Rigidbody2D>();
         //characterController = player.GetComponent<CharacterController>();
 
         //mouseScriptableObject = FindObjectOfType<MouseClickPosition>();
@@ -108,7 +110,7 @@ public class PlayerMovement: MonoBehaviour
         //DontDestroyOnLoad(this.gameObject);
     }
 
-    void Update()
+    private void Update()
     {
         //PlayerMoveDOTween();
         //PlayerMoveCharacterController();
@@ -126,37 +128,8 @@ public class PlayerMovement: MonoBehaviour
     {
         if (canPlayerMove == true)
         {
-            var playerNewPos = new Vector2(player.transform.position.x, player.transform.position.y);
-
-            //Quick DOTween movement -> very rigid but works
-            player.transform.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
-                playerScriptableObject.MoveTweenDuration,
-                playerScriptableObject.MoveTweenSnapping)
-                .SetEase(playerScriptableObject.EaseType);
-            //.OnComplete(()=>mouseScriptableObject.ChangeCanPlayAnim(true));
-
-
-
-
-            //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
-            playerScriptableObject.PlayerPositionValue = playerNewPos;
-            playerScriptableObject.RoundPlayerPositionValue();
-
-            FlipingSprite();
-
-            //In Space movement!!! (Like a real Ninja)
-            /*if (mouseScriptableObject.IsPlayerMoving && (Vector2)transform.position != lastClickPos)
-            {
-                //Check if we are in the lastClickPos. If FALSE, move to it.
-                float step = playerSpeed * Time.deltaTime;
-                playerRigidBody.transform.position = Vector2.MoveTowards(player.transform.position, lastClickPos, step);
-            }
-
-            else
-            {
-                //If reach lastClickPos -> Can't move until mouseClick again
-                mouseScriptableObject.IsPlayerMoving = false;
-            }*/
+            CalcTweenProportionValue();
+            PlayerTween();
         }
     }
 
@@ -169,7 +142,6 @@ public class PlayerMovement: MonoBehaviour
 
             player.transform.position = Vector2.MoveTowards(player.transform.position, playerMovementTarget, playerSpeed * Time.deltaTime);
 
-
             lastMouseClickPos = mouseScriptableObject.MousePositionValue;
             playerCurrentPos = new Vector2(player.transform.position.x, 0f);
 
@@ -177,6 +149,67 @@ public class PlayerMovement: MonoBehaviour
         }
     }*/
 
+    private void CalcTweenProportionValue()
+    {
+        //Small math to calc the proportion between playerPos and RaycastHitValue
+        //And the proportion will be the duration amount
+        //By doing so, player tween faster in smaller distance/tween slower at larger distance
+        if (mouseScriptableObject.MousePositionValue.x > player.transform.position.x)
+        {
+            proportionValue = mouseScriptableObject.RaycastHitValue.x - player.transform.position.x;
+            Debug.Log("Mouse " + mouseScriptableObject.MousePositionValue.x
+                + " > player " + player.transform.position.x
+                + " propValue: " + proportionValue);
+        }
+        else
+        {
+            proportionValue = player.transform.position.x - mouseScriptableObject.RaycastHitValue.x;
+            Debug.Log("Player " + player.transform.position.x
+                + " > Mouse " + mouseScriptableObject.MousePositionValue.x
+                + " propValue: " + proportionValue);
+        }
+
+        proportionValue = Mathf.Abs(proportionValue); //No negative value
+        //proportionValue = proportionValue * playerScriptableObject.MoveTweenDuration;
+
+        //clamp the value so it never go over MoveTweenDuration
+        proportionValue = Mathf.Clamp(proportionValue, 0.5f, playerScriptableObject.MoveTweenDuration);
+
+        //Set tweenProportionValue from playerSO
+        //So Animator's playtime can read
+        playerScriptableObject.TweenDurationProportionValue = proportionValue;
+        playerScriptableObject.RoundTweenDurationProportionalValue();
+    }
+
+    private void PlayerTween()
+    {
+        var playerNewPos = new Vector2(player.transform.position.x, player.transform.position.y);
+
+        //Quick DOTween movement -> very rigid but works
+        player.transform.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
+            playerScriptableObject.TweenDurationProportionValue,
+            playerScriptableObject.MoveTweenSnapping)
+            .SetEase(playerScriptableObject.EaseType);
+
+        //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
+        playerScriptableObject.PlayerPositionValue = playerNewPos;
+        playerScriptableObject.RoundPlayerPositionValue();
+
+        FlipingSprite();
+
+        //In Space movement!!! (Like a real Ninja)
+        /*if (mouseScriptableObject.IsPlayerMoving && (Vector2)transform.position != lastClickPos)
+        {
+            //Check if we are in the lastClickPos. If FALSE, move to it.
+            float step = playerSpeed * Time.deltaTime;
+            playerRigidBody.transform.position = Vector2.MoveTowards(player.transform.position, lastClickPos, step);
+        }
+        else
+        {
+            //If reach lastClickPos -> Can't move until mouseClick again
+            mouseScriptableObject.IsPlayerMoving = false;
+        }*/
+    }
     private void FlipingSprite()
     {
         //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos
@@ -210,6 +243,4 @@ public class PlayerMovement: MonoBehaviour
     {
         enabled = newGameState == GameState.Gameplay;
     }
-
-
 }

@@ -77,8 +77,6 @@ public class MouseClickPosition: MonoBehaviour
         //mousePositionValue = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
         //mousePosition = Input.mousePosition;
 
-        PlayerWalkAnim();
-
         //This will convert MousePos to WorldPoint of the game
         //mousePositionValue = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var clickedPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -95,11 +93,13 @@ public class MouseClickPosition: MonoBehaviour
         if (hit.collider != null)
         {
             Debug.DrawRay(clickedPosition, hit.point * 100, Color.green, 5, false);
-            Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
+            //Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
         }
 
         //Invoke DOTween Walking movement
         playerMoveEvent?.Invoke();
+
+        PlayerWalkAnim();
 
         //StartCoroutine(SwitchAnimation());
         //IsPlayerMoving = true;
@@ -136,7 +136,6 @@ public class MouseClickPosition: MonoBehaviour
     {
         if (canPlayAnimation == true)
         {
-            playerAnimator.SetBool("isWalking", true);
             StartCoroutine(SwitchAnimation());
         }
 
@@ -151,7 +150,9 @@ public class MouseClickPosition: MonoBehaviour
 
     private IEnumerator SwitchAnimation()
     {
-        yield return new WaitForSeconds(playerScriptableObject.MoveTweenDuration);
+        playerAnimator.SetBool("isWalking", true);
+        //The animation will play/stop proportional to the new tweenValue
+        yield return new WaitForSecondsRealtime(playerScriptableObject.TweenDurationProportionValue);
 
         playerAnimator.SetBool("isWalking", false);
         //playerAnimator.Play("Idle");

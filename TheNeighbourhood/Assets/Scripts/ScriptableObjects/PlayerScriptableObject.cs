@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.ScriptableObjects
@@ -49,10 +48,31 @@ namespace Assets.Scripts.ScriptableObjects
             //set => easeType = value;
         }
 
+        [SerializeField]
+        private float tweenDurationProportionValue;
+
+        public float TweenDurationProportionValue
+        {
+            get
+            {
+                return tweenDurationProportionValue;
+            }
+            set
+            {
+                tweenDurationProportionValue = value;
+            }
+        }
+
+
         public void RoundPlayerPositionValue()
         {
             playerPositionValue.x = Mathf.Round(playerPositionValue.x * 10f) / 10f;
             playerPositionValue.y = Mathf.Round(playerPositionValue.y * 10f) / 10f;
+        }
+
+        public void RoundTweenDurationProportionalValue()
+        {
+            tweenDurationProportionValue = Mathf.Round(tweenDurationProportionValue * 10f) / 10f;
         }
 
     }
