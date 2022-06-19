@@ -67,7 +67,7 @@ public class StairManager: MonoBehaviour
         //Debug.Log("Player collides with StairManager");
         //NEW: Instead of checking PlayerCurrentPos vs MouseClick -> Check for Mouse's y-Value ABOVE or BELOW this Manager!!!
         var stairManagerPos = this.transform.position;
-        if (stairManagerPos.y < mouseScriptableObject.MousePositionValue.y)
+        if (stairManagerPos.y < mouseScriptableObject.RaycastHitValue.y)
         {
             for (int i = 0;i < chosenStepBoxCollider2D.Length;i++)
             {
