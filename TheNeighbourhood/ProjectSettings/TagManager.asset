@@ -12,6 +12,8 @@ TagManager:
   - CameraAnchor
   - Inventory
   - HUD_Arrow
+  - Door_NPC_2
+  - Door_GrandParents
   layers:
   - Default
   - TransparentFX
