@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SpawnerMaster : MonoBehaviour
+public class SpawnerMaster: MonoBehaviour
 {
     //Make this a singleton
     private static SpawnerMaster instance;
@@ -25,8 +25,8 @@ public class SpawnerMaster : MonoBehaviour
     [SerializeField]
     private string spawnPoint_NPC_1 = "Door_NPC_1";
 
-    [SerializeField]
-    private int cameraID;
+    //[SerializeField]
+    //private int cameraID;
 
     //[SerializeField]
     //private UnityEvent vCameraPosAtSpawn;
@@ -40,14 +40,26 @@ public class SpawnerMaster : MonoBehaviour
 
     public Vector2 LastSpawnPoint
     {
-        get { return lastSpawnPoint; }
-        set { lastSpawnPoint = value; }
+        get
+        {
+            return lastSpawnPoint;
+        }
+        set
+        {
+            lastSpawnPoint = value;
+        }
     }
 
     public string LastDoorTag
     {
-        get { return lastDoorTag; }
-        set { lastDoorTag = value; }
+        get
+        {
+            return lastDoorTag;
+        }
+        set
+        {
+            lastDoorTag = value;
+        }
     }
 
     private void OnEnable()
@@ -66,7 +78,7 @@ public class SpawnerMaster : MonoBehaviour
 
     }
 
-    private void UseCam_00(Scene currentScene , Scene nextScene)
+    private void UseCam_00(Scene currentScene, Scene nextScene)
     {
         if (lastDoorTag == spawnPoint_NPC_1)
         {

@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DG.Tweening;
-using TMPro;
 using System;
+using UnityEngine;
 
-public class CameraEventManager : MonoBehaviour
+public class CameraEventManager: MonoBehaviour
 {
     //Make this a singleton
     private static CameraEventManager instance;

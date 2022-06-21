@@ -9,15 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/00_MenuScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/01_MyRoomScene.unity
-    guid: e0b6fe04eb615ef4c8f3b357e54cb59a
-  - enabled: 1
-    path: Assets/Scenes/02_HallwayScene.unity
+    path: Assets/Scenes/01_HallwayScene.unity
     guid: b998d2650df81a14789b1bbfe594eb19
   - enabled: 1
-    path: Assets/Scenes/03_NPC_Wolf_Scene.unity
+    path: Assets/Scenes/02_NPC_GrandParents_Scene.unity
+    guid: 5bd1fc805eeca8243bcee6420d5305df
+  - enabled: 1
+    path: Assets/Scenes/03_MyRoomScene.unity
+    guid: e0b6fe04eb615ef4c8f3b357e54cb59a
+  - enabled: 1
+    path: Assets/Scenes/04_NPC_Wolf_Scene.unity
     guid: 3fca5b9b059861049899dcbba05e4bf2
   - enabled: 1
-    path: Assets/Scenes/04_NPC_Bird_Scene.unity
+    path: Assets/Scenes/05_NPC_Bird_Scene.unity
     guid: 479bcb1b9d3b078439cf84631e8caa10
+  - enabled: 1
+    path: Assets/Scenes/06_NPC_Squirrel_Scene.unity
+    guid: 38be52de9a98e414b83881d6d47286e0
   m_configObjects: {}
