@@ -42,7 +42,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1493,327
 __PrivCrochet_tags: 
 title: Picking_Up_Pizza_Monologue
-//Item_Table
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
 <<if $hasFrozenPizza == false>>
@@ -57,7 +56,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1734,329
 __PrivCrochet_tags: 
 title: Baking_Pizza_At_The_Oven
-//Item_Microwave
 ---
 <<if $hasFrozenPizza == true>>
     Lilly: The smell... Yum!
@@ -68,7 +66,7 @@ title: Baking_Pizza_At_The_Oven
 // Ob der Dialog sinnvoll ist, wird sich zeigen, aber er soll eintreten, wenn man die TK-Pizzen zum Ofen bringt und mit E backt
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 1970,333
+__PrivCrochet_position: 1969,328
 __PrivCrochet_tags: 
 title: Bringing_Pizza_to_Roommate
 ---
@@ -86,8 +84,18 @@ Caroline: Do you have the Pizza yet?
     Caroline: I see. That's what you were baking for, right?
     //Enable DoorCollider back
     <<En_DisableComponet NPC_Rabbit>>
-    Lilly: Yeah, that's our tradition! Well, it has become our tradition. A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
-    Caroline: I love that! And you do seem to have a great bond with your grandparents. Which is also generally good, given that they live here too. Well then, don't let me stop you from checking on them!
-    Lilly: You're right, I think it's a good idea to see how they're doing.
-
+    Lilly: Yeah, that's our tradition! Well, it has become our tradition. 
+    Lilly: A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. 
+    Lilly: I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
+    Caroline: I love that! And you do seem to have a great bond with your grandparents. Well then, don't let me stop you from checking on them!
+    Lilly: You're right, I think it's a good idea to see how they're doing. // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
+    Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in the fridge.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 2210,330
+__PrivCrochet_tags: 
+title: Hamantash_Fridge_Interaction
+---
+// Spieler gehen zum Kühlschrank und holen Hamantaschen raus
+Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
 ===
