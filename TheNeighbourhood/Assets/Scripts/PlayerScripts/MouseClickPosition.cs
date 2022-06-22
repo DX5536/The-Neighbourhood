@@ -27,6 +27,10 @@ public class MouseClickPosition: MonoBehaviour
     [SerializeField]
     private UnityEvent playerMoveEvent;
 
+    [Header("Player > Dust_PS > RunningDust")]
+    [SerializeField]
+    private UnityEvent playerCreateDustEvent;
+
     //[SerializeField]
     //private float tweenParamValue;
 
@@ -93,6 +97,9 @@ public class MouseClickPosition: MonoBehaviour
             Debug.DrawRay(clickedPosition, hit.point * 100, Color.green, 5, false);
             //Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
         }
+
+        //Invoke CreateDust from Dust_PS
+        playerCreateDustEvent?.Invoke();
 
         //Invoke DOTween Walking movement
         playerMoveEvent?.Invoke();

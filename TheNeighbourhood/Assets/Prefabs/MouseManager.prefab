@@ -45,7 +45,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 9069053085138424299, guid: 606af53f409817f46ae6bd56553e261e, type: 3}
   mouseScriptableObject: {fileID: 11400000, guid: 5206e1e89c10a564c8a97bd853b81b19, type: 2}
+  playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}
   canPlayAnimation: 1
   playerAnimator: {fileID: 0}
-  tweenParamValue: 0
-  playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}
+  playerMoveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  playerCreateDustEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Player_RunningDust, Assembly-CSharp
+        m_MethodName: CreateDust_PS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

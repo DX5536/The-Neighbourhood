@@ -63,7 +63,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
         //dialogueRunner.StartDialogue(nodeToStart);
         if (collision.tag == _NPC_ScriptableObject.PlayerTag)
         {
-            //Debug.Log("Player in Range");
+            Debug.Log("Player in Range");
 
             _NPC_ScriptableObject.IsInteractable = true;
         }

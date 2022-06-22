@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemScriptableObject: ScriptableObject
 {
     [Header("Reset the status of isInteractable at Awake()")]
+    [Header("NPC should NOT interactable at start -> Collider = interactable")]
     [SerializeField]
     private bool resetIsInteractableAtStart;
 
@@ -117,7 +118,7 @@ public class ItemScriptableObject: ScriptableObject
     {
         get => nodeName;
     }
-    
+
     public void SetIsInteractable()
     {
         if (resetIsInteractableAtStart)
