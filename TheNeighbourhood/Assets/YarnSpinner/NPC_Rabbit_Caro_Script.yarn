@@ -6,9 +6,11 @@ title: Start_Intro
 ---
 <<declare $hasCookedPizza to false>>
 <<declare $hasFrozenPizza to false>>
-
+/// Name of gained item
+<<declare $gainedItem_Name to "">>
 //Disable DoorCollider at start
-<<En_DisableComponet NPC_Rabbit>>
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway>>
 // Dieser Dialog wird ganz zu Beginn gespielt. Die Szene soll sein, wie die beiden die letzten Kisten nach oben gebracht haben
 Lilly: … Tell me those were the last ones. 
 Caroline: Yes, thankfully. Welcome home to us, at last!
@@ -18,7 +20,7 @@ Lilly: I got you! Pretty sure I bought some frozen pizza yesterday, I can bring 
 Caroline: You're a blessing! Definitely one of my top 3 roommates. What? The other two are my bed and my PC, no front. 
 Lilly: I'm competing with hardware and furniture? Ouch. 
 // An diesem Punkt soll der Dialog beendet werden und Caroline in ihr Zimmer verschwinden
-<<TargetMove NPC_Rabbit false>>
+<<TargetMove NPC_Rabbit NPC_Rabbit_MoveGoal false>>
 <<jump Movement_Tutorial>>
 ===
 __PrivCrochet_colorID: 0
@@ -59,7 +61,11 @@ title: Baking_Pizza_At_The_Oven
 ---
 <<if $hasFrozenPizza == true>>
     Lilly: The smell... Yum!
+    <<set $gainedItem_Name to "Pizza">>
     <<set $hasCookedPizza to true>>
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
+    Lilly: Time to get back to Caroline.
 <<else>>
     Lilly: My good old microwave. 
 <<endif>>
@@ -74,7 +80,8 @@ Caroline: Do you have the Pizza yet?
 -> Lilly: Ah, not yet <<if $hasCookedPizza == false>>
     Caroline: Come on, then. //Ich habe das hier zum test geadded.
 -> Lilly: Yup! <<if $hasCookedPizza == true>>
-    Caroline: Smells like victory! // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
+    Caroline: Smells like victory! 
+    // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
     Lilly: We do deserve a medal after all those weeks of unpacking. So, where do we go from here?
     Caroline: I'd suggest a nap and afterwards ignoring the boxes we just brought up and instead finishing our series marathon. 
     Caroline: … you don't look convinced. Fine, we can also work on our dreadfully boring game art assignment. Just be warned - I'm taking coding classes for a reason. 
@@ -82,14 +89,19 @@ Caroline: Do you have the Pizza yet?
     Caroline: Oh. Did I miss an upcoming birthday party? Please tell me I didn't, I saw your grandma in the hallway yesterday and would've said something if I knew. 
     Lilly: Don't worry, they barely know their own birthdays. But no, today is the International Holocaust Remembrance Day. I know, it's a mouthful. But it means a lot to my grandparents. And they mean a lot to me, so.
     Caroline: I see. That's what you were baking for, right?
-    //Enable DoorCollider back
-    <<En_DisableComponet NPC_Rabbit>>
     Lilly: Yeah, that's our tradition! Well, it has become our tradition. 
     Lilly: A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. 
     Lilly: I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
     Caroline: I love that! And you do seem to have a great bond with your grandparents. Well then, don't let me stop you from checking on them!
-    Lilly: You're right, I think it's a good idea to see how they're doing. // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
+    Lilly: You're right, I think it's a good idea to see how they're doing. 
+    // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
     Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in the fridge.
+    <<UseGainedItem Yarn_InventoryManager>>
+    This part is not implemented. Please go to Hallway -> Grandparents to continue
+    Just assume you have the Hamantashen pastry already >_O
+    //Enable DoorCollider back
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 2210,330

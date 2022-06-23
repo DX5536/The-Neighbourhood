@@ -1,7 +1,7 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using Yarn.Unity;
-
+using static Yarn.Unity.DialogueAdvanceInput;
 
 public class StartYarnDialogueRunner: MonoBehaviour
 {
@@ -12,12 +12,12 @@ public class StartYarnDialogueRunner: MonoBehaviour
     [SerializeField]
     private ItemScriptableObject _NPC_ScriptableObject;
 
+    //No need for this anymore -> Yarn has DialogueAdvance Input (Script)
     [SerializeField]
     private string keyToPress_DEBUG = "e";
 
-    [Header("DialougeSys > Canvas > Lineview.OnContinueClicked()")]
     [SerializeField]
-    private UnityEvent continueTextEvent;
+    private DialogueAdvanceInput dialogueAdvanceInput;
 
     void Start()
     {
@@ -31,30 +31,64 @@ public class StartYarnDialogueRunner: MonoBehaviour
             //Debug.Log("Have to do an 2nd in-depth search");
             dialogueRunner = GameObject.Find("Dialogue System").GetComponent<DialogueRunner>();
         }
+
+        dialogueAdvanceInput = FindObjectOfType<DialogueAdvanceInput>();
+        if (dialogueAdvanceInput != null)
+        {
+            dialogueAdvanceInput = GameObject.Find("Line View").GetComponent<DialogueAdvanceInput>();
+        }
     }
 
     void Update()
     {
         if (_NPC_ScriptableObject.IsInteractable == true)
         {
-            //Need to press Key to talk
-            if (Input.GetKeyDown(keyToPress_DEBUG))
-            {
-                //If dialog is running -> Click E to activate LineView.OnContinueClicked()
-                if (dialogueRunner.IsDialogueRunning)
-                {
-                    continueTextEvent?.Invoke();
-                }
+            CheckIfDialogIsRunning();
+        }
+    }
 
-                //If dialogue is NOT running -> Start Node
-                else
-                {
-                    //Debug.Log("Player can E to talk");
-                    dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
-                }
+    /*private void ClickEToContinue()
+    {
+        //Need to press Key to talk
+        if (Input.GetKeyDown(keyToPress_DEBUG))
+        {
+            //If dialog is running -> Click E to activate LineView.OnContinueClicked()
+            if (dialogueRunner.IsDialogueRunning)
+            {
+                continueTextEvent?.Invoke();
+            }
+
+            //If dialogue is NOT running -> Start Node
+            else
+            {
+                //Debug.Log("Player can E to talk");
+
+            }
+
+        }
+    }*/
+
+    private void CheckIfDialogIsRunning()
+    {
+        if (Input.GetKeyDown(keyToPress_DEBUG))
+        {
+            if (dialogueRunner.IsDialogueRunning == true)
+            {
+                Debug.Log("Dialog is running. No new node start!");
+            }
+            else
+            {
+                dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
+                StartCoroutine(WaitToClickContinue());
 
             }
         }
+    }
+
+    private ContinueActionType ContinueLineAfterStarting()
+    {
+        //ContinueActionType.KeyCode;
+        return ContinueActionType.KeyCode;
     }
 
     //Player can click Key to talk upon reaching Talk-Zone
@@ -79,5 +113,13 @@ public class StartYarnDialogueRunner: MonoBehaviour
             _NPC_ScriptableObject.IsInteractable = false;
 
         }
+    }
+
+    private IEnumerator WaitToClickContinue()
+    {
+        //Wait for at least 1 so player can click ContinueText again
+        dialogueAdvanceInput.enabled = false;
+        yield return new WaitForSeconds(1.5f);
+        dialogueAdvanceInput.enabled = true;
     }
 }

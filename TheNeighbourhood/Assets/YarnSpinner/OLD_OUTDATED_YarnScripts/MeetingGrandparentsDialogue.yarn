@@ -3,6 +3,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: 
 title: MeetingGrandparentsDialogue
+position: 20,26
 ---
 // Dieser Dialog beginnt automatisch, sobald man in die Tür der Großeltern reinkommt. Der Opa heißt Amon, die Oma Malka. Zuerst ist nur die Oma zu sehen.
 Malka: Lilly! Shalom aleichem, darling!
@@ -17,6 +18,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 452,-1
 __PrivCrochet_tags: 
 title: LillyTalksToAmon
+position: -203,53
 ---
 // Nach etwas Suchen in der Wohnung finden die Spieler Amon vor einem etwas älteren Rechner und man kann den Opa ansprechen 
 Lilly: So, what's up?
@@ -37,6 +39,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 224,0
 __PrivCrochet_tags: 
 title: LillyTalksToMalkaBeforeAmon
+position: -204,-49
 ---
 // Das ist für den Fall, dass jemand Malka anspricht, nachdem der Opa gesagt hat, dass man ihm folgen soll und er einem etwas zeigen möchte
 Malka: We will catch up later, darling. Grandpa has been really excited about this surprise.
@@ -45,6 +48,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 681,-1
 __PrivCrochet_tags: 
 title: LillyTalksToMalkaAfterAmon
+position: -22,-94
 ---
 // Nachdem man mit dem Opa geredet hat, soll man mit der Oma reden. Das ist dieser String und der soll erst dann freigeschaltet werden. 
 Malka: Hello, I'm a placeholder dialogue that opens with a non-awkward ice breaker.

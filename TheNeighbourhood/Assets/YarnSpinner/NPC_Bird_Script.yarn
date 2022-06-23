@@ -1,9 +1,6 @@
 title: Start_NPC_Bird
 position: -160,-58
 ---
-/// Name of gained item
-<<declare $gained = "">>
-
 Bird: Oh? Who do we have here?
 Bird: Do you need something?
 
