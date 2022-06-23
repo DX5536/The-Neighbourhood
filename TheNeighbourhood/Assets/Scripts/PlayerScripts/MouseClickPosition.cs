@@ -56,6 +56,9 @@ public class MouseClickPosition: MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mouseScriptableObject.MousePositionValue = player.transform.position;
+
+        //Reset canClickMouse in case it's disable due to Yarn tests
+        mouseScriptableObject.SetCanClickMouse();
     }
 
     void Update()

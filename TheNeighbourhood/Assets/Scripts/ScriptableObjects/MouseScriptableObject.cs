@@ -5,6 +5,10 @@ namespace Assets.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/MouseValue", order = 2)]
     public class MouseScriptableObject: ScriptableObject
     {
+        [Header("Reset the status of canClickMouse at Awake()")]
+        [SerializeField]
+        private bool resetCanClickMouseAtStart;
+
         [SerializeField]
         private bool canClickMouse;
 
@@ -75,9 +79,6 @@ namespace Assets.Scripts.ScriptableObjects
             set => imageDisplayTime = value;
         }
 
-
-
-
         public void RoundMousePositionValue()
         {
             mousePositionValue.x = Mathf.Round(mousePositionValue.x * 10f) / 10f;
@@ -93,6 +94,19 @@ namespace Assets.Scripts.ScriptableObjects
         public void DisplayHUDImage()
         {
             Instantiate(arrowHUDImage, new Vector2(raycastHitValue.x, raycastHitValue.y), arrowHUDImage.transform.rotation);
+        }
+
+        public void SetCanClickMouse()
+        {
+            if (resetCanClickMouseAtStart)
+            {
+                canClickMouse = true;
+                Debug.Log("Reset isInteractable");
+            }
+            else
+            {
+                canClickMouse = false;
+            }
         }
     }
 }

@@ -165,7 +165,8 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
         else
         {
-            Debug.Log("There is no GO of type InMemoryVariableStorage");
+            //Debug.Log("There is no GO of type InMemoryVariableStorage");
+            return;
         }
     }
 }

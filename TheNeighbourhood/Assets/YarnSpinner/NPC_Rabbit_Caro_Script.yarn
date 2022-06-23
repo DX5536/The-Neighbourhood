@@ -12,8 +12,8 @@ title: Start_Intro
 <<set $unlockedDoor_ToHallway to false>>
 <<Un_LockDoor Door_ToHallway ToHallway>>
 // Dieser Dialog wird ganz zu Beginn gespielt. Die Szene soll sein, wie die beiden die letzten Kisten nach oben gebracht haben
-Lilly: … Tell me those were the last ones. 
-Caroline: Yes, thankfully. Welcome home to us, at last!
+Lilly: <i>...Tell me those were the last ones.</i> 
+Caroline: <b>Yes, thankfully. Welcome home to us, at last!</b>
 Lilly: Welcome home, indeed!
 Caroline: Phew. Well, I don't know about you, but I am starving. And falling asleep. Both, simultaneously.
 Lilly: I got you! Pretty sure I bought some frozen pizza yesterday, I can bring you yours when it's done, ok?

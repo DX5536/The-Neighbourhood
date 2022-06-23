@@ -43,7 +43,7 @@ public class InventorySlot: MonoBehaviour
         {
             //Assign my childItemIcon to the Array with the index written in this script
             inventory_HasItem.ItemIcons[managerSlotIndex] = childItemIcon;
-            Debug.Log("Assign childItemIcon to ItemIcons[]");
+            //Debug.Log("Assign childItemIcon to ItemIcons[]");
 
         }
 

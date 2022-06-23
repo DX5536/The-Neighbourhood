@@ -36,7 +36,7 @@ public class ObjectHighlight: MonoBehaviour
             }
             else
             {
-                Debug.Log("Item is blocked");
+                //Debug.Log("Item is blocked");
                 objectSpriteRenderer.material = itemScribtableObject.Blocked_Outline_MAT;
             }
 

@@ -49,6 +49,19 @@ public class ItemScriptableObject: ScriptableObject
     [SerializeField]
     private string nodeName;
 
+    [Header("Speaker's Color -> NPC_ONLY")]
+    [SerializeField]
+    private Color speakerNPC_Color;
+
+    public Color SpeakerNPC_Color
+    {
+        get
+        {
+            return speakerNPC_Color;
+        }
+    }
+
+
     public bool ResetIsInteractableAtStart
     {
         get => resetIsInteractableAtStart;

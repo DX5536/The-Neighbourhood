@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f145633381b6d84fa3e6aaf98017e3f, type: 3}
   m_Name: MouseValue_SO
   m_EditorClassIdentifier: 
+  resetCanClickMouseAtStart: 1
   canClickMouse: 1
   mousePositionValue: {x: 7, y: -0.120000005}
   raycastHitValue: {x: -6.1, y: -4.5}
