@@ -49,7 +49,7 @@ MonoBehaviour:
   - Malka
   - Amon
   - Wolf
-  - Rabbit
+  - Bird
   - Squirrel
   itemScriptableObjects:
   - {fileID: 11400000, guid: 2779b28a01d8b0f44b91d0c9da27f377, type: 2}
