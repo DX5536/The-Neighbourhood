@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7840881714515252222}
   - component: {fileID: 145925797957929530}
   - component: {fileID: 3547185347014404250}
+  - component: {fileID: 1719476236302501913}
   m_Layer: 0
   m_Name: NPC_1
   m_TagString: Untagged
@@ -283,7 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 0}
   _NPC_ScriptableObject: {fileID: 0}
-  keyToPress_DEBUG: e
+  continueTextEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &145925797957929530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +313,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemScribtableObject: {fileID: 11400000, guid: c69719b32b14e7544832a8ff0b5d8a1d, type: 2}
+--- !u!114 &1719476236302501913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840881714515252219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61dabf091537b4146aa7d52e6bd6b0e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterGO: {fileID: 7840881714515252219}
+  doorBoxCollider: {fileID: 7840881714515252218}
+  moveGoalGO: {fileID: 0}
+  moveGoal_Offset: 0
+  tweenDuration: 0
+  easeType: 0
 --- !u!1 &8092667963439436429
 GameObject:
   m_ObjectHideFlags: 0

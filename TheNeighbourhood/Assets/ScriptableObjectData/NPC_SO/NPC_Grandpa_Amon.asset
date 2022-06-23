@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f779e5f3ff07b84bbab112aa6be712e, type: 3}
-  m_Name: NPC_Grandpa
+  m_Name: NPC_Grandpa_Amon
   m_EditorClassIdentifier: 
   resetIsInteractableAtStart: 0
   isInteractable: 0
@@ -23,4 +23,4 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: 
+  nodeName: Amon_Computer

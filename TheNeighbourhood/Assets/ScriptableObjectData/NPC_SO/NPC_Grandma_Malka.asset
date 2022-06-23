@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f779e5f3ff07b84bbab112aa6be712e, type: 3}
-  m_Name: NPC_Grandma
+  m_Name: NPC_Grandma_Malka
   m_EditorClassIdentifier: 
   resetIsInteractableAtStart: 0
-  isInteractable: 0
+  isInteractable: 1
   spritesDefault_MAT: {fileID: 2100000, guid: 781d1bf65f5d14046b25d0cb339dbddf, type: 2}
   outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
   blocked_Outline_MAT: {fileID: 2100000, guid: 3613c35317b3787458c999cbc58ee6b5, type: 2}
@@ -23,4 +23,4 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: 
+  nodeName: Malka_Talk

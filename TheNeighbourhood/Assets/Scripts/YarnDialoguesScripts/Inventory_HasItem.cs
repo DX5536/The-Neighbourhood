@@ -50,6 +50,29 @@ public class Inventory_HasItem: MonoBehaviour
                 Debug.Log("Player gained Flour! in Switch-Case");
                 itemIcons[0].SetActive(true);
                 break;
+
+            case "Pizza":
+                Debug.Log("Player gained Pizza! in Switch-Case");
+                itemIcons[3].SetActive(true);
+                break;
+        }
+    }
+
+    [YarnCommand("UseGainedItem")]
+    public void UseGainedItem()
+    {
+        //Debug.Log("Player gained Flour!");
+        switch (currentGainedItem)
+        {
+            case "Flour":
+                Debug.Log("Player gained Flour! in Switch-Case");
+                itemIcons[0].SetActive(false);
+                break;
+
+            case "Pizza":
+                Debug.Log("Player gained Pizza! in Switch-Case");
+                itemIcons[3].SetActive(false);
+                break;
         }
     }
 }

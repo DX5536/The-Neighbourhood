@@ -9,10 +9,11 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
+  - {fileID: 6391573757903218779, guid: 0352266aff446bb418e8376ced0b533a, type: 3}
   - {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
   - {fileID: 6391573757903218779, guid: 0753e3dd30ffab040b25e44c3a6edccd, type: 3}
   - {fileID: 6391573757903218779, guid: f1c6322389fad7a4eb8d3e06e2599e74, type: 3}
-  - {fileID: 6391573757903218779, guid: 0352266aff446bb418e8376ced0b533a, type: 3}
+  - {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
   compileErrors: []
   serializedDeclarations:
   - name: $isPlayerNeedFlour
@@ -39,7 +40,7 @@ ScriptedImporter:
     description: Check if door to NPC_Bird is unlocked
     isImplicit: 0
     sourceYarnAsset: {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
-  - name: $gained
+  - name: $gainedItem_Name
     typeName: String
     defaultValueBool: 0
     defaultValueNumber: 0
@@ -47,14 +48,70 @@ ScriptedImporter:
     description: Name of gained item
     isImplicit: 0
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 0753e3dd30ffab040b25e44c3a6edccd, type: 3}
-  - name: $gainedItem_Name
-    typeName: String
+  - name: $hasCookedPizza
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPC_Bird_Script.yarn, node Start_NPC_Bird
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: 0753e3dd30ffab040b25e44c3a6edccd, type: 3}
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 0352266aff446bb418e8376ced0b533a, type: 3}
+  - name: $hasFrozenPizza
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 0352266aff446bb418e8376ced0b533a, type: 3}
+  - name: $unlockedDoor_ToHallway
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
+  - name: $firstVisitGrandParents
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
+  - name: $canTalk_Grandpa
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
+  - name: $canTalk_Grandma
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
+  - name: $hasTalked_Grandma
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
+  - name: $hasTalked_Grandpa
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
   defaultLanguage: en
   languagesToSourceAssets: []
   useAddressableAssets: 0
