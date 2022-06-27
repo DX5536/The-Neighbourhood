@@ -1,5 +1,8 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 26,-10
+__PrivCrochet_tags: 
 title: Start_NPC_Wolf
-position: 26,-10
 ---
 //Declares variables
 /// Check if player still NEED flour or not
@@ -22,17 +25,32 @@ Wolf: Are you stalking me?
 -> I just want to say hi //<<if $isPlayerNeedFlour == false>>
     Wolf: Uhm, sure...
 ===
-
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 163,114
+__PrivCrochet_tags: 
 title: suspicious
-position: 163,114
 ---
 Wolf: I'm watching you!
 ===
-
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -68,105
+__PrivCrochet_tags: 
 title: flour
-position: -68,105
 ---
 <<set $unlockedDoor_NPC_Bird to true>>
 Wolf: Dude, just buy some at the store...
 Wolf: Or in fact, have you try to ask the other first?
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -85,-349
+__PrivCrochet_tags: 
+title: Wolf_Hallway_Dialogue
+---
+// Voraussetzung: Zweiter Dialog mit Caro wurde beendet, sie schickt einen los, um Zutaten zu holen. 
+
+// Man interagiert mit der Wolf-Tür -> Wolf kommt raus 
+// Normaler Wolf-Dialog
+// Wolf gibt einem am Ende des Gesprächs die erste Zutat -> erscheint im Inventar
+// Wolf sagt, man solle als nächstes zum Squirrel, geht wieder in die Tür rein
+// Squirrel-Tür-Interaktion wird unlocked
 ===
