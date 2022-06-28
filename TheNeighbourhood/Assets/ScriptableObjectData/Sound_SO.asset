@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e570878f0c3c9a54c8a5a30c9d0aa3d4, type: 3}
+  m_Name: Sound_SO
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: b3ce08ad218063143bc3065a313d71b4, type: 3}
+  typingSFX: {fileID: 8300000, guid: 5adf3a7d82afc064ab7752a1a5cb6ae5, type: 3}
+  walkingSFX: {fileID: 8300000, guid: 5c9d8953cd9b45249aa89ec1a177fa6d, type: 3}
+  itemSFX: {fileID: 8300000, guid: a4f324d667206fb4b986618759645b47, type: 3}

@@ -18,10 +18,10 @@ MonoBehaviour:
   outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
   blocked_Outline_MAT: {fileID: 2100000, guid: 3613c35317b3787458c999cbc58ee6b5, type: 2}
   popupItemID: NPC_Rabbit
-  popupDescription: My dear roommate [E]
+  popupDescription: Caroline [E]
   tweenValue: 30
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
   nodeName: Bringing_Pizza_to_Roommate
-  speakerNPC_Color: {r: 0.83921576, g: 0.8000001, b: 0.77647066, a: 1}
+  speakerNPC_Color: {r: 0.2748754, g: 0.8207547, b: 0.5379971, a: 1}

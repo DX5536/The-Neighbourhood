@@ -1,6 +1,7 @@
 using Assets.Scripts.ScriptableObjects;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement: MonoBehaviour
 {
@@ -24,6 +25,13 @@ public class PlayerMovement: MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
+
+    [Header("Play walkingSFX from SoundManager")]
+    [SerializeField]
+    private UnityEvent startWalkingEvents;
+
+    [SerializeField]
+    private UnityEvent stopWalkingEvents;
 
     //private Vector2 playerCurrentPos;
 
@@ -183,12 +191,15 @@ public class PlayerMovement: MonoBehaviour
     private void PlayerTween()
     {
         var playerNewPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        //Play Walking SFX
+        StartWalkingSFX();
 
         //Quick DOTween movement -> very rigid but works
         player.transform.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
             playerScriptableObject.TweenDurationProportionValue,
             playerScriptableObject.MoveTweenSnapping)
-            .SetEase(playerScriptableObject.EaseType);
+            .SetEase(playerScriptableObject.EaseType)
+            .OnComplete(StopWalkingSFX);
 
         //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
         playerScriptableObject.PlayerPositionValue = playerNewPos;
@@ -209,6 +220,17 @@ public class PlayerMovement: MonoBehaviour
             mouseScriptableObject.IsPlayerMoving = false;
         }*/
     }
+
+    private void StopWalkingSFX()
+    {
+        stopWalkingEvents?.Invoke();
+    }
+
+    private void StartWalkingSFX()
+    {
+        startWalkingEvents?.Invoke();
+    }
+
     private void FlipingSprite()
     {
         //Now check: if Mouse click Right -> Mouse's x-Value bigger than playerCurrentPos

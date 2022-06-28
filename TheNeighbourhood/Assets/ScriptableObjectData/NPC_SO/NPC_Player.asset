@@ -24,4 +24,4 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: 
-  speakerNPC_Color: {r: 0.77647066, g: 0.5764706, b: 0.6745098, a: 1}
+  speakerNPC_Color: {r: 0.745283, g: 0.4745906, b: 0.6200729, a: 1}
