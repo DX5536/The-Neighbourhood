@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/06_NPC2_Squirrel_Scene.unity
     guid: 38be52de9a98e414b83881d6d47286e0
+  - enabled: 1
+    path: Assets/Scenes/07_Option_Scene.unity
+    guid: 8979b41674d166e428b2974f3a64dda1
+  - enabled: 1
+    path: Assets/Scenes/08_Credits_Scene.unity
+    guid: ad57c73152eba1e4eb1813065fa3b3e7
   m_configObjects: {}
