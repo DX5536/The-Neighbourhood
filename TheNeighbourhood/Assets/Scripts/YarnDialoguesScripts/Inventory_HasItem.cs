@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Yarn.Unity;
 
 public class Inventory_HasItem: MonoBehaviour
 {
+    [Header("Play itemSFX from SoundManager")]
+    [SerializeField]
+    private UnityEvent itemBehaviourEvents;
+
     [Header("This will auto-assign by Inventory_Slot_00: READ_ONLY")]
     [SerializeField]
     private GameObject[] itemIcons;
@@ -48,11 +53,13 @@ public class Inventory_HasItem: MonoBehaviour
         {
             case "Flour":
                 Debug.Log("Player gained Flour! in Switch-Case");
+                StartItemSFX();
                 itemIcons[0].SetActive(true);
                 break;
 
             case "Pizza":
                 Debug.Log("Player gained Pizza! in Switch-Case");
+                StartItemSFX();
                 itemIcons[3].SetActive(true);
                 break;
         }
@@ -66,13 +73,20 @@ public class Inventory_HasItem: MonoBehaviour
         {
             case "Flour":
                 Debug.Log("Player gained Flour! in Switch-Case");
+                StartItemSFX();
                 itemIcons[0].SetActive(false);
                 break;
 
             case "Pizza":
                 Debug.Log("Player gained Pizza! in Switch-Case");
+                StartItemSFX();
                 itemIcons[3].SetActive(false);
                 break;
         }
+    }
+
+    private void StartItemSFX()
+    {
+        itemBehaviourEvents?.Invoke();
     }
 }
