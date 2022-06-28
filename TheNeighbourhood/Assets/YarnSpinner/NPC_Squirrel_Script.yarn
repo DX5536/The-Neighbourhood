@@ -1,0 +1,23 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: 
+title: Squirrel_First_Dialogue
+---
+// Voraussetzung 1 für diesen Dialog: Man hat das zweite Mal mit Caro gesprochen und sich auf den Weg gemacht, Zutaten von den Nachbarn zu bekommen.
+// Voraussetzung 2: Man hat das Gespräch mit dem Wolf beendet, eine Zutat erhalten und wurde zum Squirrel geschickt.
+
+// Normale Squirrel-Konversation
+// Eine Dialog-Line löst aus, dass man in die Wohnung vom Squirrel gebeten wird. Squirrel geht in die Wohnung, Betreten dieser wird unlocked. Wolf-Dialog-Optionen werden disabled. 
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 248,-1
+__PrivCrochet_tags: 
+title: Squirrel_Indoor_Dialogue
+---
+// Squirrel hat die Tür geöffnet, man ist ihm gefolgt
+
+// Normale Squirrel-Konversation
+// Squirrel gibt einem am Ende dieser die zweite Zutat -> erscheint im Inventar
+// Squirrel schickt einen zum Bird. Bird-Dialoge werden unlocked.
+===

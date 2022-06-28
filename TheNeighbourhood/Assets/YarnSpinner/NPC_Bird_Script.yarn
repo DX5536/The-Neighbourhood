@@ -1,5 +1,8 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -160,-58
+__PrivCrochet_tags: 
 title: Start_NPC_Bird
-position: -160,-58
 ---
 Bird: Oh? Who do we have here?
 Bird: Do you need something?
@@ -20,4 +23,24 @@ Bird: Do you need something?
     Bird: You need flour to bake, duh...
 
 Player: Thanks for your time.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -160,-345
+__PrivCrochet_tags: 
+title: Bird_Hallway_Dialogue
+---
+// Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
+
+// Normales Bird-Gespräch, in einer Line bittet der Bird einen rein in die Wohnung
+// Bird geht in die Wohnung, Wohnung zum Betreten unlocked
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 95,-345
+__PrivCrochet_tags: 
+title: Bird_Indoor_Dialogue
+---
+// Bird ansprechbar in der Wohnung
+// Normaler Bird-Dialog
+// Man erhält irgendwann zwischendrin oder am Ende die letzte Zutat -> erscheint im Inventar
+// Alle Zutaten sind da, man wird zurück ins WG-Zimmer geschickt (Caro-Dialog)
 ===

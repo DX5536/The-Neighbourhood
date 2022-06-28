@@ -87,11 +87,13 @@ Caroline: Do you have the Pizza yet?
     Caroline: … you don't look convinced. Fine, we can also work on our dreadfully boring game art assignment. Just be warned - I'm taking coding classes for a reason. 
     Lilly: It's not that. I'll just be over at my grandparents' in the evening and I'm thinking, maybe I should go there sooner. 
     Caroline: Oh. Did I miss an upcoming birthday party? Please tell me I didn't, I saw your grandma in the hallway yesterday and would've said something if I knew. 
-    Lilly: Don't worry, they barely know their own birthdays. But no, today is the International Holocaust Remembrance Day. I know, it's a mouthful. But it means a lot to my grandparents. And they mean a lot to me, so.
+    Lilly: Don't worry, they barely know their own birthdays. But no, today is the International Holocaust Remembrance Day. I know, it's a mouthful. 
+    Lilly: But it means a lot to my grandparents. And they mean a lot to me, so.
     Caroline: I see. That's what you were baking for, right?
     Lilly: Yeah, that's our tradition! Well, it has become our tradition. 
     Lilly: A few years back it used to be a day on which my grandparents were mostly alone, sorrowing and sad, which was difficult to witness. 
-    Lilly: I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture, while remembering those that were left behind. 
+    Lilly: I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture
+    Lilly: while remembering those that were left behind. 
     Caroline: I love that! And you do seem to have a great bond with your grandparents. Well then, don't let me stop you from checking on them!
     Lilly: You're right, I think it's a good idea to see how they're doing. 
     // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
@@ -110,4 +112,28 @@ title: Hamantash_Fridge_Interaction
 ---
 // Spieler gehen zum Kühlschrank und holen Hamantaschen raus
 Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 783,664
+__PrivCrochet_tags: 
+title: Caro_After_Grandparents
+---
+// Voraussetzung: Man hat zum ersten Mal mit den Grandparents geredet und erfahren, dass man das Challah-Brot backen muss. 
+
+// Man interagiert mit Caros Tür, sie kommt raus 
+// Man redet mit Caro über die Situation, sie schickt einen los, um im Treppenhaus Zutaten zu sammeln, empfiehlt, den Wolf zu fragen
+// Wolf-Tür-Interaktion wird unlocked, Caro verschwindet im Zimmer (geht schlafen)
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 783,939
+__PrivCrochet_tags: 
+title: Caro_All_Ingredients
+---
+// Voraussetzung: Man hat alle Zutaten von den Nachbarn geholt und ist danach zurück in die Wohnung gegangen
+
+// Caro steht neben dem Herd
+// Man hat eine Konversation mit Caro, an einem Punkt in der Konversation beschließt man, mit dem Backen loszulegen
+// -> Zutaten verschwinden aus dem Inventar, wenig später erscheint das fertige Challah-Brot im Inventar
+// Caro sagt noch 1, 2 Dinge und dann geht man zu den Grandparents
+// -> Grandparents letzte Dialoge werden freigeschaltet
 ===

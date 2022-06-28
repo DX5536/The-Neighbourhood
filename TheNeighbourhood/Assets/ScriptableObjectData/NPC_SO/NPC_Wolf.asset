@@ -24,4 +24,4 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: Start_NPC_Wolf
-  speakerNPC_Color: {r: 0.7411765, g: 0.8745099, b: 0.93725497, a: 1}
+  speakerNPC_Color: {r: 0.46858314, g: 0.727305, b: 0.8490566, a: 1}
