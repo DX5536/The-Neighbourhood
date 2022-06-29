@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d3245b2f2c11749acafd2c8baf8876, type: 3}
   m_Name: PlayerValue_SO
   m_EditorClassIdentifier: 
-  playerPositionValue: {x: -7, y: -2.5}
-  moveTweenDuration: 1
+  playerPositionValue: {x: 7.2, y: -2.5}
+  moveTweenDuration: 2
   moveTweenSnapping: 0
   easeType: 0
-  tweenDurationProportionValue: 1
+  tweenDurationProportionValue: 2

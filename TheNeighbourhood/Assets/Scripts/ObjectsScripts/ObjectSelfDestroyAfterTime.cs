@@ -19,7 +19,7 @@ public class ObjectSelfDestroyAfterTime: MonoBehaviour
 
     IEnumerator SelfDestroyAfterSeconds()
     {
-        yield return new WaitForSeconds(mouseScriptableObject.ImageDisplayTime);
+        yield return new WaitForSeconds(mouseScriptableObject.ArrowDisplayTime);
 
         Destroy(parentGO);
     }

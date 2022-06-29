@@ -55,6 +55,10 @@ namespace Assets.Scripts.ScriptableObjects
         }
 
         [Header("Spawn small display arrow")]
+        [Tooltip("Player_SO so we can access tweenDurationProportionValue")]
+        [SerializeField]
+        private PlayerScriptableObject playerScriptableObject;
+
         [SerializeField]
         private GameObject arrowHUDImage;
 
@@ -71,12 +75,27 @@ namespace Assets.Scripts.ScriptableObjects
         }
 
         [SerializeField]
-        private int imageDisplayTime;
+        private float arrowDisplayTime;
 
-        public int ImageDisplayTime
+        public float ArrowDisplayTime
         {
-            get => imageDisplayTime;
-            set => imageDisplayTime = value;
+            get => arrowDisplayTime;
+            set => arrowDisplayTime = value;
+        }
+
+        [SerializeField]
+        private bool arrowHasSpawned;
+
+        public bool ArrowHasSpawned
+        {
+            get
+            {
+                return arrowHasSpawned;
+            }
+            set
+            {
+                arrowHasSpawned = value;
+            }
         }
 
         public void RoundMousePositionValue()
@@ -93,7 +112,21 @@ namespace Assets.Scripts.ScriptableObjects
 
         public void DisplayHUDImage()
         {
-            Instantiate(arrowHUDImage, new Vector2(raycastHitValue.x, raycastHitValue.y), arrowHUDImage.transform.rotation);
+            //If Arrow hasn't spawn yet -> Allow to spawn
+            if (arrowHasSpawned == false)
+            {
+                SetImageDisplayTime_ToProportionValue();
+
+                Instantiate(arrowHUDImage, new Vector2(raycastHitValue.x, raycastHitValue.y), arrowHUDImage.transform.rotation);
+                arrowHasSpawned = true;
+            }
+            //Else
+        }
+
+        private void SetImageDisplayTime_ToProportionValue()
+        {
+            //Set the HUD_Arrow displayed time to the amount the player needs to get to it
+            arrowDisplayTime = playerScriptableObject.TweenDurationProportionValue;
         }
 
         public void SetCanClickMouse()

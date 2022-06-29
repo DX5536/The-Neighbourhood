@@ -52,6 +52,7 @@ public class MouseClickPosition: MonoBehaviour
     {
         //mousePosition = Input.mousePosition;
     }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -63,8 +64,9 @@ public class MouseClickPosition: MonoBehaviour
 
     void Update()
     {
-        //if player allowed to click
-        if (mouseScriptableObject.CanClickMouse == true)
+        //if player allowed to click AND currently no HUD_Arrow present (Read_Only)
+        //ArrowHasSpawned logic in PlayerMovement.cs
+        if (mouseScriptableObject.CanClickMouse == true && mouseScriptableObject.ArrowHasSpawned == false)
         {
             //Save MousePosition upon L.Click
             if (Input.GetMouseButtonDown(0))

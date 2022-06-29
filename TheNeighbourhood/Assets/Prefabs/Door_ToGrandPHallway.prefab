@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8757806783214673873}
   - component: {fileID: 6964692580478599031}
   - component: {fileID: 6746134072186280572}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door_ToGrandPHallway
   m_TagString: Untagged
   m_Icon: {fileID: 0}

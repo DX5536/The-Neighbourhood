@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7842042057955269699}
   - component: {fileID: 6146731959687988262}
   - component: {fileID: 4800735899233654025}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: NPC_0_Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 145925797957929530}
   - component: {fileID: 3547185347014404250}
   - component: {fileID: 1719476236302501913}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NPC_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,9 +284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 0}
   _NPC_ScriptableObject: {fileID: 0}
-  continueTextEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  keyToPress_DEBUG: e
+  dialogueAdvanceInput: {fileID: 0}
 --- !u!114 &145925797957929530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,8 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterGO: {fileID: 7840881714515252219}
-  doorBoxCollider: {fileID: 7840881714515252218}
-  moveGoalGO: {fileID: 0}
   moveGoal_Offset: 0
   tweenDuration: 0
   easeType: 0
@@ -343,7 +340,7 @@ GameObject:
   - component: {fileID: 8954130835847100978}
   - component: {fileID: 4066744900433193759}
   - component: {fileID: 6441085637434649718}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Object Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

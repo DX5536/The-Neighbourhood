@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7452137354279215767}
   m_Layer: 0
   m_Name: HUD_Prefab
-  m_TagString: Untagged
+  m_TagString: HUD_Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseScriptableObject: {fileID: 11400000, guid: 5206e1e89c10a564c8a97bd853b81b19, type: 2}
+  parentGO: {fileID: 0}
 --- !u!212 &8861420722745384401
 SpriteRenderer:
   m_ObjectHideFlags: 0

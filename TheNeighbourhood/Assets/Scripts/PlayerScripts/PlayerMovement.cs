@@ -113,6 +113,9 @@ public class PlayerMovement: MonoBehaviour
         //playerRb = player.GetComponent<Rigidbody2D>();
         //characterController = player.GetComponent<CharacterController>();
 
+        //Reset arrowHasSpawned value back to false
+        mouseScriptableObject.ArrowHasSpawned = false;
+
         //mouseScriptableObject = FindObjectOfType<MouseClickPosition>();
         DOTween.SetTweensCapacity(2000, 100);
         //DontDestroyOnLoad(this.gameObject);
@@ -199,7 +202,7 @@ public class PlayerMovement: MonoBehaviour
             playerScriptableObject.TweenDurationProportionValue,
             playerScriptableObject.MoveTweenSnapping)
             .SetEase(playerScriptableObject.EaseType)
-            .OnComplete(StopWalkingSFX);
+            .OnComplete(OnComplete_MultipleMethods);
 
         //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
         playerScriptableObject.PlayerPositionValue = playerNewPos;
@@ -219,6 +222,20 @@ public class PlayerMovement: MonoBehaviour
             //If reach lastClickPos -> Can't move until mouseClick again
             mouseScriptableObject.IsPlayerMoving = false;
         }*/
+    }
+
+    //A collected method since .OnComplete now allow multple method
+    private void OnComplete_MultipleMethods()
+    {
+        StopWalkingSFX();
+        ResetHasSpawnedArrow();
+    }
+
+    //After Tween Animation -> Player can spawn HUD_Arrow again
+    private void ResetHasSpawnedArrow()
+    {
+        mouseScriptableObject.ArrowHasSpawned = false;
+        //Debug.Log("Reset ArrowHasSpawned");
     }
 
     private void StopWalkingSFX()
