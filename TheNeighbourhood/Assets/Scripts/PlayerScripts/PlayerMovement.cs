@@ -162,7 +162,7 @@ public class PlayerMovement: MonoBehaviour
 
     private void CalcTweenProportionValue()
     {
-        //Small math to calc the proportion between playerPos and RaycastHitValue
+        //Small math to calculation the proportion between playerPos and RaycastHitValue
         //And the proportion will be the duration amount
         //By doing so, player tween faster in smaller distance/tween slower at larger distance
         if (mouseScriptableObject.MousePositionValue.x > player.transform.position.x)
