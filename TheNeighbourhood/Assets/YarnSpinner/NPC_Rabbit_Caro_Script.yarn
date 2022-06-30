@@ -4,21 +4,24 @@ __PrivCrochet_position: 787,326
 __PrivCrochet_tags: 
 title: Start_Intro
 ---
-<<declare $hasCookedPizza to false>>
 <<declare $hasFrozenPizza to false>>
+<<declare $hasCookedPizza to false>>
 /// Name of gained item
 <<declare $gainedItem_Name to "">>
+//Hamantash
+<<declare $needHamantash to false>>
+<<declare $hasColdHamantash to false>>
 //Disable DoorCollider at start
 <<set $unlockedDoor_ToHallway to false>>
 <<Un_LockDoor Door_ToHallway ToHallway>>
 // Dieser Dialog wird ganz zu Beginn gespielt. Die Szene soll sein, wie die beiden die letzten Kisten nach oben gebracht haben
-Lilly: <i>...Tell me those were the last ones.</i> 
-Caroline: <b>Yes, thankfully. Welcome home to us, at last!</b>
+Lilly: ...Tell me those were the last ones.
+Caroline: Yes, thankfully. Welcome home to us, at last!
 Lilly: Welcome home, indeed!
 Caroline: Phew. Well, I don't know about you, but I am starving. And falling asleep. Both, simultaneously.
 Lilly: I got you! Pretty sure I bought some frozen pizza yesterday, I can bring you yours when it's done, ok?
 Caroline: You're a blessing! Definitely one of my top 3 roommates. What? The other two are my bed and my PC, no front. 
-Lilly: I'm competing with hardware and furniture? Ouch. 
+Lilly: I'm competing with hardware and furniture? Ouch.
 // An diesem Punkt soll der Dialog beendet werden und Caroline in ihr Zimmer verschwinden
 <<TargetMove NPC_Rabbit NPC_Rabbit_MoveGoal false>>
 <<jump Movement_Tutorial>>
@@ -29,16 +32,24 @@ __PrivCrochet_tags:
 title: Movement_Tutorial
 ---
 Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachdem Caroline in ihr Zimmer gegangen ist
-(Use your mouse to click where you want to go) // Dies soll als Message nach der ersten Line separat auftauchen
-
+<i>(Use your mouse to click where you want to go)</i> // Dies soll als Message nach der ersten Line separat auftauchen
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1259,327
 __PrivCrochet_tags: 
 title: Fridge_Interaction
 ---
-Lilly: Oh wow, besides my pastry for tonight there's barely any food left. We really should've done a thorough grocery run before unpacking. // Dieser Monolog passiert, wenn man den Kühlschrank auf der Suche nach den TK-Pizzen untersucht
-Lilly: Huh? No pizza? I must've forgotten to put it in the freezer… welp, wherever it is, let's hope it's still edible.
+//Generic Fridge interaction
+<<if $needHamantash == false && $hasFrozenPizza == true>>
+    Lilly: Who can live without a fridge?
+//If Lilly doesn't have Frozen Pizza yet
+<<elseif $hasFrozenPizza == false>>
+    // Dieser Monolog passiert, wenn man den Kühlschrank auf der Suche nach den TK-Pizzen untersucht
+    Lilly: Oh wow, besides my pastry for tonight there's barely any food left. We really should've done a thorough grocery run before unpacking. 
+    Lilly: Huh? No pizza? I must've forgotten to put it in the freezer… welp, wherever it is, let's hope it's still edible.
+<<elseif $needHamantash == true>>
+    <<jump Hamantash_Fridge_Interaction>>>
+<<endif>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1493,327
@@ -46,6 +57,7 @@ __PrivCrochet_tags:
 title: Picking_Up_Pizza_Monologue
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
+//Piza located in Bag
 <<if $hasFrozenPizza == false>>
     Lilly: There you are! Still looking good. To the oven microwave with you!
     <<set $hasFrozenPizza to true>>
@@ -65,6 +77,8 @@ title: Baking_Pizza_At_The_Oven
     <<set $hasCookedPizza to true>>
     <<AccessYarnGainedItemValue Yarn_InventoryManager>>
     <<DisplayGainedItem Yarn_InventoryManager>>
+    //Caro move to table
+    //<<TargetMove NPC_Rabbit Table false>>
     Lilly: Time to get back to Caroline.
 <<else>>
     Lilly: My good old microwave. 
@@ -78,12 +92,13 @@ title: Bringing_Pizza_to_Roommate
 ---
 Caroline: Do you have the Pizza yet?
 -> Lilly: Ah, not yet <<if $hasCookedPizza == false>>
-    Caroline: Come on, then. //Ich habe das hier zum test geadded.
+    //Ich habe das hier zum test geadded.
+    Caroline: Come on, then. 
 -> Lilly: Yup! <<if $hasCookedPizza == true>>
     Caroline: Smells like victory! 
     // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
     Lilly: We do deserve a medal after all those weeks of unpacking. So, where do we go from here?
-    Caroline: I'd suggest a nap and afterwards ignoring the boxes we just brought up and instead finishing our series marathon. 
+    Caroline: I'd suggest a nap and afterward ignoring the boxes we just brought up and instead of finishing our series marathon. 
     Caroline: … you don't look convinced. Fine, we can also work on our dreadfully boring game art assignment. Just be warned - I'm taking coding classes for a reason. 
     Lilly: It's not that. I'll just be over at my grandparents' in the evening and I'm thinking, maybe I should go there sooner. 
     Caroline: Oh. Did I miss an upcoming birthday party? Please tell me I didn't, I saw your grandma in the hallway yesterday and would've said something if I knew. 
@@ -97,10 +112,9 @@ Caroline: Do you have the Pizza yet?
     Caroline: I love that! And you do seem to have a great bond with your grandparents. Well then, don't let me stop you from checking on them!
     Lilly: You're right, I think it's a good idea to see how they're doing. 
     // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
-    Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in the fridge.
+    Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in <b>the fridge.</b>
+    <<set $needHamantash to true>>
     <<UseGainedItem Yarn_InventoryManager>>
-    This part is not implemented. Please go to Hallway -> Grandparents to continue
-    Just assume you have the Hamantashen pastry already >_O
     //Enable DoorCollider back
     <<set $unlockedDoor_ToHallway to true>>
     <<Un_LockDoor Door_ToHallway ToHallway>>
@@ -112,6 +126,8 @@ title: Hamantash_Fridge_Interaction
 ---
 // Spieler gehen zum Kühlschrank und holen Hamantaschen raus
 Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
+<<set $hasColdHamantash to true>>
+<<set $needHamantash to false>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 783,664

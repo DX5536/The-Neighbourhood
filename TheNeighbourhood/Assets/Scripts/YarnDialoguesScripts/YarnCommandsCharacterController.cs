@@ -64,7 +64,7 @@ public class YarnCommandsCharacterController: MonoBehaviour
     public void TargetMove_BackToOG(bool isCharacterRemove)
     {
         characterGO.transform.DOMoveX(character_OG_Pos.x, tweenDuration, isTweenSnapOn);
-        //If we want the character to disapear afterwards
+        //If we want the character to disappear afterwards
         if (isCharacterRemove)
         {
             SetGOActive();

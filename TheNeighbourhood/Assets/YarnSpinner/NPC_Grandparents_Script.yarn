@@ -23,12 +23,13 @@ title: Meeting_GrandParents_1st
     Amon: Lils! Oh, how beautiful that you're here, lovely. 
     Amon: You came at a marvelous time; I have a surprise for you! Come along.
     // Amon läuft wieder aus dem Frame
+    <<FlipSprite NPC_Grandpa>>
     <<TargetMove_Back NPC_Grandpa false>> 
     Lilly: Oh, um-
     <<set $firstVisitGrandParents to true>>
     // Amon-Dialog wird unlocked. Und Malkas kurzer Dialog.
     <<set $canTalk_Grandpa to true>>
-    Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterwards.
+    Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterward.
 <<else>>
     // If not first time visit anymore -> Say hi!
     <<set $unlockedDoor_ToHallway to true>>
@@ -41,7 +42,7 @@ __PrivCrochet_tags:
 title: Malka_Chat_Before_Amon
 ---
 // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
-Malka: We will catch up later, darling. Grandpa has been very excited about this suprise for you.
+Malka: We will catch up later, darling. Grandpa has been very excited about this surprise for you.
 //HAI LAM: Now obsolete!!! -> Comebine into 1 node: Malka_Long_Talk
 ===
 __PrivCrochet_colorID: 0
@@ -55,7 +56,7 @@ Amon: Ta-daa!
 Lilly: Wow, that's- for me? It seems so … up to date, Grandpa, you really didn't have to.
 Amon: It's mine, silly! You always talk about those little programs on the internet and drawings on your-, your desktop. 
 Amon: I would love to finally see them myself! However, I can't seem to figure out which buttons to press.
-Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- nevermind, here it is - our latest game.
+Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- never mind, here it is - our latest game.
 //Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
 <<TargetMove NPC_Grandma Grandma_Kitchen_Pos false>>
 Amon: Lils, are those your drawings? They're gorgeous! I need to show them to your grandma tomorrow. 
@@ -87,20 +88,20 @@ title: Malka_Talk
     Malka: You know, Lilly, I'm really happy you have been joining us for the past few years. 
     Malka: It was a wonderful idea to make this day special. The baking keeps my mind busy.
     Malka: And I know you keep telling me I don't have to always keep it busy, but today I just want to think about us, sweetheart. 
-    Malka: And I want to eat our food happily, because I know it makes it taste better.  
+    Malka: And I want to eat our food happily because I know it makes it taste better.  
     Lilly: That's perfectly fine, Grandma, I understand. 
     Malka: Speaking of food, let me take your hamantashen, dear, you don't have to carry them around. 
     Malka: Oh, they look and smell splendid! How's the challah bread getting along?
     // WICHTIG - Hamantashen-Gebäck verschwindet aus dem Inventar
     Lilly: The challah?
-    Malka: Oh, darling, I asked you for two favours, remember? Hamantashen and my favorite - challah. Is everything alright?
-    Lilly: ([i]Uhh... dang it. Challah, right. She definitely asked me for challah. I did definitely not make that...[/i])
+    Malka: Oh, darling, I asked you for two favors, remember? Hamantashen and my favorite - challah. Is everything alright?</i>
+    Lilly: <i>(Uhh... dang it. Challah, right. She definitely asked me for challah. I did definitely not make that...)</i>
     Lilly: Ah, right, the challah! Ha! You know, it's actually... 
-    Lilly: ([i]I can't ruin this evening for them[/i])
+    Lilly: <i>(I can't ruin this evening for them)</i>
     Lilly: Cooling off, yeah. Didn't want it to melt your plates ha ha... 
     Malka: Oh, honey, that's fine. Our dinner only starts in a few hours, that should be enough time.
     Lilly: Yeah, one hundo percento. Ahem. Well, cool. I think I'll do some homework until then. There's lots to do, tons. 
-    Lilly: ([i]Shiiiit.[/i])
+    Lilly: <i>(Shiiiit.)</i>
     Malka: Oh, of course, darling. You can always come down if you need a break.
     Lilly: Thanks, Grandma! Bye! 
     // Weg zurück ins Treppenhaus und zurück in die WG wird freigeschaltet, Zweiter Caro-Dialog wird freigeschaltet

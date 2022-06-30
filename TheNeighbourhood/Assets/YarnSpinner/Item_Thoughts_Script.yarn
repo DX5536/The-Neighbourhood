@@ -2,6 +2,12 @@
 tags:
 position: -183,-118
 ---
-Lilly: (Maybe I should wash my hand...)
-Lilly: (Water sure is refreshing!)
+Lilly: <i>(Maybe I should wash my hand...)</i>
+Lilly: <i>(Water sure is refreshing!)</i>
+===
+title: Item_Table
+position: 0,1
+---
+Lilly: <i>(I could bring food to my room...)</i>
+Lilly: <i>(Or eat at the table with Caro...)</i>
 ===

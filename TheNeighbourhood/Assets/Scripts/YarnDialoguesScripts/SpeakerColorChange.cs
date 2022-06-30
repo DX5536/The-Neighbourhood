@@ -36,7 +36,7 @@ public class SpeakerColorChange: DialogueViewBase
     public override void RunLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
     {
         SetNameColor(dialogueLine.CharacterName);
-        Debug.Log("Running Line!!!");
+        Debug.Log("Running Line!!! " + this.gameObject.name);
     }
 
     private void SetNameColor(string characterName)
