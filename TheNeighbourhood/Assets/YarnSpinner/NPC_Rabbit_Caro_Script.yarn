@@ -110,6 +110,7 @@ Caroline: Do you have the Pizza yet?
     Lilly: I eventually decided to join them and over the years it just turned into a day of coming together and celebrating our Jewish culture
     Lilly: while remembering those that were left behind. 
     Caroline: I love that! And you do seem to have a great bond with your grandparents. Well then, don't let me stop you from checking on them!
+    <<Toggle_CharacterActive NPC_Rabbit true>>
     Lilly: You're right, I think it's a good idea to see how they're doing. 
     // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
     Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in <b>the fridge.</b>

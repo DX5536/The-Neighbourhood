@@ -50,7 +50,7 @@ public class YarnCommandsCharacterController: MonoBehaviour
             //If we want the character to disappear afterwards
             if (isCharacterRemove)
             {
-                SetGOActive();
+                SetGOActive(true);
             }
         }
 
@@ -67,7 +67,7 @@ public class YarnCommandsCharacterController: MonoBehaviour
         //If we want the character to disappear afterwards
         if (isCharacterRemove)
         {
-            SetGOActive();
+            SetGOActive(true);
         }
     }
 
@@ -85,14 +85,17 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
-    private void SetGOActive()
+    [YarnCommand("Toggle_CharacterActive")]
+    private void SetGOActive(bool toSetActive)
     {
-        if (characterGO.activeSelf == false)
+        //Turn on Character
+        if (characterGO.activeSelf == false && toSetActive == true)
         {
-            return;
+            characterGO.SetActive(true);
         }
 
-        else
+        //Turn off Character
+        else if (characterGO.activeSelf == true && toSetActive == false)
         {
             characterGO.SetActive(false);
         }
