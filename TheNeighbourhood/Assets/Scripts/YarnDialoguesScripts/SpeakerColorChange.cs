@@ -15,6 +15,7 @@ public class SpeakerColorChange: DialogueViewBase
     [SerializeField]
     private ItemScriptableObject[] itemScriptableObjects;
 
+    [Header("Current speaker_READ_ONLY")]
     [SerializeField]
     private string characterName_TXT;
 
@@ -22,8 +23,7 @@ public class SpeakerColorChange: DialogueViewBase
     [SerializeField]
     private TMP_Text characterName_TMP;
 
-    [Header("DialogSystem > Lineview > Background")]
-    
+    [Header("DialogSystem > Lineview > Background -> Drag/Drop")]
     [SerializeField]
     private Image textBox_Background;
 
@@ -45,7 +45,7 @@ public class SpeakerColorChange: DialogueViewBase
     public override void RunLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
     {
         SetNameColor(dialogueLine.CharacterName);
-        ChangeTextBoxColor();
+        ChangeTextBoxColor(dialogueLine.CharacterName);
         Debug.Log("Running Line!!! " + this.gameObject.name);
     }
 
@@ -70,14 +70,12 @@ public class SpeakerColorChange: DialogueViewBase
         else if (characterNameColor.ContainsKey(characterName))
         {
             characterName_TMP.color = characterNameColor[characterName];
-            
+
             Debug.Log(characterName + " is speaking with" + characterNameColor);
         }
-
-        
     }
 
-    public void ChangeTextBoxColor()
+    public void ChangeTextBoxColor(string characterNameTextBox)
     {
         Dictionary<string, Color> characterTextBoxColor = new Dictionary<string, Color>
         {
@@ -90,7 +88,18 @@ public class SpeakerColorChange: DialogueViewBase
             {NPC_Names[6], itemScriptableObjects[6].TextBox_Color}, //Squirrel
         };
 
-            textBox_Background.color = new Color(255, 255, 0, 100);
+        //textBox_Background.color = new Color(255, 255, 0, 50);
+
+        if (string.IsNullOrEmpty(characterNameTextBox))
+        {
+            Debug.Log("There is no Speaker");
+        }
+        else if (characterTextBoxColor.ContainsKey(characterNameTextBox))
+        {
+            textBox_Background.color = characterTextBoxColor[characterNameTextBox];
+
+            Debug.Log(characterNameTextBox + " is speaking with box: " + characterTextBoxColor);
+        }
     }
 
 }

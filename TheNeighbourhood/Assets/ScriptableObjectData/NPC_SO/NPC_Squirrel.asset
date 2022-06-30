@@ -25,3 +25,6 @@ MonoBehaviour:
   easeType: 0
   nodeName: 
   speakerNPC_Color: {r: 0.7924528, g: 0.4906316, b: 0.1981132, a: 1}
+  textBox_Color:
+    serializedVersion: 2
+    rgba: 1681096138

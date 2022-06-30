@@ -25,3 +25,6 @@ MonoBehaviour:
   easeType: 0
   nodeName: Malka_Talk
   speakerNPC_Color: {r: 0.4901961, g: 0.5176471, b: 0.74509805, a: 1}
+  textBox_Color:
+    serializedVersion: 2
+    rgba: 1690207357

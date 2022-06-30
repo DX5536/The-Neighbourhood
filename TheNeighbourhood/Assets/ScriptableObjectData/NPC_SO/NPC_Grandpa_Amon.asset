@@ -25,3 +25,6 @@ MonoBehaviour:
   easeType: 0
   nodeName: Amon_Computer
   speakerNPC_Color: {r: 0.40784317, g: 0.63529414, b: 0.63529414, a: 1}
+  textBox_Color:
+    serializedVersion: 2
+    rgba: 1688380008
