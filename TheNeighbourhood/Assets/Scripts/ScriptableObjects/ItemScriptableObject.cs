@@ -61,6 +61,20 @@ public class ItemScriptableObject: ScriptableObject
         }
     }
 
+    [SerializeField]
+    private Color32 textBox_Color;
+
+    public Color32 TextBox_Color
+    {
+        get
+        {
+            return textBox_Color;
+        }
+        set
+        {
+            textBox_Color = value;
+        }
+    }
 
     public bool ResetIsInteractableAtStart
     {

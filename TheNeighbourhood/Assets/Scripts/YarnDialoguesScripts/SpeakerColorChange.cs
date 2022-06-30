@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 
@@ -14,9 +15,17 @@ public class SpeakerColorChange: DialogueViewBase
     [SerializeField]
     private ItemScriptableObject[] itemScriptableObjects;
 
+    [SerializeField]
+    private string characterName_TXT;
+
     [Header("DialogSystem > Speaker's TMP -> Auto find")]
     [SerializeField]
     private TMP_Text characterName_TMP;
+
+    [Header("DialogSystem > Lineview > Background")]
+    
+    [SerializeField]
+    private Image textBox_Background;
 
 
     void Start()
@@ -36,11 +45,13 @@ public class SpeakerColorChange: DialogueViewBase
     public override void RunLine(LocalizedLine dialogueLine, Action onDialogueLineFinished)
     {
         SetNameColor(dialogueLine.CharacterName);
+        ChangeTextBoxColor();
         Debug.Log("Running Line!!! " + this.gameObject.name);
     }
 
     private void SetNameColor(string characterName)
     {
+        characterName_TXT = characterName;
         Dictionary<string, Color> characterNameColor = new Dictionary<string, Color>
         {
             {NPC_Names[0], itemScriptableObjects[0].SpeakerNPC_Color}, //Lilly
@@ -50,15 +61,6 @@ public class SpeakerColorChange: DialogueViewBase
             {NPC_Names[4], itemScriptableObjects[4].SpeakerNPC_Color}, //Wolf
             {NPC_Names[5], itemScriptableObjects[5].SpeakerNPC_Color}, //Bird
             {NPC_Names[6], itemScriptableObjects[6].SpeakerNPC_Color}, //Squirrel
-
-            //DOESNT WORK and simply more work ;_;
-            /*{NPC_Names[0], NPC_Colors[0]}, //Lilly
-            {NPC_Names[1], NPC_Colors[1]}, //Caro
-            {NPC_Names[2], NPC_Colors[2]}, //Malka, Grandma
-            {NPC_Names[3], NPC_Colors[3]}, //Amon, Grandpa
-            {NPC_Names[4], NPC_Colors[4]}, //Wolf
-            {NPC_Names[5], NPC_Colors[5]}, //Bird
-            {NPC_Names[6], NPC_Colors[6]}, //Squirrel*/
         };
 
         if (string.IsNullOrEmpty(characterName))
@@ -68,7 +70,28 @@ public class SpeakerColorChange: DialogueViewBase
         else if (characterNameColor.ContainsKey(characterName))
         {
             characterName_TMP.color = characterNameColor[characterName];
+            
             Debug.Log(characterName + " is speaking with" + characterNameColor);
         }
+
+        
     }
+
+    public void ChangeTextBoxColor()
+    {
+        Dictionary<string, Color> characterTextBoxColor = new Dictionary<string, Color>
+        {
+            {NPC_Names[0], itemScriptableObjects[0].TextBox_Color}, //Lilly
+            {NPC_Names[1], itemScriptableObjects[1].TextBox_Color}, //Caro
+            {NPC_Names[2], itemScriptableObjects[2].TextBox_Color}, //Malka, Grandma
+            {NPC_Names[3], itemScriptableObjects[3].TextBox_Color}, //Amon, Grandpa
+            {NPC_Names[4], itemScriptableObjects[4].TextBox_Color}, //Wolf
+            {NPC_Names[5], itemScriptableObjects[5].TextBox_Color}, //Bird
+            {NPC_Names[6], itemScriptableObjects[6].TextBox_Color}, //Squirrel
+        };
+
+            textBox_Background.color = new Color(255, 255, 0, 100);
+    }
+
 }
+

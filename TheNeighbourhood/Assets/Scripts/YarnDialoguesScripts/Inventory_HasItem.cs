@@ -62,6 +62,11 @@ public class Inventory_HasItem: MonoBehaviour
                 StartItemSFX();
                 itemIcons[3].SetActive(true);
                 break;
+            case "FrozenPizza": //Slot 3.5
+                Debug.Log("Player gained Pizza! in Switch-Case");
+                StartItemSFX();
+                itemIcons[4].SetActive(true);
+                break;
         }
     }
 

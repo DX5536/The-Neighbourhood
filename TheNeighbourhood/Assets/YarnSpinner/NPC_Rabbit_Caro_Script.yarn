@@ -76,6 +76,7 @@ __PrivCrochet_tags:
 title: Baking_Pizza_At_The_Oven
 ---
 <<if $hasFrozenPizza == true>>
+    <<UseGainedItem Yarn_InventoryManager>>
     Lilly: The smell... Yum!
     <<set $gainedItem_Name to "Pizza">>
     <<set $hasCookedPizza to true>>

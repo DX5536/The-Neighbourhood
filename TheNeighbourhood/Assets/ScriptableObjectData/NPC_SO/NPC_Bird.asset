@@ -25,3 +25,6 @@ MonoBehaviour:
   easeType: 0
   nodeName: Start_NPC_Bird
   speakerNPC_Color: {r: 0.9058824, g: 0.47058827, b: 0.5372549, a: 1}
+  textBox_Color:
+    serializedVersion: 2
+    rgba: 0
