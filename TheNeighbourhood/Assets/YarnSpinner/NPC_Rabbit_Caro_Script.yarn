@@ -6,6 +6,7 @@ title: Start_Intro
 ---
 <<declare $hasFrozenPizza to false>>
 <<declare $hasCookedPizza to false>>
+<<declare $useCookedPizza to false>>
 /// Name of gained item
 <<declare $gainedItem_Name to "">>
 //Hamantash
@@ -61,6 +62,9 @@ title: Picking_Up_Pizza_Monologue
 <<if $hasFrozenPizza == false>>
     Lilly: There you are! Still looking good. To the oven microwave with you!
     <<set $hasFrozenPizza to true>>
+    <<set $gainedItem_Name to "FrozenPizza">>
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
 <<else>>
     Lilly: My beloved table!
 <<endif>>
@@ -93,7 +97,8 @@ title: Bringing_Pizza_to_Roommate
 Caroline: Do you have the Pizza yet?
 -> Lilly: Ah, not yet <<if $hasCookedPizza == false>>
     //Ich habe das hier zum test geadded.
-    Caroline: Come on, then. 
+    Caroline: Come on, then.
+-> Lilly: We just ate it... <<if $useCookedPizza == true>>
 -> Lilly: Yup! <<if $hasCookedPizza == true>>
     Caroline: Smells like victory! 
     // Dieser Dialog findet statt, wenn man die gebackenen Pizzen zu Caroline bringt 
@@ -115,10 +120,9 @@ Caroline: Do you have the Pizza yet?
     // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
     Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in <b>the fridge.</b>
     <<set $needHamantash to true>>
+    <<set $useCookedPizza to true>>
     <<UseGainedItem Yarn_InventoryManager>>
     //Enable DoorCollider back
-    <<set $unlockedDoor_ToHallway to true>>
-    <<Un_LockDoor Door_ToHallway ToHallway>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 2210,330
@@ -129,6 +133,8 @@ title: Hamantash_Fridge_Interaction
 Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
 <<set $hasColdHamantash to true>>
 <<set $needHamantash to false>>
+<<set $unlockedDoor_ToHallway to true>>
+<<Un_LockDoor Door_ToHallway ToHallway>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 783,664
