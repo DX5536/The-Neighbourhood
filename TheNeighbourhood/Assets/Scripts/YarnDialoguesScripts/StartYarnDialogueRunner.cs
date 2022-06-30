@@ -37,6 +37,10 @@ public class StartYarnDialogueRunner: MonoBehaviour
         {
             dialogueAdvanceInput = GameObject.Find("Line View").GetComponent<DialogueAdvanceInput>();
         }
+
+        //Items have to be reset isInteract
+        //Else random last isInteract Item's node will play
+        _NPC_ScriptableObject.SetIsInteractable();
     }
 
     void Update()
@@ -80,7 +84,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
             {
                 dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
                 StartCoroutine(WaitToClickContinue());
-
+                Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
             }
         }
     }
@@ -97,8 +101,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
         //dialogueRunner.StartDialogue(nodeToStart);
         if (collision.tag == _NPC_ScriptableObject.PlayerTag)
         {
-            Debug.Log("Player in Range");
-
+            Debug.Log("Player in Range of " + this.gameObject.name + _NPC_ScriptableObject.NodeName);
             _NPC_ScriptableObject.IsInteractable = true;
         }
     }
