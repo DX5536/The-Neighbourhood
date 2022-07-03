@@ -43,7 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496bba723767ace4f8616917b670b359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemBehaviourEvents:
+    m_PersistentCalls:
+      m_Calls: []
   itemIcons:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

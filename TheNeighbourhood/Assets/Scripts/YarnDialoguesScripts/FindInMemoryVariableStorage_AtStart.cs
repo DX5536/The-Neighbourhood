@@ -18,7 +18,7 @@ public class FindInMemoryVariableStorage_AtStart: MonoBehaviour
     private void Start()
     {
         //First find the storage by tag (cuz I need the storage in non-DialogRunner too)
-        storage = FindObjectOfType<InMemoryVariableStorage>();
+        storage = GameObject.FindGameObjectWithTag("VariableStorage").GetComponent<InMemoryVariableStorage>();
 
         if (storage != null)
         {

@@ -60,7 +60,7 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
     }
 
     [YarnCommand("Un_LockDoor")]
-    public void Un_LockDoor_Status(string doorName)
+    public void Un_LockDoor_Status(string doorName, bool toUnlock)
     {
         //Update the vars with SO upon call this Un_Lock command
         UpdateHasUnlockedVar_With_SO();
@@ -68,13 +68,13 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         switch (doorName)
         {
             case ("Grandparents"):
-                Un_LockDoor_Grandparents_Status();
+                Un_LockDoor_Grandparents_Status(toUnlock);
                 break;
             case ("ToHallway"):
-                Un_LockDoor_ToHallway_Status();
+                Un_LockDoor_ToHallway_Status(toUnlock);
                 break;
             case ("Wolf"):
-                Un_LockDoor_Wolf_Status();
+                Un_LockDoor_Wolf_Status(toUnlock);
                 break;
             case ("Bird"):
                 Un_LockDoor_Bird_Status();
@@ -110,9 +110,9 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_Grandparents_Status()
+    private void Un_LockDoor_Grandparents_Status(bool isUnlock)
     {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents && isUnlock)
         {
             lockedDoorSO.IsInteractable = true;
             sceneTransitionColliderManager.enabled = true;
@@ -126,9 +126,9 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_ToHallway_Status()
+    private void Un_LockDoor_ToHallway_Status(bool isUnlock)
     {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway && isUnlock)
         {
             lockedDoorSO.IsInteractable = true;
             sceneTransitionColliderManager.enabled = true;
@@ -143,9 +143,9 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_Wolf_Status()
+    private void Un_LockDoor_Wolf_Status(bool isUnlock)
     {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf && isUnlock)
         {
             sceneTransitionColliderManager.enabled = true;
             lockedDoorSO.IsInteractable = true;

@@ -42,13 +42,13 @@ public class YarnCommandsCharacterController: MonoBehaviour
     }
 
     [YarnCommand("TargetSpawn")]
-    public void TargetSpawn(string spawnPointName, bool showCharacter)
+    public void TargetSpawn(float spawnOffset, string spawnPointName, bool showCharacter)
     {
         var spawnPointGO = GameObject.Find(spawnPointName);
 
         if (spawnPointGO)
         {
-            characterGO.transform.position = new Vector2(spawnPointGO.transform.position.x, spawnPointGO.transform.position.y);
+            characterGO.transform.position = new Vector3(spawnPointGO.transform.position.x + spawnOffset, spawnPointGO.transform.position.y, 0.5f);
             ShowSprite(showCharacter);
         }
     }

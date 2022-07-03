@@ -14,6 +14,8 @@ public class CaroNodesManager: MonoBehaviour
     private HasTalkedToNPC_ScriptableObject hasTalkedToNPC_ScriptableObject;
     [SerializeField]
     private ItemScriptableObject _NPC_Rabbit_ScriptableObject;
+    [SerializeField]
+    private YarnCommandsCharacterController _NPC_Rabbit;
 
     [Header("DialogueSystem_AUTOFind")]
     [SerializeField]
@@ -34,7 +36,7 @@ public class CaroNodesManager: MonoBehaviour
 
         //To Auto-find DialogueRunner and InMemoryVariable
         dialogueRunner = FindObjectOfType<DialogueRunner>();
-        storage = FindObjectOfType<InMemoryVariableStorage>();
+        storage = GameObject.FindGameObjectWithTag("VariableStorage").GetComponent<InMemoryVariableStorage>();
 
         //Get Yarn's var and save it locally to access later
         GetHasTalkedGrandParentsVar();
@@ -60,21 +62,23 @@ public class CaroNodesManager: MonoBehaviour
 
     private void ReVisit_NPCRabbit_Caro()
     {
+        //If Player has talked with Grandparents -> value = true:
+
+        if (hasTalked_Grandma && hasTalked_Grandpa)
+        {
+            //Deactivate AutoStart
+            dialogueRunner.startAutomatically = false;
+            //Caro is not near the boxes but in her room -> Not visible
+            //Init Spawn when go back to room
+            _NPC_Rabbit.TargetSpawn(0, "NPC_Rabbit_MoveGoal", false);
+            Debug.Log("No Start Automatically");
+        }
         //If not = First start the game
-        if (!hasTalked_Grandma && !hasTalked_Grandpa)
+        else
         {
             //Activate AutoStart
             dialogueRunner.startAutomatically = true;
             Debug.Log("First time play the game!");
-
-
-        }
-        //If Player has talked with Grandparents -> value = true:
-        else
-        {
-            //Deactivate AutoStart
-            dialogueRunner.startAutomatically = false;
-            Debug.Log("No Start Automatically");
         }
     }
 }

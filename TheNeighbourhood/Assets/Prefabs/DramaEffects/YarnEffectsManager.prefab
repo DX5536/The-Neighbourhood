@@ -169,6 +169,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3108499802517916873, guid: 24028315d013f844d9e366901b56665e, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3108499802517916919, guid: 24028315d013f844d9e366901b56665e, type: 3}
       propertyPath: m_Name
       value: RainEffects
