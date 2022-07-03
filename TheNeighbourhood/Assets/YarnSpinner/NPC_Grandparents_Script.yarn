@@ -63,11 +63,13 @@ Amon: Lils, are those your drawings? They're gorgeous! I need to show them to yo
 Lilly: Thanks, Grandpa! that's really sweet of you.
 Lilly: How are you guys holding up, by the way? You seem quite happy. 
 Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
-Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. I think we all are, aren't we? 
+Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. 
+Amon: I think we all are, aren't we? 
 // Gespräch mit Malka wird unlocked
 <<set $hasTalked_Grandpa to true>>
-Amon: It's not always easy, but today it has been - to my own surprise. I'm not so sure your grandma feels the same today, though. She has been quiet.
-Amon: Maybe you can talk to her? You always know the right things to say. 
+Amon: It's not always easy, but today it has been - to my own surprise. 
+Amon: I'm not so sure your grandma feels the same today, though. She has been quiet.
+Amon: Maybe you can talk to her? You always know the right things to say.
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 691,-3
@@ -91,12 +93,12 @@ title: Malka_Talk
     Malka: And I want to eat our food happily because I know it makes it taste better.  
     Lilly: That's perfectly fine, Grandma, I understand. 
     Malka: Speaking of food, let me take your hamantashen, dear, you don't have to carry them around. 
-    Malka: Oh, they look and smell splendid! How's the challah bread getting along?
+    Malka: Oh, they look and smell splendid! How's the Challah bread getting along?
     // WICHTIG - Hamantashen-Gebäck verschwindet aus dem Inventar
-    Lilly: The challah?
-    Malka: Oh, darling, I asked you for two favors, remember? Hamantashen and my favorite - challah. Is everything alright?</i>
-    Lilly: <i>(Uhh... dang it. Challah, right. She definitely asked me for challah. I did definitely not make that...)</i>
-    Lilly: Ah, right, the challah! Ha! You know, it's actually... 
+    Lilly: The Challah?
+    Malka: Oh, darling, I asked you for two favors, remember? Hamantashen and my favorite - Challah. Is everything alright?</i>
+    Lilly: <i>(Uhh... dang it. Challah, right. She definitely asked me for Challah. I did definitely not make that...)</i>
+    Lilly: Ah, right, the Challah! Ha! You know, it's actually... 
     Lilly: <i>(I can't ruin this evening for them)</i>
     Lilly: Cooling off, yeah. Didn't want it to melt your plates ha ha... 
     Malka: Oh, honey, that's fine. Our dinner only starts in a few hours, that should be enough time.
@@ -110,11 +112,20 @@ title: Malka_Talk
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 1,271
+__PrivCrochet_position: -4,489
 __PrivCrochet_tags: 
 title: Grandparents_Celebration
 ---
 // Voraussetzung: Man hat das Challah-Brot gebacken
 
 // Ich bin mir noch nicht sicher, was in dieser Szene passieren soll, aber beim Abschluss des letzten Dialogs sollte in die Credits übergegangen werden
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 1,240
+__PrivCrochet_tags: 
+title: Leaving_Grandparents_Apartment
+---
+// Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
+Lilly: (Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)
+Lilly: (Caro! Let's get back to Caro, she will know what to do!)
 ===
