@@ -7,9 +7,6 @@ public class SceneTransitionColliderManager: MonoBehaviour
     [SerializeField]
     private string playerTag = "Player";
 
-    //[SerializeField]
-    //private int sceneToLoadIndex;
-
     [SerializeField]
     private string keyToPress_DEBUG = "e";
 

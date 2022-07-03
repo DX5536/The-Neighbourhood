@@ -215,7 +215,7 @@ MonoBehaviour:
   - {fileID: 4071169107938441368}
   - {fileID: 0}
   startNode: Start_Intro
-  startAutomatically: 1
+  startAutomatically: 0
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}
   verboseLogging: 1

@@ -266,16 +266,17 @@ public class PlayerMovement: MonoBehaviour
             //Debug.Log("Player moving Left");
         }
     }
-
-    //public method for DialogueRunner -> Can't move when dialog playing
-    public void ChangePlayerMoveTrue()
+    //public method is to activate through DialogRunner's Event
+    public void ChangePlayerMove(bool canMove)
     {
-        canPlayerMove = true;
-    }
-
-    public void ChangePlayerMoveFalse()
-    {
-        canPlayerMove = false;
+        if (!canMove)
+        {
+            canPlayerMove = false;
+        }
+        else
+        {
+            canPlayerMove = true;
+        }
     }
 
     //Changing Game State through event -> PlayerMovement act as caller

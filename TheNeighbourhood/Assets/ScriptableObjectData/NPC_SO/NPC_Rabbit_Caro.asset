@@ -23,7 +23,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: Bringing_Pizza_to_Roommate
+  nodeName: TalkTo_NPC_Rabbit_Caroline
   speakerNPC_Color: {r: 0.2748754, g: 0.8207547, b: 0.5379971, a: 1}
   textBox_Color:
     serializedVersion: 2

@@ -7,8 +7,6 @@ public class StartYarnDialogueRunner: MonoBehaviour
 {
     [Header("Access my Yarn DialogueRunner -> Start Dialog")]
     [SerializeField]
-    private string dialogueRunnerNAME = "Dialogue System_CUSTOM";
-    [SerializeField]
     private DialogueRunner dialogueRunner;
 
     [SerializeField]
@@ -31,7 +29,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
         {
             //This is the send safety net if 1st search didn't work for some reason
             //Debug.Log("Have to do an 2nd in-depth search");
-            dialogueRunner = GameObject.Find(dialogueRunnerNAME).GetComponent<DialogueRunner>();
+            dialogueRunner = FindObjectOfType<DialogueRunner>();
         }
 
         dialogueAdvanceInput = FindObjectOfType<DialogueAdvanceInput>();

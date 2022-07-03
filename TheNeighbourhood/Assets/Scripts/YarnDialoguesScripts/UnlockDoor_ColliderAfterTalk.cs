@@ -3,19 +3,19 @@ using Yarn.Unity;
 
 public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 {
+    [Header("ScriptableObjects")]
     [SerializeField]
     private ItemScriptableObject lockedDoorSO;
+    [SerializeField]
+    private HasTalkedToNPC_ScriptableObject hasTalkedToNPC_ScriptableObject;
 
     [SerializeField]
     private SceneTransitionColliderManager sceneTransitionColliderManager;
 
-    [SerializeField]
-    private GameObject objectCanvas;
-
-    [SerializeField]
-    private string inSceneDoorName = "";
-
     [Header("READ_ONLY")]
+    [SerializeField]
+    private bool unlockedDoor_NPC_Wolf = false;
+
     [SerializeField]
     private bool unlockedDoor_NPC_Bird = false;
 
@@ -33,6 +33,10 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 
     private void Start()
     {
+        //Reset all the UnlockedDoorVar to False
+        hasTalkedToNPC_ScriptableObject.ResetAllUnlockedDoorToFalse();
+
+        //Find the Yarn InMemoryVarStorage
         variableStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         if (variableStorage != null)
@@ -45,6 +49,9 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         Un_LockDoor_Status("ToHallway");
         //Temporary fix of ToHallway door not getting value at start
         unlockedDoor_ToHallway = false;
+
+        //Check the current status of the door based on Yarn's variables
+        UpdateHasUnlockedVar_With_SO();
     }
 
     private void Update()
@@ -56,14 +63,17 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
     {
         switch (doorName)
         {
+            case ("ToHallway"):
+                Un_LockDoor_ToHallway_Status();
+                break;
+            case ("Wolf"):
+                Un_LockDoor_Wolf_Status();
+                break;
             case ("Bird"):
                 Un_LockDoor_Bird_Status();
                 break;
             case ("Squirrel"):
                 Un_LockDoor_Squirrel_Status();
-                break;
-            case ("ToHallway"):
-                Un_LockDoor_ToHallway_Status();
                 break;
             case (null):
                 Debug.Log("No door to unlock");
@@ -71,102 +81,75 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_Bird_Status()
+    //First I read all the hasDoorUnlocked Value in Memory storage
+    //Then I assign them to the Scriptable Object => To be up-to-date with the latest values
+    private void UpdateHasUnlockedVar_With_SO()
     {
-        AccessYarnHasUnlockedNPC_Bird_Value();
+        if (variableStorage != null)
+        {
+            //Try get the value
+            variableStorage.TryGetValue("$unlockedDoor_ToHallway", out unlockedDoor_ToHallway);
+            variableStorage.TryGetValue("$unlockedDoor_NPC_Wolf", out unlockedDoor_NPC_Wolf);
+            variableStorage.TryGetValue("$unlockedDoor_NPC_Bird", out unlockedDoor_NPC_Bird);
+            variableStorage.TryGetValue("$unlockedDoor_NPC_Squirrel", out unlockedDoor_NPC_Squirrel);
 
-        if (unlockedDoor_NPC_Bird != true)
+            //Assign the SO's status to be interactable
+            //To change to the "outline_MAT" and pop-up active
+            lockedDoorSO.IsInteractable = unlockedDoor_ToHallway;
+
+            //Assign the local unlockedDoor values to HasTalked_ScriptableObjects
+            hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway = unlockedDoor_ToHallway;
+            hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf = unlockedDoor_NPC_Wolf;
+            hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Bird = unlockedDoor_NPC_Bird;
+            hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Squirrel = unlockedDoor_NPC_Squirrel;
+        }
+    }
+
+    private void Un_LockDoor_Wolf_Status()
+    {
+        if (!hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf)
         {
             sceneTransitionColliderManager.enabled = false;
-            objectCanvas.SetActive(false);
         }
         else
         {
             sceneTransitionColliderManager.enabled = true;
-            objectCanvas.SetActive(true);
+        }
+    }
+
+    private void Un_LockDoor_Bird_Status()
+    {
+        if (!hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Bird)
+        {
+            sceneTransitionColliderManager.enabled = false;
+        }
+        else
+        {
+            sceneTransitionColliderManager.enabled = true;
         }
     }
 
     private void Un_LockDoor_Squirrel_Status()
     {
-        AccessYarnHasUnlockedNPC_Squirrel_Value();
-        if (unlockedDoor_NPC_Squirrel != true)
+        if (!hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Squirrel)
         {
             sceneTransitionColliderManager.enabled = false;
-            objectCanvas.SetActive(false);
         }
         else
         {
             sceneTransitionColliderManager.enabled = true;
-            objectCanvas.SetActive(true);
         }
     }
 
     private void Un_LockDoor_ToHallway_Status()
     {
-        AccessYarnHasUnlocked_ToHallway_Value();
-        if (unlockedDoor_ToHallway == false)
+        if (!hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway)
         {
             sceneTransitionColliderManager.enabled = false;
-            objectCanvas.SetActive(false);
         }
         else
         {
             sceneTransitionColliderManager.enabled = true;
-            objectCanvas.SetActive(true);
-        }
-    }
-
-    private void AccessYarnHasUnlockedNPC_Bird_Value()
-    {
-        if (variableStorage != null)
-        {
-            variableStorage.TryGetValue("$unlockedDoor_NPC_Bird", out unlockedDoor_NPC_Bird);
-            //Debug.Log("There is InMemoryVariableStorage");
-
-            //Assign the SO's status to be interactable
-            //To change to the "outline_MAT" and pop-up active
-            lockedDoorSO.IsInteractable = unlockedDoor_NPC_Bird;
-        }
-        else
-        {
-            Debug.Log("There is no GO of type InMemoryVariableStorage");
-        }
-    }
-
-    private void AccessYarnHasUnlockedNPC_Squirrel_Value()
-    {
-        if (variableStorage != null)
-        {
-            variableStorage.TryGetValue("$unlockedDoor_NPC_Squirrel", out unlockedDoor_NPC_Squirrel);
-            //Debug.Log("There is InMemoryVariableStorage");
-
-            //Assign the SO's status to be interactable
-            //To change to the "outline_MAT" and pop-up active
-            lockedDoorSO.IsInteractable = unlockedDoor_NPC_Squirrel;
-        }
-        else
-        {
-            Debug.Log("There is no GO of type InMemoryVariableStorage");
-        }
-    }
-
-    private void AccessYarnHasUnlocked_ToHallway_Value()
-    {
-        if (variableStorage != null)
-        {
-            variableStorage.TryGetValue("$unlockedDoor_ToHallway", out unlockedDoor_ToHallway);
-            //Debug.Log("There is InMemoryVariableStorage");
-
-            //Assign the SO's status to be interactable
-            //To change to the "outline_MAT" and pop-up active
-
-            lockedDoorSO.IsInteractable = unlockedDoor_ToHallway;
-        }
-        else
-        {
-            //Debug.Log("There is no GO of type InMemoryVariableStorage");
-            return;
         }
     }
 }

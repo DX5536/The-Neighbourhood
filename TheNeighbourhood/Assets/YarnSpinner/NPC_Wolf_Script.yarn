@@ -9,8 +9,8 @@ title: Start_NPC_Wolf
 <<declare $isPlayerNeedFlour = true>>
 /// Check if player ALREADY has flour
 <<declare $getFlour = false>>
-/// Check if door to NPC_Bird is unlocked
-<<declare $unlockedDoor_NPC_Bird = false>>
+/// Check if door to NPC_Wolf is unlocked
+<<declare $unlockedDoor_NPC_Wolf = false>>
 
 <<SetGlobalVolumeActive YarnEffectsManager true>>
 Player: (Huh? Why is everything black and white???)

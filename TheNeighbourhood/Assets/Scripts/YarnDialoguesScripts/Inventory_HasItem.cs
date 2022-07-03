@@ -57,6 +57,18 @@ public class Inventory_HasItem: MonoBehaviour
                 itemIcons[0].SetActive(true);
                 break;
 
+            case "Eggs":
+                Debug.Log("Player gain Eggs! in Switch-Case");
+                StartItemSFX();
+                itemIcons[1].SetActive(true);
+                break;
+
+            case "Oil":
+                Debug.Log("Player gain Oil! in Switch-Case");
+                StartItemSFX();
+                itemIcons[2].SetActive(true);
+                break;
+
             case "Pizza":
                 Debug.Log("Player gained Pizza! in Switch-Case");
                 StartItemSFX();
@@ -77,15 +89,33 @@ public class Inventory_HasItem: MonoBehaviour
         switch (currentGainedItem)
         {
             case "Flour":
-                Debug.Log("Player gained Flour! in Switch-Case");
+                Debug.Log("Player use Flour! in Switch-Case");
                 StartItemSFX();
                 itemIcons[0].SetActive(false);
                 break;
 
+            case "Eggs":
+                Debug.Log("Player use Eggs! in Switch-Case");
+                StartItemSFX();
+                itemIcons[1].SetActive(false);
+                break;
+
+            case "Oil":
+                Debug.Log("Player use Oil! in Switch-Case");
+                StartItemSFX();
+                itemIcons[2].SetActive(false);
+                break;
+
             case "Pizza":
-                Debug.Log("Player gained Pizza! in Switch-Case");
+                Debug.Log("Player use Pizza! in Switch-Case");
                 StartItemSFX();
                 itemIcons[3].SetActive(false);
+                break;
+
+            case "FrozenPizza": //Slot 3.5
+                Debug.Log("Player use FrozenPizza! in Switch-Case");
+                StartItemSFX();
+                itemIcons[4].SetActive(false);
                 break;
         }
     }

@@ -19,11 +19,11 @@ public class SpeakerColorChange: DialogueViewBase
     [SerializeField]
     private string characterName_TXT;
 
-    [Header("DialogSystem > Speaker's TMP -> Auto find")]
+    [Header("DialogSystem > LineView > CharacterName -> Drag/Drop")]
     [SerializeField]
     private TMP_Text characterName_TMP;
 
-    [Header("DialogSystem > Lineview > Background -> Drag/Drop")]
+    [Header("DialogSystem > LineView > Background -> Drag/Drop")]
     [SerializeField]
     private Image textBox_Background;
 

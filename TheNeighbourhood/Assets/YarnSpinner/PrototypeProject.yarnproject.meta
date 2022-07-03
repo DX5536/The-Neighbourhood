@@ -9,12 +9,12 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
-  - {fileID: 6391573757903218779, guid: 0352266aff446bb418e8376ced0b533a, type: 3}
   - {fileID: 6391573757903218779, guid: a51f8d59529ba884eb5fc2fd6ccc1d16, type: 3}
   - {fileID: 6391573757903218779, guid: 0753e3dd30ffab040b25e44c3a6edccd, type: 3}
   - {fileID: 6391573757903218779, guid: f1c6322389fad7a4eb8d3e06e2599e74, type: 3}
   - {fileID: 6391573757903218779, guid: c55b09a54fd682e43851b5cc7d016118, type: 3}
   - {fileID: 6391573757903218779, guid: 0dc38b307b9a609428a2635f7287bf4e, type: 3}
+  - {fileID: 6391573757903218779, guid: 0352266aff446bb418e8376ced0b533a, type: 3}
   compileErrors: []
   serializedDeclarations:
   - name: $isPlayerNeedFlour

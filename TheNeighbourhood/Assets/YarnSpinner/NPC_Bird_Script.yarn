@@ -4,9 +4,11 @@ __PrivCrochet_position: -160,-58
 __PrivCrochet_tags: 
 title: Start_NPC_Bird
 ---
+/// Check if door to NPC_Bird is unlocked
+<<declare $unlockedDoor_NPC_Bird = false>>
+
 Bird: Oh? Who do we have here?
 Bird: Do you need something?
-
 -> Oh hi, I need some flour. <<if $isPlayerNeedFlour == true>>
     Bird: Flour? Ah sure, I think I have some around.
     <<set $isPlayerNeedFlour to false>>
@@ -16,7 +18,6 @@ Bird: Do you need something?
     Bird: Here you go. Some brand new flour.
     <<AccessYarnGainedItemValue Yarn_InventoryManager>>
     <<DisplayGainedItem Yarn_InventoryManager>>
-
 -> It's nothing... May I how your day is?
     Bird: Well, I do like this kind of weather, neither too hot nor too cold.
 -> Don't you want to know why I need flour? <<if $getFlour == true>>

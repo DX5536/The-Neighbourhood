@@ -9,18 +9,17 @@ public class CaroNodesManager: MonoBehaviour
     /// If they do, YarnStartNode will be a different one
     /// </summary>
     /// 
-    [Header("Has talked to ")]
+    [Header("Has talked to")]
     [SerializeField]
     private HasTalkedToNPC_ScriptableObject hasTalkedToNPC_ScriptableObject;
+    [SerializeField]
+    private ItemScriptableObject _NPC_Rabbit_ScriptableObject;
 
-    [Header("DialogueSystem")]
-    //[SerializeField]
+    [Header("DialogueSystem_AUTOFind")]
+    [SerializeField]
     private DialogueRunner dialogueRunner;
     [SerializeField]
     private InMemoryVariableStorage storage;
-
-    [SerializeField]
-    private string nodeNameToPlay;
 
     [Header("HasTalkGrandP variables_READ_ONLY")]
     [SerializeField]
@@ -31,13 +30,17 @@ public class CaroNodesManager: MonoBehaviour
     void Start()
     {
         //Reset first just in case
-        hasTalkedToNPC_ScriptableObject.ResetAllVarToFalse();
+        hasTalkedToNPC_ScriptableObject.ResetAllHasTalkedToFalse();
 
         //To Auto-find DialogueRunner and InMemoryVariable
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         storage = FindObjectOfType<InMemoryVariableStorage>();
 
-
+        //Get Yarn's var and save it locally to access later
+        GetHasTalkedGrandParentsVar();
+        //After getting the Grandparents' variables
+        //Check if this is a re-visit to disable AutoStart
+        ReVisit_NPCRabbit_Caro();
     }
 
     void Update()
@@ -57,6 +60,17 @@ public class CaroNodesManager: MonoBehaviour
 
     private void ReVisit_NPCRabbit_Caro()
     {
-
+        //If Player has talked with Grandparents -> value = true:
+        if (hasTalked_Grandma && hasTalked_Grandpa)
+        {
+            //Deactivate AutoStart
+            dialogueRunner.startAutomatically = false;
+        }
+        //If not = First start the game
+        else
+        {
+            //Activate AutoStart
+            dialogueRunner.startAutomatically = true;
+        }
     }
 }

@@ -1,8 +1,9 @@
 using UnityEngine;
 
-
+[CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/HasTalkedToNPC", order = 5)]
 public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 {
+    [Header("READ_ONLY or ticked for quick test")]
     [Tooltip("Caroline the Rabbit")]
     [SerializeField]
     private bool hasTalkedTo_NPC_Rabbit;
@@ -99,7 +100,68 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
         }
     }
 
-    public void ResetAllVarToFalse()
+    [Header("Is Door to this NPC unlocked?")]
+    [SerializeField]
+    private bool hasUnlockedDoor_ToHallway;
+
+    public bool HasUnlockedDoor_ToHallway
+    {
+        get
+        {
+            return hasUnlockedDoor_ToHallway;
+        }
+        set
+        {
+            hasUnlockedDoor_ToHallway = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasUnlockedDoor_NPC_Wolf;
+
+    public bool HasUnlockedDoor_NPC_Wolf
+    {
+        get
+        {
+            return hasUnlockedDoor_NPC_Wolf;
+        }
+        set
+        {
+            hasUnlockedDoor_NPC_Wolf = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasUnlockedDoor_NPC_Bird;
+
+    public bool HasUnlockedDoor_NPC_Bird
+    {
+        get
+        {
+            return hasUnlockedDoor_NPC_Bird;
+        }
+        set
+        {
+            hasUnlockedDoor_NPC_Bird = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasUnlockedDoor_NPC_Squirrel;
+
+    public bool HasUnlockedDoor_NPC_Squirrel
+    {
+        get
+        {
+            return hasUnlockedDoor_NPC_Squirrel;
+        }
+        set
+        {
+            hasUnlockedDoor_NPC_Squirrel = value;
+        }
+    }
+
+    public void ResetAllHasTalkedToFalse()
     {
         hasTalkedTo_NPC_Rabbit = false;
         hasTalkedTo_NPC_Grandma = false;
@@ -107,6 +169,13 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
         hasTalkedTo_NPC_Wolf = false;
         hasTalkedTo_NPC_Bird = false;
         hasTalkedTo_NPC_Squirrel = false;
+    }
+
+    public void ResetAllUnlockedDoorToFalse()
+    {
+        hasUnlockedDoor_NPC_Wolf = false;
+        hasUnlockedDoor_NPC_Bird = false;
+        hasUnlockedDoor_NPC_Squirrel = false;
     }
 
 }

@@ -228,7 +228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
+  m_Texture: {fileID: 2800000, guid: e72bf82da957627449cb4e96a7a3eb4b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
+  m_Texture: {fileID: 2800000, guid: e72bf82da957627449cb4e96a7a3eb4b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
+  m_Texture: {fileID: 2800000, guid: e72bf82da957627449cb4e96a7a3eb4b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -701,7 +701,7 @@ GameObject:
   - component: {fileID: 4825859904888709665}
   - component: {fileID: 4825859904888709666}
   m_Layer: 5
-  m_Name: Sugar_Icon
+  m_Name: Eggs_Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 5c82ac3e4dff0254e9d7263986f1a35d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
+  m_Texture: {fileID: 2800000, guid: e72bf82da957627449cb4e96a7a3eb4b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 4825859905352721971}
   - component: {fileID: 4825859905352721972}
   m_Layer: 5
-  m_Name: Butter_Icon
+  m_Name: Oil_Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 9ecb8fbdee8fcf742949fe5476a355ba, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
