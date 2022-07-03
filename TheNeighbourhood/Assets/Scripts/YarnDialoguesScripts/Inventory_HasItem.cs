@@ -33,7 +33,7 @@ public class Inventory_HasItem: MonoBehaviour
 
     private void Start()
     {
-        //First find the storage by tag (cuz I need the storage in non-DialogRunner too)
+        //First find the storage by type (cuz I need the storage in non-DialogRunner too)
         storage = FindObjectOfType<InMemoryVariableStorage>();
 
         //storage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InMemoryVariableStorage>();

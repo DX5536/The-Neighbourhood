@@ -6,8 +6,10 @@ title: Meeting_GrandParents_1st
 ---
 <<declare $unlockedDoor_ToHallway to false>>
 <<declare $firstVisitGrandParents to false>>
+//
 <<declare $canTalk_Grandpa to false>>
 <<declare $canTalk_Grandma to false>>
+//
 <<declare $hasTalked_Grandma to false>>
 <<declare $hasTalked_Grandpa to false>>
 //
@@ -31,7 +33,7 @@ title: Meeting_GrandParents_1st
     <<set $canTalk_Grandpa to true>>
     Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterward.
 <<else>>
-    // If not first time visit anymore -> Say hi!
+    // If not first-time visit anymore -> Say hi!
     <<set $unlockedDoor_ToHallway to true>>
     Lilly: Hi!
 <<endif>>
@@ -106,6 +108,7 @@ title: Malka_Talk
     Lilly: <i>(Shiiiit.)</i>
     Malka: Oh, of course, darling. You can always come down if you need a break.
     Lilly: Thanks, Grandma! Bye! 
+    <<set $hasTalked_Grandma to true>>
     // Weg zurück ins Treppenhaus und zurück in die WG wird freigeschaltet, Zweiter Caro-Dialog wird freigeschaltet
     <<set $unlockedDoor_ToHallway to true>>
     <<Un_LockDoor Door_ToHallway ToHallway>>
