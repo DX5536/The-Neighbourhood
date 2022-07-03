@@ -11,7 +11,7 @@ public class SpawnerMaster: MonoBehaviour
         //Create an instance
         if (instance != null)
         {
-            Debug.Log("There are more than 1 " + this.gameObject.name + " value.");
+            //Debug.Log("There are more than 1 " + this.gameObject.name + " value.");
             Destroy(this.gameObject);
         }
         else if (instance == null)

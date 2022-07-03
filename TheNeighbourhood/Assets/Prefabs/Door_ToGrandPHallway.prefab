@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8757806783214673873}
   - component: {fileID: 6964692580478599031}
   - component: {fileID: 6746134072186280572}
+  - component: {fileID: 57861342230045025}
   m_Layer: 2
   m_Name: Door_ToGrandPHallway
   m_TagString: Untagged
@@ -196,6 +197,26 @@ MonoBehaviour:
   m_ShapePathHash: -659525417
   m_Mesh: {fileID: 0}
   m_InstanceId: 23102
+--- !u!114 &57861342230045025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341087941205133136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb3671a543ec324694f006e29189699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockedDoorSO: {fileID: 11400000, guid: ef6ec7b3bc36e924cb802215b5eab28e, type: 2}
+  hasTalkedToNPC_ScriptableObject: {fileID: 11400000, guid: 2f052f720b83b6d4bb109337e749ad75, type: 2}
+  sceneTransitionColliderManager: {fileID: 8757806783214673873}
+  unlockedDoor_NPC_Wolf: 0
+  unlockedDoor_NPC_Bird: 0
+  unlockedDoor_NPC_Squirrel: 0
+  unlockedDoor_ToHallway: 0
+  variableStorage: {fileID: 0}
 --- !u!1 &5009013547351376926
 GameObject:
   m_ObjectHideFlags: 0

@@ -134,7 +134,7 @@ namespace Assets.Scripts.ScriptableObjects
             if (resetCanClickMouseAtStart)
             {
                 canClickMouse = true;
-                Debug.Log("Reset isInteractable");
+                //Debug.Log("Reset isInteractable");
             }
             else
             {

@@ -78,13 +78,13 @@ public class StartYarnDialogueRunner: MonoBehaviour
         {
             if (dialogueRunner.IsDialogueRunning == true)
             {
-                Debug.Log("Dialog is running. No new node start!");
+                //Debug.Log("Dialog is running. No new node start!");
             }
             else
             {
                 dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
                 StartCoroutine(WaitToClickContinue());
-                Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
+                //Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
             }
         }
     }
@@ -101,7 +101,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
         //dialogueRunner.StartDialogue(nodeToStart);
         if (collision.tag == _NPC_ScriptableObject.PlayerTag)
         {
-            Debug.Log("Player in Range of " + this.gameObject.name + _NPC_ScriptableObject.NodeName);
+            //Debug.Log("Player in Range of " + this.gameObject.name + _NPC_ScriptableObject.NodeName);
             _NPC_ScriptableObject.IsInteractable = true;
         }
     }

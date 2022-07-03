@@ -102,6 +102,21 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 
     [Header("Is Door to this NPC unlocked?")]
     [SerializeField]
+    private bool hasUnlockedDoor_NPC_Grandparents;
+
+    public bool HasUnlockedDoor_NPC_Grandparents
+    {
+        get
+        {
+            return hasUnlockedDoor_NPC_Grandparents;
+        }
+        set
+        {
+            hasUnlockedDoor_NPC_Grandparents = value;
+        }
+    }
+
+    [SerializeField]
     private bool hasUnlockedDoor_ToHallway;
 
     public bool HasUnlockedDoor_ToHallway
@@ -173,6 +188,7 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 
     public void ResetAllUnlockedDoorToFalse()
     {
+        hasUnlockedDoor_ToHallway = false;
         hasUnlockedDoor_NPC_Wolf = false;
         hasUnlockedDoor_NPC_Bird = false;
         hasUnlockedDoor_NPC_Squirrel = false;

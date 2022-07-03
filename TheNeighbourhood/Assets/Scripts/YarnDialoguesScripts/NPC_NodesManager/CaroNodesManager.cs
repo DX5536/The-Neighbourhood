@@ -60,17 +60,21 @@ public class CaroNodesManager: MonoBehaviour
 
     private void ReVisit_NPCRabbit_Caro()
     {
-        //If Player has talked with Grandparents -> value = true:
-        if (hasTalked_Grandma && hasTalked_Grandpa)
-        {
-            //Deactivate AutoStart
-            dialogueRunner.startAutomatically = false;
-        }
         //If not = First start the game
-        else
+        if (!hasTalked_Grandma && !hasTalked_Grandpa)
         {
             //Activate AutoStart
             dialogueRunner.startAutomatically = true;
+            Debug.Log("First time play the game!");
+
+
+        }
+        //If Player has talked with Grandparents -> value = true:
+        else
+        {
+            //Deactivate AutoStart
+            dialogueRunner.startAutomatically = false;
+            Debug.Log("No Start Automatically");
         }
     }
 }

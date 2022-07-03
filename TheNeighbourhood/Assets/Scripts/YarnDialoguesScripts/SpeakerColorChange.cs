@@ -46,7 +46,7 @@ public class SpeakerColorChange: DialogueViewBase
     {
         SetNameColor(dialogueLine.CharacterName);
         ChangeTextBoxColor(dialogueLine.CharacterName);
-        Debug.Log("Running Line!!! " + this.gameObject.name);
+        //Debug.Log("Running Line!!! " + this.gameObject.name);
     }
 
     private void SetNameColor(string characterName)
@@ -71,7 +71,7 @@ public class SpeakerColorChange: DialogueViewBase
         {
             characterName_TMP.color = characterNameColor[characterName];
 
-            Debug.Log(characterName + " is speaking with" + characterNameColor);
+            //Debug.Log(characterName + " is speaking with" + characterNameColor);
         }
     }
 
@@ -98,7 +98,7 @@ public class SpeakerColorChange: DialogueViewBase
         {
             textBox_Background.color = characterTextBoxColor[characterNameTextBox];
 
-            Debug.Log(characterNameTextBox + " is speaking with box: " + characterTextBoxColor);
+            //Debug.Log(characterNameTextBox + " is speaking with box: " + characterTextBoxColor);
         }
     }
 

@@ -23,7 +23,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: Amon_Computer
+  nodeName: TalkTo_NPC_Grandpa
   speakerNPC_Color: {r: 0.40784317, g: 0.63529414, b: 0.63529414, a: 1}
   textBox_Color:
     serializedVersion: 2

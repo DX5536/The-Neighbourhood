@@ -24,3 +24,7 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: 
+  speakerNPC_Color: {r: 0, g: 0, b: 0, a: 0}
+  textBox_Color:
+    serializedVersion: 2
+    rgba: 0

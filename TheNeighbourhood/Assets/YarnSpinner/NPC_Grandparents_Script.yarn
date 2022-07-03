@@ -6,6 +6,8 @@ title: Meeting_GrandParents_1st
 ---
 ///Is Door_ToHallway unlocked?
 <<declare $unlockedDoor_ToHallway to false>>
+///Is Door_Grandparents unlocked?
+<<declare $unlockedDoor_NPC_Grandparents to false>>
 ///Is this Player's first time visit?
 <<declare $firstVisitGrandParents to true>>
 ///Can Player talk to Grandpa?
@@ -18,9 +20,12 @@ title: Meeting_GrandParents_1st
 <<declare $hasTalked_Grandpa to false>>
 //
 // Dialog beginnt in der Wohnung automatisch, sobald man die Tür der Grandparents betritt
+//Locked the ToHallway_Door from Grandparents
 <<set $unlockedDoor_ToHallway to false>>
-Malka: Lilly! Shalom aleichem, darling!
+<<Un_LockDoor Door_ToHallway ToHallway>>
+//
 <<if $firstVisitGrandParents == true>>
+    Malka: Lilly! Shalom aleichem, darling!
     Lilly: Aleichem Shalom, Grandma!
     Malka: Honey, what brings you here this early?
     Lilly: I just wanted to see how you guys were d- 
@@ -47,43 +52,64 @@ __PrivCrochet_tags:
 title: Malka_Chat_Before_Amon
 ---
 // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
+//Debug
 Malka: We will catch up later, darling. Grandpa has been very excited about this surprise for you.
 //HAI LAM: Now obsolete!!! -> Comebine into 1 node: Malka_Long_Talk
+===
+title: TalkTo_NPC_Grandpa
+position: -187,77
+---
+<<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
+    <<jump Amon_Computer>>
+<<else>>
+    Amon: Let me tell you about my computer...
+    -> Lilly: *listens*
+        <<jump Amon_Computer>>
+    -> Lilly: I just want to take a quick look. I will be on my way.
+<<endif>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 459,-2
 __PrivCrochet_tags: 
 title: Amon_Computer
 ---
-<<if $firstVisitGrandParents == true>>
-    // Spieler finden Amon, der vor einem etwas älteren Computer steht 
-    Lilly: So, what's up?
-    Amon: Ta-daa!
-    Lilly: Wow, that's- for me? It seems so … up to date, Grandpa, you really didn't have to.
-    Amon: It's mine, silly! You always talk about those little programs on the internet and drawings on your-, your desktop. 
-    Amon: I would love to finally see them myself! However, I can't seem to figure out which buttons to press.
-    Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- never mind, here it is - our latest game.
-    //Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
-    <<TargetMove NPC_Grandma Grandma_Kitchen_MoveGoal false>>
-    Amon: Lils, are those your drawings? They're gorgeous! I need to show them to your grandma tomorrow. 
-    Lilly: Thanks, Grandpa! that's really sweet of you.
-    Lilly: How are you guys holding up, by the way? You seem quite happy. 
-    Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
-    Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. 
-    Amon: I think we all are, aren't we? 
-    // Gespräch mit Malka wird unlocked
-    <<set $hasTalked_Grandpa to true>>
-    Amon: It's not always easy, but today it has been - to my own surprise. 
-    Amon: I'm not so sure your grandma feels the same today, though. She has been quiet.
-    Amon: Maybe you can talk to her? You always know the right things to say.
+// Spieler finden Amon, der vor einem etwas älteren Computer steht 
+Lilly: So, what's up?
+Amon: Ta-daa!
+Lilly: Wow, that's- for me? It seems so … up to date, Grandpa, you really didn't have to.
+Amon: It's mine, silly! You always talk about those little programs on the internet and drawings on your-, your desktop. 
+Amon: I would love to finally see them myself! However, I can't seem to figure out which buttons to press.
+Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- never mind, here it is - our latest game.
+//Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
+<<TargetMove NPC_Grandma Grandma_Kitchen_MoveGoal false>>
+Amon: Lils, are those your drawings? They're gorgeous! I need to show them to your grandma tomorrow. 
+Lilly: Thanks, Grandpa! that's really sweet of you.
+Lilly: How are you guys holding up, by the way? You seem quite happy. 
+Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
+Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. 
+Amon: I think we all are, aren't we? 
+// Gespräch mit Malka wird unlocked
+<<set $hasTalked_Grandpa to true>>
+Amon: It's not always easy, but today it has been - to my own surprise. 
+Amon: I'm not so sure your grandma feels the same today, though. She has been quiet.
+Amon: Maybe you can talk to her? You always know the right things to say.
+===
+title: TalkTo_NPC_Grandma
+position: -187,77
+---
+<<if $firstVisitGrandParents == true && $hasTalked_Grandma == false>>
+    <<jump Malka_Talk_Long>>
 <<else>>
-    Lilly: I just want to look at your computer again. I will be on my way.
+    Malka: You are back already?
+    -> Lilly: Can you repeat our talk?
+        <<jump Malka_Talk_Long>>>
+    -> Lilly: It's nothing. I will be on my way.
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 691,-3
 __PrivCrochet_tags: 
-title: Malka_Talk
+title: Malka_Talk_Long
 ---
 <<if $hasTalked_Grandpa == false>>
     // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
@@ -139,8 +165,12 @@ title: Leaving_Grandparents_Apartment
 // Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
 //If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
 <<if $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false>>
+    <<set $unlockedDoor_NPC_Grandparents to false>>
+    <<Un_LockDoor Door_ToGrandparents Grandparents>>
     Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
     Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
+    <<set $unlockedDoor_NPC_Grandparents to true>>
+    <<Un_LockDoor Door_ToGrandparents Grandparents>>
 <<else>>
     //Nothing to say
 <<endif>>

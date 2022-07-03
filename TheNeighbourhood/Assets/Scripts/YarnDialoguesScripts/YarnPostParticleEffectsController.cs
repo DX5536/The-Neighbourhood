@@ -6,7 +6,7 @@ public class YarnPostParticleEffectsController: MonoBehaviour
 {
     [Header("Drama!")]
     [SerializeField]
-    private GameObject globalVolume;
+    private GameObject blackAndWhiteEffect;
 
     [SerializeField]
     private GameObject rainEffect;
@@ -14,7 +14,7 @@ public class YarnPostParticleEffectsController: MonoBehaviour
     void Start()
     {
         //Make sure these two at start to be inactive -> Only active upon call!
-        globalVolume.SetActive(false);
+        blackAndWhiteEffect.SetActive(false);
         rainEffect.SetActive(false);
     }
 
@@ -29,11 +29,11 @@ public class YarnPostParticleEffectsController: MonoBehaviour
     {
         if (setActive)
         {
-            globalVolume.SetActive(true);
+            blackAndWhiteEffect.SetActive(true);
         }
         else
         {
-            globalVolume.SetActive(false);
+            blackAndWhiteEffect.SetActive(false);
         }
     }
 

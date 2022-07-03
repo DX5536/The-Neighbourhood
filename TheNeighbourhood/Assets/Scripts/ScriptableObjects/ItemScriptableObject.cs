@@ -151,7 +151,7 @@ public class ItemScriptableObject: ScriptableObject
         if (resetIsInteractableAtStart)
         {
             isInteractable = true;
-            Debug.Log("Reset isInteractable");
+            //Debug.Log("Reset isInteractable");
         }
         else
         {

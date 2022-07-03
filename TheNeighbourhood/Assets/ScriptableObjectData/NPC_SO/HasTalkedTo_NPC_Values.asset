@@ -18,3 +18,8 @@ MonoBehaviour:
   hasTalkedTo_NPC_Wolf: 0
   hasTalkedTo_NPC_Bird: 0
   hasTalkedTo_NPC_Squirrel: 0
+  hasUnlockedDoor_NPC_Grandparents: 0
+  hasUnlockedDoor_ToHallway: 0
+  hasUnlockedDoor_NPC_Wolf: 0
+  hasUnlockedDoor_NPC_Bird: 0
+  hasUnlockedDoor_NPC_Squirrel: 0

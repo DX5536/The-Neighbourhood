@@ -9,6 +9,8 @@ public class YarnCommandsCharacterController: MonoBehaviour
 
     //[SerializeField]
     private BoxCollider2D doorBoxCollider;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     //[SerializeField]
     //private GameObject moveGoalGO;
@@ -30,12 +32,25 @@ public class YarnCommandsCharacterController: MonoBehaviour
     void Start()
     {
         character_OG_Pos = characterGO.transform.position;
+        spriteRenderer = characterGO.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    [YarnCommand("TargetSpawn")]
+    public void TargetSpawn(string spawnPointName, bool showCharacter)
+    {
+        var spawnPointGO = GameObject.Find(spawnPointName);
+
+        if (spawnPointGO)
+        {
+            characterGO.transform.position = new Vector2(spawnPointGO.transform.position.x, spawnPointGO.transform.position.y);
+            ShowSprite(showCharacter);
+        }
     }
 
     [YarnCommand("TargetMove")]
@@ -85,6 +100,19 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
+    [YarnCommand("ShowSprite")]
+    private void ShowSprite(bool showCharacter)
+    {
+        if (showCharacter)
+        {
+            spriteRenderer.enabled = true;
+        }
+        else
+        {
+            spriteRenderer.enabled = false;
+        }
+    }
+
     [YarnCommand("Toggle_CharacterActive")]
     private void SetGOActive(bool toSetActive)
     {
@@ -100,6 +128,7 @@ public class YarnCommandsCharacterController: MonoBehaviour
             characterGO.SetActive(false);
         }
     }
+
 
     //[YarnCommand("En_DisableComponet")]
     private void En_DisableComponent()

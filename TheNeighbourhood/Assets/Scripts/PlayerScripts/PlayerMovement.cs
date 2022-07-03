@@ -168,16 +168,16 @@ public class PlayerMovement: MonoBehaviour
         if (mouseScriptableObject.MousePositionValue.x > player.transform.position.x)
         {
             proportionValue = mouseScriptableObject.RaycastHitValue.x - player.transform.position.x;
-            Debug.Log("Mouse " + mouseScriptableObject.MousePositionValue.x
+            /*Debug.Log("Mouse " + mouseScriptableObject.MousePositionValue.x
                 + " > player " + player.transform.position.x
-                + " propValue: " + proportionValue);
+                + " propValue: " + proportionValue);*/
         }
         else
         {
             proportionValue = player.transform.position.x - mouseScriptableObject.RaycastHitValue.x;
-            Debug.Log("Player " + player.transform.position.x
+            /*Debug.Log("Player " + player.transform.position.x
                 + " > Mouse " + mouseScriptableObject.MousePositionValue.x
-                + " propValue: " + proportionValue);
+                + " propValue: " + proportionValue);*/
         }
 
         proportionValue = Mathf.Abs(proportionValue); //No negative value

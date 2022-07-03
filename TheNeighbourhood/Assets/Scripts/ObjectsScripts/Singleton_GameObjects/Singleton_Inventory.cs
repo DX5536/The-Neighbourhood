@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
 
 
-public class Singleton_Inventory : MonoBehaviour
+public class Singleton_Inventory: MonoBehaviour
 {
     //Make this a singleton
     private static Singleton_Inventory instance;
@@ -15,7 +11,7 @@ public class Singleton_Inventory : MonoBehaviour
         //Create an instance
         if (instance != null)
         {
-            Debug.Log("There are more than 1 " + this.gameObject.name + " value.");
+            //Debug.Log("There are more than 1 " + this.gameObject.name + " value.");
             Destroy(this.gameObject);
         }
 

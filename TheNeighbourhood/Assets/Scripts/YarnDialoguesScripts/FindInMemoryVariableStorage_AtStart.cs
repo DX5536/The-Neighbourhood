@@ -1,7 +1,7 @@
 using UnityEngine;
 using Yarn.Unity;
 
-public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
+public class FindInMemoryVariableStorage_AtStart: MonoBehaviour
 {
     [SerializeField]
     private DialogueRunner dialogueRunner;
@@ -24,10 +24,16 @@ public class FindInMemoryVariableStorage_AtStart : MonoBehaviour
         {
             //Put the value inside DialogRunner
             dialogueRunner.VariableStorage = storage;
+            Debug.Log("Found by type");
         }
         else
         {
-            Debug.Log("There is no VariableStorage");
+            /*var tempStorage = GameObject.FindGameObjectWithTag("VariableStorage").GetComponent<InMemoryVariableStorage>();
+            storage = tempStorage;
+            //Put the value inside DialogRunner
+            dialogueRunner.VariableStorage = storage;
+            Debug.Log("Find by name!!!");*/
+            return;
         }
     }
 }

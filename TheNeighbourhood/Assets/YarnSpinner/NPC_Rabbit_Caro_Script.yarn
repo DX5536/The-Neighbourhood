@@ -65,11 +65,11 @@ position: -193,-119
 <<if $needHamantash == false && $hasFrozenPizza == true>>
     Lilly: Who can live without a fridge?
 //If Lilly doesn't have Frozen Pizza yet
-<<elseif $hasFrozenPizza == false>>
+<<elseif $needHamantash == false && $hasFrozenPizza == false>>
     // Dieser Monolog passiert, wenn man den Kühlschrank auf der Suche nach den TK-Pizzen untersucht
     Lilly: Oh wow, besides my pastry for tonight there's barely any food left. We really should've done a thorough grocery run before unpacking. 
     Lilly: Huh? No pizza? I must've forgotten to put it in the freezer… welp, wherever it is, let's hope it's still edible.
-<<elseif $needHamantash == true>>
+<<elseif $needHamantash == true && $hasFrozenPizza == false>>
     <<jump Hamantash_Fridge_Interaction>>>
 <<endif>>
 ===
@@ -81,7 +81,7 @@ position: -191,-44
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
 //Piza located in Bag
-<<if $hasFrozenPizza == false>>
+<<if $hasFrozenPizza == false && $useCookedPizza == false>>
     Lilly: There you are! Still looking good. To the oven with you!
     <<set $hasFrozenPizza to true>>
     <<set $gainedItem_Name to "FrozenPizza">>
@@ -103,6 +103,7 @@ position: -194,30
     Lilly: The smell... Yum!
     <<set $gainedItem_Name to "Pizza">>
     <<set $hasCookedPizza to true>>
+    <<set $hasFrozenPizza to false>>
     <<AccessYarnGainedItemValue Yarn_InventoryManager>>
     <<DisplayGainedItem Yarn_InventoryManager>>
     //Caro move to table
@@ -144,7 +145,8 @@ Caroline: Do you have the pizza yet?
     <<Toggle_CharacterActive NPC_Rabbit true>>
     Lilly: You're right, I think it's a good idea to see how they're doing. 
     // Nach dieser Line sollte Caro wieder in ihrem Zimmer verschwinden.
-    Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. At least I managed to put this one in <b>the fridge.</b>
+    Lilly: I should take the Hamantashen pastry I made with me, so they know I did my part. 
+    Lilly: At least I managed to put this one <b>in the fridge.</b>
     <<set $needHamantash to true>>
     <<set $useCookedPizza to true>>
     <<UseGainedItem Yarn_InventoryManager>>
@@ -160,6 +162,7 @@ position: 28,-122
 Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
 <<set $hasColdHamantash to true>>
 <<set $needHamantash to false>>
+//These two needs to go together
 <<set $unlockedDoor_ToHallway to true>>
 <<Un_LockDoor Door_ToHallway ToHallway>>
 ===
@@ -172,9 +175,14 @@ position: 94,-47
 // Voraussetzung: Man hat zum ersten Mal mit den Grandparents geredet und erfahren, dass man das Challah-Brot backen muss. 
 // Nun geht man zurück in die WG
 // Man interagiert mit Caros Tür, sie selbst ist noch nicht zu sehen
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway>>
+<<TargetSpawn NPC_Rabbit NPC_Rabbit_MoveGoal false>>
 Lilly: Caro!
 Caroline: Zzz… AH! 
 Caroline: Who is it? // Caro erscheint danach vor der Tür
+<<ShowSprite NPC_Rabbit true>>
+<<FlipSprite NPC_Rabbit>>
 Caroline: Lil-
 Lilly: I forgot to bake the Challah!
 Caroline: The what?
@@ -199,7 +207,7 @@ Caroline: What is it?
 Lilly: If I tell them what I need the ingredients for, the first thing they'll know about me is that I'm Jewish. 
 Caroline: Uhh... I'm confused. 
 Caroline: Isn't it your plan to embrace your Jewish roots more and be more open about them?
-Lilly: Yes, but not as a first introduction – especially not on the International Holocaust Remembrance Day! 
+Lilly: Yes, but not as a first introduction - especially not on the International Holocaust Remembrance Day! 
 Lilly: I mean, “I'm Jewish” and “Holocaust” in the same sentence, Caro! What I'll say after that won't even matter anymore.
 Lilly: After such an introduction, the only thing standing between me from becoming a walking stereotype will be ...
 Lilly: ... the screen turning black and white ... // Screen turns black and white
@@ -224,7 +232,11 @@ Caroline: I would, but I really need to get some more sleep before pulling an al
 Caroline: But I would suggest you start with the neighbour above your grandparents' apartment. He seems like a cool dude. 
 Lilly: Alright, thanks. Wish me luck! // Wolf-Tür-Interaktion wird unlocked, Caro verschwindet im Zimmer (geht schlafen)
 <<set $findIngredients to true>>
+//
 <<set $unlockedDoor_NPC_Wolf to true>>
+//We will unlock door at Start() in Hallway Scene
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,842
