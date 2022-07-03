@@ -207,7 +207,7 @@ title: Caro_After_Ingredients
 // Caro steht direkt neben der Wohnungstür als man reinkommt, es wird ein automatischer Dialog getriggert
 Caroline: How did it go?
 Lilly: Caro? Didn't you want to sleep?
-Caroline: I did. But then I wanted to know how it went because you were so worried, and I wasn’t sure if I should’ve gone with you or-
+Caroline: I did. But then I wanted to know how it went because you were so worried, and I wasn't sure if I should've gone with you or-
 Caroline: Oh, looks like you got everything!
 Lilly: Yeah! Don't worry, it was awkward at first, because I lied – and you know how bad I am at lying.
 Lilly: But then I came clean, which made it way easier and: turns out we have some pretty great neighbours!
@@ -251,11 +251,4 @@ Lilly: We finished right on time! I'll make sure to put some aside for you.
 Caroline: Now that's what I want to hear! 
 Caroline: Hey, Lilly. I wish you a great evening with your grandparents, enjoy the food!
 Lilly: Thank you, Caro.
-===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: 1403,34
-__PrivCrochet_tags: 
-title: Hamantash_Fridge_Interaction>
----
-Empty Text
 ===
