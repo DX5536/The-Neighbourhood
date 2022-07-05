@@ -145,14 +145,16 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 
     private void Un_LockDoor_Wolf_Status(bool isUnlock)
     {
+        //NPC_Wolf is special because we won't go inside the room
+        //So sceneTransitionColliderManager is not needed
         if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf && isUnlock)
         {
-            sceneTransitionColliderManager.enabled = true;
+            //sceneTransitionColliderManager.enabled = true;
             lockedDoorSO.IsInteractable = true;
         }
         else
         {
-            sceneTransitionColliderManager.enabled = false;
+            //sceneTransitionColliderManager.enabled = false;
             lockedDoorSO.IsInteractable = false;
         }
     }

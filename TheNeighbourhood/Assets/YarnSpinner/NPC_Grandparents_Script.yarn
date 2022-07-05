@@ -171,9 +171,14 @@ title: Leaving_Grandparents_Apartment
     Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
     <<set $unlockedDoor_NPC_Grandparents to true>>
     <<Un_LockDoor Door_ToGrandparents Grandparents true>>
-<<else>>
+<<elseif $unlockedDoor_NPC_Wolf == true>>
     //Nothing to say -> Debug
     //<<set $hasTalked_Grandpa to true>>
     //<<set $hasTalked_Grandma to true>>
+    Debug NPC_Wolf in Hallway
+    <<set $unlockedDoor_NPC_Wolf to true>> //This is in NPC_Rabbit script
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true>>
+<<else>>
+    //Nothing to say -> Debug
 <<endif>>
 ===

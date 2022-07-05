@@ -2,59 +2,92 @@
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 26,-10
 __PrivCrochet_tags: 
-title: Start_NPC_Wolf
+title: Meeting_NPC_Wolf_1st
+position: 30,-277
 ---
 //Declares variables
+///Is this Player's first time visit NPC_Wolf?
+<<declare $firstVisitNPC_Wolf to true>>
+///Can Player talk to NPC_Wolf?
+<<declare $canTalk_NPC_Wolf to false>>
+///Has Player talked to NPC_Wolf?
+<<declare $hasTalked_NPC_Wolf to false>>
 /// Check if player still NEED flour or not
-<<declare $isPlayerNeedFlour = true>>
-/// Check if player ALREADY has flour
+<<declare $needFlour = true>>
+/// Check if player ALREADY has flour in inventory
 <<declare $getFlour = false>>
 /// Check if door to NPC_Wolf is unlocked
 <<declare $unlockedDoor_NPC_Wolf = false>>
-
-<<SetGlobalVolumeActive YarnEffectsManager true>>
-Player: (Huh? Why is everything black and white???)
-Wolf: Why are you here?
-<<SetRainEffectActive YarnEffectsManager true>>
-Player: (How can it rains in-door?)
-Wolf: Are you stalking me?
-
--> What? No! 
-    <<jump suspicious>>
-
--> Listen, I just need some flour... <<if $getFlour != true>>
-    <<set $isPlayerNeedFlour to true>>
-    <<jump flour>>
-
--> I just want to say hi //<<if $isPlayerNeedFlour == false>>
-    Wolf: Uhm, sure...
+//
+//Locked the Door to NPC_Wolf -> Aint even go in
+//<<set $unlockedDoor_NPC_Wolf to false>>
+//<<Un_LockDoor Door_ToNPC_Wolf Wolf false>>
+//
+*klopfs klopfs*
+Lilly: Uhm, hello...
+*opens door*
+<<TargetSpawn NPC_Wolf 0 NPC_Wolf_SpawnPoint true>>
+Wolf: Who are you?
+Lilly: My name is Lilly
+Wolf: I see...
+Wolf: Do you need something?
+->Lilly: Do you have flour?
+    <<jump Flour_NPC_Wolf>>
+->Lilly: Oh nothing. See you again!
+<<set $firstVisitNPC_Wolf to false>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 163,114
 __PrivCrochet_tags: 
-title: suspicious
+title: TalkTo_NPC_Wolf
+position: 33,-145
 ---
-Wolf: I'm watching you!
-<<SetRainEffectActive YarnEffectsManager false>>
-<<SetGlobalVolumeActive YarnEffectsManager false>>
-Player: (Everything is back to normal...)
+//The Crossroads of what to talk with NPC_Wolf
+<<if $firstVisitNPC_Wolf == true>>
+    <<jump Meeting_NPC_Wolf_1st>>
+<<else>>
+    Lilly: Hi again.
+    -> Lilly: Uhm, nothing, bye.      
+    -> Lilly: Say do you have... <<if $getFlour == false>>
+        ->...flour? <<if $needFlour == true>>
+            <<jump Flour_NPC_Wolf>>
+        ->...eggs?
+            Wolf: Sorry, Don't have it.
+        ->...oil?
+            Wolf: Sorry, don't have it either.
+    -> Lilly: Want to know what I will do with flour? <<if $getFlour == true && $needFlour == false>>
+        Wolf: Yes, you bake.
+<<endif>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: -68,105
 __PrivCrochet_tags: 
-title: flour
+title: Flour_NPC_Wolf
+position: 37,-21
 ---
+Wolf: Flour? I have some. Let me go get it.
+<<ShowSprite NPC_Wolf false>>
+<<wait 2>>
+<<ShowSprite NPC_Wolf true>>
+Wolf: Here you go.
+//Player get Flour and display in inventory.
+<<set $getFlour to true>>
+<<set $gainedItem_Name to "Flour">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
+<<set $needFlour to false>>
+//
+Lilly: Thank you very much!
+Wolf: No problem.
+Lilly: Bye
+//Can go to NPC_Bird now
 <<set $unlockedDoor_NPC_Bird to true>>
-Wolf: Dude, just buy some at the store...
-Wolf: Or in fact, have you tried to ask the other first?
-<<SetRainEffectActive YarnEffectsManager false>>
-<<SetGlobalVolumeActive YarnEffectsManager false>>
-Player: (Everything is back to normal...)
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: -85,-349
 __PrivCrochet_tags: 
 title: Wolf_Hallway_Dialogue
+position: 47,207
 ---
 // Voraussetzung: Zweiter Dialog mit Caro wurde beendet, sie schickt einen los, um Zutaten zu holen. 
 
