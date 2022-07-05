@@ -22,7 +22,7 @@ position: -189,-360
 //
 //Disable DoorCollider at start
 <<set $unlockedDoor_ToHallway to false>>
-<<Un_LockDoor Door_ToHallway ToHallway false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
 // Dieser Dialog wird ganz zu Beginn gespielt. Die Szene soll sein, wie die beiden die letzten Kisten nach oben gebracht haben
 Lilly: ... Tell me those were the last boxes.
 Caroline: Yes, thankfully! It only took us three months to get the rest of our most important stuff in here...
@@ -164,7 +164,7 @@ Lilly: What a fantastic smell! Let's see how my grandparents are doing downstair
 <<set $needHamantash to false>>
 //These two needs to go together
 <<set $unlockedDoor_ToHallway to true>>
-<<Un_LockDoor Door_ToHallway ToHallway true>>
+<<Un_LockDoor Door_ToHallway ToHallway true true>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,584
@@ -176,7 +176,7 @@ position: 94,-47
 // Nun geht man zurück in die WG
 // Man interagiert mit Caros Tür, sie selbst ist noch nicht zu sehen
 <<set $unlockedDoor_ToHallway to false>>
-<<Un_LockDoor Door_ToHallway ToHallway false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
 Lilly: Caro!
 Caroline: Zzz… AH! 
 Caroline: Who is it? // Caro erscheint danach vor der Tür
@@ -236,7 +236,7 @@ Lilly: Alright, thanks. Wish me luck! // Wolf-Tür-Interaktion wird unlocked, Ca
 <<set $unlockedDoor_NPC_Wolf to true>>
 //We will unlock door at Start() in Hallway Scene
 <<set $unlockedDoor_ToHallway to true>>
-<<Un_LockDoor Door_ToHallway ToHallway true>>
+<<Un_LockDoor Door_ToHallway ToHallway true true>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,842

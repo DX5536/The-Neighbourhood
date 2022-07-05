@@ -48,7 +48,7 @@ MonoBehaviour:
   - Caroline
   - Malka
   - Amon
-  - Wolf
+  - Tom
   - Bird
   - Squirrel
   itemScriptableObjects:
@@ -59,4 +59,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c69719b32b14e7544832a8ff0b5d8a1d, type: 2}
   - {fileID: 11400000, guid: a1a80122e7e4db748ad2c543de3cdec0, type: 2}
   - {fileID: 11400000, guid: ec3c81c613f38784cb2a8990e370977a, type: 2}
+  characterName_TXT: 
   characterName_TMP: {fileID: 0}
+  textBox_Background: {fileID: 0}

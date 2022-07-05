@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd5ee0bab32b3b4ca3c42ceab001871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managerSlotIndex: 3
+  managerSlotIndex: 4
   inventory_HasItem: {fileID: 0}
   childItemIcon: {fileID: 0}
 --- !u!1 &4193319985215283309
@@ -284,8 +284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -5}
+  m_SizeDelta: {x: 95, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4825859904005204479
 CanvasRenderer:

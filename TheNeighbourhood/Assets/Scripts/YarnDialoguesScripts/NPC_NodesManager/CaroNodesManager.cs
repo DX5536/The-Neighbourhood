@@ -78,6 +78,7 @@ public class CaroNodesManager: MonoBehaviour
         {
             //Activate AutoStart
             dialogueRunner.startAutomatically = true;
+            dialogueRunner.StartDialogue("Start_Intro");
             Debug.Log("First time play the game!");
         }
     }

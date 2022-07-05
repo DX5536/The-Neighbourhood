@@ -59,8 +59,12 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
     {
     }
 
+    /// Door's logic: Highlight and SceneTrans
+    /// doorName = Name of the door
+    /// isInteractable = Can player interact with it? = Highlight/StartNode
+    /// canGoIn = Can player go in = SceneTrans
     [YarnCommand("Un_LockDoor")]
-    public void Un_LockDoor_Status(string doorName, bool toUnlock)
+    public void Un_LockDoor_Status(string doorName, bool isInteractable, bool canGoIn)
     {
         //Update the vars with SO upon call this Un_Lock command
         UpdateHasUnlockedVar_With_SO();
@@ -68,19 +72,19 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         switch (doorName)
         {
             case ("Grandparents"):
-                Un_LockDoor_Grandparents_Status(toUnlock);
+                Un_LockDoor_Grandparents_Status(isInteractable, canGoIn);
                 break;
             case ("ToHallway"):
-                Un_LockDoor_ToHallway_Status(toUnlock);
+                Un_LockDoor_ToHallway_Status(isInteractable, canGoIn);
                 break;
             case ("Wolf"):
-                Un_LockDoor_Wolf_Status(toUnlock);
+                Un_LockDoor_Wolf_Status(isInteractable, canGoIn);
                 break;
             case ("Bird"):
-                Un_LockDoor_Bird_Status();
+                Un_LockDoor_Bird_Status(isInteractable, canGoIn);
                 break;
             case ("Squirrel"):
-                Un_LockDoor_Squirrel_Status();
+                Un_LockDoor_Squirrel_Status(isInteractable, canGoIn);
                 break;
             case (null):
                 Debug.Log("No door to unlock");
@@ -110,12 +114,16 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_Grandparents_Status(bool isUnlock)
+    private void Un_LockDoor_Grandparents_Status(bool canInteract, bool canSceneTrans)
     {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents && isUnlock)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents && canInteract)
         {
             lockedDoorSO.IsInteractable = true;
-            sceneTransitionColliderManager.enabled = true;
+
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+            }
             Debug.Log("Unlock GrandP doors");
         }
         else
@@ -126,12 +134,16 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_ToHallway_Status(bool isUnlock)
+    private void Un_LockDoor_ToHallway_Status(bool canInteract, bool canSceneTrans)
     {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway && isUnlock)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway && canInteract)
         {
             lockedDoorSO.IsInteractable = true;
-            sceneTransitionColliderManager.enabled = true;
+
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+            }
             Debug.Log("Unlock Hallway doors");
         }
         else
@@ -143,47 +155,67 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_Wolf_Status(bool isUnlock)
+    private void Un_LockDoor_Wolf_Status(bool canInteract, bool canSceneTrans)
     {
         //NPC_Wolf is special because we won't go inside the room
         //So sceneTransitionColliderManager is not needed
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf && isUnlock)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf && canInteract)
         {
-            //sceneTransitionColliderManager.enabled = true;
             lockedDoorSO.IsInteractable = true;
+            Debug.Log("WolfDoor: Highlight");
+
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+                Debug.Log("WolfDoor: SceneTrans");
+            }
         }
         else
         {
             //sceneTransitionColliderManager.enabled = false;
             lockedDoorSO.IsInteractable = false;
+            Debug.Log("WolfDoor: Lock");
         }
     }
 
-    private void Un_LockDoor_Bird_Status()
+    private void Un_LockDoor_Bird_Status(bool canInteract, bool canSceneTrans)
     {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Bird)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Bird && canInteract)
         {
-            sceneTransitionColliderManager.enabled = true;
             lockedDoorSO.IsInteractable = true;
+            Debug.Log("BirdDoor: Highlight");
+
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+                Debug.Log("BirdDoor: SceneTrans");
+            }
         }
         else
         {
             sceneTransitionColliderManager.enabled = false;
             lockedDoorSO.IsInteractable = false;
+            Debug.Log("BirdDoor: Lock");
         }
     }
 
-    private void Un_LockDoor_Squirrel_Status()
+    private void Un_LockDoor_Squirrel_Status(bool canInteract, bool canSceneTrans)
     {
-        if (!hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Squirrel)
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Squirrel && canInteract)
         {
-            sceneTransitionColliderManager.enabled = true;
             lockedDoorSO.IsInteractable = true;
+            Debug.Log("SquirrelDoor: Highlight");
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+                Debug.Log("SquirrelDoor: SceneTrans");
+            }
         }
         else
         {
             sceneTransitionColliderManager.enabled = false;
             lockedDoorSO.IsInteractable = false;
+            Debug.Log("SquirrelDoor: Lock");
         }
     }
 }

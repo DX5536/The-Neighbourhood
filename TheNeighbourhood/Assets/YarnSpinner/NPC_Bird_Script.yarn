@@ -2,18 +2,29 @@
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: -160,-58
 __PrivCrochet_tags: 
-title: Start_NPC_Bird
+title: TalkTo_NPC_Bird
 ---
+//Declares variables
+///Is this Player's first time visit NPC_Bird?
+<<declare $firstVisitNPC_Bird to true>>
+///Can Player talk to NPC_Bird?
+<<declare $canTalk_NPC_Bird to false>>
+///Has Player talked to NPC_Bird?
+<<declare $hasTalked_NPC_Bird to false>>
+/// Check if player still NEED oil or not
+<<declare $needOil = true>>
+/// Check if player ALREADY has oil in inventory
+<<declare $getOil = false>>
 /// Check if door to NPC_Bird is unlocked
 <<declare $unlockedDoor_NPC_Bird = false>>
 
 Bird: Oh? Who do we have here?
 Bird: Do you need something?
--> Oh hi, I need some flour. <<if $isPlayerNeedFlour == true>>
+-> Oh hi, I need some flour. <<if $needOil == true>>
     Bird: Flour? Ah sure, I think I have some around.
-    <<set $isPlayerNeedFlour to false>>
-    <<set $getFlour to true>>
-    <<set $gainedItem_Name to "Flour">>
+    <<set $needOil to false>>
+    <<set $getOil to true>>
+    <<set $gainedItem_Name to "Oil">>
     <<wait 0,2>>
     Bird: Here you go. Some brand new flour.
     <<AccessYarnGainedItemValue Yarn_InventoryManager>>
@@ -31,7 +42,7 @@ __PrivCrochet_tags:
 title: Bird_Hallway_Dialogue
 ---
 // Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
-
+Bird: Hi and come in!
 // Normales Bird-Gespräch, in einer Line bittet der Bird einen rein in die Wohnung
 // Bird geht in die Wohnung, Wohnung zum Betreten unlocked
 ===

@@ -65,7 +65,8 @@ public class SpeakerColorChange: DialogueViewBase
 
         if (string.IsNullOrEmpty(characterName))
         {
-            Debug.Log("There is no Speaker");
+            //Debug.Log("There is no Speaker");
+            return;
         }
         else if (characterNameColor.ContainsKey(characterName))
         {
@@ -92,7 +93,8 @@ public class SpeakerColorChange: DialogueViewBase
 
         if (string.IsNullOrEmpty(characterNameTextBox))
         {
-            Debug.Log("There is no Speaker");
+            //Debug.Log("There is no Speaker");
+            return;
         }
         else if (characterTextBoxColor.ContainsKey(characterNameTextBox))
         {

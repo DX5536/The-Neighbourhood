@@ -18,10 +18,13 @@ MonoBehaviour:
   outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
   blocked_Outline_MAT: {fileID: 2100000, guid: 3613c35317b3787458c999cbc58ee6b5, type: 2}
   popupItemID: Item_Bag
-  popupDescription: My backpack [E]
+  popupDescription: <bounce>My backpack [E]</bounce>
   tweenValue: 30
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
   nodeName: Picking_Up_Pizza_Monologue
   speakerNPC_Color: {r: 0, g: 0, b: 0, a: 0}
+  textBox_Color:
+    serializedVersion: 2
+    rgba: 0

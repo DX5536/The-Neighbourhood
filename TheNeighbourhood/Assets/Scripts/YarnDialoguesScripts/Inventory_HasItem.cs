@@ -34,17 +34,19 @@ public class Inventory_HasItem: MonoBehaviour
     private void Start()
     {
         //First find the storage by type (cuz I need the storage in non-DialogRunner too)
-        storage = FindObjectOfType<InMemoryVariableStorage>();
+        storage = GameObject.FindGameObjectWithTag("VariableStorage").GetComponent<InMemoryVariableStorage>();
 
         //storage = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InMemoryVariableStorage>();
     }
 
+    ///Access the Yarn's Variables of the recently gained Item
     [YarnCommand("AccessYarnGainedItemValue")]
     public void AccessYarnGainedItemValue()
     {
         storage.TryGetValue("$gainedItem_Name", out currentGainedItem);
     }
 
+    ///Display the gained Item on Inventory
     [YarnCommand("DisplayGainedItem")]
     public void DisplayGainedItem()
     {

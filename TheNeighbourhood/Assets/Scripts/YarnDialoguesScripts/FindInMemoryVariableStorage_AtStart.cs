@@ -24,7 +24,7 @@ public class FindInMemoryVariableStorage_AtStart: MonoBehaviour
         {
             //Put the value inside DialogRunner
             dialogueRunner.VariableStorage = storage;
-            Debug.Log("Found by type");
+            //Debug.Log("Found by type");
         }
         else
         {

@@ -1,19 +1,47 @@
 #__PrivCrochet_version:1
+title: TalkTo_NPC_Squirrel
+position: 0,1
+---
+//Declares variables
+///Is this Player's first time visit NPC_Squirrel?
+<<declare $firstVisitNPC_Squirrel to true>>
+///Can Player talk to NPC_Squirrel?
+<<declare $canTalk_NPC_Squirrel to false>>
+///Has Player talked to NPC_Squirrel?
+<<declare $hasTalked_NPC_Squirrel to false>>
+/// Check if player still NEED egg or not
+<<declare $needEgg = true>>
+/// Check if player ALREADY has egg in inventory
+<<declare $getEgg = false>>
+/// Check if door to NPC_Squirrel is unlocked
+<<declare $unlockedDoor_NPC_Squirrel = false>>
+//
+//The Crossroads of what to talk with NPC_Squirrel
+<<if $firstVisitNPC_Squirrel == true && $hasTalked_NPC_Wolf == true>>
+    <<jump Squirrel_Hallway_Dialogue>>
+<<else>>
+    Lilly: No one is here.
+<<endif>>
+===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: 
-title: Squirrel_First_Dialogue
+title: Squirrel_Hallway_Dialogue
+position: 102,168
 ---
 // Voraussetzung 1 für diesen Dialog: Man hat das zweite Mal mit Caro gesprochen und sich auf den Weg gemacht, Zutaten von den Nachbarn zu bekommen.
 // Voraussetzung 2: Man hat das Gespräch mit dem Wolf beendet, eine Zutat erhalten und wurde zum Squirrel geschickt.
 
 // Normale Squirrel-Konversation
-// Eine Dialog-Line löst aus, dass man in die Wohnung vom Squirrel gebeten wird. Squirrel geht in die Wohnung, Betreten dieser wird unlocked. Wolf-Dialog-Optionen werden disabled. 
+// Eine Dialog-Line löst aus, dass man in die Wohnung vom Squirrel gebeten wird. Squirrel geht in die Wohnung, Betreten dieser wird unlocked. Wolf-Dialog-Optionen werden disabled.
+Squirrel: Give me a sec. Coming!
+Lilly: *insert more dialog in hallway*
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 248,-1
 __PrivCrochet_tags: 
 title: Squirrel_Indoor_Dialogue
+position: -117,130
 ---
 // Squirrel hat die Tür geöffnet, man ist ihm gefolgt
 
@@ -21,3 +49,4 @@ title: Squirrel_Indoor_Dialogue
 // Squirrel gibt einem am Ende dieser die zweite Zutat -> erscheint im Inventar
 // Squirrel schickt einen zum Bird. Bird-Dialoge werden unlocked.
 ===
+

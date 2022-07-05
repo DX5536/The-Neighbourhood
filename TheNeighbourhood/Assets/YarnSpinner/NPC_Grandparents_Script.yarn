@@ -22,7 +22,7 @@ title: Meeting_GrandParents_1st
 // Dialog beginnt in der Wohnung automatisch, sobald man die Tür der Grandparents betritt
 //Locked the ToHallway_Door from Grandparents
 <<set $unlockedDoor_ToHallway to false>>
-<<Un_LockDoor Door_ToHallway ToHallway false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
 //
 <<if $firstVisitGrandParents == true>>
     Malka: Lilly! Shalom aleichem, darling!
@@ -145,7 +145,7 @@ title: Malka_Talk_Long
     <<set $firstVisitGrandParents to false>>
     // Weg zurück ins Treppenhaus und zurück in die WG wird freigeschaltet, Zweiter Caro-Dialog wird freigeschaltet
     <<set $unlockedDoor_ToHallway to true>>
-    <<Un_LockDoor Door_ToHallway ToHallway true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
@@ -166,19 +166,31 @@ title: Leaving_Grandparents_Apartment
 //If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
 <<if $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false>>
     <<set $unlockedDoor_NPC_Grandparents to false>>
-    <<Un_LockDoor Door_ToGrandparents Grandparents false>>
+    <<Un_LockDoor Door_ToGrandparents Grandparents false false>>
     Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
     Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
     <<set $unlockedDoor_NPC_Grandparents to true>>
-    <<Un_LockDoor Door_ToGrandparents Grandparents true>>
-<<elseif $unlockedDoor_NPC_Wolf == true>>
+    <<Un_LockDoor Door_ToGrandparents Grandparents true true>>
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Wolf == true>>
     //Nothing to say -> Debug
     //<<set $hasTalked_Grandpa to true>>
     //<<set $hasTalked_Grandma to true>>
     Debug NPC_Wolf in Hallway
-    <<set $unlockedDoor_NPC_Wolf to true>> //This is in NPC_Rabbit script
-    <<Un_LockDoor Door_ToNPC_Wolf Wolf true>>
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Bird == true>>
+    Debug NPC_Bird in Hallway
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
+    Debug NPC_Squirrel in Hallway
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
 <<else>>
+    Havent unlock anything
     //Nothing to say -> Debug
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird false false>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
 <<endif>>
 ===
