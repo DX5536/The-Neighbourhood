@@ -41,6 +41,12 @@ public class YarnCommandsCharacterController: MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Spawn target at specific position
+    /// </summary>
+    /// <param name="spawnOffset">Off-set from specific position</param>
+    /// <param name="spawnPointName">Name of specific position (GameObject)</param>
+    /// <param name="showCharacter">Make target visible?</param>
     [YarnCommand("TargetSpawn")]
     public void TargetSpawn(float spawnOffset, string spawnPointName, bool showCharacter)
     {
@@ -53,8 +59,9 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
+    ///Target moves to specific position
     [YarnCommand("TargetMove")]
-    public void TargetMove_ToGoal(string goalName, bool isCharacterRemove)
+    public void TargetMove(string goalName, bool isCharacterRemove)
     {
         var goalGameObject = GameObject.Find(goalName);
 
@@ -65,7 +72,7 @@ public class YarnCommandsCharacterController: MonoBehaviour
             //If we want the character to disappear afterwards
             if (isCharacterRemove)
             {
-                SetGOActive(true);
+                Toggle_CharacterActive(true);
             }
         }
 
@@ -75,19 +82,24 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Target moves back to original spawned position
+    /// </summary>
+    /// <param name="isCharacterRemove">Should target be deactivated</param>
     [YarnCommand("TargetMove_Back")]
-    public void TargetMove_BackToOG(bool isCharacterRemove)
+    public void TargetMove_Back(bool isCharacterRemove)
     {
         characterGO.transform.DOMoveX(character_OG_Pos.x, tweenDuration, isTweenSnapOn);
         //If we want the character to disappear afterwards
         if (isCharacterRemove)
         {
-            SetGOActive(true);
+            Toggle_CharacterActive(true);
         }
     }
 
+    ///Flip Sprite on X-axis
     [YarnCommand("FlipSprite")]
-    private void FlipingSprite()
+    private void FlipSprite()
     {
         if (gameObject.transform.GetComponent<SpriteRenderer>().flipX == false)
         {
@@ -100,6 +112,7 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
+    ///Dis/Enabled Sprite Renderer
     [YarnCommand("ShowSprite")]
     private void ShowSprite(bool showCharacter)
     {
@@ -113,8 +126,12 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set GameObject active or not
+    /// </summary>
+    /// <param name="toSetActive">Set target active?</param>
     [YarnCommand("Toggle_CharacterActive")]
-    private void SetGOActive(bool toSetActive)
+    private void Toggle_CharacterActive(bool toSetActive)
     {
         //Turn on Character
         if (characterGO.activeSelf == false && toSetActive == true)
