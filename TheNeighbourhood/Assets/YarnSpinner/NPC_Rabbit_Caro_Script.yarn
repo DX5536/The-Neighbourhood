@@ -121,6 +121,8 @@ title: Bringing_Pizza_to_Roommate
 position: -193,107
 ---
 Caroline: Do you have the pizza yet?
+-> Lilly: How are you? (test)
+    Caroline: Pretty fine. (test)
 -> Lilly: Ah, not yet. <<if $hasCookedPizza == false>>
     //Ich habe das hier zum test geadded.
     Caroline: No rush. Great things take time. 

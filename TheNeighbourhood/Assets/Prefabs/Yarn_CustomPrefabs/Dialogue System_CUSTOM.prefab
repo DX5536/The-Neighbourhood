@@ -382,10 +382,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Last line
+  m_text: '>This is the choice line'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 310c640616fc3c042a79e177e8ad325e, type: 2}
+  m_sharedMaterial: {fileID: -8727253637361330393, guid: 310c640616fc3c042a79e177e8ad325e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 4071169107938441371}
-  optionViewPrefab: {fileID: 5665317717604146022, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
+  optionViewPrefab: {fileID: 8983447607103372234, guid: 5791592b213e6cb46b7f418f6d4baffb, type: 3}
   lastLineText: {fileID: 4071169107371889908}
   fadeTime: 0.1
   showUnavailableOptions: 0
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f3e6d849af69c9747b6c52bfe2ecfea2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
