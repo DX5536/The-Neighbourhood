@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Door_NPC2_Squirrel
   m_EditorClassIdentifier: 
   resetIsInteractableAtStart: 0
-  isInteractable: 0
+  isInteractable: 1
   spritesDefault_MAT: {fileID: 2100000, guid: 781d1bf65f5d14046b25d0cb339dbddf, type: 2}
   outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
   blocked_Outline_MAT: {fileID: 2100000, guid: 3613c35317b3787458c999cbc58ee6b5, type: 2}
@@ -23,7 +23,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: TalkTo_NPC_Squirrel
+  nodeName: Squirrel_Hallway_Dialogue
   speakerNPC_Color: {r: 0, g: 0, b: 0, a: 0}
   textBox_Color:
     serializedVersion: 2

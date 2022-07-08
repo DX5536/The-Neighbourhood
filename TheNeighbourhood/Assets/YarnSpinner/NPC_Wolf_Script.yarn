@@ -127,6 +127,7 @@ Lilly: <i>(Or is it?)</i>
 <<set $firstVisitNPC_Wolf to false>>
 <<set $hasTalked_NPC_Wolf to true>>
 //
+<<set $findIngredients to true>>
 <<set $unlockedDoor_NPC_Squirrel to true>>
 <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
 Lilly: <i>(Either way, no more hiding, Lilly.)</i>

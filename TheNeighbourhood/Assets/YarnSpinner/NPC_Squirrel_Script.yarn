@@ -1,6 +1,6 @@
 #__PrivCrochet_version:1
 title: TalkTo_NPC_Squirrel
-position: 0,1
+position: 87,19
 ---
 //Declares variables
 ///Is this Player's first time visit NPC_Squirrel?
@@ -10,9 +10,9 @@ position: 0,1
 ///Has Player talked to NPC_Squirrel?
 <<declare $hasTalked_NPC_Squirrel to false>>
 /// Check if player still NEED egg or not
-<<declare $needEgg = true>>
+<<declare $needEggs = true>>
 /// Check if player ALREADY has egg in inventory
-<<declare $getEgg = false>>
+<<declare $getEggs = false>>
 /// Check if door to NPC_Squirrel is unlocked
 <<declare $unlockedDoor_NPC_Squirrel = false>>
 //
@@ -21,6 +21,7 @@ position: 0,1
     <<jump Squirrel_Hallway_Dialogue>>
 <<elseif $firstVisitNPC_Squirrel == false>>
     //If Player has done the Hallway talk -> Door automatic unlock to go inside
+    //Small dialog when interact unlocked ToSquirrel_Door
     Squirrel: Come in!
     <<set $unlockedDoor_NPC_Squirrel to true>>
     <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true true>>
@@ -40,7 +41,7 @@ position: 102,168
 // Normale Squirrel-Konversation
 // Eine Dialog-Line löst aus, dass man in die Wohnung vom Squirrel gebeten wird. Squirrel geht in die Wohnung, Betreten dieser wird unlocked. Wolf-Dialog-Optionen werden disabled.
 Squirrel: Give me a sec. Coming!
-Lilly: *insert more dialog in hallway*
+position: -93,168dialog in hallway*
 <<wait 2>>
 <<TargetSpawn NPC_Squirrel 0 NPC_Squirrel_SpawnPoint true>>
 Squirrel: Oh hi. Come on in!
@@ -56,10 +57,48 @@ __PrivCrochet_tags:
 title: Squirrel_Indoor_Dialogue
 position: -117,130
 ---
+//Locked the ToHallway_Door from Squirrel
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
+//
 // Squirrel hat die Tür geöffnet, man ist ihm gefolgt
-
+//
 // Normale Squirrel-Konversation
 // Squirrel gibt einem am Ende dieser die zweite Zutat -> erscheint im Inventar
 // Squirrel schickt einen zum Bird. Bird-Dialoge werden unlocked.
+//
+//If Player is needing egg and do not have egg in inventory
+<<if $needEggs == true && $getEggs == false>>
+    <<jump Squirrel_Get_Egg>>
+<<else>>
+    Squirrel: How it's going?
+    Lilly: I'm ok. Got to go now!
+    //Unlock door back to Hallway
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<endif>>
 ===
-
+title: Squirrel_Get_Egg
+position: 0,1
+---
+Lilly: Hi!
+    Squirrel: *insert some dialogue here*
+    Lilly: Can I have some eggs?
+    Squirrel: Sure. Wait a sec! *more dialogue blah blah*
+    //Egg erscheint im Inventar
+    <<set $gainedItem_Name to "Eggs">>
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
+    <<set $needEggs to false>>
+    <<set $getEggs to true>>
+    Lilly: Woah. Thank you so much!
+    Lilly: *insert more dialogue* Where can I get Oil?
+    Squirrel: You can ask NPC_Bird.
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<set $findIngredients to true>>
+    Lilly: I see. thanks and bye!
+    <<set $hasTalked_NPC_Squirrel to true>>
+    //Unlock door back to Hallway
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+===

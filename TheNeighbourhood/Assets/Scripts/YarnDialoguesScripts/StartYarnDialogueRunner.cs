@@ -19,11 +19,6 @@ public class StartYarnDialogueRunner: MonoBehaviour
     [SerializeField]
     private DialogueAdvanceInput dialogueAdvanceInput;
 
-    [SerializeField]
-    private bool isGO_Door;
-    [SerializeField]
-    private string nameGO_DoorID;
-
     void Start()
     {
         //This line is too foolproof the var

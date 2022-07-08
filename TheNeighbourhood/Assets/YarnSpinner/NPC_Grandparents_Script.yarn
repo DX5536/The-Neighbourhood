@@ -163,14 +163,29 @@ __PrivCrochet_tags:
 title: Leaving_Grandparents_Apartment
 ---
 // Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
-//If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
-<<if $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false>>
-    <<set $unlockedDoor_NPC_Grandparents to false>>
-    <<Un_LockDoor Door_ToGrandparents Grandparents false false>>
-    Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
-    Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
-    <<set $unlockedDoor_NPC_Grandparents to true>>
-    <<Un_LockDoor Door_ToGrandparents Grandparents true true>>
+<<set $unlockedDoor_NPC_Grandparents to false>>
+<<Un_LockDoor Door_ToGrandparents Grandparents false false>>
+Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
+Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
+<<set $unlockedDoor_NPC_Grandparents to true>>
+<<Un_LockDoor Door_ToGrandparents Grandparents true true>>
+===
+title: Hallway_UnLockDoor_Manager
+position: -154,1
+---
+//We go from the bottom up: 
+//So Bird -> Squirrel -> Wolf -> Grandparents
+//
+<<if $findIngredients == true && $unlockedDoor_NPC_Bird == true>>
+    Debug NPC_Bird in Hallway
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
+//
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
+    Debug NPC_Squirrel in Hallway
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+//
 <<elseif $findIngredients == true && $unlockedDoor_NPC_Wolf == true>>
     //Nothing to say -> Debug
     //<<set $hasTalked_Grandpa to true>>
@@ -178,22 +193,15 @@ title: Leaving_Grandparents_Apartment
     Debug NPC_Wolf in Hallway
     <<set $unlockedDoor_NPC_Wolf to true>>
     <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
-<<elseif $findIngredients == true && $unlockedDoor_NPC_Bird == true>>
-    Debug NPC_Bird in Hallway
-    <<set $unlockedDoor_NPC_Bird to true>>
-    <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
-<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
-    Debug NPC_Squirrel in Hallway
-    <<set $unlockedDoor_NPC_Squirrel to true>>
-    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+//If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
+<<elseif $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false>>
+    <<jump Leaving_Grandparents_Apartment>>
+//
 <<else>>
-    //Havent unlock anything
+    Havent unlock anything
     //Nothing to say -> Debug
     //<<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
     //<<Un_LockDoor Door_ToNPC_Bird Bird false false>>
     //<<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
-    //
-    //<<set $unlockedDoor_NPC_Wolf to true>>
-    //<<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 <<endif>>
 ===

@@ -23,7 +23,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: 
+  nodeName: Squirrel_Indoor_Dialogue
   speakerNPC_Color: {r: 0.7924528, g: 0.4906316, b: 0.1981132, a: 1}
   textBox_Color:
     serializedVersion: 2

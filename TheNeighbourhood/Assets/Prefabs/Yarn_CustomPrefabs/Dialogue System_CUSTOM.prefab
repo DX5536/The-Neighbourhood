@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1571312156340430076}
   - component: {fileID: 1571312156340430077}
   m_Layer: 5
-  m_Name: Background_TEXT
+  m_Name: Background_NAME
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   startAutomatically: 0
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}
-  verboseLogging: 1
+  verboseLogging: 0
   onNodeStart:
     m_PersistentCalls:
       m_Calls:
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 9096305583151512461}
   - component: {fileID: 9096305583151512460}
   m_Layer: 5
-  m_Name: Background_NAME
+  m_Name: Background_TEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
