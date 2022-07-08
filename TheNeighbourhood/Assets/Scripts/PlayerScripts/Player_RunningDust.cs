@@ -24,8 +24,12 @@ public class Player_RunningDust: MonoBehaviour
     //Public Var to access with PlayerMovement
     public void CreateDust_PS()
     {
+
+        dust_PS.Stop();
+
         var ps_main = dust_PS.main;
-        ps_main.duration = playerScriptableObject.TweenDurationProportionValue;
+        //ps_main.duration = playerScriptableObject.TweenDurationProportionValue;
+        ps_main.duration = 1f;
 
         dust_PS.Play();
     }

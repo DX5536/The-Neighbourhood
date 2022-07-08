@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,9 +28,17 @@ public class MouseClickPosition: MonoBehaviour
     [SerializeField]
     private UnityEvent playerMoveEvent;
 
+    [Header("PlayerManager > Stop_PlayerMoveDOTween")]
+    [SerializeField]
+    private UnityEvent stopPlayerMoveEvent;
+
     [Header("Player > Dust_PS > RunningDust")]
     [SerializeField]
     private UnityEvent playerCreateDustEvent;
+
+    [Header("Update_AutoSearch")]
+    [SerializeField]
+    private List<GameObject> myHUDArrows;
 
     //[SerializeField]
     //private float tweenParamValue;
@@ -64,6 +73,8 @@ public class MouseClickPosition: MonoBehaviour
 
     void Update()
     {
+
+
         //if player allowed to click AND currently no HUD_Arrow present (Read_Only)
         //ArrowHasSpawned logic in PlayerMovement.cs
         if (mouseScriptableObject.CanClickMouse == true && mouseScriptableObject.ArrowHasSpawned == false)
@@ -76,9 +87,23 @@ public class MouseClickPosition: MonoBehaviour
             }
         }
 
+        else if (mouseScriptableObject.CanClickMouse == true
+            && mouseScriptableObject.ArrowHasSpawned == true
+            && playerScriptableObject.IsRunning == true)
+        {
+            //Save MousePosition upon L.Click
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Stop the walk
+                stopPlayerMoveEvent?.Invoke();
+                Debug.Log("Player click to new position while HUD still present");
+            }
+
+        }
+
     }
 
-    private void PlayerWalk()
+    public void PlayerWalk()
     {
         //This alone means Mouse in all the screen position -> NOT WorldPos
         //mousePositionValue = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
@@ -114,6 +139,8 @@ public class MouseClickPosition: MonoBehaviour
         //StartCoroutine(SwitchAnimation());
         //IsPlayerMoving = true;
     }
+
+
 
     //This method is to activate through DialogRunner's Event
     public void ChangeCanPlayAnim(bool canWalk)
@@ -151,6 +178,8 @@ public class MouseClickPosition: MonoBehaviour
 
         else
         {
+            //playerAnimator.CrossFade("Idle", 0f, 0);
+            Debug.Log("canPlayAnim PlayerWalk stop");
             playerAnimator.SetBool("isWalking", false);
             //playerAnimator.Play("Idle");
 
@@ -160,11 +189,14 @@ public class MouseClickPosition: MonoBehaviour
 
     private IEnumerator SwitchAnimation()
     {
-        playerAnimator.SetBool("isWalking", true);
+        //playerAnimator.SetBool("isWalking", true);
+        playerAnimator.CrossFade("Walk", 0, 0);
         //The animation will play/stop proportional to the new tweenValue
         yield return new WaitForSecondsRealtime(playerScriptableObject.TweenDurationProportionValue);
 
-        playerAnimator.SetBool("isWalking", false);
+        playerAnimator.CrossFade("Idle", 0f, 0);
+        Debug.Log("Couroutine PlayerWalk stop");
+        //playerAnimator.SetBool("isWalking", false);
         //playerAnimator.Play("Idle");
     }
 }

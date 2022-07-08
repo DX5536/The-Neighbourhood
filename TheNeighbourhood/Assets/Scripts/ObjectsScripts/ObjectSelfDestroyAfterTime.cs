@@ -21,6 +21,12 @@ public class ObjectSelfDestroyAfterTime: MonoBehaviour
     {
         yield return new WaitForSeconds(mouseScriptableObject.ArrowDisplayTime);
 
+        DestroyGO();
+    }
+
+    //public so we can force destroy in MouseClickPosition
+    public void DestroyGO()
+    {
         Destroy(parentGO);
     }
 }

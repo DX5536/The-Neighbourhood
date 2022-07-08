@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7452137354279215767}
   m_Layer: 0
   m_Name: HUD_Prefab
-  m_TagString: HUD_Arrow
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8861420722745384401}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: HUD_Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

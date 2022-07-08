@@ -144,6 +144,17 @@ public class PlayerMovement: MonoBehaviour
         }
     }
 
+    public void Stop_PlayerMoveDOTween()
+    {
+        if (canPlayerMove == true)
+        {
+            //StopPlayerTween();
+            OnComplete_MultipleMethods();
+
+            PlayerMoveDOTween();
+        }
+    }
+
     //2nd Attempt on Move Player in constant speed
     /*private void PlayerMoveAnimator()
     {
@@ -193,6 +204,7 @@ public class PlayerMovement: MonoBehaviour
 
     private void PlayerTween()
     {
+        playerScriptableObject.IsRunning = true;
         var playerNewPos = new Vector2(player.transform.position.x, player.transform.position.y);
         //Play Walking SFX
         StartWalkingSFX();
@@ -201,6 +213,7 @@ public class PlayerMovement: MonoBehaviour
         player.transform.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
             playerScriptableObject.TweenDurationProportionValue,
             playerScriptableObject.MoveTweenSnapping)
+            .SetId("PlayerWalk")
             .SetEase(playerScriptableObject.EaseType)
             .OnComplete(OnComplete_MultipleMethods);
 
@@ -209,26 +222,19 @@ public class PlayerMovement: MonoBehaviour
         playerScriptableObject.RoundPlayerPositionValue();
 
         FlipingSprite();
-
-        //In Space movement!!! (Like a real Ninja)
-        /*if (mouseScriptableObject.IsPlayerMoving && (Vector2)transform.position != lastClickPos)
-        {
-            //Check if we are in the lastClickPos. If FALSE, move to it.
-            float step = playerSpeed * Time.deltaTime;
-            playerRigidBody.transform.position = Vector2.MoveTowards(player.transform.position, lastClickPos, step);
-        }
-        else
-        {
-            //If reach lastClickPos -> Can't move until mouseClick again
-            mouseScriptableObject.IsPlayerMoving = false;
-        }*/
     }
 
-    //A collected method since .OnComplete now allow multple method
+    private void StopPlayerTween()
+    {
+        DOTween.Pause("PlayerWalk");
+    }
+
+    //A collected method since .OnComplete now allow multiple method
     private void OnComplete_MultipleMethods()
     {
         StopWalkingSFX();
         ResetHasSpawnedArrow();
+        playerScriptableObject.IsRunning = false;
     }
 
     //After Tween Animation -> Player can spawn HUD_Arrow again

@@ -6,6 +6,23 @@ namespace Assets.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/PlayerValue", order = 3)]
     public class PlayerScriptableObject: ScriptableObject
     {
+        [Header("Is Player currently running?")]
+        [SerializeField]
+        private bool isRunning;
+
+        public bool IsRunning
+        {
+            get
+            {
+                return isRunning;
+            }
+            set
+            {
+                isRunning = value;
+            }
+        }
+
+
         [SerializeField]
         private Vector2 playerPositionValue;
 

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetCanClickMouseAtStart: 1
   canClickMouse: 1
-  mousePositionValue: {x: -4.4, y: -3.7}
-  raycastHitValue: {x: -4.4, y: -4.5}
+  mousePositionValue: {x: -7.6, y: -2.8}
+  raycastHitValue: {x: -7.6, y: -4.5}
   playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}
   arrowHUDImage: {fileID: 7452137354279215766, guid: 575d8a7354455714ea1f7d645c460803, type: 3}
-  arrowDisplayTime: 2
+  arrowDisplayTime: 2.5
   arrowHasSpawned: 0
