@@ -190,7 +190,7 @@ public class MouseClickPosition: MonoBehaviour
     private IEnumerator SwitchAnimation()
     {
         //playerAnimator.SetBool("isWalking", true);
-        playerAnimator.CrossFade("Walk", 0, 0);
+        playerAnimator.CrossFade("Walk", playerScriptableObject.TweenDurationProportionValue, 0);
         //The animation will play/stop proportional to the new tweenValue
         yield return new WaitForSecondsRealtime(playerScriptableObject.TweenDurationProportionValue);
 
