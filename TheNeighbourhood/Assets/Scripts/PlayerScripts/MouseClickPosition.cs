@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,14 +7,13 @@ public class MouseClickPosition: MonoBehaviour
     [Header("Player's Starting Position in Editor")]
     [SerializeField]
     private GameObject player;
-
     [SerializeField]
-    //private Vector2 mousePositionValue;
     private MouseScriptableObject mouseScriptableObject;
     [SerializeField]
     private PlayerScriptableObject playerScriptableObject;
-    //[SerializeField]
-    //private bool isPlayerMoving;
+
+    [SerializeField]
+    private PlayerMovement playerMovement;
 
     [Header("Player Animator")]
     [SerializeField]
@@ -35,10 +32,12 @@ public class MouseClickPosition: MonoBehaviour
     [Header("Player > Dust_PS > RunningDust")]
     [SerializeField]
     private UnityEvent playerCreateDustEvent;
-
-    [Header("Update_AutoSearch")]
     [SerializeField]
-    private List<GameObject> myHUDArrows;
+    private UnityEvent playerStopDustEvent;
+
+    [Header("Update_AutoSearch_READ_ONLY")]
+    [SerializeField]
+    private GameObject myHUDArrow;
 
     //[SerializeField]
     //private float tweenParamValue;
@@ -69,33 +68,47 @@ public class MouseClickPosition: MonoBehaviour
 
         //Reset canClickMouse in case it's disable due to Yarn tests
         mouseScriptableObject.SetCanClickMouse();
+        //Make sure isRunnig false at start;
+        playerScriptableObject.IsRunning = false;
     }
 
     void Update()
     {
+        //First continuously search for the HUD_Arrow
+        myHUDArrow = GameObject.FindGameObjectWithTag("HUD_Arrow");
+        //As PlayerWalkiAnim is depends on myHUDArrow null or not!
+        PlayerWalkAnim();
 
-
-        //if player allowed to click AND currently no HUD_Arrow present (Read_Only)
+        //if player allowed to click AND NO HUD_Arrow present (Read_Only)
         //ArrowHasSpawned logic in PlayerMovement.cs
         if (mouseScriptableObject.CanClickMouse == true && mouseScriptableObject.ArrowHasSpawned == false)
         {
             //Save MousePosition upon L.Click
             if (Input.GetMouseButtonDown(0))
             {
+                //First save the MouseClick/Raycast collide with floor values
                 PlayerWalk();
+                //Destroy previous HUD just in case
+                Destroy(myHUDArrow);
+
+                //Then spawn the new one.
                 mouseScriptableObject.DisplayHUDImage();
             }
         }
 
+        //If you can click mouse
+        //AND an HUD arrow has already spawned
+        //AND Player is currently running
         else if (mouseScriptableObject.CanClickMouse == true
             && mouseScriptableObject.ArrowHasSpawned == true
             && playerScriptableObject.IsRunning == true)
         {
-            //Save MousePosition upon L.Click
             if (Input.GetMouseButtonDown(0))
             {
-                //Stop the walk
+                //Stop the walk -> Temporary reset to 0
+                //So we can loop back to the if above!
                 stopPlayerMoveEvent?.Invoke();
+                //Debug.Log("Tween Stop on purpose");
                 Debug.Log("Player click to new position while HUD still present");
             }
 
@@ -103,6 +116,12 @@ public class MouseClickPosition: MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        //PlayerWalkAnim();
+    }
+
+    //This method will capture the mouse click position and save it to the SO
     public void PlayerWalk()
     {
         //This alone means Mouse in all the screen position -> NOT WorldPos
@@ -128,19 +147,13 @@ public class MouseClickPosition: MonoBehaviour
             //Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
         }
 
-        //Invoke CreateDust from Dust_PS
-        playerCreateDustEvent?.Invoke();
-
         //Invoke DOTween Walking movement
         playerMoveEvent?.Invoke();
 
-        PlayerWalkAnim();
-
+        //PlayerWalkAnim();
         //StartCoroutine(SwitchAnimation());
         //IsPlayerMoving = true;
     }
-
-
 
     //This method is to activate through DialogRunner's Event
     public void ChangeCanPlayAnim(bool canWalk)
@@ -169,25 +182,25 @@ public class MouseClickPosition: MonoBehaviour
     }
 
     //This method is to trigger the state changes depends on Bool value
+    //Mainly for the Dialogue Runner!
     private void PlayerWalkAnim()
     {
+        //If player allow to play walking animation
+        //Aka not currently in a Dialogue scene
         if (canPlayAnimation == true)
         {
-            StartCoroutine(SwitchAnimation());
+            //StartCoroutine(SwitchAnimation());
+            SwitchAnimtion_Based_IsRunning();
         }
 
         else
         {
-            //playerAnimator.CrossFade("Idle", 0f, 0);
-            Debug.Log("canPlayAnim PlayerWalk stop");
-            playerAnimator.SetBool("isWalking", false);
-            //playerAnimator.Play("Idle");
-
+            Debug.Log("canPlayAnim == false");
         }
 
     }
 
-    private IEnumerator SwitchAnimation()
+    /*private IEnumerator SwitchAnimation()
     {
         //playerAnimator.SetBool("isWalking", true);
         playerAnimator.CrossFade("Walk", playerScriptableObject.TweenDurationProportionValue, 0);
@@ -198,5 +211,32 @@ public class MouseClickPosition: MonoBehaviour
         Debug.Log("Couroutine PlayerWalk stop");
         //playerAnimator.SetBool("isWalking", false);
         //playerAnimator.Play("Idle");
+    }*/
+
+    private void SwitchAnimtion_Based_IsRunning()
+    {
+        //isWalkingParam_Animator = playerAnimator.GetBool("isWalking");
+
+        //We just check if there is an HUD_Arrow still present
+        //Player continue to play walk animation until there is no HUD_Arrow
+        if (myHUDArrow != null)
+        {
+            playerAnimator.SetBool("isWalking", true);
+            //Debug.Log("isRunning Animation");
+
+            //Invoke CreateDust from Dust_PS
+            playerCreateDustEvent?.Invoke();
+        }
+
+        //If FindGameObject can't find any more HUD_Arrow
+        //Stop the animation
+        else
+        {
+            playerAnimator.SetBool("isWalking", false);
+            //Debug.Log("isRunning Stop");
+
+            //Invoke StopDust from Dust_PS
+            playerStopDustEvent?.Invoke();
+        }
     }
 }

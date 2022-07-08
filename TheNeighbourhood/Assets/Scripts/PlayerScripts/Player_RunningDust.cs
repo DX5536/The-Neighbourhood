@@ -21,16 +21,34 @@ public class Player_RunningDust: MonoBehaviour
 
     }
 
-    //Public Var to access with PlayerMovement
+    //Public method to access in MouseClickPosition.SwitchAnimtion_Based_IsRunning()
+    //Which based on the presence of HUD_Arrow or not.
+    public void StopDust_PS()
+    {
+        dust_PS.Stop();
+    }
+
+    //Public method to access in MouseClickPosition.SwitchAnimtion_Based_IsRunning()
+    //Which based on the presence of HUD_Arrow or not.
     public void CreateDust_PS()
     {
+        if (dust_PS.isPlaying == false)
+        {
+            //Stop the dust temporary
+            dust_PS.Stop();
+            var ps_main = dust_PS.main;
+            //Assign new duration -> 100sec to make sure dust will never go out unless called!
+            ps_main.duration = 100f;
 
-        dust_PS.Stop();
+            dust_PS.Play();
+            //Debug.Log("Dust_PS is not playing -> start playing");
+        }
 
-        var ps_main = dust_PS.main;
-        //ps_main.duration = playerScriptableObject.TweenDurationProportionValue;
-        ps_main.duration = 1f;
+        else
+        {
+            //Debug.Log("Dust_PS is currently playing.");
+            return;
+        }
 
-        dust_PS.Play();
     }
 }

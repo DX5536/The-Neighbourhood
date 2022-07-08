@@ -33,6 +33,9 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField]
     private UnityEvent stopWalkingEvents;
 
+    [SerializeField]
+    private Sequence myTweenWalkSequence;
+
     //private Vector2 playerCurrentPos;
 
     /*[Header("Player's Char Controller")]
@@ -47,6 +50,12 @@ public class PlayerMovement: MonoBehaviour
 
     [SerializeField]
     private bool canPlayerMove = true;
+
+    public Sequence MyTweenWalkSequence
+    {
+        get => myTweenWalkSequence;
+        set => myTweenWalkSequence = value;
+    }
 
     //[SerializeField]
     //private MouseClickPosition mouseScriptableObject;
@@ -144,6 +153,8 @@ public class PlayerMovement: MonoBehaviour
         }
     }
 
+    //Public method to access from MouseClickPostion
+    //This method is call when player click Mouse
     public void Stop_PlayerMoveDOTween()
     {
         if (canPlayerMove == true)
@@ -209,13 +220,18 @@ public class PlayerMovement: MonoBehaviour
         //Play Walking SFX
         StartWalkingSFX();
 
-        //Quick DOTween movement -> very rigid but works
-        player.transform.DOMoveX(mouseScriptableObject.RaycastHitValue.x,
+        MyTweenWalkSequence.Append
+            (
+            player.transform.DOMoveX(
+            mouseScriptableObject.RaycastHitValue.x,
             playerScriptableObject.TweenDurationProportionValue,
             playerScriptableObject.MoveTweenSnapping)
             .SetId("PlayerWalk")
             .SetEase(playerScriptableObject.EaseType)
-            .OnComplete(OnComplete_MultipleMethods);
+            .OnComplete(OnComplete_MultipleMethods)
+            );
+        //Quick DOTween movement -> very rigid but works
+
 
         //lastMouseClickPos = mouseScriptableObject.MousePositionValue;
         playerScriptableObject.PlayerPositionValue = playerNewPos;
@@ -224,16 +240,15 @@ public class PlayerMovement: MonoBehaviour
         FlipingSprite();
     }
 
-    private void StopPlayerTween()
-    {
-        DOTween.Pause("PlayerWalk");
-    }
-
     //A collected method since .OnComplete now allow multiple method
     private void OnComplete_MultipleMethods()
     {
         StopWalkingSFX();
         ResetHasSpawnedArrow();
+        //Debug.Log("Tween complete");
+
+        //When spam Mouse old tween keeps going upon new tween.
+        //Causing the is Running to glitch out
         playerScriptableObject.IsRunning = false;
     }
 

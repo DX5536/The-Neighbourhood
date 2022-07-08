@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerValue_SO
   m_EditorClassIdentifier: 
   isRunning: 0
-  playerPositionValue: {x: -4.7, y: -2.5}
+  playerPositionValue: {x: 0.6, y: -2.5}
   moveTweenDuration: 2.5
   moveTweenSnapping: 0
   easeType: 0
