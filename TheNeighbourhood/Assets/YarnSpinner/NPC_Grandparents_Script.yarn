@@ -193,7 +193,7 @@ title: Leaving_Grandparents_Apartment
     //<<Un_LockDoor Door_ToNPC_Bird Bird false false>>
     //<<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
     //
-    <<set $unlockedDoor_NPC_Wolf to true>>
-    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
+    //<<set $unlockedDoor_NPC_Wolf to true>>
+    //<<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 <<endif>>
 ===

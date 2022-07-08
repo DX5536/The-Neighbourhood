@@ -21,7 +21,7 @@ title: Meeting_NPC_Wolf_1st
 //Locked the Door to NPC_Wolf -> Aint even go in
 //<<set $unlockedDoor_NPC_Wolf to false>>
 //<<Un_LockDoor Door_ToNPC_Wolf Wolf false>>
-//
+//TESTY
 *klopfs klopfs*
 Lilly: Uhm, hello...
 *opens door*
@@ -44,7 +44,7 @@ title: TalkTo_NPC_Wolf
 <<if $firstVisitNPC_Wolf == true>>
     <<jump Tom_Hallway_Dialogue>>
 <<else>>
-    Lilly: No one is here.
+    Lilly: He seems to be in a hurry.
 <<endif>>
 ===
 __PrivCrochet_colorID: 0

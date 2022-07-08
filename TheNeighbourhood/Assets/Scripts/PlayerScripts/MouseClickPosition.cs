@@ -144,7 +144,7 @@ public class MouseClickPosition: MonoBehaviour
         if (hit.collider != null)
         {
             Debug.DrawRay(clickedPosition, hit.point * 100, Color.green, 5, false);
-            //Debug.Log(("Raycast hit ") + hit.collider.gameObject.name);
+            //Debug.Log(("Raycast hit ") + hit.transform.name);
         }
 
         //Invoke DOTween Walking movement

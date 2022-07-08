@@ -23,6 +23,8 @@ public class StairManager: MonoBehaviour
     //private PlayerMovement playerMovement;
     [SerializeField]
     private MouseScriptableObject mouseScriptableObject;
+    [SerializeField]
+    private bool isPlayerInFloorIntersect;
 
     private string playerTag = "Player";
 
@@ -44,16 +46,27 @@ public class StairManager: MonoBehaviour
 
     void Update()
     {
-
+        if (isPlayerInFloorIntersect)
+        {
+            ActivateUpperStair();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == playerTag)
         {
-            ActivateUpperStair();
+            isPlayerInFloorIntersect = true;
         }
 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == playerTag)
+        {
+            isPlayerInFloorIntersect = false;
+        }
     }
 
     //Similar to FlipSprite by PlayerMovement, we will check the lastMouseClickPos vs the playerCurrentPos

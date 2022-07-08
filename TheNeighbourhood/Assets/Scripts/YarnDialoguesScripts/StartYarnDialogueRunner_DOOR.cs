@@ -18,8 +18,14 @@ public class StartYarnDialogueRunner_DOOR: MonoBehaviour
     [SerializeField]
     private DialogueAdvanceInput dialogueAdvanceInput;
 
+    [SerializeField]
+    private bool isPlayerInDoorZone;
+
     void Start()
     {
+        //Reset isPlayerInDoorZone to false at start
+        isPlayerInDoorZone = false;
+
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         if (dialogueRunner != null)
         {
@@ -37,17 +43,11 @@ public class StartYarnDialogueRunner_DOOR: MonoBehaviour
 
     void Update()
     {
-
-    }
-
-    //Unlike normal StartYarnDialogueRunner
-    //We can only start the node IF player is in the collider's zone!
-    private void OnTriggerStay(Collider other)
-    {
         //the isInteractable will be handled in the YarnScript
         //And Un_LockDoorAfterTalk
-        if (doorScriptableObject.IsInteractable)
+        if (doorScriptableObject.IsInteractable && isPlayerInDoorZone)
         {
+            Debug.Log("Door is interactable and in zone");
             if (Input.GetKeyDown(keyToPress_DEBUG))
             {
                 if (dialogueRunner.IsDialogueRunning == true)
@@ -66,6 +66,25 @@ public class StartYarnDialogueRunner_DOOR: MonoBehaviour
             {
                 return;
             }
+        }
+    }
+
+    //Unlike normal StartYarnDialogueRunner
+    //We can only start the node IF player is in the collider's zone!
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == doorScriptableObject.PlayerTag)
+        {
+            isPlayerInDoorZone = true;
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == doorScriptableObject.PlayerTag)
+        {
+            isPlayerInDoorZone = false;
         }
     }
 
