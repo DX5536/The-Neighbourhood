@@ -33,9 +33,6 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField]
     private UnityEvent stopWalkingEvents;
 
-    [SerializeField]
-    private Sequence myTweenWalkSequence;
-
     //private Vector2 playerCurrentPos;
 
     /*[Header("Player's Char Controller")]
@@ -147,7 +144,7 @@ public class PlayerMovement: MonoBehaviour
         }
     }
 
-    //Public method to access from MouseClickPostion
+    //Public method to access from MouseClickPostion and DialogueRunner StartNode
     //This method is call when player click Mouse
     public void Stop_PlayerMoveDOTween()
     {
@@ -160,8 +157,10 @@ public class PlayerMovement: MonoBehaviour
 
         else
         {
+            //We force kill a tween when dialogue is running
+            //So Lilly doesn't glide while talking
             DOTween.Kill("PlayerWalk");
-            Debug.Log("Kill PlayerWalkTween");
+            //Debug.Log("Kill PlayerWalkTween");
         }
     }
 
@@ -219,16 +218,15 @@ public class PlayerMovement: MonoBehaviour
         //Play Walking SFX
         StartWalkingSFX();
 
-        myTweenWalkSequence.Append
-            (
-            player.transform.DOMoveX(
+
+        player.transform.DOMoveX(
             mouseScriptableObject.RaycastHitValue.x,
             playerScriptableObject.TweenDurationProportionValue,
             playerScriptableObject.MoveTweenSnapping)
             .SetId("PlayerWalk")
             .SetEase(playerScriptableObject.EaseType)
-            .OnComplete(OnComplete_MultipleMethods)
-            );
+            .OnKill(OnKill_MultipleMethods) //If "suddenly" the Kill command is called -> Execute the OnKill_MultipleMethods
+            .OnComplete(OnComplete_MultipleMethods); //If the tween is allowed to play peacefully -> Execute OnComplete
         //Quick DOTween movement -> very rigid but works
 
 
@@ -246,11 +244,27 @@ public class PlayerMovement: MonoBehaviour
         ResetHasSpawnedArrow();
         //Debug.Log("Tween complete");
 
-        //When spam Mouse old tween keeps going upon new tween.
+        //When spamming Mouse old tween keeps going upon new tween.
         //Causing the is Running to glitch out
         playerScriptableObject.IsRunning = false;
     }
 
+    private void OnKill_MultipleMethods()
+    {
+
+        //When the tween is purposefully killed.
+        //Make the player tween to the current player's Stop position
+        //Aka, stay still/doesn't move
+        player.transform.DOMoveX(
+            player.transform.position.x,
+            0,
+            playerScriptableObject.MoveTweenSnapping)
+            .SetId("PlayerWalk_StayStill")
+            .SetEase(playerScriptableObject.EaseType)
+            .OnComplete(OnComplete_MultipleMethods);
+
+
+    }
     //After Tween Animation -> Player can spawn HUD_Arrow again
     private void ResetHasSpawnedArrow()
     {
