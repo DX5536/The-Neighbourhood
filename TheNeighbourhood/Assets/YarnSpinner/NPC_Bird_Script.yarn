@@ -17,7 +17,84 @@ title: TalkTo_NPC_Bird
 <<declare $getOil = false>>
 /// Check if door to NPC_Bird is unlocked
 <<declare $unlockedDoor_NPC_Bird = false>>
+///Does Player have all the three ingredients?
+<<declare $getAllIngredients to false>>
 
+//The Crossroads of what to talk with NPC_Bird in Hallway
+<<if $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == true>>
+    <<jump Bird_Hallway_Dialogue>>
+<<elseif $firstVisitNPC_Bird == false>>
+    //If Player has done the Hallway talk -> Door automatic unlock to go inside
+    //Small dialog when interact unlocked ToBird_Door
+    Squirrel: It's Lilly! Please come in!
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true true>>
+<<else>>
+    Lilly: No one is here (Bird).
+<<endif>>
+
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -160,-345
+__PrivCrochet_tags: 
+title: Bird_Hallway_Dialogue
+---
+// Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
+Bird: Hi and come in!
+// Normales Bird-Gespräch, in einer Line bittet der Bird einen rein in die Wohnung
+// Bird geht in die Wohnung, Wohnung zum Betreten unlocked
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 95,-345
+__PrivCrochet_tags: 
+title: Bird_Indoor_Dialogue
+---
+<<if $needOil == true && $getOil == false>>
+    <<jump Bird_Get_Oil>>
+<<else>>
+    Bird: Have you watched Birdie Wings? (placeholder cuz I can :P)
+    Lilly: Omg yes. It's a great golfing anime!
+    //Unlock door back to Hallway
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<endif>>
+===
+title: Bird_Get_Oil
+position: 0,1
+---
+// Bird ansprechbar in der Wohnung
+// Normaler Bird-Dialog
+// Man erhält irgendwann zwischendrin oder am Ende die letzte Zutat -> erscheint im Inventar
+// Alle Zutaten sind da, man wird zurück ins WG-Zimmer geschickt (Caro-Dialog)
+Lilly: Hi!
+Bird: *insert some Bird dialogue here*
+Lilly: Say, I need oil...
+Bird: Oil? Like olive oil or sunflower oil?
+Lilly: Olive.
+Bird: ok 1 sec.
+<<wait 1>>
+//Egg erscheint im Inventar
+<<set $gainedItem_Name to "Oil">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
+<<set $needOil to false>>
+<<set $getOil to true>>
+Lilly: Woah. Thank you so much!
+Lilly: *I should get back to Caro!*
+Squirrel: You can ask NPC_Bird.
+//Player now have all the ingredients
+<<set $findIngredients to false>>
+<<set $getAllIngredients to true>>
+Lilly: I see. thanks and bye!
+<<set $hasTalked_NPC_Bird to true>>
+//Unlock door back to Hallway
+<<set $unlockedDoor_ToHallway to true>>
+<<Un_LockDoor Door_ToHallway ToHallway true true>>
+===
+
+title: OLD_Interaction_Bird
+position: 0,1
+---
 Bird: Oh? Who do we have here?
 Bird: Do you need something?
 -> Oh hi, I need some flour. <<if $needOil == true>>
@@ -35,24 +112,4 @@ Bird: Do you need something?
     Bird: You need flour to bake, duh...
 
 Player: Thanks for your time.
-===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: -160,-345
-__PrivCrochet_tags: 
-title: Bird_Hallway_Dialogue
----
-// Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
-Bird: Hi and come in!
-// Normales Bird-Gespräch, in einer Line bittet der Bird einen rein in die Wohnung
-// Bird geht in die Wohnung, Wohnung zum Betreten unlocked
-===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: 95,-345
-__PrivCrochet_tags: 
-title: Bird_Indoor_Dialogue
----
-// Bird ansprechbar in der Wohnung
-// Normaler Bird-Dialog
-// Man erhält irgendwann zwischendrin oder am Ende die letzte Zutat -> erscheint im Inventar
-// Alle Zutaten sind da, man wird zurück ins WG-Zimmer geschickt (Caro-Dialog)
 ===

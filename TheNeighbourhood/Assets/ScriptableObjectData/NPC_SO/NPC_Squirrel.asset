@@ -24,7 +24,7 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: Squirrel_Indoor_Dialogue
-  speakerNPC_Color: {r: 0.7924528, g: 0.4906316, b: 0.1981132, a: 1}
+  speakerNPC_Color: {r: 0.82, g: 0.50742567, b: 0.20702967, a: 1}
   textBox_Color:
     serializedVersion: 2
-    rgba: 1681096138
+    rgba: 1679441766

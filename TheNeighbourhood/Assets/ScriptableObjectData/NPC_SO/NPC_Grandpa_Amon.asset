@@ -24,7 +24,7 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: TalkTo_NPC_Grandpa
-  speakerNPC_Color: {r: 0.40784317, g: 0.63529414, b: 0.63529414, a: 1}
+  speakerNPC_Color: {r: 0.5264197, g: 0.82, b: 0.82, a: 1}
   textBox_Color:
     serializedVersion: 2
-    rgba: 1688380008
+    rgba: 1684432449
