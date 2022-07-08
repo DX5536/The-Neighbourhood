@@ -3,7 +3,70 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObject/HasTalkedToNPC", order = 5)]
 public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 {
-    [Header("READ_ONLY or ticked for quick test")]
+    //[Header("READ_ONLY or ticked for quick test")]
+
+    [Header("Has which Item?")]
+    [SerializeField]
+    private bool hasColdHamantash;
+
+    public bool HasColdHamantash
+    {
+        get
+        {
+            return hasColdHamantash;
+        }
+        set
+        {
+            hasColdHamantash = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasFlour;
+
+    public bool HasFlour
+    {
+        get
+        {
+            return hasFlour;
+        }
+        set
+        {
+            hasFlour = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasEgg;
+
+    public bool HasEgg
+    {
+        get
+        {
+            return hasEgg;
+        }
+        set
+        {
+            hasEgg = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasOil;
+
+    public bool HasOil
+    {
+        get
+        {
+            return hasOil;
+        }
+        set
+        {
+            hasOil = value;
+        }
+    }
+
+    [Header("Has talked to which NPC")]
     [Tooltip("Caroline the Rabbit")]
     [SerializeField]
     private bool hasTalkedTo_NPC_Rabbit;
@@ -163,6 +226,7 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 
     [SerializeField]
     private bool hasUnlockedDoor_NPC_Squirrel;
+    internal bool HasUnlockedDoor_ToMyRoom;
 
     public bool HasUnlockedDoor_NPC_Squirrel
     {

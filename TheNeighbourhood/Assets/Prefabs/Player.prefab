@@ -4818,7 +4818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}
-  dust_PS: {fileID: 0}
+  dust_PS: {fileID: 4526985910616134732}
 --- !u!1 &9069053085138424299
 GameObject:
   m_ObjectHideFlags: 0

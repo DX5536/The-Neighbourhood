@@ -71,11 +71,11 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 
         switch (doorName)
         {
-            case ("Grandparents"):
-                Un_LockDoor_Grandparents_Status(isInteractable, canGoIn);
-                break;
             case ("ToHallway"):
                 Un_LockDoor_ToHallway_Status(isInteractable, canGoIn);
+                break;
+            case ("Grandparents"):
+                Un_LockDoor_Grandparents_Status(isInteractable, canGoIn);
                 break;
             case ("Wolf"):
                 Un_LockDoor_Wolf_Status(isInteractable, canGoIn);
@@ -91,6 +91,8 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
                 break;
         }
     }
+
+
 
     //First I read all the hasDoorUnlocked Value in Memory storage
     //Then I assign them to the Scriptable Object => To be up-to-date with the latest values
@@ -114,26 +116,6 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-    private void Un_LockDoor_Grandparents_Status(bool canInteract, bool canSceneTrans)
-    {
-        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents && canInteract)
-        {
-            lockedDoorSO.IsInteractable = true;
-
-            if (canSceneTrans)
-            {
-                sceneTransitionColliderManager.enabled = true;
-            }
-            Debug.Log("Unlock GrandP doors");
-        }
-        else
-        {
-            lockedDoorSO.IsInteractable = false;
-            sceneTransitionColliderManager.enabled = false;
-            Debug.Log("Lock GrandP doors");
-        }
-    }
-
     private void Un_LockDoor_ToHallway_Status(bool canInteract, bool canSceneTrans)
     {
         if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway && canInteract)
@@ -152,6 +134,26 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
             sceneTransitionColliderManager.enabled = false;
 
             Debug.Log("Lock Hallway doors");
+        }
+    }
+
+    private void Un_LockDoor_Grandparents_Status(bool canInteract, bool canSceneTrans)
+    {
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents && canInteract)
+        {
+            lockedDoorSO.IsInteractable = true;
+
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+            }
+            Debug.Log("Unlock GrandP doors");
+        }
+        else
+        {
+            lockedDoorSO.IsInteractable = false;
+            sceneTransitionColliderManager.enabled = false;
+            Debug.Log("Lock GrandP doors");
         }
     }
 

@@ -21,11 +21,14 @@ public class StartYarnDialogueRunner: MonoBehaviour
 
     [SerializeField]
     private bool isGO_Door;
+    [SerializeField]
+    private string nameGO_DoorID;
 
     void Start()
     {
         //This line is too foolproof the var
         //_NPC_ScriptableObject.IsInteractable = true;
+
 
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         if (dialogueRunner != null)
@@ -48,6 +51,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
 
     void Update()
     {
+        //This is only for NPC
         if (_NPC_ScriptableObject.IsInteractable == true)
         {
             CheckIfDialogIsRunning();
@@ -56,8 +60,6 @@ public class StartYarnDialogueRunner: MonoBehaviour
         {
             //Debug.Log("Can't start dialogue");
         }
-
-
     }
 
     /*private void ClickEToContinue()
@@ -89,11 +91,11 @@ public class StartYarnDialogueRunner: MonoBehaviour
             {
                 //Debug.Log("Dialog is running. No new node start!");
             }
-            else
+            else if (dialogueRunner.IsDialogueRunning == false)
             {
                 dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
                 StartCoroutine(WaitToClickContinue());
-                //Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
+                Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
             }
         }
         else
@@ -114,17 +116,8 @@ public class StartYarnDialogueRunner: MonoBehaviour
         //dialogueRunner.StartDialogue(nodeToStart);
         if (collision.tag == _NPC_ScriptableObject.PlayerTag)
         {
+            _NPC_ScriptableObject.IsInteractable = true;
             //Debug.Log("Player in Range of " + this.gameObject.name + _NPC_ScriptableObject.NodeName);
-            if (isGO_Door)
-            {
-                //If the object is a Door ->
-                //isInteractable only change through the Un_LockDoor Command in UnlockDoorCollider...
-                Debug.Log("This GO is a Door!");
-            }
-            else
-            {
-                _NPC_ScriptableObject.IsInteractable = true;
-            }
         }
     }
 
@@ -133,18 +126,8 @@ public class StartYarnDialogueRunner: MonoBehaviour
     {
         if (collision.tag == _NPC_ScriptableObject.PlayerTag)
         {
+            _NPC_ScriptableObject.IsInteractable = false;
             //Debug.Log("Player in Range of " + this.gameObject.name + _NPC_ScriptableObject.NodeName);
-            if (isGO_Door)
-            {
-                //If the object is a Door ->
-                //isInteractable only change through the Un_LockDoor Command in UnlockDoorCollider...
-                Debug.Log("This GO is a Door- EXIT!");
-            }
-            else
-            {
-                _NPC_ScriptableObject.IsInteractable = false;
-            }
-
         }
     }
 

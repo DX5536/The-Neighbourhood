@@ -187,10 +187,13 @@ title: Leaving_Grandparents_Apartment
     <<set $unlockedDoor_NPC_Squirrel to true>>
     <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
 <<else>>
-    Havent unlock anything
+    //Havent unlock anything
     //Nothing to say -> Debug
-    <<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
-    <<Un_LockDoor Door_ToNPC_Bird Bird false false>>
-    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
+    //<<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
+    //<<Un_LockDoor Door_ToNPC_Bird Bird false false>>
+    //<<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
+    //
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 <<endif>>
 ===

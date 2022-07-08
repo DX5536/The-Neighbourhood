@@ -7,7 +7,7 @@ public class Player_RunningDust: MonoBehaviour
     [SerializeField]
     private PlayerScriptableObject playerScriptableObject;
 
-    [Header("Dust_Particle System_READ_ONLY")]
+    [Header("Dust_Particle System")]
     [SerializeField]
     private ParticleSystem dust_PS;
 

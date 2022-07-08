@@ -25,6 +25,8 @@ public class CaroNodesManager: MonoBehaviour
 
     [Header("HasTalkGrandP variables_READ_ONLY")]
     [SerializeField]
+    private bool hasColdHamantash;
+    [SerializeField]
     private bool hasTalked_Grandma;
     [SerializeField]
     private bool hasTalked_Grandpa;
@@ -52,6 +54,9 @@ public class CaroNodesManager: MonoBehaviour
 
     private void GetHasTalkedGrandParentsVar()
     {
+        //Hamantash's logic
+        storage.TryGetValue("$hasColdHamantash", out hasColdHamantash);
+        hasTalkedToNPC_ScriptableObject.HasColdHamantash = hasColdHamantash;
         //Grandma's logic
         storage.TryGetValue("$hasTalked_Grandma", out hasTalked_Grandma);
         hasTalkedToNPC_ScriptableObject.HasTalkedTo_NPC_Grandma = hasTalked_Grandma;
@@ -62,16 +67,24 @@ public class CaroNodesManager: MonoBehaviour
 
     private void ReVisit_NPCRabbit_Caro()
     {
+        //If Player havent talk to Grandparents but has Hamantash already
+        //In case Player get to Hallway but comeback! -> No First start the game
+        if (!hasTalked_Grandma && !hasTalked_Grandpa && hasColdHamantash)
+        {
+            //Deactivate AutoStart
+            dialogueRunner.startAutomatically = false;
+            //Caro hangs out near the boxes
+            Debug.Log("No Start Automatically + NOT talked to Grandparents");
+        }
         //If Player has talked with Grandparents -> value = true:
-
-        if (hasTalked_Grandma && hasTalked_Grandpa)
+        else if (hasTalked_Grandma && hasTalked_Grandpa)
         {
             //Deactivate AutoStart
             dialogueRunner.startAutomatically = false;
             //Caro is not near the boxes but in her room -> Not visible
             //Init Spawn when go back to room
             _NPC_Rabbit.TargetSpawn(0, "NPC_Rabbit_MoveGoal", false);
-            Debug.Log("No Start Automatically");
+            Debug.Log("No Start Automatically + talked to Grandparents");
         }
         //If not = First start the game
         else
