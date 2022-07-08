@@ -93,7 +93,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
             {
                 dialogueRunner.StartDialogue(_NPC_ScriptableObject.NodeName);
                 StartCoroutine(WaitToClickContinue());
-                Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
+                //Debug.Log("Object " + this.gameObject.name + " Start YarnNode: " + _NPC_ScriptableObject.NodeName);
             }
         }
         else

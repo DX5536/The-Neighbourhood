@@ -81,14 +81,14 @@ position: -191,-44
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
 //Piza located in Bag
-<<if $hasFrozenPizza == false && $useCookedPizza == false>>
+<<if $hasFrozenPizza == false && $hasCookedPizza == false && $useCookedPizza == false>>
     Lilly: There you are! Still looking good. To the oven with you!
     <<set $hasFrozenPizza to true>>
     <<set $gainedItem_Name to "FrozenPizza">>
     <<AccessYarnGainedItemValue Yarn_InventoryManager>>
     <<DisplayGainedItem Yarn_InventoryManager>>
 <<else>>
-    Lilly: My beloved table!
+    Lilly: My purple backpack!
 <<endif>>
 //Lilly: There you are! Still looking good. To the oven with you!
 ===

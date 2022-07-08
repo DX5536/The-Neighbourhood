@@ -51,12 +51,6 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField]
     private bool canPlayerMove = true;
 
-    public Sequence MyTweenWalkSequence
-    {
-        get => myTweenWalkSequence;
-        set => myTweenWalkSequence = value;
-    }
-
     //[SerializeField]
     //private MouseClickPosition mouseScriptableObject;
     //[SerializeField]
@@ -161,8 +155,13 @@ public class PlayerMovement: MonoBehaviour
         {
             //StopPlayerTween();
             OnComplete_MultipleMethods();
-
             PlayerMoveDOTween();
+        }
+
+        else
+        {
+            DOTween.Kill("PlayerWalk");
+            Debug.Log("Kill PlayerWalkTween");
         }
     }
 
@@ -220,7 +219,7 @@ public class PlayerMovement: MonoBehaviour
         //Play Walking SFX
         StartWalkingSFX();
 
-        MyTweenWalkSequence.Append
+        myTweenWalkSequence.Append
             (
             player.transform.DOMoveX(
             mouseScriptableObject.RaycastHitValue.x,

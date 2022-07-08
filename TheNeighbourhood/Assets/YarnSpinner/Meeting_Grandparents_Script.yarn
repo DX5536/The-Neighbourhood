@@ -12,7 +12,7 @@ Lilly: I just wanted to see how you guys were d- // Amon läuft in den Frame, st
 Amon: Lils! Oh, how beautiful that you're here, lovely. 
 Amon: You came at a marvelous time; I have a surprise for you! Come along. // Amon läuft wieder aus dem Frame
 Lilly: Oh, um-
-Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterwards. // Amon-Dialog wird unlocked. Und Malkas kurzer Dialog.
+Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterward. // Amon-Dialog wird unlocked. Und Malkas kurzer Dialog.
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 231,-1
@@ -20,7 +20,7 @@ __PrivCrochet_tags:
 title: Malka_Chat_Before_Amon
 ---
 // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
-Malka: We will catch up later, darling. Grandpa has been very excited about this suprise for you.
+Malka: We will catch up later, darling. Grandpa has been very excited about this surprise for you.
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 459,-2
@@ -33,12 +33,12 @@ Amon: Ta-daa!
 Lilly: Wow, that's- for me? It seems so … up to date, Grandpa, you really didn't have to.
 Amon: It's mine, silly! You always talk about those little programs on the internet and drawings on your-, your desktop. 
 Amon: I would love to finally see them myself! However, I can't seem to figure out which buttons to press.
-Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- nevermind, here it is - our latest game.
+Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- never mind, here it is - our latest game.
 Amon: Lils, are those your drawings? They're gorgeous! I need to show them to your grandma tomorrow. 
 Lilly: Thanks, Granpa! that's really sweet of you.
 Lilly: How are you guys holding up, by the way? You seem quite happy. 
 Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
-Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. I think we all are, aren't we? 
+Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing about the past. I think we all are, aren't we? 
 Amon: It's not always easy, but today it has been: to my own surprise. I'm not so sure your grandma feels the same today, though. She has been quiet. 
 Amon: Maybe you can talk to her? You always know the right things to say. // Gespräch mit Malka wird unlocked, Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
 ===
@@ -65,4 +65,6 @@ Malka: Oh, honey, that's fine. Our dinner only starts in a few hours, that shoul
 Lilly: Yeah, one hundo percento. Ahem. Well, cool. I think I'll do some homework until then. There's lots to do, tons. [i]Shiiiit.[/i]
 Malka: Oh, of course, darling. You can always come down if you need a break.
 Lilly: Thanks, Grandma! Bye! // Weg zurück ins Treppenhaus und zurück in die WG wird freigeschaltet
+<<set $unlockedDoor_ToHallway to true>>
+<<Un_LockDoor Door_ToHallway ToHallway true true>>
 ===

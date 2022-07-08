@@ -195,7 +195,8 @@ public class MouseClickPosition: MonoBehaviour
 
         else
         {
-            Debug.Log("canPlayAnim == false");
+            playerAnimator.SetBool("isWalking", false);
+            //Debug.Log("canPlayAnim == false");
         }
 
     }
