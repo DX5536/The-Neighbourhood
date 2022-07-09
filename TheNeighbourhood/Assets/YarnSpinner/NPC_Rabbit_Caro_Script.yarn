@@ -3,6 +3,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 787,326
 __PrivCrochet_tags: 
 title: Start_Intro
+position: -242,-431
 ---
 ///Do Player has FrozenPizza?
 <<declare $hasFrozenPizza to false>>
@@ -39,6 +40,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1024,326
 __PrivCrochet_tags: 
 title: Movement_Tutorial
+position: -243,-366
 ---
 Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachdem Caroline in ihr Zimmer gegangen ist
 <i>(After this dialogue use your mouse to click where you want to go)</i> // Dies soll als Message nach der ersten Line separat auftauchen
@@ -46,8 +48,7 @@ Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachde
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -194,-200
-position:
--194,-200:
+position: -121,-274
 title: TalkTo_NPC_Rabbit_Caroline
 ---
 //This node is like a cross-road for all possible scenarios
@@ -65,6 +66,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1260,329
 __PrivCrochet_tags: 
 title: Fridge_Interaction
+position: -304,-276
 ---
 //Generic Fridge interaction
 <<if $needHamantash == false && $hasFrozenPizza == true>>
@@ -82,6 +84,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1493,327
 __PrivCrochet_tags: 
 title: Picking_Up_Pizza_Monologue
+position: 87,-456
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
 //Piza located in Bag
@@ -100,6 +103,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1734,329
 __PrivCrochet_tags: 
 title: Baking_Pizza_At_The_Oven
+position: 89,-380
 ---
 <<if $hasFrozenPizza == true>>
     <<UseGainedItem Yarn_InventoryManager>>
@@ -121,6 +125,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1969,328
 __PrivCrochet_tags: 
 title: Bringing_Pizza_to_Roommate
+position: 90,-303
 ---
 Caroline: Do you have the pizza yet?
 -> Lilly: How are you? (test)
@@ -160,6 +165,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 2210,330
 __PrivCrochet_tags: 
 title: Hamantash_Fridge_Interaction
+position: -304,-120
 ---
 // Spieler gehen zum Kühlschrank und holen Hamantaschen raus
 Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
@@ -173,6 +179,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,584
 __PrivCrochet_tags: 
 title: Caro_After_Grandparents
+position: 127,-95
 ---
 // Voraussetzung: Man hat zum ersten Mal mit den Grandparents geredet und erfahren, dass man das Challah-Brot backen muss. 
 // Nun geht man zurück in die WG
@@ -247,6 +254,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,842
 __PrivCrochet_tags: 
 title: Caro_After_Ingredients
+position: -116,-9
 ---
 // Voraussetzung: Man hat alle Zutaten von den Nachbarn geholt und ist danach zurück in die Wohnung gegangen, um das Challah-Brot zu backen 
 // Caro steht direkt neben der Wohnungstür als man reinkommt, es wird ein automatischer Dialog getriggert
@@ -273,6 +281,7 @@ __PrivCrochet_colorID: 8
 __PrivCrochet_position: 1012,843
 __PrivCrochet_tags: 
 title: Making_Challah_With_Lilly
+position: -115,156
 ---
 // Monolog wird über Interaktion mit dem Tisch getriggert
 // Zutaten aus dem Inventar verschwinden
@@ -283,6 +292,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1255,842
 __PrivCrochet_tags: 
 title: Baking_Challah_Oven
+position: -115,75
 ---
 // Dialog wird über Interaktion mit dem Ofen getriggert
 Caroline: Are you drooling? I'm drooling. No wonder it's your grandma's favorite!

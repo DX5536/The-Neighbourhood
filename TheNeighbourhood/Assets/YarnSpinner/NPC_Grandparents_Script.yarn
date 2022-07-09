@@ -3,7 +3,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: 
 title: Meeting_GrandParents_1st
-position: -87,-367
+position: -144,-366
 ---
 ///Is Door_ToHallway unlocked?
 <<declare $unlockedDoor_ToHallway to false>>
@@ -61,7 +61,7 @@ Malka: We will catch up later, darling. Grandpa has been very excited about this
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -187,77
-position: -17,-214
+position: -49,-209
 title: TalkTo_NPC_Grandpa
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
@@ -77,7 +77,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 459,-2
 __PrivCrochet_tags: 
 title: Amon_Computer
-position: 213,-201
+position: 196,-199
 ---
 // Spieler finden Amon, der vor einem etwas älteren Computer steht 
 Lilly: So, what's up?
@@ -103,7 +103,7 @@ Amon: Maybe you can talk to her? You always know the right things to say.
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -187,77
-position: -1,1
+position: -226,-208
 title: TalkTo_NPC_Grandma
 position: -32,39
 ---
@@ -120,7 +120,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 691,-3
 __PrivCrochet_tags: 
 title: Malka_Talk_Long
-position: 268,58
+position: -226,-99
 ---
 <<if $hasTalked_Grandpa == false>>
     // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
@@ -163,12 +163,12 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 243,485
 __PrivCrochet_tags: 
 title: Grandparents_Dinner_With_Lilly
-position: -166,364
+position: -126,-24
 ---
 // Grandparents sitzen am Tisch, man interagiert mit dem Stuhl auf der anderen Seite und setzt sich hin
 Lilly: Wow, you outdid yourself, Grandma!
 Malka: So did you, honey!
-Lilly: Well, Caro helped forming the Challah, that might be why. 
+Lilly: Well, Caro helped form the Challah, that might be why. 
 Malka: Oh, please thank her for me. It means a lot. 
 Malka: Did I ever even tell you why Challah is my favorite pastry?
 Lilly: I don't think so.
@@ -178,10 +178,10 @@ Malka: I was a kid at that time, way younger than you. And very stubborn.
 Malka: On this particular day I was in trouble.
 Malka: My brother and I had, as per usual, gotten into an argument about something insignificant. 
 Malka: I remember how stressed our mother was. We just wouldn't stop fighting. 
-Malka: However, in the evening I must've come to my senses, because I had decided to apologize to her. 
+Malka: However, in the evening I must've come to my senses because I had decided to apologize to her. 
 Malka: So, I stumbled into the kitchen with the biggest sorry eyes and just hoped she would accept my apology. 
 Malka: Mother didn't even notice me at first. She was focused on baking. 
-Malka: But to my relief I could tell that she was calm and very pleased with her creation. Her Challah. 
+Malka: But to my relief, I could tell that she was calm and very pleased with her creation. Her Challah. 
 Malka: Rightfully so, because the entire kitchen was filled with this lovely smell of her freshly baked Challah. 
 Malka: When she finally noticed me standing there with my pleading look, she did not get upset. 
 Malka: Instead, Mother smiled at me in her caring fashion. 
@@ -190,11 +190,11 @@ Malka: It was as though she was saying "it's okay, I forgive you" without speaki
 Malka: And I just remember, right there in that kitchen and in her arms...
 Malka: I felt safe and warm. 
 Malka: But most of all, I felt loved.
-Malka: In that moment, everything was fine. 
+Malka: At that moment, everything was fine. 
 Malka: That was the last time I can recall feeling that way, before...
 Malka: Before all of it happened. 
 Malka: It took me many years after that to even consider baking myself. 
-Malka: I was afraid that the moment I did so, something awful would happen afterwards. 
+Malka: I was afraid that the moment I did so, something awful would happen afterward. 
 Malka: Like a bad omen. 
 Malka: However, eventually, I was eager to overcome that fear. 
 Malka: And so, I baked. Challah, of course. 
@@ -237,20 +237,20 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1,240
 __PrivCrochet_tags: 
 title: Leaving_Grandparents_Apartment
-position: 253,348
+position: 264,125
 ---
 // Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
 <<set $unlockedDoor_NPC_Grandparents to false>>
 <<Un_LockDoor Door_ToGrandparents Grandparents false false>>
 Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
-Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
+Lilly: <i>(Caro! Let's get back to Caro, she will know what to do!)</i>
 <<set $unlockedDoor_NPC_Grandparents to true>>
 <<Un_LockDoor Door_ToGrandparents Grandparents true true>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -154,1
-position: 0.1
+position: 259,12
 title: Hallway_UnLockDoor_Manager
 position: 251,134
 ---
@@ -290,7 +290,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: -1,485
 __PrivCrochet_tags: 
 title: Grandparents_Lilly_Reception
-position: -188,174
+position: -126,54
 ---
 // Voraussetzung: Lilly hat das Challah gebackenund im Inventar. Sie interagiert mit der Haustür der Großeltern
 Malka: There you are, honey!
