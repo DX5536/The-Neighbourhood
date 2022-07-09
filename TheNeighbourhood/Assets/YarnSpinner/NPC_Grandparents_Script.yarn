@@ -3,6 +3,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: 
 title: Meeting_GrandParents_1st
+position: -87,-367
 ---
 ///Is Door_ToHallway unlocked?
 <<declare $unlockedDoor_ToHallway to false>>
@@ -50,6 +51,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 231,-1
 __PrivCrochet_tags: 
 title: Malka_Chat_Before_Amon
+position: -141,-290
 ---
 // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
 //Debug
@@ -59,8 +61,7 @@ Malka: We will catch up later, darling. Grandpa has been very excited about this
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -187,77
-position:
--187,77:
+position: -17,-214
 title: TalkTo_NPC_Grandpa
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
@@ -76,6 +77,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 459,-2
 __PrivCrochet_tags: 
 title: Amon_Computer
+position: 213,-201
 ---
 // Spieler finden Amon, der vor einem etwas älteren Computer steht 
 Lilly: So, what's up?
@@ -101,9 +103,9 @@ Amon: Maybe you can talk to her? You always know the right things to say.
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -187,77
-position:
--187,77:
+position: -1,1
 title: TalkTo_NPC_Grandma
+position: -32,39
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandma == false>>
     <<jump Malka_Talk_Long>>
@@ -118,6 +120,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 691,-3
 __PrivCrochet_tags: 
 title: Malka_Talk_Long
+position: 268,58
 ---
 <<if $hasTalked_Grandpa == false>>
     // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
@@ -160,6 +163,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 243,485
 __PrivCrochet_tags: 
 title: Grandparents_Dinner_With_Lilly
+position: -166,364
 ---
 // Grandparents sitzen am Tisch, man interagiert mit dem Stuhl auf der anderen Seite und setzt sich hin
 Lilly: Wow, you outdid yourself, Grandma!
@@ -197,7 +201,7 @@ Malka: And so, I baked. Challah, of course.
 Malka: Just like that, standing in the kitchen surrounded by the familiar smell, I was back.
 Malka: Back in our warm and safe kitchen... with her. 
 Malka: It was the most beautiful, yet entirely overwhelming feeling I had felt in a while. 
-Malka: I learned something in that moment...
+Malka: I learned something at that moment...
 Malka: I learned that not everything good that you have in your life can be taken from you. 
 Malka: No matter how hard someone tries to do so. 
 Malka: But to do so, you have to fight. 
@@ -223,7 +227,7 @@ Malka: That's easy!
 Malka: Our fifth year of Lilly joining us on this day! 
 Malka: And how much she has had an impact on the way we deal with all the thoughts and feelings that come up every year. 
 Amon: Lovely suggestion! 
-Amon: Lils, would you do us the honour of cutting the first slice of the most famous pastry of this evening?
+Amon: Lils, would you do us the honor of cutting the first slice of the most famous pastry of this evening?
 Lilly: I would love to. But before I do so, I would like to tell you...
 Lilly: (Let's hope this goes well. But you said it yourself, Lilly. No more hiding.)
 Lilly: ...how this Challah was <i>actually</i> made. 
@@ -233,6 +237,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1,240
 __PrivCrochet_tags: 
 title: Leaving_Grandparents_Apartment
+position: 253,348
 ---
 // Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
 <<set $unlockedDoor_NPC_Grandparents to false>>
@@ -245,9 +250,9 @@ Lilly: </i>(Caro! Let's get back to Caro, she will know what to do!)</i>
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -154,1
-position:
--154,1:
+position: 0.1
 title: Hallway_UnLockDoor_Manager
+position: 251,134
 ---
 //We go from the bottom up: 
 //So Bird -> Squirrel -> Wolf -> Grandparents
@@ -285,6 +290,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: -1,485
 __PrivCrochet_tags: 
 title: Grandparents_Lilly_Reception
+position: -188,174
 ---
 // Voraussetzung: Lilly hat das Challah gebackenund im Inventar. Sie interagiert mit der Haustür der Großeltern
 Malka: There you are, honey!
