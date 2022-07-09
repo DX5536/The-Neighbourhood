@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.00034893784}
+  m_AnchoredPosition: {x: 0, y: -0.000121337165}
   m_SizeDelta: {x: 1840, y: 184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116469110
@@ -346,8 +346,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 349637777}
   m_HandleRect: {fileID: 349637776}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.23867403
+  m_Value: 0.99999994
+  m_Size: 0.23867401
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -846,9 +846,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<color=#340B53><b>Anna Medovaya</b></color>
 
-    - Story
+    - Story Research
 
-    - 2D Artist'
+    -
+    2D Artist'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1141,8 +1142,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 359768826}
   m_HandleRect: {fileID: 359768825}
   m_Direction: 2
-  m_Value: 0.99523807
-  m_Size: 0.6728972
+  m_Value: 0.9952379
+  m_Size: 0.6728971
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2243,8 +2244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -797.50024}
-  m_SizeDelta: {x: 1840, y: 535}
+  m_AnchoredPosition: {x: 0, y: -1342.3268}
+  m_SizeDelta: {x: 1840, y: 752.931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1289813453
 MonoBehaviour:
@@ -2269,7 +2270,10 @@ MonoBehaviour:
   m_text: "<b>~SFX~</b>\nEulogous (https://twitter.com/eulogous) for allow us to
     use texts' SFX.\n\nCopyright/Attribution Notice: \r\nAttribute Little Robot Sound
     Factory, and provide this link where possible: <color=#061639><link=\"www.littlerobotsoundfactory.com\">www.littlerobotsoundfactory.com</link></color>\n\nSound
-    FX von Blex\n\n<b>~BGM~</b>\n*insert song title and artist here*\n\n"
+    FX von Blex\n\n<b>~BGM~</b>\nBackground Music \"Key West Sunset\" by Eric Matyas 
+    <color=#061639><link=\"https://soundimage.org/quiet-peaceful-mellow/\">https://soundimage.org</link></color>\nLicensed
+    under <color=#061639><link=\"https://creativecommons.org/licenses/by/4.0/legalcode#s6a\">https://creativecommons.org</link></color>\nNo
+    changes were made\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2405,7 +2409,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<color=#054A4A><b>Laura Winkel:</b></color>
 
-    - Story
+    - Narrative
 
     - Project
     management'
@@ -4127,8 +4131,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1392335696}
   m_HandleRect: {fileID: 1392335695}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.40373832
+  m_Value: 0.9999997
+  m_Size: 0.28687882
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
