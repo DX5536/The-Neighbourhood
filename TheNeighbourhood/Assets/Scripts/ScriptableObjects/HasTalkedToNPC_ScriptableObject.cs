@@ -7,17 +7,17 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 
     [Header("Has which Item?")]
     [SerializeField]
-    private bool hasColdHamantash;
+    private bool hasHamantash;
 
-    public bool HasColdHamantash
+    public bool HasHamantash
     {
         get
         {
-            return hasColdHamantash;
+            return hasHamantash;
         }
         set
         {
-            hasColdHamantash = value;
+            hasHamantash = value;
         }
     }
 

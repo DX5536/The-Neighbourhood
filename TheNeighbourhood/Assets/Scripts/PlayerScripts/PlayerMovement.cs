@@ -30,6 +30,8 @@ public class PlayerMovement: MonoBehaviour
     [SerializeField]
     private UnityEvent startWalkingEvents;
 
+    //We will stop the walkingSFX when there is no Arrow
+    //Or onKill Tween
     [SerializeField]
     private UnityEvent stopWalkingEvents;
 
@@ -240,7 +242,7 @@ public class PlayerMovement: MonoBehaviour
     //A collected method since .OnComplete now allow multiple method
     private void OnComplete_MultipleMethods()
     {
-        StopWalkingSFX();
+        //StopWalkingSFX();
         ResetHasSpawnedArrow();
         //Debug.Log("Tween complete");
 
@@ -251,7 +253,7 @@ public class PlayerMovement: MonoBehaviour
 
     private void OnKill_MultipleMethods()
     {
-
+        StopWalkingSFX();
         //When the tween is purposefully killed.
         //Make the player tween to the current player's Stop position
         //Aka, stay still/doesn't move
@@ -262,8 +264,6 @@ public class PlayerMovement: MonoBehaviour
             .SetId("PlayerWalk_StayStill")
             .SetEase(playerScriptableObject.EaseType)
             .OnComplete(OnComplete_MultipleMethods);
-
-
     }
     //After Tween Animation -> Player can spawn HUD_Arrow again
     private void ResetHasSpawnedArrow()
@@ -272,12 +272,12 @@ public class PlayerMovement: MonoBehaviour
         //Debug.Log("Reset ArrowHasSpawned");
     }
 
-    private void StopWalkingSFX()
+    public void StopWalkingSFX()
     {
         stopWalkingEvents?.Invoke();
     }
 
-    private void StartWalkingSFX()
+    public void StartWalkingSFX()
     {
         startWalkingEvents?.Invoke();
     }

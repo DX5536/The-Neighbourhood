@@ -76,11 +76,31 @@ public class Inventory_HasItem: MonoBehaviour
                 StartItemSFX();
                 itemIcons[3].SetActive(true);
                 break;
-            case "FrozenPizza": //Slot 3.5
+
+            case "FrozenPizza": //Slot 3.1
                 Debug.Log("Player gained Pizza! in Switch-Case");
                 StartItemSFX();
                 itemIcons[4].SetActive(true);
                 break;
+
+            case "Hamantash": //Slot 3.2
+                Debug.Log("Player gained Pizza! in Switch-Case");
+                StartItemSFX();
+                itemIcons[5].SetActive(true);
+                break;
+
+            case "UnbakedChallah": //Slot 3.3
+                Debug.Log("Player gained Pizza! in Switch-Case");
+                StartItemSFX();
+                itemIcons[6].SetActive(true);
+                break;
+
+            case "BakedChallah": //Slot 3.4
+                Debug.Log("Player gained Pizza! in Switch-Case");
+                StartItemSFX();
+                itemIcons[7].SetActive(true);
+                break;
+
         }
     }
 
@@ -114,10 +134,26 @@ public class Inventory_HasItem: MonoBehaviour
                 itemIcons[3].SetActive(false);
                 break;
 
-            case "FrozenPizza": //Slot 3.5
+            case "FrozenPizza": //Slot 3.1
                 Debug.Log("Player use FrozenPizza! in Switch-Case");
                 StartItemSFX();
                 itemIcons[4].SetActive(false);
+                break;
+
+            case "Hamantash": //Slot 3.2
+                Debug.Log("Player use Hamantash! in Switch-Case");
+                StartItemSFX();
+                itemIcons[5].SetActive(false);
+                break;
+            case "UnbakedChallah": //Slot 3.3
+                Debug.Log("Player use UnbakedChallah! in Switch-Case");
+                StartItemSFX();
+                itemIcons[6].SetActive(false);
+                break;
+            case "BakedChallah": //Slot 3.4
+                Debug.Log("Player use BakedChallah! in Switch-Case");
+                StartItemSFX();
+                itemIcons[7].SetActive(false);
                 break;
         }
     }

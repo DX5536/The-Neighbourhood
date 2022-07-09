@@ -25,7 +25,7 @@ public class CaroNodesManager: MonoBehaviour
 
     [Header("HasTalkGrandP variables_READ_ONLY")]
     [SerializeField]
-    private bool hasColdHamantash;
+    private bool hasHamantash;
     [SerializeField]
     private bool hasTalked_Grandma;
     [SerializeField]
@@ -55,8 +55,8 @@ public class CaroNodesManager: MonoBehaviour
     private void GetHasTalkedGrandParentsVar()
     {
         //Hamantash's logic
-        storage.TryGetValue("$hasColdHamantash", out hasColdHamantash);
-        hasTalkedToNPC_ScriptableObject.HasColdHamantash = hasColdHamantash;
+        storage.TryGetValue("$hasHamantash", out hasHamantash);
+        hasTalkedToNPC_ScriptableObject.HasHamantash = hasHamantash;
         //Grandma's logic
         storage.TryGetValue("$hasTalked_Grandma", out hasTalked_Grandma);
         hasTalkedToNPC_ScriptableObject.HasTalkedTo_NPC_Grandma = hasTalked_Grandma;
@@ -69,7 +69,7 @@ public class CaroNodesManager: MonoBehaviour
     {
         //If Player havent talk to Grandparents but has Hamantash already
         //In case Player get to Hallway but comeback! -> No First start the game
-        if (!hasTalked_Grandma && !hasTalked_Grandpa && hasColdHamantash)
+        if (!hasTalked_Grandma && !hasTalked_Grandpa && hasHamantash)
         {
             //Deactivate AutoStart
             dialogueRunner.startAutomatically = false;

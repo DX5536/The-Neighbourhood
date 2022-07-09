@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570878f0c3c9a54c8a5a30c9d0aa3d4, type: 3}
   m_Name: Sound_SO
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: b3ce08ad218063143bc3065a313d71b4, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 9bf5cce93629ff64787989bb16b12708, type: 3}
   typingSFX: {fileID: 8300000, guid: 5adf3a7d82afc064ab7752a1a5cb6ae5, type: 3}
   walkingSFX: {fileID: 8300000, guid: 5c9d8953cd9b45249aa89ec1a177fa6d, type: 3}
   itemSFX: {fileID: 8300000, guid: a4f324d667206fb4b986618759645b47, type: 3}
+  lillySFX: {fileID: 8300000, guid: 7fa0a3f515d61b545bffb34a626ab8e1, type: 3}
+  carolineSFX: {fileID: 8300000, guid: 9c3101cb446eb9b46ac92ac1337eb527, type: 3}
+  malkaSFX: {fileID: 8300000, guid: 69cc3fa82bf22af4386479074e433528, type: 3}
+  amonSFX: {fileID: 8300000, guid: eae16733bf2ea4940bfb4e4aaa0d0987, type: 3}
+  tomSFX: {fileID: 8300000, guid: e77c8ebaae1f8df488d26935039bcafd, type: 3}
+  birdSFX: {fileID: 8300000, guid: e131183a8b0ad2f4bb83e228051be3d5, type: 3}
+  squirrelSFX: {fileID: 8300000, guid: c6f42f370d85ce0468964f9b86415314, type: 3}

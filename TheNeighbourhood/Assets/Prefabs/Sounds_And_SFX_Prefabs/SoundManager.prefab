@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4205142079786777080}
   - component: {fileID: 4205142079786777087}
+  - component: {fileID: 325706293681172300}
   m_Layer: 0
   m_Name: TypingSFX_AudioSource
   m_TagString: Untagged
@@ -254,6 +255,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &325706293681172300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205142079786777081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9303317db7eab014392193f6e0d0fe7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPC_Names:
+  - Lilly
+  - Caroline
+  - Malka
+  - Amon
+  - Tom
+  - Bird
+  - Squirrel
+  soundScriptableObject: {fileID: 11400000, guid: 8fd8a5f7c4748a74eabd63165716656c, type: 2}
+  characterName_TXT: 
+  currentAudioSource: {fileID: 0}
 --- !u!1 &4205142080442753965
 GameObject:
   m_ObjectHideFlags: 0

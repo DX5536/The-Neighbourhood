@@ -27,6 +27,10 @@ public class SpeakerColorChange: DialogueViewBase
     [SerializeField]
     private Image textBox_Background;
 
+    [Header("DialogSystem > OptionView > Background_LastLine -> Drag/Drop")]
+    [SerializeField]
+    private Image lastLine_Background;
+
 
     void Start()
     {
@@ -99,7 +103,7 @@ public class SpeakerColorChange: DialogueViewBase
         else if (characterTextBoxColor.ContainsKey(characterNameTextBox))
         {
             textBox_Background.color = characterTextBoxColor[characterNameTextBox];
-
+            lastLine_Background.color = characterTextBoxColor[characterNameTextBox];
             //Debug.Log(characterNameTextBox + " is speaking with box: " + characterTextBoxColor);
         }
     }

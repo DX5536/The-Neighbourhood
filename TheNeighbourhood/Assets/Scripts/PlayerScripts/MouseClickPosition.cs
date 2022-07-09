@@ -29,6 +29,10 @@ public class MouseClickPosition: MonoBehaviour
     [SerializeField]
     private UnityEvent stopPlayerMoveEvent;
 
+    [Header("SoundManager > Stop walkingSFX")]
+    [SerializeField]
+    private UnityEvent stop_WalkingSFX;
+
     [Header("Player > Dust_PS > RunningDust")]
     [SerializeField]
     private UnityEvent playerCreateDustEvent;
@@ -238,6 +242,9 @@ public class MouseClickPosition: MonoBehaviour
 
             //Invoke StopDust from Dust_PS
             playerStopDustEvent?.Invoke();
+
+            //Stop walkingSFX when no more walking
+            stop_WalkingSFX?.Invoke();
         }
     }
 }

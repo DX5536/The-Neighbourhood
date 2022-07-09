@@ -53,4 +53,110 @@ public class SoundScriptableObject: ScriptableObject
         }
     }
 
+    [Header("Typing SFX")]
+    [SerializeField]
+    private AudioClip lillySFX;
+
+    public AudioClip LillySFX
+    {
+        get
+        {
+            return lillySFX;
+        }
+        set
+        {
+            lillySFX = value;
+        }
+    }
+
+    [SerializeField]
+    private AudioClip carolineSFX;
+
+    public AudioClip CarolineSFX
+    {
+        get
+        {
+            return carolineSFX;
+        }
+        set
+        {
+            carolineSFX = value;
+        }
+    }
+
+    [SerializeField]
+    private AudioClip malkaSFX;
+
+    public AudioClip MalkaSFX
+    {
+        get
+        {
+            return malkaSFX;
+        }
+        set
+        {
+            malkaSFX = value;
+        }
+    }
+
+    [SerializeField]
+    private AudioClip amonSFX;
+
+    public AudioClip AmonSFX
+    {
+        get
+        {
+            return amonSFX;
+        }
+        set
+        {
+            amonSFX = value;
+        }
+    }
+
+    [SerializeField]
+    private AudioClip tomSFX;
+
+    public AudioClip TomSFX
+    {
+        get
+        {
+            return tomSFX;
+        }
+        set
+        {
+            tomSFX = value;
+        }
+    }
+
+    [SerializeField]
+    private AudioClip birdSFX;
+
+    public AudioClip BirdSFX
+    {
+        get
+        {
+            return birdSFX;
+        }
+        set
+        {
+            birdSFX = value;
+        }
+    }
+
+    [SerializeField]
+    private AudioClip squirrelSFX;
+
+    public AudioClip SquirrelSFX
+    {
+        get
+        {
+            return squirrelSFX;
+        }
+        set
+        {
+            squirrelSFX = value;
+        }
+    }
+
 }

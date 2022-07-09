@@ -15,8 +15,8 @@ position: -242,-431
 <<declare $gainedItem_Name to "">>
 ///Do Player need to get Hamantash?
 <<declare $needHamantash to false>>
-///Do Player has ColdHamantash?
-<<declare $hasColdHamantash to false>>
+///Do Player has Hamantash?
+<<declare $hasHamantash to false>>
 ///Is Player on the quest to find Ingredients?
 <<declare $findIngredients to false>>
 //
@@ -54,7 +54,7 @@ title: TalkTo_NPC_Rabbit_Caroline
 //This node is like a cross-road for all possible scenarios
 <<if $hasTalked_Grandma == true && $hasTalked_Grandpa == true>>
     <<jump Caro_After_Grandparents>>
-<<elseif $hasColdHamantash == true && $hasTalked_Grandma == false && $hasTalked_Grandpa == false>>
+<<elseif $hasHamantash == true && $hasTalked_Grandma == false && $hasTalked_Grandpa == false>>
     Caroline: Back so soon?
     <<set $unlockedDoor_ToHallway to true>>
     <<Un_LockDoor Door_ToHallway ToHallway true true>>
@@ -68,16 +68,16 @@ __PrivCrochet_tags:
 title: Fridge_Interaction
 position: -304,-276
 ---
-//Generic Fridge interaction
-<<if $needHamantash == false && $hasFrozenPizza == true>>
-    Lilly: Who can live without a fridge?
 //If Lilly doesn't have Frozen Pizza yet
-<<elseif $needHamantash == false && $hasFrozenPizza == false>>
+<<if $needHamantash == false && $hasFrozenPizza == false && $hasCookedPizza == false>>
     // Dieser Monolog passiert, wenn man den Kühlschrank auf der Suche nach den TK-Pizzen untersucht
     Lilly: Oh wow, besides my pastry for tonight there's barely any food left. We really should've done a thorough grocery run before unpacking. 
     Lilly: Huh? No pizza? I must've forgotten to put it in the freezer… welp, wherever it is, let's hope it's still edible.
 <<elseif $needHamantash == true && $hasFrozenPizza == false>>
     <<jump Hamantash_Fridge_Interaction>>>
+<<else>>
+    //Generic Fridge interaction
+    Lilly: Who can live without a fridge?
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
@@ -128,8 +128,6 @@ title: Bringing_Pizza_to_Roommate
 position: 90,-303
 ---
 Caroline: Do you have the pizza yet?
--> Lilly: How are you? (test)
-    Caroline: Pretty fine. (test)
 -> Lilly: Ah, not yet. <<if $hasCookedPizza == false>>
     //Ich habe das hier zum test geadded.
     Caroline: No rush. Great things take time. 
@@ -168,9 +166,14 @@ title: Hamantash_Fridge_Interaction
 position: -304,-120
 ---
 // Spieler gehen zum Kühlschrank und holen Hamantaschen raus
-Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. // Tür zum Treppenhaus wird unlocked UND Gebäck erscheint im Inventar
-<<set $hasColdHamantash to true>>
+Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. 
+//Hamantash Gebäck erscheint im Inventar
+<<set $hasHamantash to true>>
 <<set $needHamantash to false>>
+<<set $gainedItem_Name to "Hamantash">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
+// Tür zum Treppenhaus wird unlocked
 //These two needs to go together
 <<set $unlockedDoor_ToHallway to true>>
 <<Un_LockDoor Door_ToHallway ToHallway true true>>
