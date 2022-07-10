@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseController : MonoBehaviour
+public class PauseController: MonoBehaviour
 {
     [SerializeField]
     private GameState currentState_READ_ONLY;
@@ -22,6 +20,7 @@ public class PauseController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             CheckAndChangeState();
+            PlayButtonSFX();
             Debug.Log("Player click ESC");
         }
     }
@@ -51,4 +50,10 @@ public class PauseController : MonoBehaviour
     {
         GameStateManager.Instance.SetState (GameState.Gameplay);
     }*/
+
+    private void PlayButtonSFX()
+    {
+        SoundManager soundManager = SoundManager.instance;
+        soundManager.PlayButtonSFX();
+    }
 }
