@@ -91,9 +91,12 @@ public class CaroNodesManager: MonoBehaviour
     private void ReVisit_NPCRabbit_Caro()
     {
         //If player has talked to all three NPC and got all ingredients
-        if (hasTalked_Wolf && hasTalked_Bird && hasTalked_Squirrel)
+        if (hasTalked_Wolf && hasTalked_Squirrel && hasTalked_Bird)
         {
-
+            //Caro hangs out near the boxes
+            //Activate AutoStart
+            dialogueRunner.startAutomatically = true;
+            dialogueRunner.StartDialogue("Caro_After_Ingredients");
         }
 
         //If Player haven't talk to Grandparents but has Hamantash already

@@ -14,9 +14,6 @@ public class YarnCommandsCharacterController: MonoBehaviour
 
     //[SerializeField]
     //private GameObject moveGoalGO;
-    [Header("The x-Offset from moveGoal.")]
-    [SerializeField]
-    private float moveGoal_Offset;
 
     //[SerializeField]
     private Vector2 character_OG_Pos;
@@ -61,13 +58,13 @@ public class YarnCommandsCharacterController: MonoBehaviour
 
     ///Target moves to specific position
     [YarnCommand("TargetMove")]
-    public void TargetMove(string goalName, bool isCharacterRemove)
+    public void TargetMove(float moveOffset, string goalName, bool isCharacterRemove)
     {
         var goalGameObject = GameObject.Find(goalName);
 
         if (goalGameObject)
         {
-            var updatedMoveGoal_XValue = goalGameObject.transform.position.x + moveGoal_Offset;
+            var updatedMoveGoal_XValue = goalGameObject.transform.position.x + moveOffset;
             characterGO.transform.DOMoveX(updatedMoveGoal_XValue, tweenDuration, isTweenSnapOn);
             //If we want the character to disappear afterwards
             if (isCharacterRemove)

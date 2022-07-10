@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f779e5f3ff07b84bbab112aa6be712e, type: 3}
-  m_Name: Item_Microwave
+  m_Name: Item_Oven
   m_EditorClassIdentifier: 
   resetIsInteractableAtStart: 0
   isInteractable: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: Baking_Pizza_At_The_Oven
+  nodeName: Interact_Oven
   speakerNPC_Color: {r: 0, g: 0, b: 0, a: 0}
   textBox_Color:
     serializedVersion: 2

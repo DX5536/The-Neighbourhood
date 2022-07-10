@@ -8,7 +8,11 @@ Lilly: <i>(Water sure is refreshing!)</i>
 title: Item_Table
 position: 0,1
 ---
+<<if $getAllIngredients == true>>
+    <<jump Making_Challah_With_Lilly>>
+<<else>>
 Lilly: <i>(I could bring food to my room...)</i>
 Lilly: <i>(Or eat at the table with Caro...)</i>
 //These two needs to go together
+<<endif>>
 ===

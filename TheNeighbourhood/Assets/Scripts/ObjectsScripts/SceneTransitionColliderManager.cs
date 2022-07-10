@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Yarn.Unity;
 
 public class SceneTransitionColliderManager: MonoBehaviour
 {
@@ -56,6 +57,8 @@ public class SceneTransitionColliderManager: MonoBehaviour
 
     }
 
+    ///Transition the player into another room, scene
+    [YarnCommand("ToOpenDoor")]
     void ToOpenDoor()
     {
         var doorInteractable = this.gameObject.GetComponent<IDoorInteractable>();

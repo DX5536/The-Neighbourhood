@@ -31,7 +31,7 @@ position: -144,-366
     Malka: Honey, what brings you here this early?
     Lilly: I just wanted to see how you guys were d- 
     // Amon läuft in den Frame, stellt sich neben Malka
-    <<TargetMove NPC_Grandpa NPC_Grandma false>>
+    <<TargetMove NPC_Grandpa 3 NPC_Grandma false>>
     Amon: Lils! Oh, how beautiful that you're here, lovely. 
     Amon: You came at a marvelous time; I have a surprise for you! Come along.
     // Amon läuft wieder aus dem Frame
@@ -87,7 +87,7 @@ Amon: It's mine, silly! You always talk about those little programs on the inter
 Amon: I would love to finally see them myself! However, I can't seem to figure out which buttons to press.
 Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- never mind, here it is - our latest game.
 //Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
-<<TargetMove NPC_Grandma Grandma_Kitchen_MoveGoal false>>
+<<TargetMove NPC_Grandma 0 Grandma_Kitchen_MoveGoal false>>
 Amon: Lils, are those your drawings? They're gorgeous! I need to show them to your grandma tomorrow. 
 Lilly: Thanks, Grandpa! that's really sweet of you.
 Lilly: How are you guys holding up, by the way? You seem quite happy. 
@@ -285,11 +285,12 @@ position: 251,134
     <<set $unlockedDoor_NPC_Wolf to true>>
     <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 //If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
-<<elseif $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false>>
+<<elseif $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false && !$getAllIngredients>>
     <<jump Leaving_Grandparents_Apartment>>
 //
 <<else>>
-    Havent unlock anything
+    Havent unlock anything <<if $getAllIngredients == false>>
+    Unlocked everything <<if $getAllIngredients == true>>
     //Nothing to say -> Debug
     //<<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
     //<<Un_LockDoor Door_ToNPC_Bird Bird false false>>

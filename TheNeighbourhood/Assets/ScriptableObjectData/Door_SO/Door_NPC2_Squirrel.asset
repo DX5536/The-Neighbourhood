@@ -23,7 +23,7 @@ MonoBehaviour:
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: Squirrel_Hallway_Dialogue
+  nodeName: TalkTo_NPC_Squirrel
   speakerNPC_Color: {r: 0, g: 0, b: 0, a: 0}
   textBox_Color:
     serializedVersion: 2

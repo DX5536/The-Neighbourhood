@@ -104,6 +104,7 @@ public class Inventory_HasItem: MonoBehaviour
         }
     }
 
+    ///Use the recently gained Item in Inventory
     [YarnCommand("UseGainedItem")]
     public void UseGainedItem()
     {
@@ -158,6 +159,14 @@ public class Inventory_HasItem: MonoBehaviour
         }
     }
 
+    [YarnCommand("UseAllIngredients")]
+    public void UseAllIngredients()
+    {
+        StartItemSFX();
+        itemIcons[0].SetActive(false); //Flour
+        itemIcons[1].SetActive(false); //Eggs
+        itemIcons[2].SetActive(false); //Oil
+    }
     private void StartItemSFX()
     {
         itemBehaviourEvents?.Invoke();

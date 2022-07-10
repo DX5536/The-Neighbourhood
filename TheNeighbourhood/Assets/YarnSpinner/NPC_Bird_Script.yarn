@@ -19,7 +19,7 @@ title: TalkTo_NPC_Bird
 <<declare $unlockedDoor_NPC_Bird = false>>
 ///Does Player have all the three ingredients?
 <<declare $getAllIngredients to false>>
-
+//
 //The Crossroads of what to talk with NPC_Bird in Hallway
 <<if $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == true>>
     <<jump Bird_Hallway_Dialogue>>
@@ -29,10 +29,12 @@ title: TalkTo_NPC_Bird
     Squirrel: It's Lilly! Please come in!
     <<set $unlockedDoor_NPC_Bird to true>>
     <<Un_LockDoor Door_ToNPC_Bird Bird true true>>
+    <<ToOpenDoor Door_ToNPC_Bird>>
 <<else>>
     Lilly: No one is here (Bird).
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true true>>
 <<endif>>
-
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: -160,-345
@@ -42,7 +44,7 @@ title: Bird_Hallway_Dialogue
 // Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
 Bird: Hi and come in!
 <<TargetSpawn NPC_Bird 0 NPC_Bird_SpawnPoint true>>
-Squirrel: Oh hi. Come on in!
+Lilly: Ah hi!
 <<set $firstVisitNPC_Bird to false>>
 <<TargetSpawn NPC_Bird 3.55 NPC_Bird_SpawnPoint true>>
 //Player can no go in the room
@@ -88,7 +90,6 @@ Bird: ok 1 sec.
 <<set $getOil to true>>
 Lilly: Woah. Thank you so much!
 Lilly: *I should get back to Caro!*
-Squirrel: You can ask NPC_Bird.
 //Player now have all the ingredients
 <<set $findIngredients to false>>
 <<set $getAllIngredients to true>>

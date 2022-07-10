@@ -9,16 +9,29 @@ position: -242,-431
 <<declare $gainedItem_Name to "">>
 ///Do Player has FrozenPizza?
 <<declare $hasFrozenPizza to false>>
-//Do Player has CookedPizza?
+//
+///Do Player has CookedPizza?
 <<declare $hasCookedPizza to false>>
-//Has Player use CookedPizza
+///Has Player use CookedPizza
 <<declare $useCookedPizza to false>>
+//
 ///Do Player need to get Hamantash?
 <<declare $needHamantash to false>>
 ///Do Player has Hamantash?
 <<declare $hasHamantash to false>>
-//Has Player use Hamantash?
+///Has Player use Hamantash?
 <<declare $useHamantash to false>>
+//
+///Has Player unbaked Challah?
+<<declare $hasUnbakedChallah to false>>
+///Has Player use unbaked Challah?
+<<declare $useUnbakedChallah to false>>
+//
+///Has Player baked Challah?
+<<declare $hasBakedChallah to false>>
+///Has Player use baked Challah?
+<<declare $useBakedChallah to false>>
+//
 ///Is Player on the quest to find 3 Ingredients?
 <<declare $findIngredients to false>>
 //
@@ -35,7 +48,7 @@ Lilly: I got you! Pretty sure I bought some frozen pizza yesterday, I can bring 
 Caroline: You're a blessing! Definitely one of my top 3 roommates. What? The other two are my bed and my PC, no front. 
 Lilly: I'm competing with hardware and furniture? Ouch.
 // An diesem Punkt soll der Dialog beendet werden und Caroline in ihr Zimmer verschwinden
-<<TargetMove NPC_Rabbit NPC_Rabbit_MoveGoal false>>
+<<TargetMove NPC_Rabbit 0 NPC_Rabbit_MoveGoal false>>
 <<jump Movement_Tutorial>>
 ===
 __PrivCrochet_colorID: 0
@@ -55,7 +68,14 @@ title: TalkTo_NPC_Rabbit_Caroline
 ---
 //This node is like a cross-road for all possible scenarios
 //We go from the latest in the story to the youngest.
-<<if $hasTalked_NPC_Wolf && $hasTalked_NPC_Squirrel && $hasTalked_NPC_Bird && $getAllIngredients>>
+<<if $hasBakedChallah>>
+    //If player at the end and has bakedChallah
+    Caroline: What are you waiting for? Go to your grandparents who are waiting for you!
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<elseif $hasUnbakedChallah>>
+    Caroline: All we need is to bake these!
+<<elseif $hasTalked_NPC_Wolf && $hasTalked_NPC_Squirrel && $hasTalked_NPC_Bird && $getAllIngredients>>
     //If Lilly has talked to Wolf, Bird, Squirrel and got all 3 ingredients
     <<jump Caro_After_Ingredients>>
 <<elseif $hasTalked_Grandma == true && $hasTalked_Grandpa == true>>
@@ -111,10 +131,15 @@ position: 87,-456
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1734,329
 __PrivCrochet_tags: 
-title: Baking_Pizza_At_The_Oven
+title: Interact_Oven
 position: 89,-380
 ---
-<<if $hasFrozenPizza == true>>
+<<if $getAllIngredients && $hasUnbakedChallah && !$hasBakedChallah>>
+    //If player has all 3 ingredients -> Interact with table and get unbaked Challah
+    //But havent have baked Challah yet
+    <<jump Baking_Challah_Oven>>
+<<elseif !$getAllIngredients && $hasFrozenPizza == true>>
+    //If player isn't on the ingredients quest but has FrozenPizza
     <<UseGainedItem Yarn_InventoryManager>>
     Lilly: The smell... Yum!
     <<set $gainedItem_Name to "Pizza">>
@@ -277,6 +302,8 @@ position: -116,-9
 // Voraussetzung: Man hat alle Zutaten von den Nachbarn geholt und ist danach zurück in die Wohnung gegangen, um das Challah-Brot zu backen
 // Caro steht direkt neben der Wohnungstür als man reinkommt, es wird ein automatischer Dialog getriggert
 Caroline: How did it go?
+//Debug and make sure important vars are true
+<<set $getAllIngredients to true>>
 Lilly: Caro? Didn't you want to sleep?
 Caroline: I did. But then I wanted to know how it went because you were so worried, and I wasn't sure if I should've gone with you or-
 Caroline: Oh, looks like you got everything!
@@ -288,7 +315,9 @@ Lilly: I do, and I hope I'll be able to finish it on time.
 Caroline: Need a hand?
 Lilly: What about your plans?
 Caroline: You know, baking a pastry to fix a well-intentioned lie seems like the perfect way to procrastinate. 
-Lilly: I won't say no to that, thank you! Well then, let's assemble the Challah at our table. // Dialog endet, Caro geht zum Tisch
+Lilly: I won't say no to that, thank you! Well then, let's assemble the Challah at our table. 
+// Dialog endet, Caro geht zum Tisch
+<<TargetMove NPC_Rabbit 3 Table false>>
 // Caro steht neben dem Herd
 // Man hat eine Konversation mit Caro, an einem Punkt in der Konversation beschließt man, mit dem Backen loszulegen
 // -> Zutaten verschwinden aus dem Inventar, wenig später erscheint das fertige Challah-Brot im Inventar
@@ -303,7 +332,12 @@ position: -115,156
 ---
 // Monolog wird über Interaktion mit dem Tisch getriggert
 // Zutaten aus dem Inventar verschwinden
+<<UseAllIngredients Yarn_InventoryManager>>
 // Ungebackenes Challah erscheint im Inventar
+<<set $hasUnbakedChallah to true>>
+<<set $gainedItem_Name to "UnbakedChallah">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
 Lilly: We nailed it. Into the oven with our creation!
 ===
 __PrivCrochet_colorID: 0
@@ -313,9 +347,18 @@ title: Baking_Challah_Oven
 position: -115,75
 ---
 // Dialog wird über Interaktion mit dem Ofen getriggert
+//Use UnbakedChallah from Inventory
+<<UseGainedItem Yarn_InventoryManager>>
 Caroline: Are you drooling? I'm drooling. No wonder it's your grandma's favorite!
-Lilly: We finished right on time! I'll make sure to put some aside for you.  
+Lilly: We finished right on time! I'll make sure to put some aside for you.
+<<set $hasBakedChallah to true>>
+<<set $hasUnbakedChallah to false>>
+<<set $gainedItem_Name to "BakedChallah">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
 Caroline: Now that's what I want to hear! 
 Caroline: Hey, Lilly. I wish you a great evening with your grandparents, enjoy the food!
 Lilly: Thank you, Caro.
+<<set $unlockedDoor_ToHallway to true>>
+<<Un_LockDoor Door_ToHallway ToHallway true true>>
 ===

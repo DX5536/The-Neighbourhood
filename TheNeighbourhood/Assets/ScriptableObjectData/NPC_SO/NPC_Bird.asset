@@ -18,12 +18,12 @@ MonoBehaviour:
   outline_MAT: {fileID: 2100000, guid: 82e4d4babb9636540a0a00fc7d1efd30, type: 2}
   blocked_Outline_MAT: {fileID: 2100000, guid: 3613c35317b3787458c999cbc58ee6b5, type: 2}
   popupItemID: NPC_Bird
-  popupDescription: A cheerful neighbour [E]
+  popupDescription: <bounce>A cheerful neighbour [E]</bounce>
   tweenValue: 30
   tweenDuration: 0.5
   tweenSnapping: 0
   easeType: 0
-  nodeName: Start_NPC_Bird
+  nodeName: Bird_Indoor_Dialogue
   speakerNPC_Color: {r: 0.9058824, g: 0.47058827, b: 0.5372549, a: 1}
   textBox_Color:
     serializedVersion: 2

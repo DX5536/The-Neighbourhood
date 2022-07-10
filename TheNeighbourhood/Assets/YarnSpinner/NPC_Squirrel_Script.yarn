@@ -19,14 +19,17 @@ position: 87,19
 //The Crossroads of what to talk with NPC_Squirrel
 <<if $firstVisitNPC_Squirrel == true && $hasTalked_NPC_Wolf == true>>
     <<jump Squirrel_Hallway_Dialogue>>
-<<elseif $firstVisitNPC_Squirrel == false && $hasTalked_NPC_Wolf>>
+<<elseif $firstVisitNPC_Squirrel == false>>
     //If Player has done the Hallway talk -> Door automatic unlock to go inside
     //Small dialog when interact unlocked ToSquirrel_Door
     Squirrel: Come in!
     <<set $unlockedDoor_NPC_Squirrel to true>>
     <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true true>>
+    <<ToOpenDoor Door_ToNPC_Squirrel>>
 <<else>>
-    Lilly: No one is here (Squirrel).
+    Lilly: There is no one (Squirrel).
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true true>>
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
