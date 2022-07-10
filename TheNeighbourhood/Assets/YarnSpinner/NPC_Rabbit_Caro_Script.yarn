@@ -58,7 +58,9 @@ title: Movement_Tutorial
 position: -243,-366
 ---
 Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachdem Caroline in ihr Zimmer gegangen ist
+<<De_ActivateTutorialCanvas TutorialCanvas_Manager true>>
 <i>(After this dialogue use your mouse to click where you want to go)</i> // Dies soll als Message nach der ersten Line separat auftauchen
+<<De_ActivateTutorialCanvas TutorialCanvas_Manager false>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0

@@ -2267,9 +2267,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>~SFX~</b>\nEulogous (https://twitter.com/eulogous) for allow us to
-    use texts' SFX.\n\nCopyright/Attribution Notice: \r\nAttribute Little Robot Sound
-    Factory, and provide this link where possible: <color=#061639><link=\"www.littlerobotsoundfactory.com\">www.littlerobotsoundfactory.com</link></color>\n\nSound
+  m_text: "<b>~SFX~</b>\nSpecial thanks to Eulogous <i>(https://twitter.com/eulogous)</i>
+    for allow us to use typing Texts SFX and Button SFX.\n\nCopyright/Attribution
+    Notice: \r\nAttribute Little Robot Sound Factory, and provide this link where
+    possible: <color=#061639><link=\"www.littlerobotsoundfactory.com\">www.littlerobotsoundfactory.com</link></color>\n\nSound
     FX von Blex\n\n<b>~BGM~</b>\nBackground Music \"Key West Sunset\" by Eric Matyas 
     <color=#061639><link=\"https://soundimage.org/quiet-peaceful-mellow/\">https://soundimage.org</link></color>\nLicensed
     under <color=#061639><link=\"https://creativecommons.org/licenses/by/4.0/legalcode#s6a\">https://creativecommons.org</link></color>\nNo
