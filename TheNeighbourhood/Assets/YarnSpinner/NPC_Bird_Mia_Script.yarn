@@ -22,7 +22,7 @@ title: TalkTo_NPC_Bird
 //
 //The Crossroads of what to talk with NPC_Bird in Hallway
 <<if $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == true>>
-    <<jump Bird_Infront_of_Door_Talk>>
+    <<jump Bird_Hallway_Talk>>
 <<elseif $firstVisitNPC_Bird == false>>
     //If Player has done the Hallway talk -> Door automatic unlock to go inside
     //Small dialog when interact unlocked ToBird_Door
@@ -41,7 +41,7 @@ __PrivCrochet_position: -160,-345
 __PrivCrochet_tags: position: 1,1
 position:
 1,1:
-title: Bird_Infront_of_Door_Talk
+title: Bird_Hallway_Talk
 ---
 // Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
 // Man interagiert mit der Tür von Bird Mia
@@ -74,7 +74,7 @@ __PrivCrochet_tags:
 title: Bird_Indoor_Dialogue
 ---
 <<if $needOil == true && $getOil == false>>
-    <<jump Bird_Oil_Interaction>>
+    <<jump Bird_Get_Oil>>
 <<else>>
     Bird: Have you watched Birdie Wings? (placeholder cuz I can :P)
     Lilly: Omg yes. It's a great golfing anime!
@@ -88,7 +88,7 @@ __PrivCrochet_position: 75,193
 __PrivCrochet_tags: position: 0,1
 position:
 0,1:
-title: Bird_Oil_Interaction
+title: Bird_Get_Oil
 ---
 // Folgt nach Bird_In_Apartment_Talk
 // Bird ansprechbar an dem Platz, an dem sich ihr Öl befindet
