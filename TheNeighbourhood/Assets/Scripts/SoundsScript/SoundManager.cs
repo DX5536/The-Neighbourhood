@@ -78,4 +78,23 @@ public class SoundManager: MonoBehaviour
     {
         item_AudioSource.Play();
     }
+
+    //For option scene -> Changing the volumes
+    //Master volume is all the sounds
+    public void ChangeMasterVolume(float volumeValue)
+    {
+        AudioListener.volume = volumeValue;
+    }
+
+    public void ChangeBGMVolume(float volumeValue)
+    {
+        BGM_AudioSource.volume = volumeValue;
+    }
+
+    public void ChangeSFXVolume(float volumeValue)
+    {
+        walkingSFX_AudioSource.volume = volumeValue;
+        typingSFX_AudioSource.volume = volumeValue;
+        item_AudioSource.volume = volumeValue;
+    }
 }
