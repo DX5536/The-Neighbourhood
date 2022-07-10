@@ -59,8 +59,6 @@ Malka: We will catch up later, darling. Grandpa has been very excited about this
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 2,-4
 __PrivCrochet_tags: position: -187,77
-position:
--187,77:
 title: TalkTo_NPC_Grandpa
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
@@ -106,11 +104,11 @@ Amon: Maybe you can talk to her? You always know the right things to say.
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 2,-8
 __PrivCrochet_tags: position: -187,77
-position:
--187,77:
 title: TalkTo_NPC_Grandma
 ---
-<<if $firstVisitGrandParents == true && $hasTalked_Grandma == false>>
+<<if $hasBakedChallah>>
+    <<jump Grandparents_Lilly_Reception>>
+<<elseif $firstVisitGrandParents == true && $hasTalked_Grandma == false>>
     <<jump Malka_Talk_Long>>
 <<else>>
     Malka: You are back already?
@@ -168,6 +166,38 @@ title: Malka_Talk_Long
     <<set $unlockedDoor_ToHallway to true>>
     <<Un_LockDoor Door_ToHallway ToHallway true true>>
 <<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 1,240
+__PrivCrochet_tags: 
+title: Leaving_Grandparents_Apartment
+---
+// Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
+<<set $unlockedDoor_NPC_Grandparents to false>>
+<<Un_LockDoor Door_ToGrandparents Grandparents false false>>
+Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
+Lilly: <i>(Caro! Let's get back to Caro, she will know what to do!)</i>
+<<set $unlockedDoor_NPC_Grandparents to true>>
+<<Un_LockDoor Door_ToGrandparents Grandparents true true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -1,485
+__PrivCrochet_tags: 
+title: Grandparents_Lilly_Reception
+---
+// Voraussetzung: Lilly hat das Challah gebackenund im Inventar. Sie interagiert mit der Haustür der Großeltern
+Malka: There you are, honey!
+Malka: With my favorite, oh, the smell! Thank you, darling. 
+Malka: Here, let me take it. 
+// Challah verschwindet aus dem Inventar
+Malka: How strange, it's <i>still</i> warm...
+Lilly: Yeah, about that, Grandma... 
+Amon: Lils!
+Lilly: Another surprise?
+Amon: No, silly. I'm just glad you're here. 
+Lilly: So am I, Grandpa. 
+Malka: Shall we sit down? Everything is prepared.
+// Amon und Malka gehen nach links in Richtung Esstisch.
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 243,485
@@ -242,81 +272,4 @@ Lilly: (Let's hope this goes well. But you said it yourself, Lilly. No more hidi
 Lilly: ...how this Challah was <i>actually</i> made. 
 // Fading to black? Irgendein Ausklang. So oder so, sollte vielleicht mit ein paar Sekunden Pause dann die Credit-Szene starten.
 ===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: 1,240
-__PrivCrochet_tags: 
-title: Leaving_Grandparents_Apartment
----
-// Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
-<<set $unlockedDoor_NPC_Grandparents to false>>
-<<Un_LockDoor Door_ToGrandparents Grandparents false false>>
-Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
-Lilly: <i>(Caro! Let's get back to Caro, she will know what to do!)</i>
-<<set $unlockedDoor_NPC_Grandparents to true>>
-<<Un_LockDoor Door_ToGrandparents Grandparents true true>>
-===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: -221,0
-__PrivCrochet_tags: position: -154,1
-position:
--154,1:
-title: Hallway_UnLockDoor_Manager
----
-//We go from the bottom up: 
-//So Bird -> Squirrel -> Wolf -> Grandparents
-//
-<<if $findIngredients == true && $unlockedDoor_NPC_Bird == true>>
-    Debug NPC_Bird/Squirrel/Wolf in Hallway
-    <<set $unlockedDoor_NPC_Bird to true>>
-    <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
-    //Squirrel
-    <<set $unlockedDoor_NPC_Squirrel to true>>
-    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
-    //Wolf
-    <<set $unlockedDoor_NPC_Wolf to true>>
-    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
-//
-<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
-    Debug NPC_Squirrel/Wolf in Hallway
-    <<set $unlockedDoor_NPC_Squirrel to true>>
-    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
-    //Wolf
-    <<set $unlockedDoor_NPC_Wolf to true>>
-    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
-//
-<<elseif $findIngredients == true && $unlockedDoor_NPC_Wolf == true>>
-    Debug NPC_Wolf in Hallway
-    <<set $unlockedDoor_NPC_Wolf to true>>
-    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
-//If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
-<<elseif $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false && !$getAllIngredients>>
-    <<jump Leaving_Grandparents_Apartment>>
-//
-<<else>>
-    Havent unlock anything <<if $getAllIngredients == false>>
-    Unlocked everything <<if $getAllIngredients == true>>
-    //Nothing to say -> Debug
-    //<<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
-    //<<Un_LockDoor Door_ToNPC_Bird Bird false false>>
-    //<<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
-<<endif>>
-===
-__PrivCrochet_colorID: 0
-__PrivCrochet_position: -1,485
-__PrivCrochet_tags: 
-title: Grandparents_Lilly_Reception
----
-// Voraussetzung: Lilly hat das Challah gebackenund im Inventar. Sie interagiert mit der Haustür der Großeltern
-Malka: There you are, honey!
-Malka: With my favorite, oh, the smell! Thank you, darling. 
-Malka: Here, let me take it. 
-// Challah verschwindet aus dem Inventar
-Malka: How strange, it's <i>still</i> warm...
-Lilly: Yeah, about that, Grandma... 
-Amon: Lils!
-Lilly: Another surprise?
-Amon: No, silly. I'm just glad you're here. 
-Lilly: So am I, Grandpa. 
-Malka: Shall we sit down? Everything is prepared.
-// Amon und Malka gehen nach links in Richtung Esstisch.
-===
+

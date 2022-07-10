@@ -130,6 +130,9 @@ Lilly: <i>(Or is it?)</i>
 <<set $findIngredients to true>>
 <<set $unlockedDoor_NPC_Squirrel to true>>
 <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+//Player can knock on Bird door but no respond atm
+<<set $unlockedDoor_NPC_Bird to true>>
+<<Un_LockDoor Door_ToNPC_Bird Bird true false>>
 Lilly: <i>(Either way, no more hiding, Lilly.)</i>
 // Squirrel-Tür-Interaktion wird unlocked
 ===

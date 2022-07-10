@@ -527,8 +527,8 @@ MonoBehaviour:
   - Malka
   - Amon
   - Tom
-  - Bird
-  - Squirrel
+  - Mia
+  - Nora
   soundScriptableObject: {fileID: 11400000, guid: 8fd8a5f7c4748a74eabd63165716656c, type: 2}
   characterName_TXT: 
   currentAudioSource: {fileID: 0}

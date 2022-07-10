@@ -32,12 +32,6 @@ public class ObjectSelfDestroyAfterTime: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Arrow trigger with " + collision.gameObject.name);
+        //Debug.Log("Arrow trigger with " + collision.gameObject.name);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Arrow collide with " + collision.gameObject.name);
-    }
-
 }

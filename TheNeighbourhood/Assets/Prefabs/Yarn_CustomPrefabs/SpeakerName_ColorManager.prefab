@@ -49,8 +49,8 @@ MonoBehaviour:
   - Malka
   - Amon
   - Tom
-  - Bird
-  - Squirrel
+  - Mia
+  - Nora
   itemScriptableObjects:
   - {fileID: 11400000, guid: 2779b28a01d8b0f44b91d0c9da27f377, type: 2}
   - {fileID: 11400000, guid: bdf0c2231ed0dba4b977327cdb775df7, type: 2}
@@ -62,3 +62,4 @@ MonoBehaviour:
   characterName_TXT: 
   characterName_TMP: {fileID: 0}
   textBox_Background: {fileID: 0}
+  lastLine_Background: {fileID: 0}

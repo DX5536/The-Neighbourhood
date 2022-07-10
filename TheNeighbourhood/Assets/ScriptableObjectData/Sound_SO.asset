@@ -24,4 +24,4 @@ MonoBehaviour:
   amonSFX: {fileID: 8300000, guid: eae16733bf2ea4940bfb4e4aaa0d0987, type: 3}
   tomSFX: {fileID: 8300000, guid: e77c8ebaae1f8df488d26935039bcafd, type: 3}
   birdSFX: {fileID: 8300000, guid: e131183a8b0ad2f4bb83e228051be3d5, type: 3}
-  squirrelSFX: {fileID: 8300000, guid: c6f42f370d85ce0468964f9b86415314, type: 3}
+  squirrelSFX: {fileID: 8300000, guid: 8ad2ee9196e8d0b4b8ff13bcf123551e, type: 3}

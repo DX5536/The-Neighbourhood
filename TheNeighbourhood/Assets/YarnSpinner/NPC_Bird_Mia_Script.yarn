@@ -3,6 +3,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: -160,-59
 __PrivCrochet_tags: 
 title: TalkTo_NPC_Bird
+position: -155,-237
 ---
 //Declares variables
 ///Is this Player's first time visit NPC_Bird?
@@ -21,12 +22,16 @@ title: TalkTo_NPC_Bird
 <<declare $getAllIngredients to false>>
 //
 //The Crossroads of what to talk with NPC_Bird in Hallway
-<<if $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == true>>
+<<if $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == false>>
+    //If Player hasnt talk to Squirrel but knock on Bird door
+    //isInteractable but can't trans scene
+    <<jump Lilly_Knocks_No_Response>>
+<<elseif $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == true>>
     <<jump Bird_Hallway_Talk>>
 <<elseif $firstVisitNPC_Bird == false>>
     //If Player has done the Hallway talk -> Door automatic unlock to go inside
     //Small dialog when interact unlocked ToBird_Door
-    Squirrel: It's Lilly! Please come in!
+    Mia: Please come in!
     <<set $unlockedDoor_NPC_Bird to true>>
     <<Un_LockDoor Door_ToNPC_Bird Bird true true>>
     <<ToOpenDoor Door_ToNPC_Bird>>
@@ -39,8 +44,7 @@ title: TalkTo_NPC_Bird
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: -160,-345
 __PrivCrochet_tags: position: 1,1
-position:
-1,1:
+position: 97,-250
 title: Bird_Hallway_Talk
 ---
 // Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
@@ -72,12 +76,12 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 80,-53
 __PrivCrochet_tags: 
 title: Bird_Indoor_Dialogue
+position: -38,145
 ---
 <<if $needOil == true && $getOil == false>>
     <<jump Bird_Get_Oil>>
 <<else>>
-    Bird: Have you watched Birdie Wings? (placeholder cuz I can :P)
-    Lilly: Omg yes. It's a great golfing anime!
+    Mia: Make yourself at home.
     //Unlock door back to Hallway
     <<set $unlockedDoor_ToHallway to true>>
     <<Un_LockDoor Door_ToHallway ToHallway true true>>
@@ -86,8 +90,7 @@ title: Bird_Indoor_Dialogue
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 75,193
 __PrivCrochet_tags: position: 0,1
-position:
-0,1:
+position: 227,55
 title: Bird_Get_Oil
 ---
 // Folgt nach Bird_In_Apartment_Talk
@@ -107,7 +110,7 @@ Mia: Right! Good luck with your Challah, Lilly!
 //Player now have all the ingredients
 <<set $findIngredients to false>>
 <<set $getAllIngredients to true>>
-Lilly: (I got everything, what a lovely neighbourhood! Let’s get baking in our kitchen!)
+Lilly: (I got everything, what a lovely neighbourhood! Let's get baking in our kitchen!)
 <<set $hasTalked_NPC_Bird to true>>
 //Unlock door back to Hallway
 <<set $unlockedDoor_ToHallway to true>>
@@ -116,8 +119,7 @@ Lilly: (I got everything, what a lovely neighbourhood! Let’s get baking in our
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 634,-52
 __PrivCrochet_tags: position: 0,1
-position:
-0,1:
+position: 239,-102
 title: OLD_Interaction_Bird
 ---
 Bird: Oh? Who do we have here?
@@ -142,6 +144,7 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: -164,-590
 __PrivCrochet_tags: 
 title: Lilly_Knocks_No_Response
+position: 191,146
 ---
 // Voraussetzung: Man hat Mehl von Tom, aber noch nicht die Eier von Squirrel Nora
 // Dieser Dialog spielt, wenn man währenddessen versucht, bei Bird Mia zu klopfen
@@ -149,13 +152,17 @@ title: Lilly_Knocks_No_Response
 (Knock, knock)
 Lilly: Huh?
 Lilly: No one is home, I guess.
-Lilly: Then I only have one more door to get eggs and oil. Let’s hope they’re here.
+Lilly: Then I only have one more door to get eggs and oil. Let's hope they're here.
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 78,-343
 __PrivCrochet_tags: 
-title: Bird_In_Apartment_Talk
+title: Bird_Indoor_FirstTime
+position: 31,210
 ---
+//Locked the ToHallway_Door from Bird
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
 // Automatischer Dialog, sobald man Mias Wohnung betritt
 Mia: So, how can I help?
 Lilly: You see, I promised my grandparents to bake Challah, a Jewish pastry. 
