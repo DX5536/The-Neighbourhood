@@ -16,6 +16,8 @@ MonoBehaviour:
   typingSFX: {fileID: 8300000, guid: 5adf3a7d82afc064ab7752a1a5cb6ae5, type: 3}
   walkingSFX: {fileID: 8300000, guid: 5c9d8953cd9b45249aa89ec1a177fa6d, type: 3}
   itemSFX: {fileID: 8300000, guid: a4f324d667206fb4b986618759645b47, type: 3}
+  hoverButtonSFX: {fileID: 8300000, guid: 300435e10f799fe4fab61ab0cbc377da, type: 3}
+  buttonSFX: {fileID: 8300000, guid: 8ea9c843968d46e4cb58d4892c915564, type: 3}
   lillySFX: {fileID: 8300000, guid: 7fa0a3f515d61b545bffb34a626ab8e1, type: 3}
   carolineSFX: {fileID: 8300000, guid: 9c3101cb446eb9b46ac92ac1337eb527, type: 3}
   malkaSFX: {fileID: 8300000, guid: 69cc3fa82bf22af4386479074e433528, type: 3}

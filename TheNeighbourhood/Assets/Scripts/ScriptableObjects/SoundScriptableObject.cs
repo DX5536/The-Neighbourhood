@@ -53,6 +53,32 @@ public class SoundScriptableObject: ScriptableObject
         }
     }
 
+    [Tooltip("SFX when hover on button")]
+    [SerializeField]
+    private AudioClip hoverButtonSFX;
+    public AudioClip HoverButtonSFX
+    {
+        get => hoverButtonSFX;
+        set => hoverButtonSFX = value;
+    }
+
+    [Tooltip("SFX when click on button")]
+    [SerializeField]
+    private AudioClip buttonSFX;
+
+    public AudioClip ButtonSFX
+    {
+        get
+        {
+            return buttonSFX;
+        }
+        set
+        {
+            buttonSFX = value;
+        }
+    }
+
+
     [Header("Typing SFX")]
     [SerializeField]
     private AudioClip lillySFX;
@@ -158,5 +184,6 @@ public class SoundScriptableObject: ScriptableObject
             squirrelSFX = value;
         }
     }
+
 
 }

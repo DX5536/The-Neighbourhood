@@ -16,6 +16,11 @@ public class VolumeSlider: MonoBehaviour
     private Slider _SFXVolumeSlider;
     void Start()
     {
+        //First Load all the saved values to the sliders' values
+        LoadSliders_VolumeValue();
+
+        //Then subscribe volume change (and saved value on each change)
+        //To OnValueChanged() Unity Event in each slider
         masterVolumeSlider.onValueChanged.AddListener
             (
                 val => SoundManager.instance.ChangeMasterVolume(val)
@@ -31,4 +36,12 @@ public class VolumeSlider: MonoBehaviour
             val => SoundManager.instance.ChangeSFXVolume(val)
             );
     }
+
+    private void LoadSliders_VolumeValue()
+    {
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        _BGMVolumeSlider.value = PlayerPrefs.GetFloat("BGMVolume");
+        _SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+    }
+
 }
