@@ -19,13 +19,14 @@ title: Meeting_GrandParents_1st
 ///Has Player talked to Grandma?
 <<declare $hasTalked_Grandpa to false>>
 //
+//Always make sure the FinalDialogue Collider and CreditCutscene is inActive upon entering room
+//Only activate in the final section
+<<Toggle_CharacterActive FinalDialogueCollider_Manager false>>
+<<Toggle_CharacterActive CreditsCutscene_CanvasManager false>>
 // Dialog beginnt in der Wohnung automatisch, sobald man die Tür der Grandparents betritt
 //Locked the ToHallway_Door from Grandparents
 <<set $unlockedDoor_ToHallway to false>>
 <<Un_LockDoor Door_ToHallway ToHallway false false>>
-//Always make sure the FinalDialogue Collider is inActive upon entering room
-//Only activate in the final section
-<<Toggle_CharacterActive FinalDialogueCollider_Manager false>>
 //REMOVE THIS LATER!!!!!
 //<<set $hasBakedChallah to true>>
 //<<set $firstVisitGrandParents to false>>
@@ -301,5 +302,6 @@ Lilly: I would love to. But before I do so, I would like to tell you...
 Lilly: (Let's hope this goes well. But you said it yourself, Lilly. No more hiding.)
 Lilly: ...how this Challah was <i>actually</i> made. 
 // Fading to black? Irgendein Ausklang. So oder so, sollte vielleicht mit ein paar Sekunden Pause dann die Credit-Szene starten.
+<<Toggle_CharacterActive CreditsCutscene_CanvasManager true>>
 ===
 
