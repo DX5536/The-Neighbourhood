@@ -30,6 +30,10 @@ public class YarnCommandsCharacterController: MonoBehaviour
     {
         character_OG_Pos = characterGO.transform.position;
         spriteRenderer = characterGO.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            return;
+        }
     }
 
     // Update is called once per frame
