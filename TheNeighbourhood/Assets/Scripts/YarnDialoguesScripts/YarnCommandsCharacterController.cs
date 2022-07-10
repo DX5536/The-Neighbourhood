@@ -79,6 +79,14 @@ public class YarnCommandsCharacterController: MonoBehaviour
         }
     }
 
+    ///Change the tweenDuration according to characters' need <summary>
+    ///Call before TargetMove()
+    [YarnCommand("ChangeTweenDuration")]
+    public void ChangeTweenDuration(int newTweenDuration)
+    {
+        tweenDuration = newTweenDuration;
+    }
+
     /// <summary>
     /// Target moves back to original spawned position
     /// </summary>

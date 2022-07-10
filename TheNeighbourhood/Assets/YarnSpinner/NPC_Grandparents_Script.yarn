@@ -23,8 +23,18 @@ title: Meeting_GrandParents_1st
 //Locked the ToHallway_Door from Grandparents
 <<set $unlockedDoor_ToHallway to false>>
 <<Un_LockDoor Door_ToHallway ToHallway false false>>
+//Always make sure the FinalDialogue Collider is inActive upon entering room
+//Only activate in the final section
+<<Toggle_CharacterActive FinalDialogueCollider_Manager false>>
+//REMOVE THIS LATER!!!!!
+//<<set $hasBakedChallah to true>>
+//<<set $firstVisitGrandParents to false>>
 //
-<<if $firstVisitGrandParents == true>>
+<<if !$firstVisitGrandParents && $hasBakedChallah>>
+    //If this is not Lilly first time Visit
+    //And has Baked Challah
+    <<jump Grandparents_Lilly_Reception>>
+<<elseif $firstVisitGrandParents == true>>
     Malka: Lilly! Shalom aleichem, darling!
     Lilly: Aleichem Shalom, Grandma!
     Malka: Honey, what brings you here this early?
@@ -43,7 +53,7 @@ title: Meeting_GrandParents_1st
 <<else>>
     // If not first-time visit anymore -> Say hi!
     <<set $unlockedDoor_ToHallway to true>>
-    Lilly: Hi! I will be on my way.
+    Lilly: Hi grandma!
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
@@ -190,14 +200,31 @@ Malka: There you are, honey!
 Malka: With my favorite, oh, the smell! Thank you, darling. 
 Malka: Here, let me take it. 
 // Challah verschwindet aus dem Inventar
+<<set $gainedItem_Name to "BakedChallah">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<UseGainedItem Yarn_InventoryManager>>
+<<set $useBakedChallah to true>>
+//
 Malka: How strange, it's <i>still</i> warm...
 Lilly: Yeah, about that, Grandma... 
 Amon: Lils!
+<<ChangeTweenDuration NPC_Grandpa 3>>
+<<TargetMove NPC_Grandpa 2 NPC_Grandma false>>
 Lilly: Another surprise?
 Amon: No, silly. I'm just glad you're here. 
 Lilly: So am I, Grandpa. 
 Malka: Shall we sit down? Everything is prepared.
-// Amon und Malka gehen nach links in Richtung Esstisch.
+//Disable grandparents BoxCollider so player can't accidentally talk/popup Description
+<<Toggle_BoxCollider2D ChairSitting_SpritesManager false>>
+//Amon und Malka gehen nach links in Richtung Esstisch.
+<<ChangeTweenDuration NPC_Grandma 7>>
+<<TargetMove NPC_Grandma 0 Chair_02 false>>
+//
+<<ChangeTweenDuration NPC_Grandpa 8>>
+<<TargetMove NPC_Grandpa 0 Chair_05 false>>
+//Turn on the FinalDialogueCollider
+//So when Lilly Collide -> plays Grandparents_Dinner_With_Lilly
+<<Toggle_CharacterActive FinalDialogueCollider_Manager true>>
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 243,485
@@ -205,6 +232,9 @@ __PrivCrochet_tags:
 title: Grandparents_Dinner_With_Lilly
 ---
 // Grandparents sitzen am Tisch, man interagiert mit dem Stuhl auf der anderen Seite und setzt sich hin
+<<SittingSprites ChairSitting_SpritesManager>>
+//Disable the FinalDialogueCollider
+<<Toggle_CharacterActive FinalDialogueCollider_Manager false>>
 Lilly: Wow, you outdid yourself, Grandma!
 Malka: So did you, honey!
 Lilly: Well, Caro helped form the Challah, that might be why. 

@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerPlayerPos : MonoBehaviour
+public class SpawnerPlayerPos: MonoBehaviour
 {
     [Header("Values READ_ONLY")]
     [SerializeField]
@@ -29,7 +28,7 @@ public class SpawnerPlayerPos : MonoBehaviour
         {
             //If there is a savedDoorGO -> Spawn
             StartCoroutine(WaitForSpawnMaster());
-            transform.position = new Vector2(savedDoorGO.position.x , savedDoorGO.position.y);
+            transform.position = new Vector3(savedDoorGO.position.x, savedDoorGO.position.y, -5);
         }
 
 
