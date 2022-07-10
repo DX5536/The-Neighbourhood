@@ -141,6 +141,10 @@ position: -226,-99
     Malka: Speaking of food, let me take your hamantashen, dear, you don't have to carry them around. 
     Malka: Oh, they look and smell splendid! How's the Challah bread getting along?
     // WICHTIG - Hamantashen-Gebäck verschwindet aus dem Inventar
+    <<set $gainedItem_Name to "Hamantash">>
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<UseGainedItem Yarn_InventoryManager>>
+    <<set $useHamantash to true>>
     Lilly: The Challah?
     Malka: Oh, darling, I asked you for two favors, remember? Hamantashen and my favorite - Challah. Is everything alright?</i>
     Lilly: <i>(Uhh... dang it. Challah, right. She definitely asked me for Challah. I did definitely not make that...)</i>
@@ -258,19 +262,25 @@ position: 251,134
 //So Bird -> Squirrel -> Wolf -> Grandparents
 //
 <<if $findIngredients == true && $unlockedDoor_NPC_Bird == true>>
-    Debug NPC_Bird in Hallway
+    Debug NPC_Bird/Squirrel/Wolf in Hallway
     <<set $unlockedDoor_NPC_Bird to true>>
     <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
-//
-<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
-    Debug NPC_Squirrel in Hallway
+    //Squirrel
     <<set $unlockedDoor_NPC_Squirrel to true>>
     <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+    //Wolf
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
+//
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
+    Debug NPC_Squirrel/Wolf in Hallway
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+    //Wolf
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 //
 <<elseif $findIngredients == true && $unlockedDoor_NPC_Wolf == true>>
-    //Nothing to say -> Debug
-    //<<set $hasTalked_Grandpa to true>>
-    //<<set $hasTalked_Grandma to true>>
     Debug NPC_Wolf in Hallway
     <<set $unlockedDoor_NPC_Wolf to true>>
     <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>

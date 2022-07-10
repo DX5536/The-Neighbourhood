@@ -8,6 +8,9 @@ public class SceneTransitionColliderManager: MonoBehaviour
     private string playerTag = "Player";
 
     [SerializeField]
+    private ItemScriptableObject doorScriptableObject;
+
+    [SerializeField]
     private string keyToPress_DEBUG = "e";
 
     [SerializeField]
@@ -29,7 +32,7 @@ public class SceneTransitionColliderManager: MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spamKeyDelay)
         {
-            if (Input.GetKeyDown(keyToPress_DEBUG) && canSwitchScene == true)
+            if (Input.GetKeyDown(keyToPress_DEBUG) && canSwitchScene == true && doorScriptableObject.IsInteractable)
             {
                 //Debug.Log("Switch Scene");
                 ToOpenDoor();

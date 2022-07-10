@@ -26,7 +26,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
 
 
         dialogueRunner = FindObjectOfType<DialogueRunner>();
-        if (dialogueRunner != null)
+        if (dialogueRunner == null)
         {
             //This is the send safety net if 1st search didn't work for some reason
             //Debug.Log("Have to do an 2nd in-depth search");
@@ -34,7 +34,7 @@ public class StartYarnDialogueRunner: MonoBehaviour
         }
 
         dialogueAdvanceInput = FindObjectOfType<DialogueAdvanceInput>();
-        if (dialogueAdvanceInput != null)
+        if (dialogueAdvanceInput == null)
         {
             dialogueAdvanceInput = GameObject.Find("Line View").GetComponent<DialogueAdvanceInput>();
         }

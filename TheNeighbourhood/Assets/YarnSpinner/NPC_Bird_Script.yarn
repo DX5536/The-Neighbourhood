@@ -41,6 +41,13 @@ title: Bird_Hallway_Dialogue
 ---
 // Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
 Bird: Hi and come in!
+<<TargetSpawn NPC_Bird 0 NPC_Bird_SpawnPoint true>>
+Squirrel: Oh hi. Come on in!
+<<set $firstVisitNPC_Bird to false>>
+<<TargetSpawn NPC_Bird 3.55 NPC_Bird_SpawnPoint true>>
+//Player can no go in the room
+<<set $unlockedDoor_NPC_Bird to true>>
+<<Un_LockDoor Door_ToNPC_Bird Bird true true>>
 // Normales Bird-Gespräch, in einer Line bittet der Bird einen rein in die Wohnung
 // Bird geht in die Wohnung, Wohnung zum Betreten unlocked
 ===

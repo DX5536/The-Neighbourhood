@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
+  doorScriptableObject: {fileID: 11400000, guid: ef6ec7b3bc36e924cb802215b5eab28e, type: 2}
   keyToPress_DEBUG: e
   spamKeyDelay: 2
 --- !u!114 &6964692580478599031
