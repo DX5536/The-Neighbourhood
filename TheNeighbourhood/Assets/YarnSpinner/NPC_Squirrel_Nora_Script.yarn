@@ -1,6 +1,10 @@
 #__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: position: 87,19
+position:
+87,19:
 title: TalkTo_NPC_Squirrel
-position: 87,19
 ---
 //Declares variables
 ///Is this Player's first time visit NPC_Squirrel?
@@ -36,7 +40,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: 
 title: Squirrel_Hallway_Dialogue
-position: 102,168
 ---
 // Voraussetzung 1 für diesen Dialog: Man hat das zweite Mal mit Caro gesprochen und sich auf den Weg gemacht, Zutaten von den Nachbarn zu bekommen.
 // Voraussetzung 2: Man hat das Gespräch mit dem Wolf beendet, eine Zutat erhalten und wurde zum Squirrel geschickt.
@@ -58,7 +61,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 248,-1
 __PrivCrochet_tags: 
 title: Squirrel_Indoor_Dialogue
-position: -117,130
 ---
 //Locked the ToHallway_Door from Squirrel
 <<set $unlockedDoor_ToHallway to false>>
@@ -81,8 +83,12 @@ position: -117,130
     <<Un_LockDoor Door_ToHallway ToHallway true true>>
 <<endif>>
 ===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: position: 0,1
+position:
+0,1:
 title: Squirrel_Get_Egg
-position: 0,1
 ---
 Lilly: Hi!
 Squirrel: *insert some dialogue here*
@@ -104,4 +110,75 @@ Lilly: I see. thanks and bye!
 //Unlock door back to Hallway
 <<set $unlockedDoor_ToHallway to true>>
 <<Un_LockDoor Door_ToHallway ToHallway true true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -3,-240
+__PrivCrochet_tags: 
+title: Squirrel_Infront_of_Door_Talk
+---
+// Voraussetzung: Man hat von Tom Mehl bekommen
+// Nora ist das Eichhörnchen
+// Man klopft an der Tür von Nora
+(Knock, knock)
+Nora: Oh, hello there!
+Nora: Is there any chance you're here to pick up my old couch?
+Lilly: Huh?
+Nora: “Elena B.”?
+Nora: “Callin' dibs on your couch, it looks fiiire, gurl! Can I pick it up tonight?”
+Nora: ...
+Lilly: Oh, most definitely not!
+Lilly: If I bought a couch like that, I'd have someone lock away my phone as a safety measure for future purchases. 
+Nora: Ha ha ha, you're right. 
+Nora: It was probably a drunk purchase or something. 
+Nora: I guess I'm just a bit desperate to get rid of that damn thing.  
+Lilly: I'll make sure to ask around to see if anyone needs a couch, then. 
+Nora: Thank you! I'm Nora by the way. 
+Lilly: Pleasure! I'm Lilly, one of your new neighbours from the second floor. 
+Nora: How lovely, I'm glad to meet you!
+Nora: What's up, Lilly?
+Lilly: Well, I've been baking a Jewish pastry that requires very basic ingredients. 
+Lilly: And yet, I ran out of eggs and oil. 
+Nora: I see how it is! No problemo. 
+Nora: Feel free to come in!
+// Nora verschwindet, Lilly kann folgen, indem sie erneut mit der Tür interagiert
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 247,-238
+__PrivCrochet_tags: 
+title: Squirrel_In_Apartment_Talk
+---
+// Automatischer Dialog, wenn man das Apartment betritt
+Nora: Welcome to my apartment!
+Nora: It's currently a bit of a mess because I'm redecorating. Hence the couch sale. 
+Nora: Anyways, would you mind looking for a box with kitchen gadgets? 
+Nora: It should contain some oil. I'll get the eggs in the meantime!
+Lilly: Sure thing!
+// Nora verschwindet in Richtung Kühlschrank
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 490,-238
+__PrivCrochet_tags: 
+title: Lilly_Oil_Box_Interaction
+---
+// Lilly findet eine Box, die interaktiv ist (Umzugsbox)
+Lilly: (Oh, looks like the oil bottle shattered...)
+Lilly: (I should let Nora know.)
+//Squirrel_Gives_Eggs Dialog wird unlocked
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 735,-236
+__PrivCrochet_tags: 
+title: Squirrel_Gives_Eggs
+---
+// Lilly geht, nachdem sie das kaputte Öl gefunden hat, zurück zu Nora
+Nora: Here are your eggs! // Eier erscheinen im Inventar
+Lilly: Thank you! I'm afraid your oil bottle broke, though. 
+Nora: Ah, damn it. I thought the crash came from the dishes…
+Nora: You'll have to ask Mia for oil, then. 
+Nora: She lives one floor down, on the other side. 
+Nora: Make sure to ring the bell, though. She's probably listening to music. 
+Lilly: Thanks, Nora!
+Lilly: (We got everything, what a lovely neighbourhood! Let's get baking in our kitchen!)
+// Lilly kann die Tür wieder verlassen
+// Mia's (Bird) normaler Dialog wird unlocked
 ===

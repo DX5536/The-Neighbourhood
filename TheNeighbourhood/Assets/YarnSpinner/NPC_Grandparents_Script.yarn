@@ -1,9 +1,8 @@
 #__PrivCrochet_version:1
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 0,0
+__PrivCrochet_position: 4,-5
 __PrivCrochet_tags: 
 title: Meeting_GrandParents_1st
-position: -144,-366
 ---
 ///Is Door_ToHallway unlocked?
 <<declare $unlockedDoor_ToHallway to false>>
@@ -51,7 +50,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 231,-1
 __PrivCrochet_tags: 
 title: Malka_Chat_Before_Amon
-position: -141,-290
 ---
 // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
 //Debug
@@ -59,9 +57,10 @@ Malka: We will catch up later, darling. Grandpa has been very excited about this
 //HAI LAM: Now obsolete!!! -> Comebine into 1 node: Malka_Long_Talk
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 0,0
+__PrivCrochet_position: 2,-4
 __PrivCrochet_tags: position: -187,77
-position: -49,-209
+position:
+-187,77:
 title: TalkTo_NPC_Grandpa
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
@@ -77,18 +76,22 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 459,-2
 __PrivCrochet_tags: 
 title: Amon_Computer
-position: 196,-199
 ---
 // Spieler finden Amon, der vor einem etwas älteren Computer steht 
 Lilly: So, what's up?
 Amon: Ta-daa!
-Lilly: Wow, that's- for me? It seems so … up to date, Grandpa, you really didn't have to.
-Amon: It's mine, silly! You always talk about those little programs on the internet and drawings on your-, your desktop. 
-Amon: I would love to finally see them myself! However, I can't seem to figure out which buttons to press.
-Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- never mind, here it is - our latest game.
+Lilly: Wow, that's- for me? 
+Lilly: It seems so ... up to date, Grandpa, you really didn't have to.
+Amon: It's mine, silly! 
+Amon: You always talk about those little programs on the internet and drawings on your-, your desktop. 
+Amon: I would love to finally see them myself! 
+Amon: However, I can't seem to figure out which buttons to press.
+Lilly: Oh! I got you. Let me see. 
+Lilly: Um ... I'm not sure if this PC version can- never mind, here it is - our latest game.
 //Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
 <<TargetMove NPC_Grandma 0 Grandma_Kitchen_MoveGoal false>>
-Amon: Lils, are those your drawings? They're gorgeous! I need to show them to your grandma tomorrow. 
+Amon: Lils, are those your drawings? They're gorgeous! 
+Amon: I need to show them to your grandma tomorrow. 
 Lilly: Thanks, Grandpa! that's really sweet of you.
 Lilly: How are you guys holding up, by the way? You seem quite happy. 
 Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
@@ -101,11 +104,11 @@ Amon: I'm not so sure your grandma feels the same today, though. She has been qu
 Amon: Maybe you can talk to her? You always know the right things to say.
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 0,0
+__PrivCrochet_position: 2,-8
 __PrivCrochet_tags: position: -187,77
-position: -226,-208
+position:
+-187,77:
 title: TalkTo_NPC_Grandma
-position: -32,39
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandma == false>>
     <<jump Malka_Talk_Long>>
@@ -120,7 +123,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 691,-3
 __PrivCrochet_tags: 
 title: Malka_Talk_Long
-position: -226,-99
 ---
 <<if $hasTalked_Grandpa == false>>
     // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
@@ -138,7 +140,7 @@ position: -226,-99
     Malka: And I know you keep telling me I don't have to always keep it busy, but today I just want to think about us, sweetheart. 
     Malka: And I want to eat our food happily because I know it makes it taste better.  
     Lilly: That's perfectly fine, Grandma, I understand. 
-    Malka: Speaking of food, let me take your hamantashen, dear, you don't have to carry them around. 
+    Malka: Speaking of food, let me take your Hamantashen, dear, you don't have to carry them around. 
     Malka: Oh, they look and smell splendid! How's the Challah bread getting along?
     // WICHTIG - Hamantashen-Gebäck verschwindet aus dem Inventar
     <<set $gainedItem_Name to "Hamantash">>
@@ -146,13 +148,17 @@ position: -226,-99
     <<UseGainedItem Yarn_InventoryManager>>
     <<set $useHamantash to true>>
     Lilly: The Challah?
-    Malka: Oh, darling, I asked you for two favors, remember? Hamantashen and my favorite - Challah. Is everything alright?</i>
+    Malka: Oh, darling, I asked you for two favors, remember? 
+    Malka: Hamantashen and my favorite - Challah. 
+    Malka: Is everything alright?
     Lilly: <i>(Uhh... dang it. Challah, right. She definitely asked me for Challah. I did definitely not make that...)</i>
     Lilly: Ah, right, the Challah! Ha! You know, it's actually... 
     Lilly: <i>(I can't ruin this evening for them)</i>
     Lilly: Cooling off, yeah. Didn't want it to melt your plates ha ha... 
     Malka: Oh, honey, that's fine. Our dinner only starts in a few hours, that should be enough time.
-    Lilly: Yeah, one hundo percento. Ahem. Well, cool. I think I'll do some homework until then. There's lots to do, tons. 
+    Lilly: Yeah, one hundo percento... 
+    Lilly: Ahem. Well, cool. 
+    Lilly: I think I'll do some homework until then. There's lots to do, tons. 
     Lilly: <i>(Shiiiit.)</i>
     Malka: Oh, of course, darling. You can always come down if you need a break.
     Lilly: Thanks, Grandma! Bye! 
@@ -167,7 +173,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 243,485
 __PrivCrochet_tags: 
 title: Grandparents_Dinner_With_Lilly
-position: -126,-24
 ---
 // Grandparents sitzen am Tisch, man interagiert mit dem Stuhl auf der anderen Seite und setzt sich hin
 Lilly: Wow, you outdid yourself, Grandma!
@@ -241,7 +246,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1,240
 __PrivCrochet_tags: 
 title: Leaving_Grandparents_Apartment
-position: 264,125
 ---
 // Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
 <<set $unlockedDoor_NPC_Grandparents to false>>
@@ -252,11 +256,11 @@ Lilly: <i>(Caro! Let's get back to Caro, she will know what to do!)</i>
 <<Un_LockDoor Door_ToGrandparents Grandparents true true>>
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 0,0
+__PrivCrochet_position: -221,0
 __PrivCrochet_tags: position: -154,1
-position: 259,12
+position:
+-154,1:
 title: Hallway_UnLockDoor_Manager
-position: 251,134
 ---
 //We go from the bottom up: 
 //So Bird -> Squirrel -> Wolf -> Grandparents
@@ -301,7 +305,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: -1,485
 __PrivCrochet_tags: 
 title: Grandparents_Lilly_Reception
-position: -126,54
 ---
 // Voraussetzung: Lilly hat das Challah gebackenund im Inventar. Sie interagiert mit der Haustür der Großeltern
 Malka: There you are, honey!

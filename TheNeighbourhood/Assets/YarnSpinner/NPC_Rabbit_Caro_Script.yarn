@@ -3,7 +3,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 787,326
 __PrivCrochet_tags: 
 title: Start_Intro
-position: -242,-431
 ---
 ///Name of gained item
 <<declare $gainedItem_Name to "">>
@@ -55,7 +54,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1024,326
 __PrivCrochet_tags: 
 title: Movement_Tutorial
-position: -243,-366
 ---
 Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachdem Caroline in ihr Zimmer gegangen ist
 <<De_ActivateTutorialCanvas TutorialCanvas_Manager true>>
@@ -65,7 +63,8 @@ Lilly: Alright then, frozen pizza time. // Dieser String soll auftauchen, nachde
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 0,0
 __PrivCrochet_tags: position: -194,-200
-position: -121,-274
+position:
+-194,-200:
 title: TalkTo_NPC_Rabbit_Caroline
 ---
 //This node is like a cross-road for all possible scenarios
@@ -96,7 +95,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1260,329
 __PrivCrochet_tags: 
 title: Fridge_Interaction
-position: -304,-276
 ---
 //If Lilly doesn't have Frozen Pizza yet
 <<if $needHamantash == false && $hasFrozenPizza == false && $hasCookedPizza == false>>
@@ -115,7 +113,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1493,327
 __PrivCrochet_tags: 
 title: Picking_Up_Pizza_Monologue
-position: 87,-456
 ---
 // Dieser Dialog kommt auf, wenn man die Pizza z. B. in dem eigenen Zimmer findet und mit E aufhebt
 //Piza located in Bag
@@ -134,7 +131,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1734,329
 __PrivCrochet_tags: 
 title: Interact_Oven
-position: 89,-380
 ---
 <<if $getAllIngredients && $hasUnbakedChallah && !$hasBakedChallah>>
     //If player has all 3 ingredients -> Interact with table and get unbaked Challah
@@ -153,7 +149,7 @@ position: 89,-380
     //<<TargetMove NPC_Rabbit Table false>>
     Lilly: Time to get back to Caroline.
 <<else>>
-    Lilly: Makes me think of the time I tried to bake pizza in there. Bad idea, Lilly, bad idea. 
+    Lilly: Makes me think of the time I tried to bake pizza in the microwave. Bad idea, Lilly, bad idea. 
 <<endif>>
 // Ob der Dialog sinnvoll ist, wird sich zeigen, aber er soll eintreten, wenn man die TK-Pizzen zum Ofen bringt und mit E backt
 ===
@@ -161,7 +157,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1969,328
 __PrivCrochet_tags: 
 title: Bringing_Pizza_to_Roommate
-position: 90,-303
 ---
 Caroline: Do you have the pizza yet?
 -> Lilly: Ah, not yet. <<if $hasCookedPizza == false>>
@@ -200,7 +195,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 2210,330
 __PrivCrochet_tags: 
 title: Hamantash_Fridge_Interaction
-position: -304,-120
 ---
 // Spieler gehen zum Kühlschrank und holen Hamantaschen raus
 Lilly: What a fantastic smell! Let's see how my grandparents are doing downstairs. 
@@ -219,7 +213,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,584
 __PrivCrochet_tags: 
 title: Caro_After_Grandparents
-position: -17,-94
 ---
 // Voraussetzung: Man hat zum ersten Mal mit den Grandparents geredet und erfahren, dass man das Challah-Brot backen muss. 
 // Nun geht man zurück in die WG
@@ -296,7 +289,6 @@ __PrivCrochet_colorID: 0
 __PrivCrochet_position: 786,842
 __PrivCrochet_tags: 
 title: Caro_After_Ingredients
-position: -116,-9
 ---
 //Lock the ToHallway_Door
 <<set $unlockedDoor_ToHallway to false>>
@@ -330,28 +322,29 @@ __PrivCrochet_colorID: 8
 __PrivCrochet_position: 1012,843
 __PrivCrochet_tags: 
 title: Making_Challah_With_Lilly
-position: -115,156
 ---
 // Monolog wird über Interaktion mit dem Tisch getriggert
 // Zutaten aus dem Inventar verschwinden
 <<UseAllIngredients Yarn_InventoryManager>>
 // Ungebackenes Challah erscheint im Inventar
+<<wait 2>>
 <<set $hasUnbakedChallah to true>>
 <<set $gainedItem_Name to "UnbakedChallah">>
 <<AccessYarnGainedItemValue Yarn_InventoryManager>>
 <<DisplayGainedItem Yarn_InventoryManager>>
+Lilly: That's it!
 Lilly: We nailed it. Into the oven with our creation!
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 1255,842
 __PrivCrochet_tags: 
 title: Baking_Challah_Oven
-position: -115,75
 ---
 // Dialog wird über Interaktion mit dem Ofen getriggert
 //Use UnbakedChallah from Inventory
 <<UseGainedItem Yarn_InventoryManager>>
-Caroline: Are you drooling? I'm drooling. No wonder it's your grandma's favorite!
+Caroline: Are you drooling yet? I'm drooling. 
+Caroline: No wonder why it's your grandma's favorite!
 Lilly: We finished right on time! I'll make sure to put some aside for you.
 <<set $hasBakedChallah to true>>
 <<set $hasUnbakedChallah to false>>
