@@ -50,7 +50,7 @@ title: Meeting_GrandParents_1st
     Lilly: Oh, um-
     // Amon-Dialog wird unlocked. Und Malkas kurzer Dialog.
     <<set $canTalk_Grandpa to true>>
-    Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterward.
+    Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterwards.
 <<else>>
     // If not first-time visit anymore -> Say hi!
     <<set $unlockedDoor_ToHallway to true>>
@@ -68,8 +68,10 @@ Malka: We will catch up later, darling. Grandpa has been very excited about this
 //HAI LAM: Now obsolete!!! -> Comebine into 1 node: Malka_Long_Talk
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 2,-4
+__PrivCrochet_position: 6,-4
 __PrivCrochet_tags: position: -187,77
+position:
+-187,77:
 title: TalkTo_NPC_Grandpa
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
@@ -87,6 +89,8 @@ __PrivCrochet_tags:
 title: Amon_Computer
 ---
 // Spieler finden Amon, der vor einem etwas älteren Computer steht 
+//Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
+<<TargetMove NPC_Grandma 0 Grandma_Kitchen_MoveGoal false>>
 Lilly: So, what's up?
 Amon: Ta-daa!
 Lilly: Wow, that's- for me? 
@@ -96,25 +100,28 @@ Amon: You always talk about those little programs on the internet and drawings o
 Amon: I would love to finally see them myself! 
 Amon: However, I can't seem to figure out which buttons to press.
 Lilly: Oh! I got you. Let me see. 
-Lilly: Um ... I'm not sure if this PC version can- never mind, here it is - our latest game.
-//Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
-<<TargetMove NPC_Grandma 0 Grandma_Kitchen_MoveGoal false>>
+Lilly: Um ... I'm not sure if this PC version can- 
+Lilly: Never mind, here it is - our latest game!
 Amon: Lils, are those your drawings? They're gorgeous! 
 Amon: I need to show them to your grandma tomorrow. 
 Lilly: Thanks, Grandpa! that's really sweet of you.
 Lilly: How are you guys holding up, by the way? You seem quite happy. 
-Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
+Amon: Oh, I am, Lils. 
+Amon: I woke up to the smell of baking and played a bit on the piano for your grandma. 
 Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. 
 Amon: I think we all are, aren't we? 
 // Gespräch mit Malka wird unlocked
 <<set $hasTalked_Grandpa to true>>
 Amon: It's not always easy, but today it has been - to my own surprise. 
 Amon: I'm not so sure your grandma feels the same today, though. She has been quiet.
-Amon: Maybe you can talk to her? You always know the right things to say.
+Amon: Maybe you can talk to her? 
+Amon: You always know the right things to say.
 ===
 __PrivCrochet_colorID: 0
-__PrivCrochet_position: 2,-8
+__PrivCrochet_position: 7,-7
 __PrivCrochet_tags: position: -187,77
+position:
+-187,77:
 title: TalkTo_NPC_Grandma
 ---
 <<if $hasBakedChallah>>
@@ -260,7 +267,7 @@ Malka: It was as though she was saying "it's okay, I forgive you" without speaki
 Malka: And I just remember, right there in that kitchen and in her arms...
 Malka: I felt safe and warm. 
 Malka: But most of all, I felt loved.
-Malka: At that moment, everything was fine. 
+Malka: In that moment, everything was perfect. 
 Malka: That was the last time I can recall feeling that way, before...
 Malka: Before all of it happened. 
 Malka: It took me many years after that to even consider baking myself. 
@@ -273,13 +280,13 @@ Malka: Back in our warm and safe kitchen... with her.
 Malka: It was the most beautiful, yet entirely overwhelming feeling I had felt in a while. 
 Malka: I learned something at that moment...
 Malka: I learned that not everything good that you have in your life can be taken from you. 
-Malka: No matter how hard someone tries to do so. 
+Malka: No matter how hard someone tries to take it away. 
 Malka: But to do so, you have to fight. 
-Malka: You have to learn how to find those valuable memories and make them your own. 
+Malka: You have to learn how to find and cherish your most valuable memories. 
 Malka: You have to learn how to shelter them and hide them somewhere only you know. 
-Malka: And if you succeed, they will keep you safe. 
+Malka: And if you succeed, they will help keeping you safe. 
 Amon: Oh, my love...
-Amon: How beautifully said!
+Amon: That was beautifully said!
 Amon: I'm so glad you found the strength to overcome your fear. 
 Amon: And we both know it's not always that easy. 
 Amon: Granted, I'm not sure if it will ever be.
@@ -304,4 +311,3 @@ Lilly: ...how this Challah was <i>actually</i> made.
 // Fading to black? Irgendein Ausklang. So oder so, sollte vielleicht mit ein paar Sekunden Pause dann die Credit-Szene starten.
 <<Toggle_CharacterActive CreditsCutscene_CanvasManager true>>
 ===
-

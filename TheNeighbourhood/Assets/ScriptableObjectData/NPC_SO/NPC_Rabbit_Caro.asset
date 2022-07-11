@@ -24,7 +24,7 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: TalkTo_NPC_Rabbit_Caroline
-  speakerNPC_Color: {r: 0.2748754, g: 0.8207547, b: 0.5379971, a: 1}
+  speakerNPC_Color: {r: 1, g: 1, b: 1, a: 1}
   textBox_Color:
     serializedVersion: 2
-    rgba: 1682138658
+    rgba: 1684837191

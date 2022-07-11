@@ -24,7 +24,7 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: TalkTo_NPC_Wolf
-  speakerNPC_Color: {r: 0.46858314, g: 0.727305, b: 0.8490566, a: 1}
+  speakerNPC_Color: {r: 1, g: 1, b: 1, a: 1}
   textBox_Color:
     serializedVersion: 2
-    rgba: 1684428600
+    rgba: 1687189834

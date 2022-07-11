@@ -24,7 +24,7 @@ MonoBehaviour:
   tweenSnapping: 0
   easeType: 0
   nodeName: Bird_Indoor_Dialogue
-  speakerNPC_Color: {r: 0.9058824, g: 0.47058827, b: 0.5372549, a: 1}
+  speakerNPC_Color: {r: 1, g: 1, b: 1, a: 1}
   textBox_Color:
     serializedVersion: 2
-    rgba: 1681667430
+    rgba: 1681093257
