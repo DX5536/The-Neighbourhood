@@ -162,7 +162,7 @@ public class PlayerMovement: MonoBehaviour
             //We force kill a tween when dialogue is running
             //So Lilly doesn't glide while talking
             DOTween.Kill("PlayerWalk");
-            //Debug.Log("Kill PlayerWalkTween");
+            Debug.Log("Kill PlayerWalkTween");
         }
     }
 
