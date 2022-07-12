@@ -69,9 +69,7 @@ Malka: We will catch up later, darling. Grandpa has been very excited about this
 ===
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 6,-4
-__PrivCrochet_tags: position: -187,77
-position:
--187,77:
+__PrivCrochet_tags:
 title: TalkTo_NPC_Grandpa
 ---
 <<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
@@ -120,8 +118,7 @@ Amon: You always know the right things to say.
 __PrivCrochet_colorID: 0
 __PrivCrochet_position: 7,-7
 __PrivCrochet_tags: position: -187,77
-position:
--187,77:
+position:-187,77:
 title: TalkTo_NPC_Grandma
 ---
 <<if $hasBakedChallah>>
