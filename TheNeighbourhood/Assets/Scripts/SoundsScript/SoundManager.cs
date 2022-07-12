@@ -71,7 +71,7 @@ public class SoundManager: MonoBehaviour
 
     public void PlayTypingSFX()
     {
-        typingSFX_AudioSource.Play();
+        typingSFX_AudioSource.PlayOneShot(typingSFX_AudioSource.clip, 1);
     }
 
     //Walking

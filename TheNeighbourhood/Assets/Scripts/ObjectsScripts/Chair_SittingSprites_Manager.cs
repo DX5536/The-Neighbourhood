@@ -3,11 +3,11 @@ using Yarn.Unity;
 
 public class Chair_SittingSprites_Manager: MonoBehaviour
 {
-    [Header("Chair")]
+    [Header("Empty Chair/Table")]
     [SerializeField]
     private GameObject[] chairGameObjects;
 
-    [Header("SittingSprites")]
+    [Header("SittingSprites/Table with food")]
     [SerializeField]
     private GameObject[] sittingSpritesGameObject;
 

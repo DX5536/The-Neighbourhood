@@ -96,7 +96,6 @@ title: Bird_Get_Oil
 // Folgt nach Bird_In_Apartment_Talk
 // Bird ansprechbar an dem Platz, an dem sich ihr Öl befindet
 Mia: Here you go!
-<<wait 1>>
 //Oil erscheint im Inventar
 <<set $gainedItem_Name to "Oil">>
 <<AccessYarnGainedItemValue Yarn_InventoryManager>>

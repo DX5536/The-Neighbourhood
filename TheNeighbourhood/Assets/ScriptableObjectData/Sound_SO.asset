@@ -19,9 +19,9 @@ MonoBehaviour:
   hoverButtonSFX: {fileID: 8300000, guid: 300435e10f799fe4fab61ab0cbc377da, type: 3}
   buttonSFX: {fileID: 8300000, guid: 8ea9c843968d46e4cb58d4892c915564, type: 3}
   lillySFX: {fileID: 8300000, guid: 7fa0a3f515d61b545bffb34a626ab8e1, type: 3}
-  carolineSFX: {fileID: 8300000, guid: 9c3101cb446eb9b46ac92ac1337eb527, type: 3}
-  malkaSFX: {fileID: 8300000, guid: 69cc3fa82bf22af4386479074e433528, type: 3}
-  amonSFX: {fileID: 8300000, guid: eae16733bf2ea4940bfb4e4aaa0d0987, type: 3}
+  carolineSFX: {fileID: 8300000, guid: 8ad2ee9196e8d0b4b8ff13bcf123551e, type: 3}
+  malkaSFX: {fileID: 8300000, guid: d656f5d00864ef540ad62d2366386a5a, type: 3}
+  amonSFX: {fileID: 8300000, guid: 69cc3fa82bf22af4386479074e433528, type: 3}
   tomSFX: {fileID: 8300000, guid: e77c8ebaae1f8df488d26935039bcafd, type: 3}
   birdSFX: {fileID: 8300000, guid: e131183a8b0ad2f4bb83e228051be3d5, type: 3}
   squirrelSFX: {fileID: 8300000, guid: 8ad2ee9196e8d0b4b8ff13bcf123551e, type: 3}
