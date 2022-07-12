@@ -121,6 +121,8 @@ position: 215,285
 //If Player already has eggs yet return to Squirrel Room
 <<if $getEggs>>
     Nora: Feel free to look around!
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
 <<else>>
     // Automatischer Dialog, wenn man das Apartment betritt
     Nora: Oh!

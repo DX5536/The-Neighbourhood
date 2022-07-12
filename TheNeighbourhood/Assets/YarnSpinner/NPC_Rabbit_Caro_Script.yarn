@@ -34,7 +34,8 @@ position: -203,-372
 //
 ///Is Player on the quest to find 3 Ingredients?
 <<declare $findIngredients to false>>
-//
+///Has Player unlocked Door_MyRoom?
+<<declare $unlockedDoor_MyRoom to true>>
 //Disable DoorCollider at start
 <<set $unlockedDoor_ToHallway to false>>
 <<Un_LockDoor Door_ToHallway ToHallway false false>>
@@ -286,8 +287,7 @@ Caroline: ...
     Lilly: Alright, thanks. Wish me luck! // Wolf-Tür-Interaktion wird unlocked, Caro verschwindet im Zimmer (geht schlafen)
     Lilly: (From what I could tell I am missing 3 ingredients: Flour, oil and eggs.)
     <<set $findIngredients to true>>
-//
-<<set $unlockedDoor_NPC_Wolf to true>>
+    <<set $unlockedDoor_NPC_Wolf to true>>
 //We will unlock door at Start() in Hallway Scene
 <<set $unlockedDoor_ToHallway to true>>
 <<Un_LockDoor Door_ToHallway ToHallway true true>>

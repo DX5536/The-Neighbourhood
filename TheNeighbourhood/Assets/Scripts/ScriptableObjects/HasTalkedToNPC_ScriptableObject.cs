@@ -131,7 +131,7 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
         }
     }
 
-    [Tooltip("a the Bird")]
+    [Tooltip("Mia the Bird")]
     [SerializeField]
     private bool hasTalkedTo_NPC_Bird;
 
@@ -147,7 +147,7 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
         }
     }
 
-    [Tooltip("b the Squirrel")]
+    [Tooltip("Nora the Squirrel")]
     [SerializeField]
     private bool hasTalkedTo_NPC_Squirrel;
 
@@ -165,21 +165,6 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
 
     [Header("Is Door to this NPC unlocked?")]
     [SerializeField]
-    private bool hasUnlockedDoor_NPC_Grandparents;
-
-    public bool HasUnlockedDoor_NPC_Grandparents
-    {
-        get
-        {
-            return hasUnlockedDoor_NPC_Grandparents;
-        }
-        set
-        {
-            hasUnlockedDoor_NPC_Grandparents = value;
-        }
-    }
-
-    [SerializeField]
     private bool hasUnlockedDoor_ToHallway;
 
     public bool HasUnlockedDoor_ToHallway
@@ -191,6 +176,36 @@ public class HasTalkedToNPC_ScriptableObject: ScriptableObject
         set
         {
             hasUnlockedDoor_ToHallway = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasUnlockedDoor_MyRoom;
+
+    public bool HasUnlockedDoor_MyRoom
+    {
+        get
+        {
+            return hasUnlockedDoor_MyRoom;
+        }
+        set
+        {
+            hasUnlockedDoor_MyRoom = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasUnlockedDoor_NPC_Grandparents;
+
+    public bool HasUnlockedDoor_NPC_Grandparents
+    {
+        get
+        {
+            return hasUnlockedDoor_NPC_Grandparents;
+        }
+        set
+        {
+            hasUnlockedDoor_NPC_Grandparents = value;
         }
     }
 

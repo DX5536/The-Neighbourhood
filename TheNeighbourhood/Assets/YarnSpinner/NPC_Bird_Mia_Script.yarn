@@ -185,6 +185,7 @@ position: 31,210
     Mia: Hm, I see!
     Mia: Alright, speaking of baking, let's get you that oil!
     // Mia geht in Richtung Kühlschrank
+    <<FlipSprite NPC_Bird>>
     <<TargetMove NPC_Bird 2 Oil_Collection false>>
 <<endif>>
 ===

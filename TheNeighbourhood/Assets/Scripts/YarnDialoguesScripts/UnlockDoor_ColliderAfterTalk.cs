@@ -17,6 +17,9 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
     private bool unlockedDoor_ToHallway = false;
 
     [SerializeField]
+    private bool unlockedDoor_MyRoom = false;
+
+    [SerializeField]
     private bool unlockedDoor_NPC_Grandparents = false;
 
     [SerializeField]
@@ -74,6 +77,9 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
             case ("ToHallway"):
                 Un_LockDoor_ToHallway_Status(isInteractable, canGoIn);
                 break;
+            case ("MyRoom"):
+                Un_LockDoor_MyRoom_Status(isInteractable, canGoIn);
+                break;
             case ("Grandparents"):
                 Un_LockDoor_Grandparents_Status(isInteractable, canGoIn);
                 break;
@@ -92,8 +98,6 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         }
     }
 
-
-
     //First I read all the hasDoorUnlocked Value in Memory storage
     //Then I assign them to the Scriptable Object => To be up-to-date with the latest values
     private void UpdateHasUnlockedVar_With_SO()
@@ -102,6 +106,8 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
         {
             //Try get the value
             variableStorage.TryGetValue("$unlockedDoor_ToHallway", out unlockedDoor_ToHallway);
+
+            variableStorage.TryGetValue("$unlockedDoor_MyRoom", out unlockedDoor_MyRoom);
             variableStorage.TryGetValue("$unlockedDoor_NPC_Grandparents", out unlockedDoor_NPC_Grandparents);
             variableStorage.TryGetValue("$unlockedDoor_NPC_Wolf", out unlockedDoor_NPC_Wolf);
             variableStorage.TryGetValue("$unlockedDoor_NPC_Bird", out unlockedDoor_NPC_Bird);
@@ -109,6 +115,8 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
 
             //Assign the local unlockedDoor values to HasTalked_ScriptableObjects
             hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_ToHallway = unlockedDoor_ToHallway;
+
+            hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_MyRoom = unlockedDoor_MyRoom;
             hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Grandparents = unlockedDoor_NPC_Grandparents;
             hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Wolf = unlockedDoor_NPC_Wolf;
             hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_NPC_Bird = unlockedDoor_NPC_Bird;
@@ -134,6 +142,27 @@ public class UnlockDoor_ColliderAfterTalk: MonoBehaviour
             sceneTransitionColliderManager.enabled = false;
 
             Debug.Log("Lock Hallway doors");
+        }
+    }
+
+    private void Un_LockDoor_MyRoom_Status(bool canInteract, bool canSceneTrans)
+    {
+        if (hasTalkedToNPC_ScriptableObject.HasUnlockedDoor_MyRoom && canInteract)
+        {
+            lockedDoorSO.IsInteractable = true;
+
+            if (canSceneTrans)
+            {
+                sceneTransitionColliderManager.enabled = true;
+            }
+            Debug.Log("Unlock MyRoom doors");
+        }
+        else
+        {
+            lockedDoorSO.IsInteractable = false;
+            sceneTransitionColliderManager.enabled = false;
+
+            Debug.Log("Lock MyRoom doors");
         }
     }
 
