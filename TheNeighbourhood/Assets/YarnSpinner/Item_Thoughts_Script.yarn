@@ -29,7 +29,7 @@ title: Hallway_UnLockDoor_Manager
 <<elseif $getAllIngredients && !$hasBakedChallah>>
     Lilly: <i>(Alright, I got everything I need. Now I should hurry back to my room.)</i>
 <<elseif $findIngredients == true && $unlockedDoor_NPC_Bird == true && $unlockedDoor_NPC_Squirrel && $unlockedDoor_NPC_Wolf>>
-    Debug NPC_Bird/Squirrel/Wolf in Hallway
+    //Debug NPC_Bird/Squirrel/Wolf in Hallway
     <<set $unlockedDoor_NPC_Bird to true>>
     <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
     //Squirrel
@@ -40,7 +40,7 @@ title: Hallway_UnLockDoor_Manager
     <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 //
 <<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
-    Debug NPC_Squirrel/Wolf in Hallway
+    //Debug NPC_Squirrel/Wolf in Hallway
     <<set $unlockedDoor_NPC_Squirrel to true>>
     <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
     //Wolf
@@ -48,7 +48,7 @@ title: Hallway_UnLockDoor_Manager
     <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 //
 <<elseif $findIngredients == true && $unlockedDoor_NPC_Wolf == true>>
-    Debug NPC_Wolf in Hallway
+    //Debug NPC_Wolf in Hallway
     <<set $unlockedDoor_NPC_Wolf to true>>
     <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
 //If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.

@@ -28,8 +28,8 @@ title: Meeting_GrandParents_1st
 //<<set $unlockedDoor_ToHallway to false>>
 //<<Un_LockDoor Door_ToHallway ToHallway false false>>
 //REMOVE THIS LATER!!!!!
-<<set $hasBakedChallah to true>>
-<<set $firstVisitGrandParents to false>>
+//<<set $hasBakedChallah to true>>
+//<<set $firstVisitGrandParents to false>>
 //
 <<if !$firstVisitGrandParents && $hasBakedChallah>>
     //If this is not Lilly first time Visit
