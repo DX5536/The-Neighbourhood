@@ -104,7 +104,6 @@ public class SoundManager: MonoBehaviour
     //Master volume is all the sounds
     public void ChangeMasterVolume(float volumeValue)
     {
-
         PlayerPrefs.SetFloat("masterVolume", volumeValue);
         AudioListener.volume = volumeValue;
     }
@@ -119,8 +118,15 @@ public class SoundManager: MonoBehaviour
     {
         PlayerPrefs.SetFloat("SFXVolume", volumeValue);
         walkingSFX_AudioSource.volume = volumeValue;
-        typingSFX_AudioSource.volume = volumeValue;
         item_AudioSource.volume = volumeValue;
+    }
+
+    public void ChangeTypingSFXVolume(float volumeValue)
+    {
+        PlayerPrefs.SetFloat("TypingSFXVolume", volumeValue);
+        //Typing is rather loud as default
+        //So we make custom volume by multiple with volumeValue
+        typingSFX_AudioSource.volume = volumeValue;
     }
 
     //This method will load from PlayerPref
@@ -132,7 +138,11 @@ public class SoundManager: MonoBehaviour
 
         var _SFX_SavedValue = PlayerPrefs.GetFloat("SFXVolume");
         walkingSFX_AudioSource.volume = _SFX_SavedValue;
-        typingSFX_AudioSource.volume = _SFX_SavedValue;
         item_AudioSource.volume = _SFX_SavedValue;
+
+        typingSFX_AudioSource.volume = PlayerPrefs.GetFloat("TypingSFXVolume");
+        //In case there is no speaker/Dialogue System
+        //Set default AudioClip to Lilly
+        typingSFX_AudioSource.clip = soundScriptableObject.LillySFX;
     }
 }

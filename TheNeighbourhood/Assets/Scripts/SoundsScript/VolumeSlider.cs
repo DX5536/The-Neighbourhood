@@ -11,9 +11,13 @@ public class VolumeSlider: MonoBehaviour
     [SerializeField]
     private Slider _BGMVolumeSlider;
 
-    [Header("SFX Volume (walking, typing, item)")]
+    [Header("SFX Volume (walking, item)")]
     [SerializeField]
     private Slider _SFXVolumeSlider;
+
+    [Header("Typing SFX Volume")]
+    [SerializeField]
+    private Slider typingSFXVolumeSlider;
     void Start()
     {
         //First Load all the saved values to the sliders' values
@@ -34,6 +38,11 @@ public class VolumeSlider: MonoBehaviour
         _SFXVolumeSlider.onValueChanged.AddListener
             (
             val => SoundManager.instance.ChangeSFXVolume(val)
+            );
+
+        typingSFXVolumeSlider.onValueChanged.AddListener
+            (
+            val => SoundManager.instance.ChangeTypingSFXVolume(val)
             );
     }
 

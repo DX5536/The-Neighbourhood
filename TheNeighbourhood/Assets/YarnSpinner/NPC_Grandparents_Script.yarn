@@ -25,8 +25,8 @@ title: Meeting_GrandParents_1st
 <<Toggle_CharacterActive CreditsCutscene_CanvasManager false>>
 // Dialog beginnt in der Wohnung automatisch, sobald man die Tür der Grandparents betritt
 //Locked the ToHallway_Door from Grandparents
-<<set $unlockedDoor_ToHallway to false>>
-<<Un_LockDoor Door_ToHallway ToHallway false false>>
+//<<set $unlockedDoor_ToHallway to false>>
+//<<Un_LockDoor Door_ToHallway ToHallway false false>>
 //REMOVE THIS LATER!!!!!
 <<set $hasBakedChallah to true>>
 <<set $firstVisitGrandParents to false>>
