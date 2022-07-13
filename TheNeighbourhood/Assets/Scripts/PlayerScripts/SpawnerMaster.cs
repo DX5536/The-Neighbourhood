@@ -22,7 +22,7 @@ public class SpawnerMaster: MonoBehaviour
     }
 
     [Header("For the special case of Player starting from above")]
-    [SerializeField]
+    //[SerializeField]
     private string spawnPoint_NPC_1 = "Door_NPC_1";
 
     //[SerializeField]
