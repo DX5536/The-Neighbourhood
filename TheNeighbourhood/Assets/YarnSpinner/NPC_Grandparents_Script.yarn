@@ -53,8 +53,9 @@ title: Meeting_GrandParents_1st
     Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterwards.
 <<else>>
     // If not first-time visit anymore -> Say hi!
-    <<set $unlockedDoor_ToHallway to true>>
     Lilly: Hi grandma!
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
 <<endif>>
 ===
 __PrivCrochet_colorID: 0
