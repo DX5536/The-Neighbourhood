@@ -1,0 +1,73 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: 
+title: MeetingGrandparentsDialogue
+position: 20,26
+---
+// Dieser Dialog beginnt automatisch, sobald man in die Tür der Großeltern reinkommt. Der Opa heißt Amon, die Oma Malka. Zuerst ist nur die Oma zu sehen.
+Malka: Lilly! Shalom aleichem, darling!
+Lilly: Aleichem Shalom, Grandma!
+Malka: Honey, what brings you here this early?
+Lilly: I just wanted to see how you guys were d- // In diesem Moment kommt der Opa in den Frame rein und stellt sich neben die Oma
+Amon: Lils! Oh, how beautiful that you're here, lovely. You came at a marvelous time; I have a surprise for you! Come along. // Der Opa verlässt den Frame wieder xD
+Lilly: Oh, um-
+Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterwards. // Dialog Ende, Player kann sich frei bewegen
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 452,-1
+__PrivCrochet_tags: 
+title: LillyTalksToAmon
+position: -203,53
+---
+// Nach etwas Suchen in der Wohnung finden die Spieler Amon vor einem etwas älteren Rechner und man kann den Opa ansprechen 
+Lilly: So, what's up?
+Amon: Ta-daa!
+Lilly: Wow, that's- … for me? It seems so … up to date, grandpa, you [i]really[/i] didn't have to.
+Amon: It's mine, silly! You always talk about those little programs on the internet and drawings on your-, your desktop. 
+Amon: I would love to finally see them! However, I can't seem to figure out which buttons to press.
+Lilly: Oh! I got you. Let me see. Um … I'm not sure if this PC version can- nevermind, here it is - our latest game.
+Amon: Lils, are those your drawings? They're gorgeous! I have to show them to your grandma tomorrow. 
+Lilly: Thank you! That's really sweet of you.
+Lilly: How are you guys holding up, by the way? You seem quite happy. 
+Amon: Oh, I am, Lils. I woke up to the smell of baking and played a bit on the piano for your grandma. 
+Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. I think we all are, aren't we? 
+Amon: Granted, it’s not always easy, but today it has been – to my own surprise. 
+Amon: I'm not so sure your grandma feels the same, though. She has been quiet. Maybe you can talk to her, you always know the right things to say.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 224,0
+__PrivCrochet_tags: 
+title: LillyTalksToMalkaBeforeAmon
+position: -204,-49
+---
+// Das ist für den Fall, dass jemand Malka anspricht, nachdem der Opa gesagt hat, dass man ihm folgen soll und er einem etwas zeigen möchte
+Malka: We will catch up later, darling. Grandpa has been really excited about this surprise.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 681,-1
+__PrivCrochet_tags: 
+title: LillyTalksToMalkaAfterAmon
+position: -22,-94
+---
+// Nachdem man mit dem Opa geredet hat, soll man mit der Oma reden. Das ist dieser String und der soll erst dann freigeschaltet werden. 
+Malka: Hello, I'm a placeholder dialogue that opens with a non-awkward ice breaker.
+Lilly: Wow, that's so not awkward of you.
+Malka: Lilly, I'm noticing pastry in your hand, give it to me!
+Lilly: Ok, I guess.
+// Placeholder-Texte vorbei
+Malka: I don't want to talk about it today, I'm sorry. I want to eat our food in a good mood. 
+Lilly: Of course, that's perfectly fine, Grandma. 
+Malka: Speaking of food, let me take your XXX, you don't have to carry that around all day. It looks delicious! // Das XXX ist ein Placeholder für den Namen des zweiten Gebäcks. WICHTIG - Bei diesem Dialog verschwindet das Gebäck aus dem Inventar!
+Malka: How's the challah getting along?
+Lilly: The challah?
+Malka: Oh, darling, I asked you for two favours, remember? 
+Malka: XXX and my favorite - challah. Did something go wrong?
+Lilly: [i]Uhhh... shit. Challah bread. She did tell me that. Doesn't that take ages to make?[/i]
+Lilly: Ah, right, the challah! Ha! You know, it's [i]I can't ruin this evening for them[/i] ... 
+Lilly: Cooling off, yeah. Didn't want it to melt your plates ha ha... 
+Malka: Oh, honey, that's fine. Our dinner starts in a few hours, that should be enough time.
+Lilly: Yeah, one hundo percento. Ahem. Well, cool. I think I'll do some homework until then. There's lots to do, tons.
+Malka: Oh, of course, darling. You can always come down, if you need a break.
+Lilly: Thanks, Grandma! Bye!
+===

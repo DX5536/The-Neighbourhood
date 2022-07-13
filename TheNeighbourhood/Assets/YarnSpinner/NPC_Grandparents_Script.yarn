@@ -1,0 +1,311 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 4,-5
+__PrivCrochet_tags: 
+title: Meeting_GrandParents_1st
+---
+///Is Door_ToHallway unlocked?
+<<declare $unlockedDoor_ToHallway to false>>
+///Is Door_Grandparents unlocked?
+<<declare $unlockedDoor_NPC_Grandparents to false>>
+///Is this Player's first time visit?
+<<declare $firstVisitGrandParents to true>>
+///Can Player talk to Grandpa?
+<<declare $canTalk_Grandpa to false>>
+///Can Player talk to Grandma?
+<<declare $canTalk_Grandma to false>>
+///Has Player talked to Grandpa?
+<<declare $hasTalked_Grandma to false>>
+///Has Player talked to Grandma?
+<<declare $hasTalked_Grandpa to false>>
+//
+//Always make sure the FinalDialogue Collider and CreditCutscene is inActive upon entering room
+//Only activate in the final section
+<<Toggle_CharacterActive FinalDialogueCollider_Manager false>>
+<<Toggle_CharacterActive CreditsCutscene_CanvasManager false>>
+// Dialog beginnt in der Wohnung automatisch, sobald man die Tür der Grandparents betritt
+//Locked the ToHallway_Door from Grandparents
+//<<set $unlockedDoor_ToHallway to false>>
+//<<Un_LockDoor Door_ToHallway ToHallway false false>>
+//REMOVE THIS LATER!!!!!
+//<<set $hasBakedChallah to true>>
+//<<set $firstVisitGrandParents to false>>
+//
+<<if !$firstVisitGrandParents && $hasBakedChallah>>
+    //If this is not Lilly first time Visit
+    //And has Baked Challah
+    <<jump Grandparents_Lilly_Reception>>
+<<elseif $firstVisitGrandParents == true>>
+    Malka: Lilly! Shalom aleichem, darling!
+    Lilly: Aleichem Shalom, Grandma!
+    Malka: Honey, what brings you here this early?
+    Lilly: I just wanted to see how you guys were d- 
+    // Amon läuft in den Frame, stellt sich neben Malka
+    <<TargetMove NPC_Grandpa 3 NPC_Grandma false>>
+    Amon: Lils! Oh, how beautiful that you're here, lovely. 
+    Amon: You came at a marvelous time; I have a surprise for you! Come along.
+    // Amon läuft wieder aus dem Frame
+    <<FlipSprite NPC_Grandpa>>
+    <<TargetMove_Back NPC_Grandpa false>> 
+    Lilly: Oh, um-
+    // Amon-Dialog wird unlocked. Und Malkas kurzer Dialog.
+    <<set $canTalk_Grandpa to true>>
+    Malka: It's fine, he has been talking my ear off about it all week. We can catch up afterwards.
+<<else>>
+    // If not first-time visit anymore -> Say hi!
+    Lilly: Hi grandma!
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 231,-1
+__PrivCrochet_tags: 
+title: Malka_Chat_Before_Amon
+---
+// Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
+//Debug
+Malka: We will catch up later, darling. Grandpa has been very excited about this surprise for you.
+//HAI LAM: Now obsolete!!! -> Comebine into 1 node: Malka_Long_Talk
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 6,-4
+__PrivCrochet_tags:
+title: TalkTo_NPC_Grandpa
+---
+<<if $firstVisitGrandParents == true && $hasTalked_Grandpa == false>>
+    <<jump Amon_Computer>>
+<<else>>
+    Amon: Let me tell you about my computer...
+    -> Lilly: *listens*
+        <<jump Amon_Computer>>
+    -> Lilly: I just want to take a quick look. I will be on my way.
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 459,-2
+__PrivCrochet_tags: 
+title: Amon_Computer
+---
+// Spieler finden Amon, der vor einem etwas älteren Computer steht 
+//Malka sollte von der Position her nun in der Küche stehen, statt an der Tür
+<<TargetMove NPC_Grandma 0 Grandma_Kitchen_MoveGoal false>>
+Lilly: So, what's up?
+Amon: Ta-daa!
+Lilly: Wow, that's- for me? 
+Lilly: It seems so ... up to date, Grandpa, you really didn't have to.
+Amon: It's mine, silly! 
+Amon: You always talk about those little programs on the internet and drawings on your-, your desktop. 
+Amon: I would love to finally see them myself! 
+Amon: However, I can't seem to figure out which buttons to press.
+Lilly: Oh! I got you. Let me see. 
+Lilly: Um ... I'm not sure if this PC version can- 
+Lilly: Never mind, here it is - our latest game!
+Amon: Lils, are those your drawings? They're gorgeous! 
+Amon: I need to show them to your grandma tomorrow. 
+Lilly: Thanks, Grandpa! that's really sweet of you.
+Lilly: How are you guys holding up, by the way? You seem quite happy. 
+Amon: Oh, I am, Lils. 
+Amon: I woke up to the smell of baking and played a bit on the piano for your grandma. 
+Amon: I've just been trying to focus on the good things I have in my life now instead of reminiscing in the past. 
+Amon: I think we all are, aren't we? 
+// Gespräch mit Malka wird unlocked
+<<set $hasTalked_Grandpa to true>>
+Amon: It's not always easy, but today it has been - to my own surprise. 
+Amon: I'm not so sure your grandma feels the same today, though. She has been quiet.
+Amon: Maybe you can talk to her? 
+Amon: You always know the right things to say.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 7,-7
+__PrivCrochet_tags: position: -187,77
+position:-187,77:
+title: TalkTo_NPC_Grandma
+---
+<<if $hasBakedChallah>>
+    <<jump Grandparents_Lilly_Reception>>
+<<elseif $firstVisitGrandParents == true && $hasTalked_Grandma == false>>
+    <<jump Malka_Talk_Long>>
+<<else>>
+    Malka: You are back already?
+    -> Lilly: Can you repeat our talk?
+        <<jump Malka_Talk_Long>>>
+    -> Lilly: It's nothing. I will be on my way.
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 691,-3
+__PrivCrochet_tags: 
+title: Malka_Talk_Long
+---
+<<if $hasTalked_Grandpa == false>>
+    // Bevor man also nach Amon sucht, kann man die Oma auch noch mal ansprechen
+    Malka: We will catch up later, darling. Grandpa has been very excited about this suprise for you.
+<<else>>
+    // Spieler gehen zurück durch die Wohnung, Malka steht nun in der Küche und backt
+    Lilly: Hey, Grandma! 
+    Malka: Darling, how was Grandpa's surprise?
+    Lilly: He couldn't have pulled it off more perfectly! 
+    Malka: No doubt, with all the planning he put into it. 
+    Lilly: So, how are you doing, Grandma? 
+    Malka: Oh, I've just been baking and setting up the house for the evening. 
+    Malka: You know, Lilly, I'm really happy you have been joining us for the past few years. 
+    Malka: It was a wonderful idea to make this day special. The baking keeps my mind busy.
+    Malka: And I know you keep telling me I don't have to always keep it busy, but today I just want to think about us, sweetheart. 
+    Malka: And I want to eat our food happily because I know it makes it taste better.  
+    Lilly: That's perfectly fine, Grandma, I understand. 
+    Malka: Speaking of food, let me take your Hamantashen, dear, you don't have to carry them around. 
+    Malka: Oh, they look and smell splendid! How's the Challah bread getting along?
+    // WICHTIG - Hamantashen-Gebäck verschwindet aus dem Inventar
+    <<set $gainedItem_Name to "Hamantash">>
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<UseGainedItem Yarn_InventoryManager>>
+    <<set $useHamantash to true>>
+    Lilly: The Challah?
+    Malka: Oh, darling, I asked you for two favors, remember? 
+    Malka: Hamantashen and my favorite - Challah. 
+    Malka: Is everything alright?
+    Lilly: <i>(Uhh... dang it. Challah, right. She definitely asked me for Challah. I did definitely not make that...)</i>
+    Lilly: Ah, right, the Challah! Ha! You know, it's actually... 
+    Lilly: <i>(I can't ruin this evening for them)</i>
+    Lilly: Cooling off, yeah. Didn't want it to melt your plates ha ha... 
+    Malka: Oh, honey, that's fine. Our dinner only starts in a few hours, that should be enough time.
+    Lilly: Yeah, one hundo percento... 
+    Lilly: Ahem. Well, cool. 
+    Lilly: I think I'll do some homework until then. There's lots to do, tons. 
+    Lilly: <i>(Shiiiit.)</i>
+    Malka: Oh, of course, darling. You can always come down if you need a break.
+    Lilly: Thanks, Grandma! Bye! 
+    <<set $hasTalked_Grandma to true>>
+    <<set $firstVisitGrandParents to false>>
+    // Weg zurück ins Treppenhaus und zurück in die WG wird freigeschaltet, Zweiter Caro-Dialog wird freigeschaltet
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 1,240
+__PrivCrochet_tags: 
+title: Leaving_Grandparents_Apartment
+---
+// Lilly verlässt die Wohnung der Großeltern, dabei soll ein automatischer Dialog getriggert werden
+<<set $unlockedDoor_NPC_Grandparents to false>>
+<<Un_LockDoor Door_ToGrandparents Grandparents false false>>
+Lilly: <i>(Ok, let's breathe and think, Lilly. All you have to do is buy the ingredients at th- it's Sunday! Aaah, it's Sunday!)</i>
+Lilly: <i>(Caro! Let's get back to Caro, she will know what to do!)</i>
+<<set $unlockedDoor_NPC_Grandparents to true>>
+<<Un_LockDoor Door_ToGrandparents Grandparents true true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -1,485
+__PrivCrochet_tags: 
+title: Grandparents_Lilly_Reception
+---
+// Voraussetzung: Lilly hat das Challah gebackenund im Inventar. Sie interagiert mit der Haustür der Großeltern
+Malka: There you are, honey!
+Malka: With my favorite, oh, the smell! Thank you, darling. 
+Malka: Here, let me take it. 
+// Challah verschwindet aus dem Inventar
+<<set $gainedItem_Name to "BakedChallah">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<UseGainedItem Yarn_InventoryManager>>
+<<set $useBakedChallah to true>>
+//
+Malka: How strange, it's <i>still</i> warm...
+Lilly: Yeah, about that, Grandma... 
+Amon: Lils!
+<<ChangeTweenDuration NPC_Grandpa 3>>
+<<TargetMove NPC_Grandpa 2 NPC_Grandma false>>
+Lilly: Another surprise?
+Amon: No, silly. I'm just glad you're here. 
+Lilly: So am I, Grandpa. 
+Malka: Shall we sit down? Everything is prepared.
+//Disable grandparents BoxCollider so player can't accidentally talk/popup Description
+<<Toggle_BoxCollider2D ChairSitting_SpritesManager false>>
+//Amon und Malka gehen nach links in Richtung Esstisch.
+<<ChangeTweenDuration NPC_Grandma 7>>
+<<TargetMove NPC_Grandma 0 Chair_02 false>>
+//
+<<ChangeTweenDuration NPC_Grandpa 8>>
+<<TargetMove NPC_Grandpa 0 Chair_05 false>>
+//Turn on the FinalDialogueCollider
+//So when Lilly Collide -> plays Grandparents_Dinner_With_Lilly
+<<Toggle_CharacterActive FinalDialogueCollider_Manager true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 243,485
+__PrivCrochet_tags: 
+title: Grandparents_Dinner_With_Lilly
+---
+// Grandparents sitzen am Tisch, man interagiert mit dem Stuhl auf der anderen Seite und setzt sich hin
+<<SittingSprites ChairSitting_SpritesManager>>
+//Disable the FinalDialogueCollider
+<<Toggle_CharacterActive FinalDialogueCollider_Manager false>>
+Lilly: Wow, you outdid yourself, Grandma!
+Malka: So did you, honey!
+Lilly: Well, Caro helped form the Challah, that might be why. 
+Malka: Oh, please thank her for me. It means a lot. 
+Malka: Did I ever even tell you why Challah is my favorite pastry?
+Lilly: I don't think so.
+Malka: Well, where do I start this?
+Malka: It was a sunny autumn day which had made our home start to heat up. 
+Malka: I was a kid at that time, way younger than you. And very stubborn.
+Malka: On this particular day I was in trouble.
+Malka: My brother and I had, as per usual, gotten into an argument about something insignificant. 
+Malka: I remember how stressed our mother was. We just wouldn't stop fighting. 
+Malka: However, in the evening I must've come to my senses because I had decided to apologize to her. 
+Malka: So, I stumbled into the kitchen with the biggest sorry eyes and just hoped she would accept my apology. 
+Malka: Mother didn't even notice me at first. She was focused on baking. 
+Malka: But to my relief, I could tell that she was calm and very pleased with her creation. Her Challah. 
+Malka: Rightfully so, because the entire kitchen was filled with this lovely smell of her freshly baked Challah. 
+Malka: When she finally noticed me standing there with my pleading look, she did not get upset. 
+Malka: Instead, Mother smiled at me in her caring fashion. 
+Malka: She then came over and kneeled down to give me the biggest hug. 
+Malka: It was as though she was saying "it's okay, I forgive you" without speaking the words. 
+Malka: And I just remember, right there in that kitchen and in her arms...
+Malka: I felt safe and warm. 
+Malka: But most of all, I felt loved.
+Malka: In that moment, everything was perfect. 
+Malka: That was the last time I can recall feeling that way, before...
+Malka: Before all of it happened. 
+Malka: It took me many years after that to even consider baking myself. 
+Malka: I was afraid that the moment I did so, something awful would happen afterward. 
+Malka: Like a bad omen. 
+Malka: However, eventually, I was eager to overcome that fear. 
+Malka: And so, I baked. Challah, of course. 
+Malka: Just like that, standing in the kitchen surrounded by the familiar smell, I was back.
+Malka: Back in our warm and safe kitchen... with her. 
+Malka: It was the most beautiful, yet entirely overwhelming feeling I had felt in a while. 
+Malka: I learned something at that moment...
+Malka: I learned that not everything good that you have in your life can be taken from you. 
+Malka: No matter how hard someone tries to take it away. 
+Malka: But to do so, you have to fight. 
+Malka: You have to learn how to find and cherish your most valuable memories. 
+Malka: You have to learn how to shelter them and hide them somewhere only you know. 
+Malka: And if you succeed, they will help keeping you safe. 
+Amon: Oh, my love...
+Amon: That was beautifully said!
+Amon: I'm so glad you found the strength to overcome your fear. 
+Amon: And we both know it's not always that easy. 
+Amon: Granted, I'm not sure if it will ever be.
+Amon: But I can proudly say that I was there when you baked that delicious bread for the first time. 
+Amon: You should've seen her expression, Lils! It was magical. 
+Amon: Oh, what a special day that was, my love. 
+Lilly: ... oh ... you two ...
+Lilly: ...
+Lilly: I just ... love you both so much. You better know it!
+Amon: Aww, we love you too, Lils! You're such a sweetheart. 
+Malka: Wait a second!
+Malka: We're breaking my number one rule: You should not eat food on an upset stomach. 
+Amon: Ha ha, you're right, my love. What do you propose we talk about to lighten the mood?
+Malka: That's easy!
+Malka: Our fifth year of Lilly joining us on this day! 
+Malka: And how much she has had an impact on the way we deal with all the thoughts and feelings that come up every year. 
+Amon: Lovely suggestion! 
+Amon: Lils, would you do us the honor of cutting the first slice of the most famous pastry of this evening?
+Lilly: I would love to. But before I do so, I would like to tell you...
+Lilly: (Let's hope this goes well. But you said it yourself, Lilly. No more hiding.)
+Lilly: ...how this Challah was <i>actually</i> made. 
+// Fading to black? Irgendein Ausklang. So oder so, sollte vielleicht mit ein paar Sekunden Pause dann die Credit-Szene starten.
+<<Toggle_CharacterActive CreditsCutscene_CanvasManager true>>
+===

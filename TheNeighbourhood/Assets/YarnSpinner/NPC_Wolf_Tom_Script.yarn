@@ -1,0 +1,157 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 26,-10
+__PrivCrochet_tags: 
+title: Meeting_NPC_Wolf_1st
+---
+//Declares variables
+///Is this Player's first time visit NPC_Wolf?
+<<declare $firstVisitNPC_Wolf to true>>
+///Can Player talk to NPC_Wolf?
+<<declare $canTalk_NPC_Wolf to false>>
+///Has Player talked to NPC_Wolf?
+<<declare $hasTalked_NPC_Wolf to false>>
+/// Check if player still NEED flour or not
+<<declare $needFlour = true>>
+/// Check if player ALREADY has flour in inventory
+<<declare $getFlour = false>>
+/// Check if door to NPC_Wolf is unlocked
+<<declare $unlockedDoor_NPC_Wolf = false>>
+//
+//Locked the Door to NPC_Wolf -> Aint even go in
+//<<set $unlockedDoor_NPC_Wolf to false>>
+//<<Un_LockDoor Door_ToNPC_Wolf Wolf false>>
+//TESTY
+*klopfs klopfs*
+Lilly: Uhm, hello...
+*opens door*
+<<TargetSpawn NPC_Wolf 0 NPC_Wolf_SpawnPoint true>>
+Wolf: Who are you?
+Lilly: My name is Lilly
+Wolf: I see...
+Wolf: Do you need something?
+->Lilly: Do you have flour?
+    <<jump Flour_NPC_Wolf>>
+->Lilly: Oh nothing. See you again!
+<<set $firstVisitNPC_Wolf to false>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 163,114
+__PrivCrochet_tags: 
+title: TalkTo_NPC_Wolf
+---
+//The Crossroads of what to talk with NPC_Wolf
+<<if $firstVisitNPC_Wolf == true>>
+    <<jump Tom_Hallway_Dialogue>>
+<<else>>
+    Lilly: He seems to be in a hurry.
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -68,105
+__PrivCrochet_tags: 
+title: Flour_NPC_Wolf
+---
+Wolf: Flour? I have some. Let me go get it.
+<<ShowSprite NPC_Wolf false>>
+<<wait 2>>
+<<ShowSprite NPC_Wolf true>>
+Wolf: Here you go.
+//Player get Flour and display in inventory.
+<<set $getFlour to true>>
+<<set $gainedItem_Name to "Flour">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
+<<set $needFlour to false>>
+//
+Lilly: Thank you very much!
+Wolf: No problem.
+Lilly: Bye
+//Can go to NPC_Bird now
+<<set $unlockedDoor_NPC_Bird to true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -85,-349
+__PrivCrochet_tags: 
+title: Tom_Hallway_Dialogue
+---
+// Voraussetzung: Zweiter Dialog mit Caro wurde beendet, sie schickt einen los, um Zutaten zu holen. 
+//
+// Man interagiert mit der Wolf-Tür 
+(Knock, knock) // Tom kommt raus 
+<<TargetSpawn NPC_Wolf 0 NPC_Wolf_SpawnPoint true>>
+Tom: Oh, you're early. Thank goodness! 
+Lilly: Uh-
+Tom: Vanessa, was it? I'm Tom. 
+Tom: Seriously, you're <i>really</i> saving our night by taking care of our little troublemaker.
+Tom: I won't sugarcoat it, though. He has been acting up ever since he discovered our cookie jar.
+Tom: I'm telling you, Vanessa. From one stranger to another: the whole family thing? 
+Tom: Think well about it in advance if that's the path you choose, will you? 
+Lilly: Uh, I'm sorry but...
+Lilly: Well, I'm not Vanessa.
+Tom: You're- oh...
+<<wait 2>>
+Tom: Wait, who are you then? 
+Lilly: I'm, uh, Lilly. Yeah, your neighbour. Down there, that's us. 
+Tom: Oh. Right, the new neighbours!
+Tom: Alright, I don't have much time but how can I help?
+Lilly: Well, so. It's, uh... I've been baking and I just realized I'm out of flour. 
+Tom: How nice! What are you baking?
+Lilly: A... cake. Birthday cake, yeah. 
+Tom: Congratulations! Who's the lucky fella? 
+Lilly: I... um... well...
+Tom: Oh, shoot! Sorry, Lilly, I have to get ready for my night out. 
+Tom: But I'm sure we have some spare flour. One second. 
+// Tom verschwindet, kommt wieder
+<<ShowSprite NPC_Wolf false>>
+<<wait 2>>
+<<ShowSprite NPC_Wolf true>>
+Tom: There you go, you can keep all of it. 
+<<set $getFlour to true>>
+// Flour erscheint im Inventar
+<<set $gainedItem_Name to "Flour">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
+<<set $needFlour to false>>
+Tom: Also, what I said earlier about family... I'm sorry. 
+Tom: I just meant to say that it requires a lot of work and patience and-
+Tom: Nevermind, I'm holding both of us up. So, I just hope you have a great party. Enjoy yourself!
+Tom: Oh, and: welcome to your new home!
+Lilly: Thank you!
+// Tom verschwindet
+<<TargetSpawn NPC_Wolf -3.55 NPC_Wolf_SpawnPoint true>>
+Lilly: <i>(That was... special.)</i>
+Lilly: <i>(A birthday cake, though? Seriously, Lilly?)<i>
+Lilly: <i>(I doubt that lying is better than the risk of becoming one-dimensional.)</i>
+Lilly: <i>(Or is it?)</i>
+<<set $firstVisitNPC_Wolf to false>>
+<<set $hasTalked_NPC_Wolf to true>>
+//
+<<set $findIngredients to true>>
+<<set $unlockedDoor_NPC_Squirrel to true>>
+<<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+//Player can knock on Bird door but no respond atm
+<<set $unlockedDoor_NPC_Bird to true>>
+<<Un_LockDoor Door_ToNPC_Bird Bird true false>>
+Lilly: <i>(Either way, no more hiding, Lilly.)</i>
+// Squirrel-Tür-Interaktion wird unlocked
+===
+title: OLD_PlaceHolder_Wolf_Text_BackUP
+position: 0,1
+---
+<<if $firstVisitNPC_Wolf == true>>
+    <<jump Meeting_NPC_Wolf_1st>>
+<<else>>
+    Lilly: Hi again.
+    -> Lilly: Uhm, nothing, bye.      
+    -> Lilly: Say do you have... <<if $getFlour == false>>
+        ->...flour? <<if $needFlour == true>>
+            <<jump Flour_NPC_Wolf>>
+        ->...eggs?
+            Wolf: Sorry, Don't have it.
+        ->...oil?
+            Wolf: Sorry, don't have it either.
+    -> Lilly: Want to know what I will do with flour? <<if $getFlour == true && $needFlour == false>>
+        Wolf: Yes, you bake.
+<<endif>>
+===

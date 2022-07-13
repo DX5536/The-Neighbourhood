@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f145633381b6d84fa3e6aaf98017e3f, type: 3}
+  m_Name: MouseValue_SO
+  m_EditorClassIdentifier: 
+  resetCanClickMouseAtStart: 1
+  canClickMouse: 1
+  mousePositionValue: {x: -7.6, y: -2.8}
+  raycastHitValue: {x: -7.6, y: -4.5}
+  playerScriptableObject: {fileID: 11400000, guid: 696be05360f3ef244ba43620669d78e2, type: 2}
+  arrowHUDImage: {fileID: 7452137354279215766, guid: 575d8a7354455714ea1f7d645c460803, type: 3}
+  arrowDisplayTime: 2.5
+  arrowHasSpawned: 0

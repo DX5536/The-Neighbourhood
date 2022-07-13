@@ -1,0 +1,187 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: position: 87,19
+position: 61,-224
+title: TalkTo_NPC_Squirrel
+position: 24,-165
+---
+//Declares variables
+///Is this Player's first time visit NPC_Squirrel?
+<<declare $firstVisitNPC_Squirrel to true>>
+///Can Player talk to NPC_Squirrel?
+<<declare $canTalk_NPC_Squirrel to false>>
+///Has Player talked to NPC_Squirrel?
+<<declare $hasTalked_NPC_Squirrel to false>>
+///Did Player check the box in NPC_Squirrel's?
+<<declare $hasCheckBox_NPC_Squirrel to false>>
+/// Check if player still NEED egg or not
+<<declare $needEggs = true>>
+/// Check if player ALREADY has egg in inventory
+<<declare $getEggs = false>>
+/// Check if door to NPC_Squirrel is unlocked
+<<declare $unlockedDoor_NPC_Squirrel = false>>
+//
+//The Crossroads of what to talk with NPC_Squirrel
+<<if $firstVisitNPC_Squirrel == true && $hasTalked_NPC_Wolf == true>>
+    <<jump Squirrel_Hallway_Dialogue>>
+<<elseif $firstVisitNPC_Squirrel == false>>
+    //If Player has done the Hallway talk -> Door automatic unlock to go inside
+    //Small dialog when interact unlocked ToSquirrel_Door
+    Nora: Come in!
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true true>>
+    <<ToOpenDoor Door_ToNPC_Squirrel>>
+<<else>>
+    Lilly: There is no one (Squirrel).
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true true>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: 
+title: Squirrel_Hallway_Dialogue
+position: 298,-225
+---
+// Voraussetzung 1 für diesen Dialog: Man hat das zweite Mal mit Caro gesprochen und sich auf den Weg gemacht, Zutaten von den Nachbarn zu bekommen.
+// Voraussetzung 2: Man hat das Gespräch mit dem Wolf beendet, eine Zutat erhalten und wurde zum Squirrel geschickt.
+
+// Normale Squirrel-Konversation
+// Eine Dialog-Line löst aus, dass man in die Wohnung vom Squirrel gebeten wird. Squirrel geht in die Wohnung, Betreten dieser wird unlocked. Wolf-Dialog-Optionen werden disabled.
+//
+// Voraussetzung: Man hat von Tom Mehl bekommen
+// Nora ist das Eichhörnchen
+// Man klopft an der Tür von Nora
+(Knock, knock)
+<<wait 1>>
+<<TargetSpawn NPC_Squirrel 0 NPC_Squirrel_SpawnPoint true>>
+Nora: Oh, hello there!
+Nora: Is there any chance you're here to pick up my old couch?
+Lilly: Huh?
+Nora: “Elena B.”?
+Nora: “Callin' dibs on your couch, it looks fiiire, gurl! Can I pick it up tonight?”
+Nora: ...
+Lilly: Oh, most definitely not!
+Lilly: If I bought a couch like that, I'd have someone lock away my phone as a safety measure for future purchases. 
+Nora: Ha ha ha, you're right. 
+Nora: It was probably a drunk purchase or something. 
+Nora: I guess I'm just a bit desperate to get rid of that damn thing.  
+Lilly: I'll make sure to ask around to see if anyone needs a couch, then. 
+Nora: Thank you! I'm Nora by the way. 
+Lilly: Pleasure! I'm Lilly, one of your new neighbours from the second floor. 
+Nora: How lovely, I'm glad to meet you!
+Nora: What's up, Lilly?
+Lilly: Well, I've been baking a Jewish pastry that requires very basic ingredients. 
+Lilly: And yet, I ran out of eggs and oil. 
+Nora: I see how it is! No problemo. 
+Nora: Feel free to come in!
+// Nora verschwindet, Lilly kann folgen, indem sie erneut mit der Tür interagiert
+<<set $firstVisitNPC_Squirrel to false>>
+<<TargetSpawn NPC_Squirrel -3.55 NPC_Squirrel_SpawnPoint true>>
+//Player can now go in the room
+<<set $unlockedDoor_NPC_Squirrel to true>>
+<<Un_LockDoor Door_ToNPC_Squirrel Squirrel true true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 248,-1
+__PrivCrochet_tags: 
+title: Squirrel_Indoor_Dialogue
+position: 192,-130
+---
+//Locked the ToHallway_Door from Squirrel
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
+//
+// Squirrel hat die Tür geöffnet, man ist ihm gefolgt
+//
+// Normale Squirrel-Konversation
+// Squirrel gibt einem am Ende dieser die zweite Zutat -> erscheint im Inventar
+// Squirrel schickt einen zum Bird. Bird-Dialoge werden unlocked.
+//
+//If Player is needing egg and do not have egg in inventory
+<<if $needEggs == true && $getEggs == false>>
+    <<jump Squirrel_Get_Egg>>
+<<else>>
+    Nora: Do you think this fridge will look better here or more to the left?
+    //Unlock door back to Hallway
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 247,-238
+__PrivCrochet_tags: 
+title: Squirrel_Indoor_FirstTime
+position: 215,285
+---
+//Locked the ToHallway_Door from Squirrel
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
+//If Player already has eggs yet return to Squirrel Room
+<<if $getEggs>>
+    Nora: Feel free to look around!
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<else>>
+    // Automatischer Dialog, wenn man das Apartment betritt
+    Nora: Oh!
+    Nora: Welcome to my apartment!
+    Nora: It's currently a bit of a mess because I'm redecorating. Hence the couch sale. 
+    Nora: Anyways, would you mind looking for a box with kitchen gadgets? 
+    Nora: It should contain some oil. I'll get the eggs in the meantime!
+    Lilly: Sure thing!
+    // Nora verschwindet in Richtung Kühlschrank
+    <<FlipSprite NPC_Squirrel>>
+    <<TargetMove NPC_Squirrel 1 Fridge false>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 490,-238
+__PrivCrochet_tags: 
+title: Lilly_Oil_Box_Interaction
+position: 117,-39
+---
+// Lilly findet eine Box, die interaktiv ist (Umzugsbox)
+Lilly: (Oh, looks like the oil bottle shattered...)
+Lilly: (I should let Nora know.)
+<<set $hasCheckBox_NPC_Squirrel to true>>
+//Squirrel_Gives_Eggs Dialog wird unlocked
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 0,0
+__PrivCrochet_tags: position: 0,1
+position: 313,79
+title: Squirrel_Get_Egg
+---
+//If player already check the box
+<<if $hasCheckBox_NPC_Squirrel>>
+    // Lilly geht, nachdem sie das kaputte Öl gefunden hat, zurück zu Nora
+    Nora: Here are your eggs! // Eier erscheinen im Inventar
+    //Egg erscheint im Inventar
+    <<set $gainedItem_Name to "Eggs">>
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
+    <<set $needEggs to false>>
+    <<set $getEggs to true>>
+    <<set $findIngredients to true>>
+    //
+    Lilly: Thank you! I'm afraid your oil bottle broke, though. 
+    Nora: Ah, damn it. I thought the crash came from the dishes…
+    Nora: You'll have to ask Mia for oil, then. 
+    Nora: She lives one floor down, on the other side.
+    Nora: Make sure to ring the bell, though. She's probably listening to music.
+    <<set $unlockedDoor_NPC_Bird to true>>
+    Lilly: Thanks, Nora!
+    Lilly: (Alright, only oil left... I hope Mia is home.)
+    // Lilly kann die Tür wieder verlassen
+    // Mia's (Bird) normaler Dialog wird unlocked
+    <<set $hasTalked_NPC_Squirrel to true>>
+    <<set $unlockedDoor_NPC_Bird to true>>
+    //Unlock door back to Hallway
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<else>>
+    Nora: Redecorating is tiresome but soooo rewarding!
+<<endif>>
+===

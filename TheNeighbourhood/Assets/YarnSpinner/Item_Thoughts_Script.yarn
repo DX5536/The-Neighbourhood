@@ -1,0 +1,79 @@
+﻿title: Item_Sink
+tags:
+position: -10,-106
+---
+Lilly: <i>(Maybe I should wash my hand...)</i>
+Lilly: <i>(Water sure is refreshing!)</i>
+===
+title: Item_Table
+position: -7,-52
+---
+<<if $getAllIngredients == true>>
+    <<jump Making_Challah_With_Lilly>>
+<<else>>
+Lilly: <i>(I could bring food to my room...)</i>
+Lilly: <i>(Or eat at the table with Caro...)</i>
+//These two needs to go together
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -221,0
+__PrivCrochet_tags: position: -154,1
+title: Hallway_UnLockDoor_Manager
+position: -4,11
+---
+//We go from the bottom up: 
+//So Bird -> Squirrel -> Wolf -> Grandparents
+//
+<<if $hasBakedChallah>>
+    Lilly: <i>(Hope I'm on time!)</i>
+<<elseif $getAllIngredients && !$hasBakedChallah>>
+    Lilly: <i>(Alright, I got everything I need. Now I should hurry back to my room.)</i>
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Bird == true && $unlockedDoor_NPC_Squirrel && $unlockedDoor_NPC_Wolf>>
+    Lilly: <i>(I hope Mia is really at home.)</i>
+    //Debug NPC_Bird/Squirrel/Wolf in Hallway
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true false>>
+    //Squirrel
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+    //Wolf
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
+//
+<<elseif $findIngredients == true && $unlockedDoor_NPC_Squirrel == true>>
+    //Debug NPC_Squirrel/Wolf in Hallway
+    Lilly: <i>(The next one should be one floor above...)</i>
+    <<set $unlockedDoor_NPC_Squirrel to true>>
+    <<Un_LockDoor Door_ToNPC_Squirrel Squirrel true false>>
+    //Wolf
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
+//
+<<elseif $findIngredients && $unlockedDoor_NPC_Wolf>>
+    //Lock MyRoom to avoid click E and re-enter
+    <<set $unlockedDoor_MyRoom to false>>
+    <<Un_LockDoor Door_ToMyRoom MyRoom false false>>
+    //Debug NPC_Wolf in Hallway
+    Lilly: <i>(Let me ask the nearest neighbour first. Maybe they have everything I need...)</i>
+    //
+    <<set $unlockedDoor_NPC_Wolf to true>>
+    <<Un_LockDoor Door_ToNPC_Wolf Wolf true false>>
+    //
+    //Unlock MyRoom to avoid click E and re-enter
+    <<set $unlockedDoor_MyRoom to true>>
+    <<Un_LockDoor Door_ToMyRoom MyRoom true true>>
+//If Player has talked to Grandparents but haven't trigger the $findIngredients quest yet.
+<<elseif $hasTalked_Grandma == true && $hasTalked_Grandpa == true && $findIngredients == false && !$getAllIngredients>>
+    <<jump Leaving_Grandparents_Apartment>>
+//DEBUG stuff
+<<else>>
+    //Just DEBUG stuff
+    //Havent unlock anything <<if $getAllIngredients == false>>
+    //Unlocked everything <<if $getAllIngredients == true>>
+    //Nothing to say -> Debug
+    //<<Un_LockDoor Door_ToNPC_Wolf Wolf false false>>
+    //<<Un_LockDoor Door_ToNPC_Bird Bird false false>>
+    //<<Un_LockDoor Door_ToNPC_Squirrel Squirrel false false>>
+<<endif>>
+===

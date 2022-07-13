@@ -1,0 +1,191 @@
+#__PrivCrochet_version:1
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -160,-59
+__PrivCrochet_tags: 
+title: TalkTo_NPC_Bird
+position: -155,-237
+---
+//Declares variables
+///Is this Player's first time visit NPC_Bird?
+<<declare $firstVisitNPC_Bird to true>>
+///Can Player talk to NPC_Bird?
+<<declare $canTalk_NPC_Bird to false>>
+///Has Player talked to NPC_Bird?
+<<declare $hasTalked_NPC_Bird to false>>
+/// Check if player still NEED oil or not
+<<declare $needOil = true>>
+/// Check if player ALREADY has oil in inventory
+<<declare $getOil = false>>
+/// Check if door to NPC_Bird is unlocked
+<<declare $unlockedDoor_NPC_Bird = false>>
+///Does Player have all the three ingredients?
+<<declare $getAllIngredients to false>>
+//
+//The Crossroads of what to talk with NPC_Bird in Hallway
+<<if $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == false>>
+    //If Player hasnt talk to Squirrel but knock on Bird door
+    //isInteractable but can't trans scene
+    <<jump Lilly_Knocks_No_Response>>
+<<elseif $firstVisitNPC_Bird == true && $hasTalked_NPC_Squirrel == true>>
+    <<jump Bird_Hallway_Talk>>
+<<elseif $firstVisitNPC_Bird == false>>
+    //If Player has done the Hallway talk -> Door automatic unlock to go inside
+    //Small dialog when interact unlocked ToBird_Door
+    Mia: Please come in!
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true true>>
+    <<ToOpenDoor Door_ToNPC_Bird>>
+<<else>>
+    Lilly: No one is here (Bird).
+    <<set $unlockedDoor_NPC_Bird to true>>
+    <<Un_LockDoor Door_ToNPC_Bird Bird true true>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -160,-345
+__PrivCrochet_tags: position: 1,1
+position: 97,-250
+title: Bird_Hallway_Talk
+---
+// Voraussetzung: Dialog mit dem Squirrel wurde abgeschlossen, zweite Zutat erhalten
+// Man interagiert mit der Tür von Bird Mia
+(Ring, ring)
+<<TargetSpawn NPC_Bird 0 NPC_Bird_SpawnPoint true>>
+Lilly: Hello, I'm-
+Mia: Lilly?
+Lilly: No, I'm-
+Lilly: Uh, yes, actually. I'm Lilly.
+Mia: I knew it! You look similar to your grandparents. 
+Lilly: You know them?
+Mia: Yeah, the other day your grandpa asked me to explain how computers work. 
+Mia: I'm not sure if he understood my tips... But he tried.
+Mia: And he told me a lot about your family. 
+Lilly: That's good to hear!
+Lilly: Because right now I'm kinda struggling to do the same. 
+Mia: Well, I'm all ears, if you want.
+Mia: Mind coming in?
+Lilly: Oh, of course. 
+<<set $firstVisitNPC_Bird to false>>
+<<TargetSpawn NPC_Bird 3.55 NPC_Bird_SpawnPoint true>>
+//Player can now go in the room
+<<set $unlockedDoor_NPC_Bird to true>>
+<<Un_LockDoor Door_ToNPC_Bird Bird true true>>
+// Bird geht in die Wohnung, Wohnung zum Betreten unlocked
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 80,-53
+__PrivCrochet_tags: 
+title: Bird_Indoor_Dialogue
+position: -38,145
+---
+<<if $needOil == true && $getOil == false>>
+    <<jump Bird_Get_Oil>>
+<<else>>
+    Mia: Make yourself at home.
+    //Unlock door back to Hallway
+    <<set $unlockedDoor_ToHallway to true>>
+    <<Un_LockDoor Door_ToHallway ToHallway true true>>
+<<endif>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 75,193
+__PrivCrochet_tags: position: 0,1
+position: 227,55
+title: Bird_Get_Oil
+---
+// Folgt nach Bird_In_Apartment_Talk
+// Bird ansprechbar an dem Platz, an dem sich ihr Öl befindet
+Mia: Here you go!
+//Oil erscheint im Inventar
+<<set $gainedItem_Name to "Oil">>
+<<AccessYarnGainedItemValue Yarn_InventoryManager>>
+<<DisplayGainedItem Yarn_InventoryManager>>
+<<set $needOil to false>>
+<<set $getOil to true>>
+Lilly: Thanks, Mia!
+Mia: Hey, good luck with baking your Chal…
+Lilly: Challah. 
+Mia: Right! Good luck with your Challah, Lilly!
+//Player now have all the ingredients
+<<set $findIngredients to false>>
+<<set $getAllIngredients to true>>
+Lilly: (I got everything, what a lovely neighbourhood! Let's get baking in our kitchen!)
+<<set $hasTalked_NPC_Bird to true>>
+//Unlock door back to Hallway
+<<set $unlockedDoor_ToHallway to true>>
+<<Un_LockDoor Door_ToHallway ToHallway true true>>
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 634,-52
+__PrivCrochet_tags: position: 0,1
+position: 239,-102
+title: OLD_Interaction_Bird
+---
+Bird: Oh? Who do we have here?
+Bird: Do you need something?
+-> Oh hi, I need some flour. <<if $needOil == true>>
+    Bird: Flour? Ah sure, I think I have some around.
+    <<set $needOil to false>>
+    <<set $getOil to true>>
+    <<set $gainedItem_Name to "Oil">>
+    <<wait 0,2>>
+    Bird: Here you go. Some brand new flour.
+    <<AccessYarnGainedItemValue Yarn_InventoryManager>>
+    <<DisplayGainedItem Yarn_InventoryManager>>
+-> It's nothing... May I how your day is?
+    Bird: Well, I do like this kind of weather, neither too hot nor too cold.
+-> Don't you want to know why I need flour? <<if $getFlour == true>>
+    Bird: You need flour to bake, duh...
+
+Player: Thanks for your time.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: -164,-590
+__PrivCrochet_tags: 
+title: Lilly_Knocks_No_Response
+position: 191,146
+---
+// Voraussetzung: Man hat Mehl von Tom, aber noch nicht die Eier von Squirrel Nora
+// Dieser Dialog spielt, wenn man währenddessen versucht, bei Bird Mia zu klopfen
+// Spoiler: Niemand macht auf
+(Knock, knock)
+Lilly: Huh?
+Lilly: No one is home, I guess.
+Lilly: Then I only have one more door to get eggs and oil. Let's hope they're here.
+===
+__PrivCrochet_colorID: 0
+__PrivCrochet_position: 78,-343
+__PrivCrochet_tags: 
+title: Bird_Indoor_FirstTime
+position: 31,210
+---
+//Locked the ToHallway_Door from Bird
+<<set $unlockedDoor_ToHallway to false>>
+<<Un_LockDoor Door_ToHallway ToHallway false false>>
+// Automatischer Dialog, sobald man Mias Wohnung betritt
+<<if $getOil>>
+    Mia: Hi Lilly. How can I help you?
+<<else>>
+    Mia: So, how can I help?
+    Lilly: You see, I promised my grandparents to bake Challah, a Jewish pastry. 
+    Lilly: The occasion being the International Holocaust Remembrance Day. 
+    Lilly: We usually have a shared dinner on this day. 
+    Lilly: But I forgot about the Challah, wanted to bake it, but I'm out of oil. 
+    Lilly: Whew...
+    Lilly: Was that too much information?
+    Mia: It was perfectly fine! 
+    Mia: I just don't know a lot about this day. What's the tradition?
+    Lilly: There isn't really one. At least nothing strict. 
+    Lilly: We kinda ... reinvented the day into something more positive for ourselves. 
+    Mia: That's beautiful!
+    Mia: And how do you feel? About today, I mean. If you don't mind me asking.
+    Lilly: Well, I...
+    Lilly: I don't think I've ever thought about that before. 
+    Lilly: I'm usually just baking, listening to my grandparents and I'm happy when I see them smile. 
+    Mia: Hm, I see!
+    Mia: Alright, speaking of baking, let's get you that oil!
+    // Mia geht in Richtung Kühlschrank
+    <<FlipSprite NPC_Bird>>
+    <<TargetMove NPC_Bird 2 Oil_Collection false>>
+<<endif>>
+===
