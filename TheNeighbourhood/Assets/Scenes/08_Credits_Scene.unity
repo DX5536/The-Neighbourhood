@@ -3087,8 +3087,8 @@ GameObject:
   - component: {fileID: 1580317497}
   - component: {fileID: 1580317500}
   - component: {fileID: 1580317499}
-  - component: {fileID: 1580317498}
   - component: {fileID: 1580317501}
+  - component: {fileID: 1580317498}
   - component: {fileID: 1580317502}
   m_Layer: 5
   m_Name: BacktoMenu_Button
