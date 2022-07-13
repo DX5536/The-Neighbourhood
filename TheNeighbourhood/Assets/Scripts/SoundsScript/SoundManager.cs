@@ -52,8 +52,9 @@ public class SoundManager: MonoBehaviour
         button_AudioSource.clip = soundScriptableObject.ButtonSFX;
         hoverButton_AudioSource.clip = soundScriptableObject.HoverButtonSFX;
 
+        //Reset all volume back to 1 if no playerPref
         //Load the Music saved values from PlayerPref
-        LoadVolumeValue();
+        CheckPlayerPref_NewGame();
         //At start play BGM
         PlayBGM();
     }
@@ -71,7 +72,15 @@ public class SoundManager: MonoBehaviour
 
     public void PlayTypingSFX()
     {
-        typingSFX_AudioSource.PlayOneShot(typingSFX_AudioSource.clip, 1);
+        if (typingSFX_AudioSource.isPlaying)
+        {
+            return;
+        }
+        else
+        {
+            typingSFX_AudioSource.PlayOneShot(typingSFX_AudioSource.clip, 1);
+        }
+
     }
 
     //Walking
@@ -87,7 +96,14 @@ public class SoundManager: MonoBehaviour
 
     public void PlayItemSFX()
     {
-        item_AudioSource.Play();
+        if (item_AudioSource.isPlaying)
+        {
+            return;
+        }
+        else
+        {
+            item_AudioSource.Play();
+        }
     }
 
     public void PlayButtonSFX()
@@ -98,6 +114,30 @@ public class SoundManager: MonoBehaviour
     public void PlayHoverButtonSFX()
     {
         hoverButton_AudioSource.Play();
+    }
+
+    private void CheckPlayerPref_NewGame()
+    {
+        //If doesn't have  ANY of the key => Volume = 1
+        if (!PlayerPrefs.HasKey("masterVolume") ||
+            !PlayerPrefs.HasKey("BGMVolume") ||
+            !PlayerPrefs.HasKey("SFXVolume") ||
+            !PlayerPrefs.HasKey("TypingSFXVolume"))
+        {
+            AudioListener.volume = 1;
+            BGM_AudioSource.volume = 1;
+            walkingSFX_AudioSource.volume = 1;
+            item_AudioSource.volume = 1;
+            typingSFX_AudioSource.volume = 1;
+
+            Debug.Log("No PlayerPref -> Reset all volume to 1");
+        }
+
+        else
+        {
+            LoadVolumeValue();
+        }
+
     }
 
     //For option scene -> Changing the volumes
