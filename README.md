@@ -4,6 +4,8 @@ It is a game about a family with their own traditions for the International Holo
 
 ![lrYC7V](https://user-images.githubusercontent.com/49788345/179297136-a406299d-f3dc-43c0-b268-93940feeb1e4.png)
 
+Play here: https://dx5536.itch.io/the-neighbourhood
+
 ## Credits
 Team:
 * Laura W. : Narrative Design, Project Management, Story Research and Game Design
